@@ -1,0 +1,41 @@
+<H1>Producto </H1>
+
+<p>
+    <%= @product.name %>
+</p>
+
+<p>
+    <%= @product.detail %>
+</p>
+    
+<p>
+   <%= @product.description %>
+</p>
+
+<p>    
+  <%= @product.code %>
+</p>
+
+<p>
+   <%= @product.general_code %>
+</p>
+
+<p>
+    <%= @product.brand %>
+</p>
+
+<p>
+    <%= @product.category %>
+</p>
+
+<p>
+    <%= @product.bought_price %>
+</p>
+
+<p>
+    <%= @product.sale_price %>
+</p>    
+
+<%= button_to 'Editar', edit_product_path(@product), :method => :get %>
+<%= button_to 'Volver', products_path, :method => :get %>
+  
