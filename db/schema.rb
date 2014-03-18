@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318151833) do
+ActiveRecord::Schema.define(version: 20140318152946) do
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "detail"
+    t.text     "description"
+    t.string   "code"
+    t.string   "general_code"
+    t.string   "brand"
+    t.string   "category"
+    t.integer  "bought_price"
+    t.integer  "sale_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sales", force: true do |t|
     t.float    "price"
