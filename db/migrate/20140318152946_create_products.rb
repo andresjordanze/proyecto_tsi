@@ -8,12 +8,10 @@ class CreateProducts < ActiveRecord::Migration
       t.string :brand
       t.string :category
       t.integer :bought_price
-<<<<<<< HEAD
       t.integer :sale_price           
-=======
       t.integer :sale_price     
       t.integer :quantity
->>>>>>> b09bcd00b365915f6f912066c0f949a405c1cb18
+      t.boolean :home
       t.timestamps
     end
   end

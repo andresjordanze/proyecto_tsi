@@ -1,0 +1,15 @@
+<h1>Añadir Producto</h1>
+
+<%=form_for (@product) do |f| %>
+
+	<%= @product.name %>
+	
+	<%=f.label :photo, "Foto:" %>
+	<%= f.file_field :photo %><br>
+
+	<%= f.label :description , "Descripcion:" %>
+	<%= f.text_area :description %><br>
+
+	<%= f.submit "Añadir Producto"%>
+
+<%end%>

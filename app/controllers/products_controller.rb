@@ -31,6 +31,13 @@ class ProductsController < ApplicationController
 		end
 	end
 
+	def add_to_home
+		@product = Product.find(params[:id])
+		@product.home = true
+		@product.save
+	end
+
+
 	def destroy
 		@product = Product.find(params[:id])
 		@product.destroy
