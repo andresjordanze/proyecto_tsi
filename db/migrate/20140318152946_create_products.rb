@@ -4,12 +4,12 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.text :detail
       t.text :description
-      t.string :code
       t.string :general_code
       t.string :brand
       t.string :category
       t.integer :bought_price
       t.integer :sale_price     
+      t.integer :quantity
       t.timestamps
     end
   end

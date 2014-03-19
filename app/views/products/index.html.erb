@@ -30,7 +30,7 @@
     
     <td><CENTER><%= product.description %></CENTER></td>
     
-    <td><CENTER><%= product.code %></CENTER></td>
+    <td><CENTER><%= product.quantity %></CENTER></td>
 
     <td><CENTER><%= product.general_code %></CENTER></td>
 
@@ -44,7 +44,8 @@
    
     <td><%= link_to 'Ver', product %></td>
     <td><%= link_to 'Editar', edit_product_path(product) %></td>
-    <td><%= button_to 'Eliminar', product, method: :delete, data: { confirm: 'Seguro?' } %></td>
+    <td><%= link_to 'Eliminar', product_path(product),
+                    method: :delete, data: { confirm: 'Seguro?' } %></td>
   </tr>
 <% end %>
 </table>
