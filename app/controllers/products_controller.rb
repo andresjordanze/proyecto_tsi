@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(params[:product])
+		@product.home = false
 		@product.save		
 		redirect_to @product
 	end
@@ -37,6 +38,12 @@ class ProductsController < ApplicationController
 		@product.save
 	end
 
+	def delete_from_home
+		@product = Product.find(params[:id])
+		@product.home = false
+		@product.save
+		redirect_to products_url
+	end
 
 	def destroy
 		@product = Product.find(params[:id])
