@@ -1,0 +1,29 @@
+<h1>Todos Los Productos</h1>
+
+<h3><%= link_to 'Agregar Producto', new_product_path %></h3>
+<CENTER>
+<table border="1">
+  <tr>
+    <th>Descripcion</th>
+    <th>Foto</th>
+    
+  </tr>
+
+<% @products.each do |product| %>
+  <%if product.home == true%>
+  <tr>
+
+    <td><CENTER><%= product.photo %></CENTER></td>
+    
+    <td><CENTER><%= product.description %></CENTER></td>
+   
+    <td><%= link_to 'Ver',  :controller => :products, :action => 'view_product', :id => product.id%></td>
+    
+    <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
+                        <%end%>
+  </tr>
+<% end %>
+</table>
+<br>
+</Center>
+

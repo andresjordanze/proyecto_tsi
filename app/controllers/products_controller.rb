@@ -32,6 +32,14 @@ class ProductsController < ApplicationController
 		end
 	end
 
+	def products_home
+		@products = Product.all
+	end
+
+	def view_product
+		@product = Product.find(params[:id])
+	end
+
 	def add_to_home
 		@product = Product.find(params[:id])
 		@product.home = true
@@ -42,7 +50,7 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 		@product.home = false
 		@product.save
-		redirect_to products_url
+		redirect_to :controller => :products, :action => 'products_home'
 	end
 
 	def destroy
