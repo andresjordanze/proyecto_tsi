@@ -5,6 +5,7 @@ gem 'rails', '4.0.1'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem 'paperclip'
 
 # Use sqlite3 as the database for Active Record
 group :development do

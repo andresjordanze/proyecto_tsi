@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :brand
       t.string :category
       t.integer :bought_price
-      t.integer :sale_price     
+      t.integer :sale_price           
       t.timestamps
     end
   end
