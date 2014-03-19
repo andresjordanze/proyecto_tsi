@@ -12,10 +12,9 @@
 <% @products.each do |product| %>
   <%if product.home == true%>
   <tr>
-
-    <td><CENTER><%= product.photo %></CENTER></td>
-    
+   
     <td><CENTER><%= product.description %></CENTER></td>
+    <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60></a></CENTER></td>
    
     <td><%= link_to 'Ver',  :controller => :products, :action => 'view_product', :id => product.id%></td>
     
