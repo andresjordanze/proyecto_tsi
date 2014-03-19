@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318203549) do
 
+ActiveRecord::Schema.define(version: 20140319011105) do
+  
   create_table "products", force: true do |t|
     t.string   "name"
     t.text     "detail"
     t.text     "description"
-    t.string   "code"
     t.string   "general_code"
     t.string   "brand"
     t.string   "category"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20140318203549) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", force: true do |t|
@@ -39,6 +42,15 @@ ActiveRecord::Schema.define(version: 20140318203549) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "subproducts", force: true do |t|
+    t.string   "code"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subproducts", ["product_id"], name: "index_subproducts_on_product_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
