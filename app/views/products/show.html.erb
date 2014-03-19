@@ -1,46 +1,57 @@
-<H1>Producto </H1>
+<CENTER><H1>Producto </H1>
 
 <p>
+  <small>Fotografia</small><br>
 	<%= image_tag @product.photo.url , :height=>60 %>
 </p>
 
 <p>
+    <small>Nombre:</small><br>
     <%= @product.name %>
 </p>
 
 <p>
+    <small>Detalle:</small><br>
     <%= @product.detail %>
 </p>
     
 <p>
-   <%= @product.description %>
+    <small>Descripcion:</small><br>
+    <%= @product.description %>
 </p>
 
 <p>    
-  <%= @product.quantity %>
+    <small>Cantidad</small><br>
+    <%= @product.quantity %>
 </p>
 
 <p>
-   <%= @product.general_code %>
+    <small>Codigo del producto: </small><br>
+    <%= @product.general_code %>
 </p>
 
 <p>
+    <small>Marca: </small><br>
     <%= @product.brand %>
 </p>
 
 <p>
+    <small>Categoria: </small><br>
     <%= @product.category %>
 </p>
 
 <p>
+    <small>Precio de Compra:</small><br>
     <%= @product.bought_price %>
 </p>
 
 <p>
+    <small>Precio de venta: </small><br>
     <%= @product.sale_price %>
 </p>    
 
-<%= button_to 'Editar', edit_product_path(@product), :method => :get %>
-<%= button_to 'Volver', products_path, :method => :get %>
-<%= button_to 'Añadir Producto', :controller => :products, :action => 'add_to_home', :id => @product.id %>
-  
+<%= button_to 'Editar', edit_product_path(@product), :method => :get %><br>
+<%= button_to 'Añadir Producto', :controller => :products, :action => 'add_to_home', :id => @product.id %><br>
+<%= button_to 'Volver', products_path, :method => :get %><br>
+
+  </CENTER>
