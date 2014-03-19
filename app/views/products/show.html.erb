@@ -1,21 +1,8 @@
 <CENTER><H1><%= @product.name %> </H1>
-<%if @product.photo_file_name == nil%>
-  <small>Fotografia Aun no cargada</small><br>
-  <%else%>
-<p>
-  <small>Fotografia</small><br>
-	<%= image_tag @product.photo.url , :height=>60 %>
-</p>
-<%end%>
 
 <p>
     <small>Detalle:</small><br>
     <%= @product.detail %>
-</p>
-    
-<p>
-    <small>Descripcion:</small><br>
-    <%= @product.description %>
 </p>
 
 <p>    
