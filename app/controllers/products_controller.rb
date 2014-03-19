@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
 		@product.home = false
 		@product.save
 		redirect_to :controller => :products, :action => 'products_home'
+		
 	end
 
 	def destroy
