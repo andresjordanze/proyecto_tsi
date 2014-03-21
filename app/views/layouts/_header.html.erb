@@ -10,8 +10,8 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Ver Lista de Productos", '#' %></li>
-              <li><%= link_to "Añadir producto a pagina", '#' %></li>
+              <li><%= link_to "Ver Lista de Productos", 'products_home' %></li> <!--agregado-->
+              <li><%= link_to "Añadir producto a pagina", 'products' %></li> <!--agregado-->
               <li><%= link_to "Eliminar producto de pagina", '#' %></li>
               <li><%= link_to "Editar producto de pagina", '#' %></li>
               <li><%= link_to "Ver producto de pagina", '#' %></li>
@@ -23,8 +23,8 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Ver Lista de Productos", '#' %></li>
-              <li><%= link_to "Registros", '#' %></li>
+              <li><%= link_to "Ver Lista de Productos", 'products' %></li>  <!--agregado-->
+              <li><%= link_to "Registros", 'products/new' %></li> <!--agregado-->
               <li><%= link_to "Boletas", '#' %></li>
               <li><%= link_to "Reportes", '#' %></li>
               <li><%= link_to "Impresiones", '#' %></li>
@@ -41,7 +41,7 @@
               <li><%= link_to "Impresiones", '#' %></li>
             </ul>
           </li>
-          <li><%= link_to "Iniciar Sesion", '#' %></li>
+          <li><%= link_to "Iniciar Sesion", login_path %></li>
         </ul>
       </nav>
     </div>
