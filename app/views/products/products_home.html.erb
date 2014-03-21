@@ -11,16 +11,13 @@
 
 <% @products.each do |product| %>
   <%if product.home == true%>
-  <tr>
-   
-    <td><CENTER><%= product.description %></CENTER></td>
-    <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60></a></CENTER></td>
-   
-    <td><%= link_to 'Ver',  :controller => :products, :action => 'view_product', :id => product.id%></td>
-    
-    <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
-                        <%end%>
-  </tr>
+    <tr>
+      <td><CENTER><%= product.description %></CENTER></td>
+      <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60></a></CENTER></td>
+      <td><%= link_to 'Ver',  :controller => :products, :action => 'view_product', :id => product.id%></td>
+      <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
+  <%end%>
+    </tr>
 <% end %>
 </table>
 <br>

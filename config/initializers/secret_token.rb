@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Informaticacomp::Application.config.secret_key_base = 'ef3c1d478c289a0c95cd14550a159576fdef6eb3deb6e5cb2c37b8ea19b941a67431192649052a5dabc9c8ef4f35f86b534e834352fe53e890498587a86929c3'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Informaticacomp::Application.config.secret_key_base = secure_token

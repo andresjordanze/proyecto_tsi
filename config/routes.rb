@@ -8,6 +8,12 @@ Informaticacomp::Application.routes.draw do
   get 'view_product' => 'products#view_product'
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
+  
+
+  root  'static_pages#home'
+  match '/help',    to: 'static_pages#help',    via: 'get'
+  match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
 
   resources :products do
     resources :subproducts
@@ -21,7 +27,6 @@ Informaticacomp::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
