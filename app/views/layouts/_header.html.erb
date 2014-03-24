@@ -23,7 +23,7 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Ver Lista de Productos", 'products' %></li>  <!--agregado-->
+              <li><%= link_to "Ver Lista de Productos", 'products' %></li>  
               <li><%= link_to "Registros", 'products/new' %></li> <!--agregado-->
               <li><%= link_to "Boletas", '#' %></li>
               <li><%= link_to "Reportes", '#' %></li>
@@ -49,7 +49,20 @@
               </div>        
             </form>
           </li>
-          <li><%= link_to "Iniciar Sesion", login_path %></li>
+          <%if current_user%>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.email%> 
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Cambiar Contraseña", '#' %></li>
+                <li><%= link_to "Cerrar Sesion", logout_path %></li>
+              </ul>
+            </li>
+          <%else%>
+            <li><%= link_to "Iniciar Sesion", login_path %></li>
+          <%end%>
         </ul>
       </nav>
     </div>
