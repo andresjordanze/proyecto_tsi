@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "INFORMATICACOMP SRL", root_url, id: "logo" %>
+      <%= link_to "INFORMATICACOMP", root_url, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
           <li id="fat-menu" class="dropdown">
@@ -42,12 +42,21 @@
               <li><%= link_to "Todas las ventas", '#' %></li>
             </ul>
           </li>
-          <li>  
-            <form class="navbar-form navbar-left" role="search">
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Usuarios 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Crear usuario", 'users/new' %></li>  
+              <li><%= link_to "Eliminar Usuario", '#' %></li> <!--agregado-->
+            </ul>
+          </li> 
+            <!--form class="navbar-form navbar-left" role="search">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Buscar">
+                <input type="text" class="form-control" placeholder="Buscar" width='10'>
               </div>        
-            </form>
+            </form-->
           </li>
           <%if current_user%>
             <li id="fat-menu" class="dropdown">
