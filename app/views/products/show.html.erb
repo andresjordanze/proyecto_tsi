@@ -35,8 +35,9 @@
     <%= @product.sale_price %>
 </p>    
 
+<%= button_to 'Ingresar producto', :controller => :products, :action => 'enter', :id => @product.id  %><br>
 <%= button_to 'Editar', edit_product_path(@product), :method => :get %><br>
-<%= button_to 'Añadir Producto', :controller => :products, :action => 'add_to_home', :id => @product.id %><br>
+<%= button_to 'Añadir Producto a pagina', :controller => :products, :action => 'add_to_home', :id => @product.id %><br>
 <%= button_to 'Volver', products_path, :method => :get %><br>
 
   </CENTER>
