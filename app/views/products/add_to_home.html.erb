@@ -1,18 +1,21 @@
 <% title "Añadir a pagina" %>
 <CENTER>
 <h1>Añadir Producto</h1>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for (@product) do |f| %>
+  			<%= f.error_messages %>
 
-<%=form_for (@product) do |f| %>
-
-	<%= @product.name %>
+			<%= @product.name %>
 	
-	<%=f.label :photo, "Foto:" %>
-	<%= f.file_field :photo %><br>
+			<%=f.label :photo, "Foto:" %>
+			<%= f.file_field :photo %><br>
 
-	<%= f.label :description , "Descripcion:" %>
-	<%= f.text_area :description %><br>
+			<%= f.label :description , "Descripcion:" %>
+			<%= f.text_area :description %><br>
 
-	<%= f.submit "Añadir Producto"%>
-
-<%end%>
+			<%= f.submit "Añadir Producto"%>
+		<%end%>
+	</div>
+</div>
 </CENTER>
