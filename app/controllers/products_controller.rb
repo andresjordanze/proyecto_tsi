@@ -11,8 +11,13 @@ class ProductsController < ApplicationController
 		@product = Product.new
 	end
 
+	def enter
+		@product = Product.find(params[:id])
+	end
+
 	def create
 		@product = Product.new(params[:product])
+		@product.quantity = 1
 		@product.home = false
 		@product.save		
 		redirect_to @product

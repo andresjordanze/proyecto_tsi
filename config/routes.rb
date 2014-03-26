@@ -9,6 +9,8 @@ Informaticacomp::Application.routes.draw do
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
   
+  get 'enter' => 'products#enter'
+  post 'enter' => 'products#enter'
 
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
