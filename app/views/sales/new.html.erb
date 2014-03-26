@@ -1,0 +1,20 @@
+<% title "Registrar Venta" %>
+<CENTER>
+<h1>Registrar Venta</h1>
+
+<%=form_for (@sale) do |f| %>
+	<%= f.label :check_number , "Numero de Factura:" %>
+	<%= f.text_field :check_number %><br>
+	
+	<%= f.label :client_name , "Nombre del Cliente:" %>
+	<%= f.text_field :client_name %><br>
+
+	<%= f.label :Producto , "Producto:" %>
+	<%= f.select :client_name %><br>
+
+	
+
+	<%= f.submit "Registrar Venta"%>
+
+<%end%>
+</CENTER>

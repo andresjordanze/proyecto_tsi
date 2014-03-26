@@ -6,10 +6,11 @@ class User < ActiveRecord::Base
   before_save :prepare_password
 
   validates_presence_of :username
+  validates_length_of :username, :minimum => 6, :maximum =>10
   validates_uniqueness_of :username, :email, :allow_blank => true
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates_length_of :password, :minimum => 4, :allow_blank => true
+  validates_length_of :password, :minimum => 4, :allow_blank => false
 
   # login can be either username or email address
   def self.authenticate(login, pass)

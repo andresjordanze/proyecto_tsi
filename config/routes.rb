@@ -19,6 +19,8 @@ Informaticacomp::Application.routes.draw do
     resources :subproducts
   end
 
+  resources :sales
+
 
   resources :sessions
   

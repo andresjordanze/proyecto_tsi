@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 	has_many :subproducts, dependent: :destroy
 	attr_accessible :name, :detail, :description, :quantity, :general_code, :brand, :category, :bought_price, :sale_price, :created_at, :updated_at,:photo
-
+	belongs_to :sale
 	
 
 	has_attached_file :photo
