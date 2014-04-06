@@ -13,11 +13,19 @@ class ProductsController < ApplicationController
 
 	def enter
 		@product = Product.find(params[:id])
+    	i = @product.quantity
+    	@product.quantity = @product.quantity + params[:help]
+    	while i < @product.quantity do
+      		@product.subproducts.create("code" => @productcode + "-#{i}")
+      		i = i + 1
+    	end
+    	@product.save
+    	redirect_to @product, notice: 'Quantity updated!'
 	end
 
 	def create
 		@product = Product.new(params[:product])
-		@product.quantity = 1
+		@product.quantity = 0
 		@product.home = false
 		@product.save		
 		redirect_to @product
@@ -30,6 +38,7 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 		if @product.update_attributes(params[:product])
+			@product.save
 			flash[:success] = "Producto Actualizado"
 			redirect_to @product
 		else

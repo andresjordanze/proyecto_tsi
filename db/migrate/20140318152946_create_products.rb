@@ -10,7 +10,6 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :bought_price         
       t.integer :sale_price     
       t.integer :quantity
-      t.integer :modify_quantity
       t.boolean :home
       t.timestamps
     end

@@ -2,31 +2,10 @@
 <h1>Editar Producto</h1>
 
 <%=form_for (@product) do |f| %>
-	<%= f.label :name , "Nombre:" %>
-	<%= f.text_field :name %><br>
 	
-	<%= f.label :detail , "Detalle:" %>
-	<%= f.text_area :detail %><br>
-
-	<%= f.label :general_code , "Codigo General del Producto:" %>
-	<%= f.text_field :general_code %><br>
-
-	<%= f.label :brand , "Marca:" %>
-	<%= f.text_field :brand %><br>
-
-	<%= f.label :category , "Categoria:" %>
-	<%= f.text_field :category %><br>
-
-	<%= f.label :bought_price , "Precio De Compra:" %>
-	<%= f.text_field :bought_price %><br>
-
-	<%= f.label :sale_price , "Precio De Venta:" %>
-	<%= f.text_field :sale_price %><br>
-
-	<%= f.label :modify_quantity , "Cantidad:" %>
-	<%= f.text_field :modify_quantity %><br>
-
-	<%= f.submit "Guardar Producto"%>
+	<%= f.label :quantity , "Precio De Venta:" %>
+	<%= f.text_field :quantity %><br>
+	<%= f.submit "Aumentar Productos"%>
 
 <%end%>
 </CENTER>
