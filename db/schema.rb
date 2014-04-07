@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140319011105) do
     t.integer  "bought_price"
     t.integer  "sale_price"
     t.integer  "quantity"
+    t.integer  "increase"
     t.boolean  "home"
     t.datetime "created_at"
     t.datetime "updated_at"

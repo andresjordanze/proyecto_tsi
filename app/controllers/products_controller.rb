@@ -13,12 +13,16 @@ class ProductsController < ApplicationController
 
 	def enter
 		@product = Product.find(params[:id])
-    	i = @product.quantity
-    	@product.quantity = @product.quantity + params[:help]
+	end
+
+	def increase
+		i = @product.quantity
+    	@product.quantity = @product.quantity + params[:increase]
     	while i < @product.quantity do
       		@product.subproducts.create("code" => @productcode + "-#{i}")
       		i = i + 1
     	end
+    	@product.increase = 0
     	@product.save
     	redirect_to @product, notice: 'Quantity updated!'
 	end
