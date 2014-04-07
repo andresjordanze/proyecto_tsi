@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 		@product.quantity = 0
 		@product.home = false
 		if @product.save		
-			redirect_to @product, notice: 'Producto creado satisfactoriamente' 
+			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
 			render action: 'new'
 		end
@@ -83,15 +83,16 @@ class ProductsController < ApplicationController
 	def add_to_home
 		@product = Product.find(params[:id])
 		@product.home = true
-		@product.save
+		@product.save		
 	end
 	
 
 	def delete_from_home
 		@product = Product.find(params[:id])
 		@product.home = false
+		@product.description =''
 		@product.save
-		redirect_to :controller => :products, :action => 'products_home'
+		redirect_to :controller => :products, :action => 'index'
 		
 	end
 
