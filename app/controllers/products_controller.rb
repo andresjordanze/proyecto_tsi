@@ -60,6 +60,20 @@ class ProductsController < ApplicationController
 		@product.save
 	end
 
+	def edit_to_home
+		@product = Product.find(params[:id])
+	end
+
+	def actualizar_to_home
+		@product = Product.find(params[:id])
+		if @product.update_attributes(params[:product])
+			flash[:success] = "Producto de Pagina Actualizado"
+			redirect_to :controller => :products, :action => 'products_home'
+		else
+			render 'edit_to_home'
+		end
+	end
+
 	def delete_from_home
 		@product = Product.find(params[:id])
 		@product.home = false

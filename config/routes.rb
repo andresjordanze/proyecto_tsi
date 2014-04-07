@@ -3,11 +3,17 @@ Informaticacomp::Application.routes.draw do
   get 'signup' => 'users#new', :as => :signup
   get 'logout' => 'sessions#destroy', :as => :logout
   get 'login' => 'sessions#new', :as => :login
+  
   post 'add_to_home'=> 'products#add_to_home'
   post 'delete_from_home'=> 'products#delete_from_home'
+  
   get 'view_product' => 'products#view_product'
+  
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
+
+  get 'edit_to_home' => 'products#edit_to_home'
+  post 'edit_to_home' => 'products#edit_to_home'
   
   get 'enter' => 'products#enter'
   post 'enter' => 'products#enter'
