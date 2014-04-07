@@ -27,6 +27,7 @@ Informaticacomp::Application.routes.draw do
   resources :sessions
   
   resources :users
+  resources :subproducts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

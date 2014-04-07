@@ -12,4 +12,8 @@ class SubproductsController < ApplicationController
   		@subproduct.destroy
   		redirect_to product_path(@product)    	
   	end
+
+    def index
+      @subproducts = Subproduct.all   
+    end
 end
