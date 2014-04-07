@@ -8,9 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      session[:user_id] = @user.id
-      flash[:success] = "Gracias por registrarse! Sesion iniciada con exito"
-      redirect_to root_url
+      flash[:error] = "Usuario creado!"
+      redirect_to :controller => :users, :action => "index"
     else
       render :action => 'new'
     end
@@ -32,5 +31,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to :controller => :users, :action => "index"
   end
 end
