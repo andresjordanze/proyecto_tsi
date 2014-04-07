@@ -2,6 +2,14 @@
 <h1>Stock de Productos</h1>
 
 <h3><%= link_to 'Agregar Producto', new_product_path %></h3>
+<%= link_to_function "Buscar", "$('#hide').toggle()" %><br>
+<div id="hide" style="display:none">
+<br>
+<form method="GET" action="/products/search">
+Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar">
+</form>
+</div>
 <CENTER>
 
 <table class="table table-striped">
