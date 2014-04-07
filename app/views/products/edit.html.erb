@@ -4,11 +4,21 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for (@product) do |f| %>
-  			<%= f.error_messages %>
-  			
+	<%= form_for(@product) do |f| %>
+  			<% if @product.errors.any? %>
+    		<div id="error_explanation">
+      			<h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+		      	<ul>
+      				<% @product.errors.full_messages.each do |msg| %>
+        			<li><%= msg %></li>
+      		<% end %>
+      			</ul>
+    		</div>
+  		<% end %>
+  		<div class="field">
 			<%= f.label :name , "Nombre:" %>
-			<%= f.text_field :name %><br>
+			<%= f.text_field :name %>
+		</div>
 	
 			<%= f.label :detail , "Detalle:" %>
 			<%= f.text_area :detail %><br>
@@ -17,10 +27,10 @@
 			<%= f.text_field :general_code %><br>
 
 			<%= f.label :brand , "Marca:" %>
-			<%= f.text_field :brand %><br>
+			<%= f.select :brand, options_for_select([['Toshiba', 'Toshiba'], ['Dell', 'Dell'], ['Sony', 'Sony'], ['3M', '3M'], ['Asus', 'Asus'], ['Samsung', 'Samsung'], ['ViewSonic', 'ViewSonic'], ['Amazon', 'Amazon'], ['Apple', 'Apple'], ['eBeam', 'eBeam'], ['Epson', 'Epson'], ['BenQ', 'BenQ'], ['NEC', 'NEC'], ['HP', 'HP']], selected: :brand) %><br>
 
 			<%= f.label :category , "Categoria:" %>
-			<%= f.text_field :category %><br>
+			<%= f.select :category, options_for_select([['Laptops', 'Laptops'], ['Maletines', 'Maletines'], ['Mochilas', 'Mochilas'], ['Accesorios', 'Accesorios'], ['Impresoras', 'Impresoras'], ['Proyectores', 'Proyectores'], ['Tablets', 'Tablets'], ['Mobiliarios', 'Mobiliarios']], selected: :category) %><br>
 
 			<%= f.label :bought_price , "Precio De Compra:" %>
 			<%= f.text_field :bought_price %><br>
@@ -28,7 +38,7 @@
 			<%= f.label :sale_price , "Precio De Venta:" %>
 			<%= f.text_field :sale_price %><br>
 
-			<%= f.submit "Guardar Producto"%>
+			<%= f.submit "Guardar Producto", class: "btn btn-large btn-primary" %>
 		<%end%>
 	</div>
 </div>

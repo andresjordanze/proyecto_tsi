@@ -39,8 +39,11 @@ class ProductsController < ApplicationController
 		@product = Product.new(params[:product])
 		@product.quantity = 0
 		@product.home = false
-		@product.save		
-		redirect_to @product
+		if @product.save		
+			redirect_to @product, notice: 'Product was successfully created.' 
+		else
+			render action: 'new'
+		end
 	end
 
 	def edit

@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  # new columns need to be added here to be writable through mass assignment
   attr_accessible :username, :email, :password, :password_confirmation
 
   attr_accessor :password
@@ -10,9 +9,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email, :allow_blank => true
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
-  validates_length_of :password, :minimum => 4, :allow_blank => false
+  validates_length_of :password, :minimum => 6, :allow_blank => false
 
-  # login can be either username or email address
   def self.authenticate(login, pass)
     user = find_by_username(login) || find_by_email(login)
     return user if user && user.password_hash == user.encrypt_password(pass)

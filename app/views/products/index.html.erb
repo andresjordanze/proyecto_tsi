@@ -4,55 +4,35 @@
 <h3><%= link_to 'Agregar Producto', new_product_path %></h3>
 <CENTER>
 
-<table class="table">
-  <tr>
-    <th>Nombre</th>
-    
-    <th>Detalle</th>
-    
-    <th>Descripcion</th>
-    
-    <th>Cantidad</th>
-
-    <th>Codigo General del Producto</th>
-
-    <th>Marca</th>
-
-    <th>Categoria</th>
-
-    <th>Precio De Compra</th>
-
-	<th>Precio De Venta</th>        
-  </tr>
-<% @products.each do |product| %>
-  <tr>
-    <td><CENTER><%= product.name %></CENTER></td>
-    
-    <td><CENTER><%= product.detail %></CENTER></td>
-    
-    <td><CENTER><%= product.description %></CENTER></td>
-    
-    <td><CENTER><%= product.quantity %></CENTER></td>
-
-    <td><CENTER><%= product.general_code %></CENTER></td>
-
-    <td><CENTER><%= product.brand %></CENTER></td>
-
-    <td><CENTER><%= product.category %></CENTER></td>
-
-    <td><CENTER><%= product.bought_price %></CENTER></td>
-
-    <td><CENTER><%= product.sale_price %></CENTER></td>
-   
-    <td><%= link_to 'Ver', product %></td>
-    <td><%= link_to 'Editar', edit_product_path(product) %></td>
-    <td><%= button_to 'Eliminar', product_path(product),method: :delete, data: { confirm: 'Seguro?' } %></td>
-    <%if product.home == true%>
-        <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
-    <%end%>
-  </tr>
-<% end %>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><Center>Nombre</Center></th>
+            <th><Center>Codigo del Producto</Center></th>
+            <th><Center>Marca</Center></th>
+            <th><Center>Categoria</Center></th>
+            <th><Center>Precio De Compra</Center></th>
+    	    <th><Center>Precio De Venta</Center></th>        
+        </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+            <tr>
+                <td><CENTER><%= product.name %></CENTER></td>
+                <td><CENTER><%= product.general_code %></CENTER></td>
+                <td><CENTER><%= product.brand %></CENTER></td>
+                <td><CENTER><%= product.category %></CENTER></td>
+                <td><CENTER><%= product.bought_price %></CENTER></td>
+                <td><CENTER><%= product.sale_price %></CENTER></td>
+                <td><%= link_to 'Ver', product, :class => 'btn btn-mini'  %></td>
+                <td><%= link_to 'Editar', edit_product_path(product), :class => 'btn btn-mini'  %></td>
+                <td><%= link_to 'Eliminar', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+                <%if product.home == true%>
+                    <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
+                <%end%>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
 <br>
 </Center>
-

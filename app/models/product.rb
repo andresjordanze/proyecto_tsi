@@ -9,6 +9,10 @@ class Product < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
+	validates :name, :detail, :general_code, :brand, :category, :bought_price, :sale_price, presence: true
+	validates :bought_price, numericality: true
+	validates :sale_price, numericality: true
+
 	after_create :crear_subproducto
 
 	def crear_subproducto
