@@ -12,8 +12,11 @@ class Product < ActiveRecord::Base
 	after_create :crear_subproducto
 
 	def crear_subproducto
-		subproducts.create("code" => general_code+"-1")
+		subproducts.create("code" => general_code+"-0")
 	end
 
+	before_create do
+		self.increase = 0
+	end
 
 end
