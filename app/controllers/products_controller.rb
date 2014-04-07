@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		increase
 	end
 
 	def new
@@ -13,22 +14,36 @@ class ProductsController < ApplicationController
 
 	def enter
 		@product = Product.find(params[:id])
-    	i = @product.quantity
-    	@product.quantity = @product.quantity + params[:help]
+	end
+
+	private
+	def increase
+		if @product.quantity == 0
+			i = @product.quantity
+			i+=1
+		else
+			i = @product.quantity
+		end
+    	@product.quantity = @product.quantity + @product.increase
     	while i < @product.quantity do
-      		@product.subproducts.create("code" => @productcode + "-#{i}")
+      		@product.subproducts.create("code" => @product.general_code + "-#{i}")
       		i = i + 1
     	end
+    	@product.increase = 0
     	@product.save
-    	redirect_to @product, notice: 'Quantity updated!'
 	end
+
+	public
 
 	def create
 		@product = Product.new(params[:product])
 		@product.quantity = 0
 		@product.home = false
-		@product.save		
-		redirect_to @product
+		if @product.save		
+			redirect_to @product, notice: 'Product was successfully created.' 
+		else
+			render action: 'new'
+		end
 	end
 
 	def edit
