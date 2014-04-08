@@ -43,6 +43,40 @@
                         <td><CENTER><%= subproduct.product.category %></CENTER></td>
                         <td><CENTER><%= subproduct.product.bought_price %></CENTER></td>
                         <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
+                        <td><%= link_to 'Eliminar de venta', :controller => :subproducts, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</p>
+
+
+<p>
+    <h2><Center><%= link_to_function "Subproductos", "$('#subproduct').toggle()" %></Center></h2>
+    <div id="subproduct" style="display:none">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><Center>Nombre</Center></th>
+                    <th><Center>Codigo del SubProducto</Center></th>
+                    <th><Center>Marca</Center></th>
+                    <th><Center>Categoria</Center></th>
+                    <th><Center>Precio De Venta</Center></th>        
+                </tr>
+            </thead>
+            <tbody>
+                <% @subproducts.each do |subproduct| %>
+                    <tr>
+                        <%if subproduct.sale_id != @sale.id || subproduct.sale_id == "NULL"%>
+                        <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                        <td><CENTER><%= subproduct.code %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.brand %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.category %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
+                        
+                        <td><%= link_to 'Agregar a Venta', :controller => :subproducts, :action => 'agregar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
+                        <% end %>
                     </tr>
                 <% end %>
             </tbody>

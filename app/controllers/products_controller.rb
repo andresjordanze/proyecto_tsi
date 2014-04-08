@@ -11,10 +11,6 @@ class ProductsController < ApplicationController
 		@product = Product.new
 	end
 
-	def enter
-		@product = Product.find(params[:id])
-	end
-
 	def search
 		@products = buscar(params[:name])
 		render 'index'
@@ -34,6 +30,10 @@ class ProductsController < ApplicationController
     	end
     	return items
   	end
+
+  	def enter
+		@product = Product.find(params[:id])
+	end
 
 	private
 	def increase
@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
-	def update
+	def update 
 		@product = Product.find(params[:id])
 		if @product.update_attributes(params[:product])
 			@product.save			

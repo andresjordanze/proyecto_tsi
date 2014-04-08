@@ -36,10 +36,6 @@ class Product < ActiveRecord::Base
 		subproducts.create("code" => general_code+"-0")
 	end
 
-	before_create do
-		self.increase = 0
-	end
-
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')
     	parametros.each do |parametro|
@@ -49,5 +45,11 @@ class Product < ActiveRecord::Base
     	end
     	false
   	end
+
+	before_create do
+		self.increase = 0
+	end
+
+	
 
 end

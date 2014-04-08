@@ -19,6 +19,13 @@ Informaticacomp::Application.routes.draw do
   get 'enter' => 'products#enter'
   post 'enter' => 'products#enter'
 
+  get 'agregar_subproducto_venta' => 'subproducts#agregar_subproducto_venta'
+  post 'agregar_subproducto_venta' => 'subproducts#agregar_subproducto_venta'
+
+
+  get 'eliminar_subproducto_venta' => 'subproducts#eliminar_subproducto_venta'
+  post 'eliminar_subproducto_venta' => 'subproducts#eliminar_subproducto_venta'
+
   get 'products/search' => 'products#search'
 
   root  'static_pages#home'
@@ -30,6 +37,11 @@ Informaticacomp::Application.routes.draw do
     resources :subproducts
   end
   resources :products
+
+  resources :sales do
+    resources :subproducts
+  end
+
   resources :sales
   resources :sessions
   resources :users
