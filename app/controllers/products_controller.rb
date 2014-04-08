@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		increase
 	end
 
 	def new
@@ -73,21 +74,32 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
-	def update 
+	def update
 		@product = Product.find(params[:id])
 		if @product.update_attributes(params[:product])
-			@product.save			
-			if(@product.update_attributes(params[:photo], params[:description]))
-				flash[:success] = "Producto de Pagina Actualizado"	
-				redirect_to :controller => :products, :action => 'products_home'	
-			else
-				flash[:success] = "Producto Actualizado"
-				redirect_to @product	
-			end
+			@product.save
+			flash[:success] = "Producto Actualizado"
+			redirect_to @product
 		else
 			render 'edit'
 		end
 	end
+
+	#def update 
+	#	@product = Product.find(params[:id])
+	#	if @product.update_attributes(params[:product])
+	#		@product.save			
+	#		if(@product.update_attributes(params[:photo], params[:description]))
+	#			flash[:success] = "Producto de Pagina Actualizado"	
+	#			redirect_to :controller => :products, :action => 'products_home'	
+	#		else
+	#			flash[:success] = "Producto Actualizado"
+	#			redirect_to @product	
+	#		end
+	#	else
+	#		render 'edit'
+	#	end
+	#end
 
 	def products_home
 		@products = Product.all
