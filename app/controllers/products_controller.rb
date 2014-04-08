@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-		increase
 	end
 
 	def new
@@ -15,6 +14,26 @@ class ProductsController < ApplicationController
 	def enter
 		@product = Product.find(params[:id])
 	end
+
+	def search
+		@products = buscar(params[:name])
+		render 'index'
+	end
+
+	def buscar(nombre)
+    	items = Array.new	
+    	aux = Product.all
+    	if nombre != "" && nombre != nil
+      		aux.each do |item|
+        	if (item.correspondeAnombre(nombre))
+          		items.push(item)
+        	end
+      	end
+    	else
+      		items = aux
+    	end
+    	return items
+  	end
 
 	private
 	def increase
@@ -45,6 +64,7 @@ class ProductsController < ApplicationController
 			render action: 'new'
 		end
 	end
+	
 	def edit_to_home
 		@product = Product.find(params[:id])
 	end

@@ -14,9 +14,7 @@ class SalesController < ApplicationController
 
 	def create
 		@sale = Sale.new(params[:sale])
-		#@products = Products.all
-		#@subproducts = Subproducts.all
-
+		@sale.price = 0
 		@sale.save		
 		redirect_to @sale
 	end

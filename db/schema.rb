@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319011105) do
+ActiveRecord::Schema.define(version: 20140408162432) do
+
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -35,9 +47,9 @@ ActiveRecord::Schema.define(version: 20140319011105) do
 
   create_table "sales", force: true do |t|
     t.float    "price"
-    t.string   "detail"
     t.integer  "check_number"
     t.string   "client_name"
+    t.integer  "nit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,11 +57,13 @@ ActiveRecord::Schema.define(version: 20140319011105) do
   create_table "subproducts", force: true do |t|
     t.string   "code"
     t.integer  "product_id"
+    t.integer  "sale_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "subproducts", ["product_id"], name: "index_subproducts_on_product_id"
+  add_index "subproducts", ["sale_id"], name: "index_subproducts_on_sale_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

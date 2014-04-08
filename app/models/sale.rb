@@ -1,4 +1,4 @@
 class Sale < ActiveRecord::Base
-	has_many :products, :subproducts
-	attr_accessible :price, :detail, :check_number, :client_name, :created_at, :updated_at
+	has_many :subproducts
+	attr_accessible :price, :check_number, :client_name, :created_at, :updated_at, :nit
 end

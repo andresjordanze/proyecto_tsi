@@ -26,12 +26,12 @@
 			<%= f.label :general_code , "Codigo General del Producto:" %>
 			<%= f.text_field :general_code %><br>
 
-			<%= f.label :brand , "Marca:" %>
-			<%= f.select :brand, options_for_select([['Toshiba', 'Toshiba'], ['Dell', 'Dell'], ['Sony', 'Sony'], ['3M', '3M'], ['Asus', 'Asus'], ['Samsung', 'Samsung'], ['ViewSonic', 'ViewSonic'], ['Amazon', 'Amazon'], ['Apple', 'Apple'], ['eBeam', 'eBeam'], ['Epson', 'Epson'], ['BenQ', 'BenQ'], ['NEC', 'NEC'], ['HP', 'HP']], selected: :brand) %><br>
+			<%=f.label :category, "Categoria" %>
+    		<%=f.collection_select(:category, Category.all, :name, :name)%>
 
-			<%= f.label :category , "Categoria:" %>
-			<%= f.select :category, options_for_select([['Laptops', 'Laptops'], ['Maletines', 'Maletines'], ['Mochilas', 'Mochilas'], ['Accesorios', 'Accesorios'], ['Impresoras', 'Impresoras'], ['Proyectores', 'Proyectores'], ['Tablets', 'Tablets'], ['Mobiliarios', 'Mobiliarios']], selected: :category) %><br>
-
+    		<%=f.label :brand, "Marca" %>
+    		<%=f.collection_select(:brand, Brand.all, :brand, :brand)%>
+			
 			<%= f.label :bought_price , "Precio De Compra:" %>
 			<%= f.text_field :bought_price %><br>
 

@@ -1,0 +1,55 @@
+<% title @sale.client_name %>
+<CENTER><H1><%= @sale.client_name %> </H1>
+<p>
+    <small>Numero de Factura: </small><br>
+    <%= @sale.check_number %>
+</p>
+
+<p>
+    <small>Nit del Cliente: </small><br>
+    <%= @sale.nit%>
+</p>
+
+<p>
+    <small>Fecha de venta: </small><br>
+    <%= @sale.created_at %>
+</p>
+
+<p>    
+    <small>Total Venta:</small><br>
+    <%= @sale.price %>
+</p>
+
+<p>
+    <h2><Center><%= link_to_function "Detalle", "$('#hide').toggle()" %></Center></h2>
+    <div id="hide" style="display:none">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><Center>Nombre</Center></th>
+                    <th><Center>Codigo del SubProducto</Center></th>
+                    <th><Center>Marca</Center></th>
+                    <th><Center>Categoria</Center></th>
+                    <th><Center>Precio De Compra</Center></th>
+                    <th><Center>Precio De Venta</Center></th>        
+                </tr>
+            </thead>
+            <tbody>
+                <% @sale.subproducts.each do |subproduct| %>
+                    <tr>
+                        <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                        <td><CENTER><%= subproduct.code %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.brand %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.category %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.bought_price %></CENTER></td>
+                        <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</p>
+
+<%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
+
+  </CENTER>
