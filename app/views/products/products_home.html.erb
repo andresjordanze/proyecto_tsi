@@ -1,7 +1,6 @@
 <% title "Crear Producto" %>
 <h1>Todos Los Productos</h1>
 
-<h3><%= link_to 'Añadir Producto', products_path %></h3>
 <CENTER>
   <table class="table table-striped">
     <thead>
@@ -17,9 +16,11 @@
         <tr>
           <td><CENTER><%= product.description %></CENTER></td>
           <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60></a></CENTER></td>
-          <td><%= link_to 'Ver',  :controller => :products, :action => 'view_product', :id => product.id%></td>
+          
+          <td><%= link_to 'Ver', :class => 'btn btn-mini', :controller => :products, :action => 'view_product', :id => product.id%></td>
 
-          <td><%= link_to 'Editar',  :controller => :products, :action => 'edit_to_home', :id => product.id%></td>
+          <td><%= link_to 'Editar', :class => 'btn btn-mini', :controller => :products, :action => 'edit_to_home', :id => product.id%></td>
+          
           <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
       <%end%>
         </tr>
@@ -27,4 +28,6 @@
   </table>
   <br>
 </Center>
+<h3><CENTER><%= link_to 'Añadir Producto', products_path, :class => 'btn btn-success'%><CENTER></h3>
+
 
