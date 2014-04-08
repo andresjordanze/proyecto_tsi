@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
     	@product.increase = 0
     	@product.save
 	end
-
+	
 	public
 
 	def create
@@ -59,22 +59,33 @@ class ProductsController < ApplicationController
 		@product.quantity = 0
 		@product.home = false
 		if @product.save		
-			redirect_to @product, notice: 'Product was successfully created.' 
+			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
 			render action: 'new'
 		end
 	end
-
+	def edit_to_home
+		@product = Product.find(params[:id])
+	end
+	
 	def edit
 		@product = Product.find(params[:id])
 	end
 
+
+
 	def update
 		@product = Product.find(params[:id])
 		if @product.update_attributes(params[:product])
-			@product.save
-			flash[:success] = "Producto Actualizado"
-			redirect_to @product
+			@product.save			
+			if(@product.update_attributes(params[:photo], params[:description]))
+				flash[:success] = "Producto de Pagina Actualizado"	
+				redirect_to :controller => :products, :action => 'products_home'	
+			else
+				flash[:success] = "Producto Actualizado"
+				redirect_to @product
+				
+			end
 		else
 			render 'edit'
 		end
@@ -91,14 +102,16 @@ class ProductsController < ApplicationController
 	def add_to_home
 		@product = Product.find(params[:id])
 		@product.home = true
-		@product.save
+		@product.save		
 	end
+	
 
 	def delete_from_home
 		@product = Product.find(params[:id])
 		@product.home = false
+		@product.description =''
 		@product.save
-		redirect_to :controller => :products, :action => 'products_home'
+		redirect_to :controller => :products, :action => 'index'
 		
 	end
 

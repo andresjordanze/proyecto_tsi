@@ -1,6 +1,7 @@
 <% title "Stock de productos" %>
 <h1>Stock de Productos</h1>
 
+<<<<<<< HEAD
 <h3><%= link_to 'Agregar Producto', new_product_path %></h3>
 <%= link_to_function "Buscar", "$('#hide').toggle()" %><br>
 <div id="hide" style="display:none">
@@ -10,6 +11,9 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
 <input type="submit" value="Buscar">
 </form>
 </div>
+=======
+<h3><%= link_to 'Agregar Producto', new_product_path, :class => 'btn btn-success' %></h3>
+>>>>>>> db9e7bb6d47746316112aebcc89bf38af26aee03
 <CENTER>
 
 <table class="table table-striped">
@@ -20,7 +24,12 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
             <th><Center>Marca</Center></th>
             <th><Center>Categoria</Center></th>
             <th><Center>Precio De Compra</Center></th>
-    	    <th><Center>Precio De Venta</Center></th>        
+    	    <th><Center>Precio De Venta</Center></th> 
+            <th></th>       
+            <th></th>       
+            <th></th>       
+            <th></th>       
+            <th></th>       
         </tr>
     </thead>
     <tbody>
@@ -32,11 +41,14 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
                 <td><CENTER><%= product.category %></CENTER></td>
                 <td><CENTER><%= product.bought_price %></CENTER></td>
                 <td><CENTER><%= product.sale_price %></CENTER></td>
+                <td><%= link_to 'Aumentar', :controller => :products, :action => 'enter', :id => product.id%></td>
                 <td><%= link_to 'Ver', product, :class => 'btn btn-mini'  %></td>
                 <td><%= link_to 'Editar', edit_product_path(product), :class => 'btn btn-mini'  %></td>
                 <td><%= link_to 'Eliminar', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
                 <%if product.home == true%>
-                    <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
+                    <td><%= button_to 'Eliminar de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
+                    <%else%>
+                <td><%= button_to 'Añadir a pagina', :controller => :products, :action => 'add_to_home', :id => product.id%></td>    
                 <%end%>
             </tr>
         <% end %>
