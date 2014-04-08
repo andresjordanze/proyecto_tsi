@@ -53,8 +53,6 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
-
-
 	def update
 		@product = Product.find(params[:id])
 		if @product.update_attributes(params[:product])
@@ -64,8 +62,7 @@ class ProductsController < ApplicationController
 				redirect_to :controller => :products, :action => 'products_home'	
 			else
 				flash[:success] = "Producto Actualizado"
-				redirect_to @product
-				
+				redirect_to @product	
 			end
 		else
 			render 'edit'
