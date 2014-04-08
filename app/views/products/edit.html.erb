@@ -30,8 +30,8 @@
     		<%=f.collection_select(:category, Category.all, :name, :name)%>
 
     		<%=f.label :brand, "Marca" %>
-    		<%=f.collection_select(:brand, Brand.all, :brand, :brand)%>
-			
+    		<%=f.collection_select(:brand, Brand.all, :name, :name)%>
+
 			<%= f.label :bought_price , "Precio De Compra:" %>
 			<%= f.text_field :bought_price %><br>
 
