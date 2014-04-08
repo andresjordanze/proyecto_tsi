@@ -38,4 +38,14 @@ class Product < ActiveRecord::Base
 		self.increase = 0
 	end
 
+	def correspondeAnombre(nombre)
+    	parametros = nombre.split(' ')
+    	parametros.each do |parametro|
+      	if self.name.downcase.include?(parametro.downcase)
+	        return true
+    	  end
+    	end
+    	false
+  	end
+
 end

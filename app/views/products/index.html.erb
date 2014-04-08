@@ -1,7 +1,19 @@
 <% title "Stock de productos" %>
 <h1>Stock de Productos</h1>
 
+<<<<<<< HEAD
+<h3><%= link_to 'Agregar Producto', new_product_path %></h3>
+<%= link_to_function "Buscar", "$('#hide').toggle()" %><br>
+<div id="hide" style="display:none">
+<br>
+<form method="GET" action="/products/search">
+Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar">
+</form>
+</div>
+=======
 <h3><%= link_to 'Agregar Producto', new_product_path, :class => 'btn btn-success' %></h3>
+>>>>>>> db9e7bb6d47746316112aebcc89bf38af26aee03
 <CENTER>
 
 <table class="table table-striped">
