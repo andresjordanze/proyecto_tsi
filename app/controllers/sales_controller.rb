@@ -42,6 +42,7 @@ class SalesController < ApplicationController
 			if subproducto.sale_id == @sale.id
 				subproducto.sale_id = nil
 				subproducto.available = true
+        subproducto.save
 			end
 		end
 		@sale.destroy
@@ -56,18 +57,25 @@ class SalesController < ApplicationController
 		redirect_to @sale
 	end
 
-	#def cancel_sale
-	#	@sale = Sale.find(params[:deletor])
-	#	subproducts = Subproduct.all
-	#	destroyer	
-	#end
+	def cancel_sale
+		@sale = Sale.find(params[:deletor])
+		@subproducts = Subproduct.all
+    @subproducts.each do |subproducto|
+      if subproducto.sale_id == @sale.id
+        subproducto.sale_id = nil
+        subproducto.available = true
+        subproducto.save
+      end
+    end
+		destroyer	
+	end
 
-	#def destroyer
-	#	@sale = Sale.find(params[:deletor])
-	#	@sale.destroy
-	#	flash[:notice] = "Venta Cancelada"
-	#	redirect_to sales_url
-	#end
+	def destroyer
+		@sale = Sale.find(params[:deletor])
+		@sale.destroy
+		flash[:notice] = "Venta Cancelada"
+		redirect_to sales_url
+	end
 
 	def search
 		@sales = buscar(params[:name])
