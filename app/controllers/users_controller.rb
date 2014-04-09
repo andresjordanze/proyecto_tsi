@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+#  before_filter :login_required, :except => [:new, :create]
 
   def new
     @user = User.new
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:error] = "Usuario creado!"
+      flash[:message] = "Usuario creado!"
       redirect_to :controller => :users, :action => "index"
     else
       render :action => 'new'
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      flash[:success] = "Su perfil ha sido actualizado"
+      flash[:success] = "Su contraseña ha sido cambiada!"
       redirect_to root_url
     else
       render :action => 'edit'

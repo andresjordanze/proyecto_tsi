@@ -59,12 +59,14 @@ ActiveRecord::Schema.define(version: 20140409113030) do
     t.integer  "check_number"
     t.string   "client_name"
     t.integer  "nit"
+    t.boolean  "confirmed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "subproducts", force: true do |t|
     t.string   "code"
+    t.boolean  "available"
     t.integer  "product_id"
     t.integer  "sale_id"
     t.datetime "created_at"
@@ -76,7 +78,7 @@ ActiveRecord::Schema.define(version: 20140409113030) do
 
   create_table "users", force: true do |t|
     t.string   "username"
-    t.string   "email"
+    t.string   "name"
     t.string   "rol"
     t.string   "password_hash"
     t.string   "password_salt"

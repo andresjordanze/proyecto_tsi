@@ -1,15 +1,24 @@
 <% title "Lista de Ventas" %>
 <h1>Lista de Ventas</h1>
-
-<h3><%= link_to 'Nueva Venta', new_sale_path, :class => 'btn btn-success' %></h3>
-<%= link_to_function "Buscar", "$('#hide').toggle()" %><br>
-<div id="hide" style="display:none">
+<%= link_to 'Nueva Venta', new_sale_path, :class => 'btn btn-success' %><br><br>
+<%= link_to_function "Buscar Por Cliente", "$('#cliente').toggle()", :class => "btn btn-info" %>
+<div id="cliente" style="display:none">
 <br>
 <form method="GET" action="/sales/search">
-Codigo: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
+Cliente: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar", class="btn btn-default">
 </form>
-</div>
+</div><br><br>
+
+
+<%= link_to_function "Buscar por Nombre de Producto", "$('#producto').toggle()", :class => "btn btn-info"  %><br>
+<div id="producto" style="display:none">
+<br>
+<form method="GET" action="/sales/searchProduct">
+Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar", class="btn btn-default">
+</form>
+</div><br>
 
 <CENTER>
 
@@ -21,9 +30,6 @@ Codigo: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
             <th><Center>Precio</Center></th>
             <th></th>       
             <th></th>       
-            <th></th>       
-            <th></th>       
-            <th></th>       
         </tr>
     </thead>
     <tbody>
@@ -33,8 +39,8 @@ Codigo: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
                 <td><CENTER><%= sale.check_number%></CENTER></td>
                 <td><CENTER><%= sale.price %></CENTER></td>
                 <td><%= link_to 'Ver', sale, :class => 'btn btn-mini'  %></td>
-                <td><%= link_to 'Editar', edit_sale_path(sale), :class => 'btn btn-mini'  %></td>
-                <td><%= link_to 'Eliminar', sale_path(sale), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+                <!--td--><!--%= link_to 'Editar', edit_sale_path(sale), :class => 'btn btn-mini'  %></td-->
+                <!--td--><!--%= link_to 'Eliminar', sale_path(sale), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td-->
             </tr>
         <% end %>
     </tbody>

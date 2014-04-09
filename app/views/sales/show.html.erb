@@ -30,8 +30,7 @@
                     <th><Center>Codigo del SubProducto</Center></th>
                     <th><Center>Marca</Center></th>
                     <th><Center>Categoria</Center></th>
-                    <th><Center>Precio De Compra</Center></th>
-                    <th><Center>Precio De Venta</Center></th>        
+                    <th><Center>Precio</Center></th>        
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +40,6 @@
                         <td><CENTER><%= subproduct.code %></CENTER></td>
                         <td><CENTER><%= subproduct.product.brand %></CENTER></td>
                         <td><CENTER><%= subproduct.product.category %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.bought_price %></CENTER></td>
                         <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
                         <td><%= link_to 'Eliminar de venta', :controller => :subproducts, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
                     </tr>
@@ -51,9 +49,9 @@
     </div>
 </p>
 
-
+<% if @sale.confirmed == false %>
 <p>
-    <h2><Center><%= link_to_function "Subproductos", "$('#subproduct').toggle()" %></Center></h2>
+    <h2><Center><%= link_to_function "Agregar Productos a venta", "$('#subproduct').toggle()" %></Center></h2>
     <div id="subproduct" style="display:none">
         <table class="table table-striped">
             <thead>
@@ -68,7 +66,7 @@
             <tbody>
                 <% @subproducts.each do |subproduct| %>
                     <tr>
-                        <%if subproduct.sale_id != @sale.id || subproduct.sale_id == "NULL"%>
+                        <%if subproduct.available == true || subproduct.available == "NULL"%>
                         <td><CENTER><%= subproduct.product.name %></CENTER></td>
                         <td><CENTER><%= subproduct.code %></CENTER></td>
                         <td><CENTER><%= subproduct.product.brand %></CENTER></td>
@@ -83,7 +81,9 @@
         </table>
     </div>
 </p>
-
+<%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br>
+<%= link_to 'Cancelar Venta', :controller => :sales, :action => 'cancel_sale', :deletor => @sale.id%><br>
+<%end%><br> 
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>

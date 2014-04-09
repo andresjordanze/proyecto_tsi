@@ -16,7 +16,8 @@ class Product < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
 	validates :brand, :category, presence: true
-	
+
+	validates :general_code, uniqueness: {case_sensitive: false}	
 
 	validates :name, presence: {:message => "Usted debe ingresar un nombre"}
 	validates :name, length: {minimum: 2, maximum: 20, :message => "El Nombre debe tener minimo 2 y maximo 20 caracteres"}

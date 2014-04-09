@@ -1,4 +1,4 @@
-<% title "Crear Producto" %>
+<% title "Todos los productos" %>
 <h1>Todos Los Productos</h1>
 
 <CENTER>
@@ -12,22 +12,24 @@
       </tr>
     </thead>
     <% @products.each do |product| %>
-      <%if product.home == true%>
+      <% if product.home == true %>
         <tr>
           <td><CENTER><%= product.description %></CENTER></td>
           <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60></a></CENTER></td>
-          
+          <% if current_user %>
           <td><%= link_to 'Ver', :class => 'btn btn-mini', :controller => :products, :action => 'view_product', :id => product.id%></td>
 
           <td><%= link_to 'Editar', :class => 'btn btn-mini', :controller => :products, :action => 'edit_to_home', :id => product.id%></td>
           
           <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>
-      <%end%>
+          <% end %>
+      <% end %>
         </tr>
     <% end %>
   </table>
   <br>
 </Center>
+<% if current_user %>
 <h3><CENTER><%= link_to 'Añadir Producto', products_path, :class => 'btn btn-success'%><CENTER></h3>
-
+<% end %>
 
