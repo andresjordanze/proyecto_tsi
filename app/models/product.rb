@@ -17,9 +17,10 @@ class Product < ActiveRecord::Base
 
 	validates :brand, :category, presence: true
 
-	validates :general_code, uniqueness: {case_sensitive: false}	
+#	validates :name, uniqueness: {case_sensitive: false}	
 
 	validates :name, presence: {:message => "Usted debe ingresar un nombre"}
+	validates :general_code, uniqueness: {case_sensitive: false}	
 	validates :name, length: {minimum: 2, maximum: 20, :message => "El Nombre debe tener minimo 2 y maximo 20 caracteres"}
 
 	validates :detail, presence: {:message => "Usted debe ingresar un Detalle de producto"}
