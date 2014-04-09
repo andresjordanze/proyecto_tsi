@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation, :rol
+  attr_accessible :username, :name, :password, :password_confirmation, :rol
 
   attr_accessor :password
   before_save :prepare_password
-  validates :username, presence: {:message => "Usted debe ingresar su Nombre Completo"}
-  validates :username, length: {minimum: 4, maximum: 45, :message => "El Nombre Completo debe tener minimo 6 y maximo 45 caracteres"}
+  validates :username, presence: {:message => "Usted debe ingresar su nombre de usuario"}
+  validates :name, presence: {:message => "Usted debe ingresar su nombre completo"}
+  validates :username, length: {minimum: 4, maximum: 10, :message => "El nombre de usuario debe tener minimo 4 y maximo 10 caracteres"}
+  validates :name, length: {minimum: 10, maximum: 45, :message => "El nombre de usuario debe tener minimo 10 y maximo 45 caracteres"}
   #validates_presence_of :username   
   #validates_length_of :username, :minimum => 6, :maximum =>45
-  validates_uniqueness_of :username, :email, :allow_blank => true
+  validates_uniqueness_of :username, :allow_blank => true
   validates :password, presence: {:message => "Usted debe ingresar una Contraseña"}
   validates :password, length: {minimum: 6, :message => "La Contraseña debe tener minimo 6 y caracteres"}
   #validates_presence_of :password, :on => :create

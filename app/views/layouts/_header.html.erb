@@ -11,10 +11,12 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Ver Lista de Productos", '/products_home' %></li> <!--agregado-->
+              <% if current_user %>
               <li><%= link_to "Añadir producto a pagina", '/products/' %></li> <!--agregado-->
-           
+              <% end %>
             </ul>
           </li>
+          <% if current_user %>
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Almacen 
@@ -59,6 +61,7 @@
               <li><%= link_to "Eliminar Usuario", '/users' %></li> <!--agregado-->
             </ul>
           </li>
+          <% end %>
                    <!--form class="navbar-form navbar-left" role="search">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Buscar" width='10'>
@@ -68,11 +71,11 @@
           <%if current_user%>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.email%> 
+                <%= current_user.username%> 
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Cambiar Contraseña", '#' %></li>
+                <li><%= link_to "Cambiar Contraseña", :controller => :users, :action => 'edit', :id => current_user.id%></li>
                 <li><%= link_to "Cerrar Sesion", logout_path %></li>
               </ul>
             </li>

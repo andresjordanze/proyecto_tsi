@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:notices] = "Usted acaba de cerrar sesion"
+    flash[:error] = "Usted acaba de cerrar sesion"
     redirect_to root_url
   end
 end
