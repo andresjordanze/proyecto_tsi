@@ -16,7 +16,7 @@ class Product < ActiveRecord::Base
 	
 
 	validates :name, presence: {:message => "Usted debe ingresar un nombre"}
-	validates :name, length: {minimum: 2, maximum: 10, :message => "El Nombre debe tener minimo 2 y maximo 10 caracteres"}
+	validates :name, length: {minimum: 2, maximum: 20, :message => "El Nombre debe tener minimo 2 y maximo 20 caracteres"}
 
 	validates :detail, presence: {:message => "Usted debe ingresar un Detalle de producto"}
 	validates :detail, length: {minimum: 10, maximum: 100, :message => "El Detalle debe tener minimo 10 y maximo 30 caracteres"}
