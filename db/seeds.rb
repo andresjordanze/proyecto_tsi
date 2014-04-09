@@ -6,12 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-	user = User.new
-	user.username = 'admin'
-	user.email = 'Administrador'
-	user.password = 'admin123'
-	user.rol = 'admin'
-	user.save!	
+	admin = User.new
+	admin.username = 'admin'
+	admin.name = 'Administrador'
+	admin.password = 'admin123'
+	admin.rol = 'admin'
+	admin.save!
+
+	secretaria = User.new
+	secretaria.username = 'secre'
+	secretaria.name = 'Secretaria'
+	secretaria.password = 'secre123'
+	secretaria.rol = 'secre'
+	secretaria.save!		
 
 	brands = Brand.create([{name: "Toshiba"}, {name: "Dell"}, {name: "Sony"}, {name: "3M"}, {name: "ASUS"}, {name: "Samsung"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
 	categories = Category.create([{name: "Laptops"}, {name: "Maletines"}, {name: "Mochilas"}, {name: "Accesorios"}, {name: "Impresoras"}, {name: "Proyectores"}, {name: "Tablets"}, {name: "Mobiliarios"}])

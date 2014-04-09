@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
     	return items
   	end
 
-  	def enter
+  	def income
 		@product = Product.find(params[:id])
 	end
 
@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
       		i = i + 1
     	end
     	@product.increase = 0
+    	@product.incomes.create
     	@product.save
 	end
 	

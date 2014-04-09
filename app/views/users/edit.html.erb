@@ -1,3 +1,14 @@
 <% title "Editar Perfil" %>
+<h1>Cambiar contraseña</h1>
+<%= form_for @user do |f| %>
+  <%= f.error_messages %>
+    <div class="col-xs-3">
+      <p><%= f.label :password, 'Nueva Contraseña'%>
+      <%= f.password_field :password, :class => 'form-control' %>
+      
+      <p><%= f.label :password_confirmation, 'Confirme Contraseña' %>
+      <%= f.password_field :password_confirmation, :class => 'form-control' %>
 
-<%= render 'form' %>
+      <p><%= f.submit (@user.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>
+    </div>
+<% end %>
