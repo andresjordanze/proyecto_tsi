@@ -50,12 +50,14 @@ ActiveRecord::Schema.define(version: 20140408162432) do
     t.integer  "check_number"
     t.string   "client_name"
     t.integer  "nit"
+    t.boolean  "confirmed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "subproducts", force: true do |t|
     t.string   "code"
+    t.boolean  "available"
     t.integer  "product_id"
     t.integer  "sale_id"
     t.datetime "created_at"

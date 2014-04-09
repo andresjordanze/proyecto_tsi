@@ -18,8 +18,20 @@ Informaticacomp::Application.routes.draw do
   post 'agregar_subproducto_venta' => 'subproducts#agregar_subproducto_venta'
   get 'eliminar_subproducto_venta' => 'subproducts#eliminar_subproducto_venta'
   post 'eliminar_subproducto_venta' => 'subproducts#eliminar_subproducto_venta'
+  get 'confirm_sale' => 'sales#confirm_sale'
+  post 'confirm_sale' => 'sales#confirm_sale'
+
+  get 'cancel_sale' => 'sales#cancel_sale'
+  post 'cancel_sale' => 'sales#cancel_sale'
 
   get 'products/search' => 'products#search'
+  get 'sales/search' => 'sales#search'
+  get 'sales/searchProduct' => 'sales#searchProduct'
+
+  get 'sales/daily_report' => 'sales#daily_report'
+  get 'sales/weekly_report' => 'sales#weekly_report'
+  get 'sales/monthly_report' => 'sales#monthly_report'
+  get 'sales/anual_report' => 'sales#anual_report'
 
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'

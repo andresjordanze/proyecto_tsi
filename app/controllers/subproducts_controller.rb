@@ -20,6 +20,7 @@ class SubproductsController < ApplicationController
     def agregar_subproducto_venta
       @subproduct = Subproduct.find(params[:id])
       @subproduct.sale_id = params[:sale_id]
+      @subproduct.available = false
       @subproduct.save
       @sale = Sale.find(params[:sale_id])
       @sale.price = @sale.price + @subproduct.product.sale_price 
@@ -30,6 +31,7 @@ class SubproductsController < ApplicationController
     def eliminar_subproducto_venta
       @subproduct = Subproduct.find(params[:id])
       @subproduct.sale_id = nil
+      @subproduct.available = true  
       @subproduct.save
       @sale = Sale.find(params[:sale_id])
       @sale.price = @sale.price - @subproduct.product.sale_price 
