@@ -1,10 +1,19 @@
+<% title "Registrar Producto" %>
 <CENTER>
 <h1>Registrar Producto</h1>
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for (@product) do |f| %>
-  			<%= f.error_messages %>
-
+		<%= form_for(@product) do |f| %>
+  			<% if @product.errors.any? %>
+    		<div id="error_explanation">
+      			<h2><%= pluralize(@product.errors.count, "error") %> Prohiben que este producto se guarde:</h2>
+		      	<ul>
+      				<% @product.errors.full_messages.each do |msg| %>
+        			<li><%= msg %></li>
+      		<% end %>
+      			</ul>
+    		</div>
+  		<% end %>
 			<%= f.label :name , "Nombre:" %>
 			<%= f.text_field :name %><br>
 	
@@ -15,12 +24,11 @@
 			<%= f.label :general_code , "Codigo General del Producto:" %>
 			<%= f.text_field :general_code %><br>
 
+ 			<%=f.label :category, "Categoria" %>
+    		<%=f.collection_select(:category, Category.all, :name, :name)%>
 
-			<%= f.label :brand , "Marca:" %>
-			<%= f.text_field :brand %><br>
-
-			<%= f.label :category , "Categoria:" %>
-			<%= f.text_field :category %><br>
+    		<%=f.label :brand, "Marca" %>
+    		<%=f.collection_select(:brand, Brand.all, :name, :name)%>
 
 			<%= f.label :bought_price , "Precio De Compra:" %>
 			<%= f.text_field :bought_price %><br>
@@ -29,7 +37,7 @@
 			<%= f.label :sale_price , "Precio De Venta:" %>
 			<%= f.text_field :sale_price %><br>
 	
-			<%= f.submit "Crear Producto"%>
+			<%= f.submit "Crear Producto", class: "btn btn-large btn-primary" %>
 		<%end%>
 	</div>
 </div>

@@ -16,7 +16,9 @@
     <td><%= user.email %></td>
     <td><%= user.rol %></td>
     <td><%= user.created_at %></td>
+    <% if current_user.username != user.username %>
     <td><%= button_to 'Eliminar Usuario', user_path(user),method: :delete, data: { confirm: 'Seguro?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

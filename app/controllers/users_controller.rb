@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:error] = "Usuario creado!"
+      flash[:message] = "Usuario creado!"
       redirect_to :controller => :users, :action => "index"
     else
       render :action => 'new'
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      flash[:success] = "Su perfil ha sido actualizado"
+      flash[:message] = "Su perfil ha sido actualizado"
       redirect_to root_url
     else
       render :action => 'edit'
