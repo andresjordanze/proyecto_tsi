@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   before_save :prepare_password
 
   validates_presence_of :username
-  validates_length_of :username, :minimum => 6, :maximum =>45
+  validates_length_of :username, :minimum => 4, :maximum =>45
   validates_uniqueness_of :username, :email, :allow_blank => true
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
