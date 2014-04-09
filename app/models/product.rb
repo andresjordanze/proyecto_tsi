@@ -1,6 +1,9 @@
 
 class Product < ActiveRecord::Base
 	has_many :subproducts, dependent: :destroy
+	has_many :incomes
+    #validates :title, presence: true,
+                    #length: { minimum: 8 }
 	attr_accessible :name, :detail, :description, :increase, :quantity, :general_code, :brand, :category, :bought_price, :sale_price, :created_at, :updated_at, :photo
 	belongs_to :sale
 	has_many :brands
@@ -22,7 +25,7 @@ class Product < ActiveRecord::Base
 	validates :detail, length: {minimum: 10, maximum: 100, :message => "El Detalle debe tener minimo 10 y maximo 30 caracteres"}
 
 	validates :general_code, presence: {:message => "Usted debe ingresar el Codigo general"}
-	validates :general_code, length: {minimum: 2, maximum: 10, :message => "El Codigo general debe tener minimo 2 y maximo 10 caracteres"}
+	validates :general_code, length: {minimum: 2, maximum: 15, :message => "El Codigo general debe tener minimo 2 y maximo 15 caracteres"}
 
 	validates :bought_price, presence: {:message => "Usted debe ingresar el Precio de compra"}
 	validates :bought_price, numericality: {:message => "El precio de compra debe ser numerico"}

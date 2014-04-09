@@ -9,8 +9,11 @@ Informaticacomp::Application.routes.draw do
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
 
-  get 'enter' => 'products#enter'
-  post 'enter' => 'products#enter'
+  get 'income' => 'products#income'
+  post 'income' => 'products#income'
+
+  get '/income/index'=> 'income#index'
+
   
   get 'edit_to_home' => 'products#edit_to_home'
   post 'edit_to_home' => 'products#edit_to_home'
@@ -30,9 +33,14 @@ Informaticacomp::Application.routes.draw do
     resources :subproducts
   end
 
+  resources :products do
+  resources :incomes
+end
+
   resources :sales
   resources :sessions
   resources :users
+  resources :incomes
 
   #resources :sales do
    # resources :subproducts

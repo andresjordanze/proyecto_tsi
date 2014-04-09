@@ -1,0 +1,22 @@
+<% title "Reportes de ingreso" %>
+<h1>Reportes de ingreso</h1>
+<CENTER>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><Center>Fecha</Center></th>
+            <th><Center>Productos</Center></th>      
+        </tr>
+    </thead>
+    <tbody>
+        <% @products.incomes.each do |income| %>
+            <tr>
+                <td><CENTER><%= income. created_at %></CENTER></td>
+                <td><%= link_to 'Ver', income, :class => 'btn btn-mini'  %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<br>
+</Center>

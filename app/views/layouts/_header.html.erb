@@ -21,8 +21,13 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Ver Stock de Productos", '/products' %></li>  
-              <li><%= link_to "Registros", '/products/new' %></li> <!--agregado-->
+              <li><%= link_to "Ver Stock de Productos", '/products' %></li>
+              <li class="dropdown-submenu">  
+              <li><%= link_to "Registros", '#' %></li> <!--agregado-->
+              <ul class="dropdown-menu">
+                <li><a href="/products/new">Registrar Producto</a></li>
+              </ul>
+
               <li><%= link_to "Boletas", '#' %></li>
               <li><%= link_to "Reportes", '#' %></li>
               <li><%= link_to "Impresiones", '#' %></li>
