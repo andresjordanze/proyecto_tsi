@@ -1,0 +1,12 @@
+<%= form_validated_for(@brand) do |f| %>
+<CENTER>
+  <p>
+    <%= f.label :name, "Nombre de Marca" %>
+    <%= f.text_field :name %>
+    </p>
+  
+  <p>
+    <%= f.submit "Guardar Marca", class: "btn btn-large btn-primary" %>
+  </p>
+<% end %>
+</CENTER>
