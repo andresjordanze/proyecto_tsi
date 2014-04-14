@@ -26,12 +26,14 @@ ActiveRecord::Schema.define(version: 20140414034138) do
   end
 
   create_table "incomes", force: true do |t|
-    t.date     "fecha"
+    t.integer  "cantidad"
     t.integer  "product_id"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "incomes", ["order_id"], name: "index_incomes_on_order_id"
   add_index "incomes", ["product_id"], name: "index_incomes_on_product_id"
 
   create_table "orders", force: true do |t|
