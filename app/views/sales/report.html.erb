@@ -1,24 +1,6 @@
 <% title "Reporte Diario" %>
 <h1>Reporte Diario</h1>
 
-<!--%= link_to_function "Buscar Por Cliente", "$('#cliente').toggle()", :class => "btn btn-info" %>
-<div id="cliente" style="display:none">
-<br>
-<form method="GET" action="/sales/search">
-Cliente: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar", class="btn btn-default">
-</form>
-</div><br><br-->
-
-<!--%= link_to_function "Buscar por Nombre de Producto", "$('#producto').toggle()", :class => "btn btn-info"  %><br>
-<div id="producto" style="display:none">
-<br>
-<form method="GET" action="/sales/searchProduct">
-Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar", class="btn btn-default">
-</form>
-</div><br-->
-
 <CENTER>
 <table class="table table-striped">
     <thead>
@@ -36,39 +18,47 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
                 <td><CENTER><%= sale.client_name %></CENTER></td>
                 <td><CENTER><%= sale.check_number%></CENTER></td>
                 <td><CENTER><%= sale.price %></CENTER></td>
-                <td><CENTER><button class="btn btn-mini" data-toggle="modal" data-target=".bs-example-modal-lg">Detalles</button>
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <h3>Detalles</h3>
-                        <div class="modal-content">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th><Center>Nombre</Center></th>
-                                        <th><Center>Codigo del SubProducto</Center></th>
-                                        <th><Center>Marca</Center></th>
-                                        <th><Center>Categoria</Center></th>
-                                        <th><Center>Precio De Venta</Center></th>        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% sale.subproducts.each do |subproduct| %>
-                                        <tr>
-                                            <td><CENTER><%= subproduct.product.name %></CENTER></td>
-                                            <td><CENTER><%= subproduct.code %></CENTER></td>
-                                            <td><CENTER><%= subproduct.product.brand %></CENTER></td>
-                                            <td><CENTER><%= subproduct.product.category %></CENTER></td>
-                                            <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
-                                        </tr>
-                                    <%end%>
-                                </tbody>
-                            </table>
+                <td>
+                    <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#<%=sale.id%>">Detalles</a>
+                    <div class="modal fade" id="<%=sale.id%>" tabindex="-1" role="dialog" aria-labelledby="<%=sale.id%>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel"><CENTER>Productos Vendidos</CENTER></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <Center><h4>Detalle</h4></Center>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th><Center>Nombre</Center></th>
+                                                <th><Center>Codigo del SubProducto</Center></th>
+                                                <th><Center>Marca</Center></th>
+                                                <th><Center>Categoria</Center></th>
+                                                <th><Center>Precio De Venta</Center></th>        
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% sale.subproducts.each do |subproduct| %>
+                                                <tr>
+                                                    <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                                                    <td><CENTER><%= subproduct.code %></CENTER></td>
+                                                    <td><CENTER><%= subproduct.product.brand %></CENTER></td>
+                                                    <td><CENTER><%= subproduct.product.category %></CENTER></td>
+                                                    <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
+                                                </tr>
+                                            <%end%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h5>Click aqui para cerrar</h5>
-                </div></CENTER></td>
-            </tr>
-                
+                </td>
+            </tr>            
         <% end %>
         <tr>
             <td><h4><CENTER><b>TOTAL</b></CENTER></h4></td>
