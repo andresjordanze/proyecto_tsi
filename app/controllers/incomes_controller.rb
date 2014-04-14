@@ -9,7 +9,7 @@ class IncomesController < ApplicationController
 
   def create
     	@product = Product.find(params[:product_id])
-    	@income = @product.incomes.create(params[:income].permit(:fecha))
+    	@income = @product.incomes.create(params[:income].permit(:numero_pedido, :cantidad, :proveedor))
     	redirect_to product_path(@product)
   end
 

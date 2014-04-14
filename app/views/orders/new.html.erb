@@ -1,0 +1,23 @@
+<% title "Registrar Pedido"%>
+
+<h1>Registrar Pedido</h1>
+	<%= form_validated_for(@order) do |f| %>
+  		<!--<div class="row">-->
+			<div class="col-xs-3">
+
+			<p><%= f.label :numero_pedido , "Numero de pedido:" %>
+			<%= f.text_field :numero_pedido %>
+
+			<p><%= f.label :nombre_producto , "Nombre del producto:" %>
+			<%= f.text_field :nombre_producto %>
+	
+			<p><%= f.label :cantidad , "Cantidad:" %>
+			<%= f.text_field :cantidad %>
+
+			<p><%=f.label :provider, "Proveedor" %>
+    		<%=f.collection_select(:provider, Provider.all, :name, :name)%>
+
+			<p><%= f.submit "Registrar Pedido", class: "btn btn-large btn-primary" %></p>
+			</div>
+		<!--</div>-->
+	<%end%>
