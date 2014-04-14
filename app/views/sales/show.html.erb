@@ -23,7 +23,7 @@
 </p>
 
 <p>
-    <h2><Center><%= link_to_function "Detalle", "$('#hide').toggle()" %></Center></h2>
+    <h2><Center><%= link_to_function "Ver Detalle de Venta", "$('#hide').toggle()" %></Center></h2>
     <div id="hide" style="display:none">
         <table class="table table-striped">
             <thead>
@@ -53,7 +53,7 @@
 
 <% if @sale.confirmed == false %>
 <p>
-    <h2><Center><%= link_to_function "Agregar Productos a venta", "$('#subproduct').toggle()" %></Center></h2>
+    <h2><Center><%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %></Center></h2>
     <div id="subproduct" style="display:none">
         <table class="table table-striped">
             <thead>
@@ -86,6 +86,7 @@
 <%if @sale.price !=0 %>
 <%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br>
 <%end%>
+
 <%= link_to 'Cancelar Venta', :controller => :sales, :action => 'cancel_sale', :deletor => @sale.id%><br>
 <%end%><br> 
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>

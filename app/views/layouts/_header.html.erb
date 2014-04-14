@@ -78,7 +78,13 @@
                     <li><a href="/sales/anual_report">Ver Reporte Anual</a></li>
                   </ul>
               </li>
-              <li><%= link_to "Impresiones", '#' %></li>
+              <li class="dropdown-submenu">
+                <%= link_to "Impresiones", '#' %>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Imprimir Boleta de Entrega</a></li>
+                  <li><a href="#">Imprimir Reporte</a></li>
+                </ul>
+              </li>
               <li><%= link_to "Todas las ventas", sales_path %></li>
             </ul>
           </li>
