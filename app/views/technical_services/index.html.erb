@@ -1,9 +1,10 @@
 <% title "Servicios" %>
 <div class="hero-unit">
 <h1>Lista de Servicios</h1>
+<br>
 
-<table class="table table-bordered">
-  <tr class="warning">
+<table class="table table-striped">
+  <tr>
     <th>Nº</th>
     <th>Cliente</th>
     <th>Nombre Producto</th>
@@ -15,7 +16,7 @@
   </tr>
 
 <% @technical_services.each do |technical_service| %>
-  <tr class="info">
+  <tr>
     <td><%= technical_service.id %></td>
     <td><%= technical_service.client %></td>
     <td><%= technical_service.product_name %></td>

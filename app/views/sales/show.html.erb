@@ -1,22 +1,24 @@
 <% title @sale.client_name %>
+<div class="hero-unit">
 <CENTER><H1><%= @sale.client_name %> </H1>
+<br>
 <p>
-    <small>Numero de Factura: </small><br>
+    Numero de Factura:<br>
     <%= @sale.check_number %>
 </p>
 
 <p>
-    <small>Nit del Cliente: </small><br>
+    Nit del Cliente:<br>
     <%= @sale.nit%>
 </p>
 
 <p>
-    <small>Fecha de venta: </small><br>
+    Fecha de venta:<br>
     <%= @sale.created_at %>
 </p>
 
 <p>    
-    <small>Total Venta:</small><br>
+    Total Venta:<br>
     <%= @sale.price %>
 </p>
 
@@ -81,9 +83,12 @@
         </table>
     </div>
 </p>
+<%if @sale.price !=0 %>
 <%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br>
+<%end%>
 <%= link_to 'Cancelar Venta', :controller => :sales, :action => 'cancel_sale', :deletor => @sale.id%><br>
 <%end%><br> 
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>
+  </div>

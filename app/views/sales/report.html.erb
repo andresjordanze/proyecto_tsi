@@ -1,6 +1,7 @@
 <% title "Reporte Diario" %>
-<h1>Reporte Diario</h1>
-
+<div class="hero-unit">
+<h1>Reporte</h1>
+<br>
 <CENTER>
 <table class="table table-striped">
     <thead>
@@ -14,6 +15,7 @@
     </thead>
     <tbody>
         <% @sales.each do |sale| %>
+        <%if sale.confirmed == true%>
             <tr>
                 <td><CENTER><%= sale.client_name %></CENTER></td>
                 <td><CENTER><%= sale.check_number%></CENTER></td>
@@ -60,13 +62,15 @@
                 </td>
             </tr>            
         <% end %>
+        <% end %>
         <tr>
             <td><h4><CENTER><b>TOTAL</b></CENTER></h4></td>
             <td></td>
             <td><h4><CENTER><b><%= @total.inspect %></b></CENTER></h4></td>
             <td></td>
-        <tr>
+        </tr>
     </tbody>
 </table>
 <br>
 </Center>
+</div>

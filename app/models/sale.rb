@@ -5,14 +5,18 @@ class Sale < ActiveRecord::Base
 	#VALID_NAME_REGEX = /^[a-zA-Z0-9-.]+$/
 	
 
-	validates :client_name, presence: {:message => "Usted debe ingresar el nombre del cliente"}	
+	validates :client_name, presence: {:message => "Nombre de cliente no puede estar vacio"}	
 	validates :client_name, format: { with: /\A[a-zA-Z]+\z/,
     message: "Solo Letras Permitidas" }
-    validates :nit, presence: {:message => "Usted debe ingresar el NIT"}
-	validates :check_number, presence: {:message => "Usted debe ingresar el numero de factura"}	
-	validates :nit, numericality: {:message => "El valor de NIT debe ser numerico"}
+    validates :client_name, length: {minimum: 3, maximum: 20, :message => "El Nombre del cliente debe tener minimo 3 caracteres"}
 
+    validates :nit, presence: {:message => "Usted debe ingresar el NIT"}
+    validates :nit, numericality: {:message => "El valor de NIT debe ser numerico"}
+    validates :nit, length: {minimum: 1, maximum: 12, :message => "El numero de NIT debe tener minimo 1 caracter"}
+
+	validates :check_number, presence: {:message => "Usted debe ingresar el numero de factura"}	
 	validates :check_number, numericality: {:message => "El valor del numero de factura debe ser numerico"}
+	validates :check_number, length: {minimum: 4, maximum: 12, :message => "El numero de factura debe tener minimo 4 caracteres"}
 
 	def correspondeACliente(nombre)
 		texto = self.client_name.split

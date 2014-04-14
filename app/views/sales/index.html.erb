@@ -1,4 +1,5 @@
 <% title "Lista de Ventas" %>
+<div class="hero-unit">
 <h1>Lista de Ventas</h1>
 <%= link_to 'Nueva Venta', new_sale_path, :class => 'btn btn-success' %><br><br>
 <%= link_to_function "Buscar Por Cliente", "$('#cliente').toggle()", :class => "btn btn-info" %>
@@ -28,6 +29,7 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
             <th><Center>Nombre del cliente</Center></th>
             <th><Center>Numero factura</Center></th>
             <th><Center>Precio</Center></th>
+            <th><Center>Estado</Center></th>
             <th></th>       
             <th></th>       
         </tr>
@@ -38,6 +40,11 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
                 <td><CENTER><%= sale.client_name %></CENTER></td>
                 <td><CENTER><%= sale.check_number%></CENTER></td>
                 <td><CENTER><%= sale.price %></CENTER></td>
+                <%if sale.confirmed == true %>
+                    <td><CENTER>Confirmada</CENTER></td>
+                    <%else%>
+                    <td><CENTER>Por Confirmar</CENTER></td>
+                    <%end%>
                 <td><%= link_to 'Ver', sale, :class => 'btn btn-mini'  %></td>
                 <!--td--><!--%= link_to 'Editar', edit_sale_path(sale), :class => 'btn btn-mini'  %></td-->
                 <!--td--><!--%= link_to 'Eliminar', sale_path(sale), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td-->
@@ -47,3 +54,4 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
 </table>
 <br>
 </Center>
+</div>
