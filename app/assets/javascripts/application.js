@@ -15,5 +15,6 @@
 //= require bootstrap
 //= require bootstrap.min
 //= require bootstrap-dropdown
+//= require realtime_validations
 //= require turbolinks
 //= require_tree .
