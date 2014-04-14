@@ -60,13 +60,22 @@
           </li>
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Servicio Tecnico 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Registrar servicio", '/technical_services/new' %></li>
+              <li><%= link_to "Lista de servicios", '/technical_services' %></li>
+            </ul>
+          </li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Usuarios 
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Crear usuario", '/users/new' %></li>
-              <li><%= link_to "Lista de Usuarios", '/users' %></li>  
-              <li><%= link_to "Eliminar Usuario", '/users' %></li> <!--agregado-->
+              <li><%= link_to "Lista de Usuarios", '/users' %></li>
             </ul>
           </li>
           <% end %>

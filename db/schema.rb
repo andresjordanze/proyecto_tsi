@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409113030) do
+ActiveRecord::Schema.define(version: 20140414013720) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 20140409113030) do
 
   add_index "subproducts", ["product_id"], name: "index_subproducts_on_product_id"
   add_index "subproducts", ["sale_id"], name: "index_subproducts_on_sale_id"
+
+  create_table "technical_services", force: true do |t|
+    t.string   "product_code"
+    t.string   "client"
+    t.string   "status"
+    t.string   "detail"
+    t.string   "product_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"

@@ -53,6 +53,7 @@ end
   resources :sessions
   resources :users
   resources :incomes
+  resources :technical_services  
 
   #resources :sales do
    # resources :subproducts
