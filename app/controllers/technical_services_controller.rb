@@ -21,4 +21,20 @@ class TechnicalServicesController < ApplicationController
 		end
 	end
 
+
+	def edit
+		@technical_service = TechnicalService.find(params[:id])
+	end
+
+	def update
+		@technical_service = TechnicalService.find(params[:id])
+		if @technical_service.update_attributes(params[:technical_service])
+			@technical_service.save
+			flash[:success] = "Servicio Tecnico Actualizado"
+			redirect_to @technical_service			
+		else
+			render 'edit'
+		end
+	end
+
 end

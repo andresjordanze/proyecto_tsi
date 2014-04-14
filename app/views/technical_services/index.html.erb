@@ -10,6 +10,8 @@
     <th>Codigo Producto</th>
     <th>Estado</th>
     <th>Fecha</th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @technical_services.each do |technical_service| %>
@@ -20,6 +22,8 @@
     <td><%= technical_service.product_code %></td>
     <td><%= technical_service.status %></td>
     <td><%= technical_service.created_at %></td>
+    <td><%= link_to 'Ver Servicio', :controller => :technical_services, :action => 'show', :id => technical_service.id %></td>
+    <td><%= link_to 'Modificar Servicio', :controller => :technical_services, :action => 'edit', :id => technical_service.id %></td>
   </tr>
 <% end %>
 </table>
