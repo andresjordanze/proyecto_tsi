@@ -45,8 +45,18 @@ class Product < ActiveRecord::Base
 	after_create :crear_subproducto
 
 	def crear_subproducto
-		subproducts.create("code" => general_code+"-0")
+#		subproducts.create("code" => general_code+"-0")
+		i = 0
+		while i < self.quantity do
+      		self.subproducts.create("code" => self.general_code + "-#{i}")
+      		i = i + 1
+    	end
+    	self.increase = 0
+    	self.save
 	end
+
+
+
 
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')
