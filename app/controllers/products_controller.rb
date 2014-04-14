@@ -33,6 +33,27 @@ class ProductsController < ApplicationController
     	return items
   	end
 
+  	def search_to_home
+		@products = buscar_por_nombre(params[:name])
+		render 'products_home'
+	end
+
+	def buscar_por_nombre(nombre)
+    	items = Array.new	
+    	aux = Product.all
+    	if nombre != "" && nombre != nil
+      		aux.each do |item|
+        	if (item.correspondeApagina(nombre))
+          		items.push(item)
+        	end
+      	end
+    	else
+      		items = aux
+    	end
+    	return items
+  	end
+
+
 	private
 	def increase
 		if @product.quantity == 0

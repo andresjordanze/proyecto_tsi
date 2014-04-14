@@ -58,6 +58,17 @@ class Product < ActiveRecord::Base
     	false
   	end
 
+
+	def correspondeApagina(nombre)
+    	parametros = nombre.split(' ')
+    	parametros.each do |parametro|
+      	if self.name.downcase.include?(parametro.downcase)
+	        return true
+    	  end
+    	end
+    	false
+  	end
+
 	before_create do
 		self.increase = 0
 	end

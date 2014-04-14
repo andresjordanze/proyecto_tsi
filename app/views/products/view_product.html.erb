@@ -1,22 +1,29 @@
+
 <% title @product.name %>
 <CENTER>
 
 <H1><%= @product.name %> </H1>
 
 <%if @product.photo_file_name == nil%>
-  <small>Fotografia Aun no cargada</small><br>
+  <small >Fotografia Aun no cargada</small><br>
   <%else%>
-<p>
-  <small>Fotografia</small><br>
-	<%= image_tag @product.photo.url , :height=>10 %>
-</p>
-<%end%>
-    
-<p>
-    <small>Descripcion:</small><br>
-    <%= @product.description %>
-</p>
-
-
-<%= button_to 'Volver', :controller => :products, :action => 'products_home', :class => 'btn btn-default' %>
+<div class="row">
+		<div class="span4">
+		<p class="text-left">
+		  <strong> Fotografia</strong><br><br>
+			<%= image_tag @product.photo.url, size: "280x280" %>
+		</p>
+	<%end%>
+	</div>  
+	<div class="span4">
+		<p class="bg-primary">
+		    <strong>Descripcion:</strong><br><br>
+		    <% @product.description.split.each do |palabra|%>
+		    	<%= palabra %></br>
+		    <%end%>
+		</p>
+	</div>
+</div>
+<%= button_to 'Volver', :controller => :products, :action => 'products_home', :class => 'btn btn-info' %>
+  
   </CENTER>
