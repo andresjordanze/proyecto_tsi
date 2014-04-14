@@ -1,19 +1,23 @@
 <% title "Registrar Venta" %>
 <CENTER>
 <h1>Registrar Venta</h1>
+<%= form_validated_for (@sale) do |f| %>
+	<div class="col-xs-3">
+	<p>
+		<%= f.label :client_name , "Nombre del Cliente:" %>
+		<%= f.text_field :client_name %></p>
 
-<%=form_for (@sale) do |f| %>
-	<%= f.label :client_name , "Nombre del Cliente:" %>
-	<%= f.text_field :client_name %><br><br>
-
-	<%= f.label :check_number , "Numero de Factura:" %>
-	<%= f.text_field :check_number %><br><br>
+		<p><%= f.label :check_number , "Numero de Factura:" %>
+		<%= f.text_field :check_number %>
+		</p>
 	
-	<%= f.label :nit , "NIT Cliente:" %>
-	<%= f.text_field :nit %><br><br>
-	
-	<%= f.submit "Registrar Venta", class: "btn btn-large btn-primary" %>
-
+	<p>
+		<%= f.label :nit , "NIT Cliente:" %>
+		<%= f.text_field :nit %>
+</p>
+<p>
+		<%= f.submit "Registrar Venta", class: "btn btn-large btn-primary" %>
+		</p>
+	</div>	
 <%end%>
-
 </CENTER>

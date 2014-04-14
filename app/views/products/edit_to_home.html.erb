@@ -3,7 +3,7 @@
 <h1>Editar Producto</h1>
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for (@product) do |f| %>
+		<%= form_validated_for (@product) do |f| %>
   			<%= f.error_messages %>
 
 			<h3><%= @product.name %></h3>

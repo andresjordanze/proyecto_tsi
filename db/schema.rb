@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409113030) do
+ActiveRecord::Schema.define(version: 20140414034138) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20140409113030) do
 
   add_index "incomes", ["product_id"], name: "index_incomes_on_product_id"
 
+  create_table "orders", force: true do |t|
+    t.integer  "cantidad"
+    t.string   "nombre_producto"
+    t.string   "numero_pedido"
+    t.string   "estado"
+    t.string   "provider"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.text     "detail"
@@ -52,6 +62,12 @@ ActiveRecord::Schema.define(version: 20140409113030) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "providers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", force: true do |t|
@@ -75,6 +91,16 @@ ActiveRecord::Schema.define(version: 20140409113030) do
 
   add_index "subproducts", ["product_id"], name: "index_subproducts_on_product_id"
   add_index "subproducts", ["sale_id"], name: "index_subproducts_on_sale_id"
+
+  create_table "technical_services", force: true do |t|
+    t.string   "product_code"
+    t.string   "client"
+    t.string   "status"
+    t.string   "detail"
+    t.string   "product_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"

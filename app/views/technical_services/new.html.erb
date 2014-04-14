@@ -1,0 +1,25 @@
+<% title "Registrar Servicio" %>
+<div class="hero-unit">
+
+<h1>Registrar Servicio</h1></br>
+	<%= form_validated_for(@technical_service) do |f| %>
+  		<!--<div class="row">-->
+			<div class="col-xs-3">
+
+			<p><%= f.label :product_code , "Codigo del Producto:" %>
+			<%= f.text_field :product_code %>
+
+			<p><%= f.label :product_name , "Nombre del Producto:" %>
+			<%= f.text_area :product_name %>
+	
+			<p><%= f.label :detail , "Detalle:" %>
+			<%= f.text_area :detail %>
+
+			<p><%= f.label :client , "Cliente:" %>
+			<%= f.text_area :client %>
+	
+			<p><%= f.submit "Registrar servicio", class: "btn btn-large btn-primary" %></p>
+			</div>
+		<!--</div>-->
+	<%end%>
+</div>

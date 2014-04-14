@@ -1,7 +1,7 @@
 <% title "Usuarios" %>
 <h1>Lista de Usuarios</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>Nombre Completo</th>
     <th>Nombre de Usuario</th>
@@ -11,16 +11,18 @@
   </tr>
 
 <% @users.each do |user| %>
-  <tr>
+  <tr class="info">
     <td><%= user.username %></td>
     <td><%= user.name %></td>
     <td><%= user.rol %></td>
     <td><%= user.created_at %></td>
     <% if current_user.username != user.username %>
-    <td><%= button_to 'Eliminar Usuario', user_path(user),method: :delete, data: { confirm: 'Seguro?' } %></td>
+    <td><%= button_to 'Eliminar Usuario', user_path(user),method: :delete, data: { confirm: 'Seguro?' }, :class => "btn btn-lg btn-danger" %></td>
+    <% else %>
+    <td></td>
     <% end %>
   </tr>
 <% end %>
 </table>
 </br>
-<%= button_to 'Crear Usuario', :controller => :users, :action => 'create' %>
+<%= link_to 'Crear Usuario', :controller => :users, :action => 'new' %>

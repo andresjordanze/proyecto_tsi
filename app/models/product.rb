@@ -18,8 +18,6 @@ class Product < ActiveRecord::Base
 	validates :brand, :category, presence: true
 
 #	validates :name, uniqueness: {case_sensitive: false}	
-	
-
 
 	validates :name, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, uniqueness: {case_sensitive: false}	
@@ -31,6 +29,8 @@ class Product < ActiveRecord::Base
 
 	validates :general_code, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, length: {minimum: 2, maximum: 15, :message => "El Codigo general debe tener minimo 2 y maximo 15 caracteres"}
+
+	validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
 
 	#validates :bought_price, presence: {:message => "Es un campo obligatorio"}
 	#validates :bought_price, numericality: {:message => "El precio de compra debe ser numerico"}

@@ -1,0 +1,8 @@
+<% title "Editar Categoria" %>
+
+<h1><%=@category.name%></h1>
+<center>
+<%= render 'form' %>
+<br>
+<%= button_to 'Volver', categories_path, :method => :get, class: "btn btn-primary"  %>
+</center>

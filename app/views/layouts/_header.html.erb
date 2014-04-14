@@ -30,6 +30,7 @@
                     <li><a href="/products/new">Registrar Producto</a></li>
                     <li><a href="#">Registrar Ingreso Producto</a></li>
                     <li><a href="#">Registrar Egreso Producto</a></li>
+                    <li><a href="/orders/new">Registrar Pedido</a></li>
                   </ul>
               </li>
               
@@ -60,13 +61,42 @@
           </li>
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Servicio Tecnico 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Registrar servicio", '/technical_services/new' %></li>
+              <li><%= link_to "Lista de servicios", '/technical_services' %></li>
+            </ul>
+          </li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Usuarios 
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Crear usuario", '/users/new' %></li>
-              <li><%= link_to "Lista de Usuarios", '/users' %></li>  
-              <li><%= link_to "Eliminar Usuario", '/users' %></li> <!--agregado-->
+              <li><%= link_to "Lista de Usuarios", '/users' %></li>
+            </ul>
+          </li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Marcas 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Crear Marca", '/brands/new' %></li>
+              <li><%= link_to "Lista de Marcas", '/brands' %></li>  
+            </ul>
+          </li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Categorias 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Crear Categorias", '/categories/new' %></li>
+              <li><%= link_to "Lista de Categorias", '/categories' %></li>  
             </ul>
           </li>
           <% end %>
@@ -79,7 +109,7 @@
           <%if current_user%>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.username%> 
+                <%= current_user.username.capitalize%> 
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">

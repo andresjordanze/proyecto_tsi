@@ -13,6 +13,7 @@ Informaticacomp::Application.routes.draw do
   post 'income' => 'products#income'
 
   get '/income/index'=> 'income#index'
+  #get '/order/new'=> 'order#new'
 
   
   get 'edit_to_home' => 'products#edit_to_home'
@@ -48,15 +49,15 @@ Informaticacomp::Application.routes.draw do
     resources :subproducts
   end
 
-  resources :products do
-  resources :incomes
-end
-
   resources :sales
   resources :sessions
   resources :users
   resources :incomes
-
+  resources :technical_services  
+  resources :categories
+  resources :brands
+  resources :orders
+  
   #resources :sales do
    # resources :subproducts
   #end

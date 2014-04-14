@@ -1,0 +1,17 @@
+<% title @product.name %>
+
+<h1>Registrar Ingreso</h1>
+	<%= form_validated_for(@product) do |f| %>
+  		<!--<div class="row">-->
+			<div class="col-xs-3">
+
+			<p><%= f.label :nombre_producto , "Cantidad:" %>
+			<%= f.text_field :nombre_producto %>
+	
+			<p><%= f.label :cantidad , "Proveedor:" %>
+			<%= f.text_area :cantidad %>
+
+			<p><%= f.submit "Registrar Ingreso", class: "btn btn-large btn-primary" %></p>
+			</div>
+		<!--</div>-->
+	<%end%>
