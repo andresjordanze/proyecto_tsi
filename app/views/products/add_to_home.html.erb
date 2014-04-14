@@ -3,7 +3,7 @@
 <h1>Añadir Producto</h1>
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for (@product) do |f| %>
+		<%= form_validated_for (@product) do |f| %>
   			<%= f.error_messages %>
 
 			<%= @product.name %>
@@ -11,10 +11,10 @@
 			<%= f.label :photo, "Foto:" %>
 			<%= f.file_field :photo %><br>
 
-			<%= f.label :description , "Descripcion:" %>
+			<p><%= f.label :description , "Descripcion:" %>		
 			<%= f.text_area :description %><br>
-
-			<%= f.submit "Añadir Producto"%>
+			
+			<p><%= f.submit "Añadir Producto"%></p>>
 		<%end%>
 	</div>
 </div>
