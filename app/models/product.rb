@@ -18,10 +18,10 @@ class Product < ActiveRecord::Base
 	validates :brand, :category, presence: true
 
 #	validates :name, uniqueness: {case_sensitive: false}	
-	validates :description presence: {:message => "Es un campo obligatorio"}
 
 	validates :name, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, uniqueness: {case_sensitive: false}	
+
 	validates :name, length: {minimum: 2, maximum: 20, :message => "El Nombre debe tener minimo 2 y maximo 20 caracteres"}
 
 	validates :detail, presence: {:message => "Es un campo obligatorio"}
@@ -30,11 +30,17 @@ class Product < ActiveRecord::Base
 	validates :general_code, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, length: {minimum: 2, maximum: 15, :message => "El Codigo general debe tener minimo 2 y maximo 15 caracteres"}
 
-	validates :bought_price, presence: {:message => "Es un campo obligatorio"}
-	validates :bought_price, numericality: {:message => "El precio de compra debe ser numerico"}
-	
 	validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
+
+	#validates :bought_price, presence: {:message => "Es un campo obligatorio"}
+	#validates :bought_price, numericality: {:message => "El precio de compra debe ser numerico"}
+	
+	#validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
 	validates :sale_price, numericality: {:message => "El precio de venta debe ser numerico"}
+
+
+	#validates :description, presence: {:message => "Es un campo obligatorio"}
+	#validates :name, length: {minimum: 2, maximum: 20, :message => "La Descripcion debe tener minimo 2 y maximo 20 caracteres"}
 
 	after_create :crear_subproducto
 
