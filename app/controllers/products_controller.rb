@@ -32,10 +32,6 @@ class ProductsController < ApplicationController
     	return items
   	end
 
-  	def income
-		@product = Product.find(params[:id])
-	end
-
 	private
 	def increase
 		if @product.quantity == 0

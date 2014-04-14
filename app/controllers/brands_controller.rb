@@ -31,7 +31,7 @@ class BrandsController < ApplicationController
   def update
   	@brand = Brand.find(params[:id])
     if @brand.update_attributes(params[:brand])
-	    redirect_to @brand, notice: 'Iglesia Actualizada exitosamente.'
+	    redirect_to @brand, notice: 'Categoria exitosamente.'
     else
     	render action: "edit" 
     end
