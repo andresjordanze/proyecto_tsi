@@ -46,15 +46,13 @@ Informaticacomp::Application.routes.draw do
     resources :subproducts
   end
 
-  resources :products do
-  resources :incomes
-end
-
   resources :sales
   resources :sessions
   resources :users
   resources :incomes
   resources :technical_services  
+  resources :categories
+  resources :brands
   resources :orders
   
   #resources :sales do

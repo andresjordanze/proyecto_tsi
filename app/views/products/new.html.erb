@@ -2,8 +2,9 @@
 
 
 <h1>Registrar Producto</h1>
+<CENTER>
 	<%= form_validated_for(@product) do |f| %>
-  		<!--<div class="row">-->
+
 			<div class="col-xs-3">
 
 			<p><%= f.label :name , "Nombre:" %>
@@ -21,9 +22,9 @@
 
     		<p><%=f.label :brand, "Marca" %>
     		<%=f.collection_select(:brand, Brand.all, :name, :name)%>
-			<!--<p><%= f.label :bought_price , "Precio De Compra:" %>
-			<%= f.text_field :bought_price %>-->
 
+			<p><%= f.label :bought_price , "Precio De Compra:" %>
+			<%= f.text_field :bought_price %>
 
 			<p><%= f.label :sale_price , "Precio De Venta:" %>
 			<%= f.text_field :sale_price %>
@@ -33,3 +34,4 @@
 		<!--</div>-->
 	<%end%>
 
+</CENTER>

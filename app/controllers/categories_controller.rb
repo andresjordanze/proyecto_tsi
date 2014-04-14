@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
 	def index
     @categories = Category.all
+    @categories = Category.order(params[:sort])
   	end
 
   	def show
@@ -21,7 +22,7 @@ class CategoriesController < ApplicationController
   	def create
     	@category = Category.new(params[:category])
       if @category.save
-       	redirect_to @category, notice: 'Categoria Creada exitosamente.' }
+       	redirect_to @category, notice: 'Categoria Creada exitosamente.' 
       else
         render action: "new" 
       end
@@ -30,7 +31,7 @@ class CategoriesController < ApplicationController
   def update
   	@category = Category.find(params[:id])
     if @category.update_attributes(params[:category])
-	    redirect_to @category, notice: 'Iglesia Actualizada exitosamente.'
+	    redirect_to @category, notice: 'Categoria Actualizada exitosamente.'
     else
     	render action: "edit" 
     end
