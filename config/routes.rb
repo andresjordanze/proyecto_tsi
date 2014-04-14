@@ -13,8 +13,6 @@ Informaticacomp::Application.routes.draw do
   post 'income' => 'products#income'
 
   get '/income/index'=> 'income#index'
-  #get '/order/new'=> 'order#new'
-
   
   get 'edit_to_home' => 'products#edit_to_home'
   post 'edit_to_home' => 'products#edit_to_home'
@@ -29,6 +27,7 @@ Informaticacomp::Application.routes.draw do
   post 'cancel_sale' => 'sales#cancel_sale'
 
   get 'products/search' => 'products#search'
+  get 'orders/search' => 'orders#search'
 
   get 'products/search_to_home' => 'products#search_to_home'
 

@@ -5,4 +5,15 @@ class Order < ActiveRecord::Base
 	validates :nombre_producto, presence: {:message => "Es un campo obligatorio"}
 	validates :cantidad, presence: {:message => "Es un campo obligatorio"}
 	validates :provider, presence: {:message => "Es un campo obligatorio"}
+
+	def correspondeAproveedor(proveedor)
+    	parametros = proveedor.split(' ')
+    	parametros.each do |parametro|
+      	if self.provider.downcase.include?(parametro.downcase)
+	        return true
+    	  end
+    	end
+    	false
+  	end
+
 end

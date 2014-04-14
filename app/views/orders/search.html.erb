@@ -1,0 +1,6 @@
+<% title "Buscar Pedido" %>
+<h1>Pedido al proveedor <%=@provider%></h1>
+<%= render "orders_controller/index" %>
+<DIV Align=left>
+<%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
+</DIV>
