@@ -14,7 +14,7 @@
       <%= f.password_field :password_confirmation, :class => 'form-control' %>
 
       <p><%= f.label :rol %>
-        <%= f.select :rol, options_for_select([[ 'Tecnico', 'tecnico' ], ['Encargado almacen', 'student']], 'enc_almacen') %>
+        <%= f.select :rol, options_for_select([[ 'Tecnico', 'tecnico' ], ['Encargado almacen', 'enc_almacen']]) %>
       <p><%= f.submit (@user.new_record? ? 'Crear' : 'Update'), :class => 'btn btn-lg btn-success' %></p>
     </div>
 <% end %>

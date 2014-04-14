@@ -12,6 +12,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :quantity
       t.integer :increase
       t.boolean :home
+      t.integer :id_order
       t.timestamps
     end
   end

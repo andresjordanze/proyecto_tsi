@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
+		@order = Order.find(params[:id])
 	end
 
 	def search
@@ -67,7 +68,6 @@ class ProductsController < ApplicationController
       		i = i + 1
     	end
     	@product.increase = 0
-    	@product.incomes.create
     	@product.save
 	end
 	
@@ -75,9 +75,11 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(params[:product])
-		@product.quantity = 0
+		@order = Order.find(params[:product][:id_order])
 		@product.home = false
 		@product.description = "          "
+		@income = Income.new
+		@income.registrar(params[:product][:quantity],params[:product][:id_order],params[:product][:name])
 		if @product.save		
 			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
