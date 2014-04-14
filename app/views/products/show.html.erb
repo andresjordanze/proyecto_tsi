@@ -2,40 +2,48 @@
 <CENTER><H1><%= @product.name %> </H1>
 
 <p>
-    <small>Detalle:</small><br>
-    <%= @product.detail %>
+    
+    <strong>Detalle:</strong><br>    
+    
+          <% @product.detail.split.each do |palabra|%>
+                            <%= palabra %></br>
+                        <%end%>
+    
+    
 </p>
 
 <p>    
-    <small>Cantidad</small><br>
+    <strong>Cantidad</strong><br>
     <%= @product.quantity %>
 </p>
 
 <p>
-    <small>Codigo del producto: </small><br>
+    <strong>Codigo del producto: </strong><br>
     <%= @product.general_code %>
 </p>
 
 <p>
-    <small>Marca: </small><br>
+    <strong>Marca: </strong><br>
     <%= @product.brand %>
 </p>
 
 <p>
-    <small>Categoria: </small><br>
+    <strong>Categoria: </strong><br>
     <%= @product.category %>
 </p>
 
+ 
 <!--<p>
-    <small>Precio de Compra:</small><br>
+    <strong>Precio de Compra:</strong><br>
     <%= @product.bought_price %>
 </p>-->
 
 <p>
-    <small>Precio de venta: </small><br>
+    <strong>Precio de venta: </strong><br>
     <%= @product.sale_price %>
 </p>    
-<%= button_to 'Editar', edit_product_path(@product), :class => 'btn btn-default', :method => :get %><br>
-<%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-default' %><br>
+<%= button_to 'Editar', edit_product_path(@product), :class => 'btn btn-primary',:method => :get %><br>
+<%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-primary' %><br>
 
   </CENTER>
+ 
