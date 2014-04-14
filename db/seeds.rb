@@ -6,16 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+	gerente = User.new
+	gerente.username = 'gerente'
+	gerente.name = 'gerente gerente'
+	gerente.password = 'gerente123'
+	gerente.rol = 'gerente'
+	gerente.save!
+
 	admin = User.new
 	admin.username = 'admin'
-	admin.name = 'Administrador'
+	admin.name = 'Administrador Admin'
 	admin.password = 'admin123'
 	admin.rol = 'admin'
 	admin.save!
 
 	secretaria = User.new
 	secretaria.username = 'secre'
-	secretaria.name = 'Secretaria'
+	secretaria.name = 'Secretaria Secre'
 	secretaria.password = 'secre123'
 	secretaria.rol = 'secre'
 	secretaria.save!		

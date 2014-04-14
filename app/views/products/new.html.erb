@@ -1,18 +1,17 @@
-<% title "Registrar Producto" %>
+<% title "Registrar Ingreso de Producto" %>
 
 
-<h1>Registrar Producto</h1>
+<h1>Registrar Ingreso de Producto</h1>
 <CENTER>
 	<%= form_validated_for(@product) do |f| %>
 
 			<div class="col-xs-3">
 
 			<p><%= f.label :name , "Nombre:" %>
-			<%= f.text_field :name %>
-	
+			<%= f.text_field :name, :value => @order.nombre_producto, :readonly => true %>
+
 			<p><%= f.label :detail , "Detalle:" %>
 			<%= f.text_area :detail %>
-
 
 			<p><%= f.label :general_code , "Codigo General del Producto:" %>
 			<%= f.text_field :general_code %>
@@ -23,11 +22,14 @@
     		<p><%=f.label :brand, "Marca" %>
     		<%=f.collection_select(:brand, Brand.all, :name, :name)%>
 
-			<p><%= f.label :bought_price , "Precio De Compra:" %>
-			<%= f.text_field :bought_price %>
-
 			<p><%= f.label :sale_price , "Precio De Venta:" %>
 			<%= f.text_field :sale_price %>
+
+			<p><%= f.label :quantity , "Cantidad:" %>
+			<%= f.text_field :quantity, :value => @order.cantidad, :readonly => true %>
+
+			<p><%= f.label :id_order, "Numero de pedido:" %>
+			<%= f.text_field :id_order, :value => @order.id, :readonly => true %>
 	
 			<p><%= f.submit "Crear Producto", class: "btn btn-large btn-primary" %></p>
 			</div>

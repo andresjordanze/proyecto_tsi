@@ -1,9 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "INFORMATICACOMP", root_url, id: "logo" %>
+      <%= link_to "Informaticacomp", root_url, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+          
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Productos
@@ -16,7 +17,10 @@
               <% end %>
             </ul>
           </li>
+
           <% if current_user %>
+
+          <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Almacen 
@@ -25,58 +29,13 @@
             <ul class="dropdown-menu">
               <li><%= link_to "Ver Stock de Productos", '/products' %></li>
               <li class="dropdown-submenu">
-                <%= link_to "Registros", '#' %>
+                <%= link_to "Pedidos", '#' %>
                 <ul class="dropdown-menu">
-                    <li><a href="/products/new">Registrar Producto</a></li>
-                    <li><a href="#">Registrar Ingreso Producto</a></li>
-                    <li><a href="#">Registrar Egreso Producto</a></li>
                     <li><a href="/orders/new">Registrar Pedido</a></li>
+                    <li><a href="/orders">Lista de Pedidos</a></li>
                   </ul>
               </li>
-              
-              <li><%= link_to "Boletas", '#' %></li>
-              <li><%= link_to "Reportes", '#' %></li>
-              <li><%= link_to "Impresiones", '#' %></li>
-            </ul>
-          </li>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Ventas 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Registrar", new_sale_path %></li>
-              <li class="dropdown-submenu">
-                <%= link_to "Reportes", '#' %>
-                <ul class="dropdown-menu">
-                    <li><a href="/sales/daily_report">Ver Reporte Diario</a></li>
-                    <li><a href="/sales/weekly_report">Ver Reporte Semanal</a></li>
-                    <li><a href="/sales/monthly_report">Ver Reporte Mensual</a></li>
-                    <li><a href="/sales/anual_report">Ver Reporte Anual</a></li>
-                  </ul>
-              </li>
-              <li><%= link_to "Impresiones", '#' %></li>
-              <li><%= link_to "Todas las ventas", sales_path %></li>
-            </ul>
-          </li>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Servicio Tecnico 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Registrar servicio", '/technical_services/new' %></li>
-              <li><%= link_to "Lista de servicios", '/technical_services' %></li>
-            </ul>
-          </li>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Usuarios 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Crear usuario", '/users/new' %></li>
-              <li><%= link_to "Lista de Usuarios", '/users' %></li>
+              <li><%= link_to "Ingresos/Egresos", '#' %></li>
             </ul>
           </li>
           <li id="fat-menu" class="dropdown">
@@ -99,7 +58,57 @@
               <li><%= link_to "Lista de Categorias", '/categories' %></li>  
             </ul>
           </li>
+          <%end%>
           <% end %>
+          
+          <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Ventas 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Registrar", new_sale_path %></li>
+              <li class="dropdown-submenu">
+                <%= link_to "Reportes", '#' %>
+                <ul class="dropdown-menu">
+                    <li><a href="/sales/daily_report">Ver Reporte Diario</a></li>
+                    <li><a href="/sales/weekly_report">Ver Reporte Semanal</a></li>
+                    <li><a href="/sales/monthly_report">Ver Reporte Mensual</a></li>
+                    <li><a href="/sales/anual_report">Ver Reporte Anual</a></li>
+                  </ul>
+              </li>
+              <li><%= link_to "Impresiones", '#' %></li>
+              <li><%= link_to "Todas las ventas", sales_path %></li>
+            </ul>
+          </li>
+          <%end%>
+
+          <% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Servicio Tecnico 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Registrar servicio", '/technical_services/new' %></li>
+              <li><%= link_to "Lista de servicios", '/technical_services' %></li>
+            </ul>
+          </li>
+          <%end%>
+
+          <% if current_user.rol == "admin" || current_user.rol == "gerente" %>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Usuarios 
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Crear usuario", '/users/new' %></li>
+              <li><%= link_to "Lista de Usuarios", '/users' %></li>
+            </ul>
+          </li>
+          <%end%>
                    <!--form class="navbar-form navbar-left" role="search">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Buscar" width='10'>
