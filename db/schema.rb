@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409113030) do
+ActiveRecord::Schema.define(version: 20140414034138) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -26,13 +26,25 @@ ActiveRecord::Schema.define(version: 20140409113030) do
   end
 
   create_table "incomes", force: true do |t|
-    t.date     "fecha"
+    t.integer  "cantidad"
     t.integer  "product_id"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "incomes", ["order_id"], name: "index_incomes_on_order_id"
   add_index "incomes", ["product_id"], name: "index_incomes_on_product_id"
+
+  create_table "orders", force: true do |t|
+    t.integer  "cantidad"
+    t.string   "nombre_producto"
+    t.string   "numero_pedido"
+    t.string   "estado"
+    t.string   "provider"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -52,6 +64,12 @@ ActiveRecord::Schema.define(version: 20140409113030) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "providers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sales", force: true do |t|

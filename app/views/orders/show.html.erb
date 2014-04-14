@@ -1,0 +1,30 @@
+<% title @order.numero_pedido %>
+<CENTER><H1><%= @order.numero_pedido %> </H1>
+
+<p>
+    <strong>Fecha</strong><br>
+    <%= @order.created_at %>
+</p>
+
+<p>    
+    <strong>Nombre del producto</strong><br>
+    <%= @order.nombre_producto %>
+</p>
+
+<p>
+    <strong>Cantidad</strong><br>
+    <%= @order.cantidad %>
+</p>
+
+<p>
+    <strong>Proveedor</strong><br>
+    <%= @order.provider %>
+</p>
+
+<p>
+    <strong>Estado del pedido</strong><br>
+    <%= @order.estado %>
+</p>
+<%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
+
+  </CENTER>

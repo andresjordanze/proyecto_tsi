@@ -32,10 +32,6 @@ class ProductsController < ApplicationController
     	return items
   	end
 
-  	def income
-		@product = Product.find(params[:id])
-	end
-
 	private
 	def increase
 		if @product.quantity == 0
@@ -60,6 +56,7 @@ class ProductsController < ApplicationController
 		@product = Product.new(params[:product])
 		@product.quantity = 0
 		@product.home = false
+		@product.description = "          "
 		if @product.save		
 			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
