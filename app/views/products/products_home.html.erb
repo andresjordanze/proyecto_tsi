@@ -1,11 +1,20 @@
 <% title "Todos los productos" %>
 <h1>Todos Los Productos</h1>
 
+<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<div id="hide" style="display:none">
+<br>
+<form method="GET" action="/products/search_to_home">
+Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar">
+</form>
+</div>
 <CENTER>
+  
   <table class="table table-striped">
     <thead>
       <tr>
-        <th><CENTER>Descripcion</CENTER></th>
+        <th><CENTER>Nombre</CENTER></th>
         <th><CENTER>Foto</CENTER></th>
         <th></th>
         <th></th>
@@ -14,7 +23,7 @@
     <% @products.each do |product| %>
       <% if product.home == true %>
         <tr>
-          <td><CENTER><%= product.description %></CENTER></td>
+          <td><CENTER><%= product.name %></CENTER></td>
           <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60></a></CENTER></td>
           <% if current_user %>
           <td><%= link_to 'Ver', :class => 'btn btn-mini', :controller => :products, :action => 'view_product', :id => product.id%></td>
@@ -27,7 +36,9 @@
         </tr>
     <% end %>
   </table>
+  
   <br>
+
 </Center>
 
 <% if current_user %>

@@ -28,6 +28,9 @@ Informaticacomp::Application.routes.draw do
   post 'cancel_sale' => 'sales#cancel_sale'
 
   get 'products/search' => 'products#search'
+
+  get 'products/search_to_home' => 'products#search_to_home'
+
   get 'sales/search' => 'sales#search'
   get 'sales/searchProduct' => 'sales#searchProduct'
 
