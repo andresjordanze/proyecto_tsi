@@ -76,6 +76,8 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(params[:product])
 		@order = Order.find(params[:product][:id_order])
+		@order.estado = "Recibido"
+		@order.save
 		@product.home = false
 		@product.description = "          "
 		@income = Income.new
