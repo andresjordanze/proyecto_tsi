@@ -51,6 +51,15 @@
                   <li><%= link_to "Lista de Categorias", '/categories' %></li>  
                 </ul>
               </li>  
+
+              <li class="dropdown-submenu">
+                <%= link_to "Proveedores", '#' %>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Crear Proveedor", '/providers/new' %></li>
+                  <li><%= link_to "Lista de Proveedores", '/providers' %></li>  
+                </ul>
+              </li> 
+
             </ul>
           </li>
           <%end%>         

@@ -1,15 +1,17 @@
 class ProvidersController < ApplicationController
+
 	def index
     @providers = Provider.all
-  	end
+    @providers = Provider.order(params[:sort])
+  end
 
-  	def show
-    	@provider = Provider.find(params[:id])
+  def show
+  	@provider = Provider.find(params[:id])
 	end
 
   
-  	def new
-    	@provider = Provider.new
+ 	def new
+   	@provider = Provider.new
 	end
 
   
@@ -20,7 +22,7 @@ class ProvidersController < ApplicationController
   	def create
     	@provider = Provider.new(params[:provider])
       if @provider.save
-       	redirect_to @provider, notice: 'Proveedor creado exitosamente.' }
+       	redirect_to @provider, notice: 'Proveedor creado exitosamente.'
       else
         render action: "new" 
       end

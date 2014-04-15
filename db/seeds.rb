@@ -25,7 +25,14 @@
 	secretaria.name = 'Secretaria Secre'
 	secretaria.password = 'secre123'
 	secretaria.rol = 'secre'
-	secretaria.save!		
+	secretaria.save!
+
+	almacenero = User.new
+	almacenero.username = 'almacenero'
+	almacenero.name = 'Alamcenero alma'
+	almacenero.password = 'alma123'
+	almacenero.rol = 'almacenero'
+	almacenero.save!		
 
 	brands = Brand.create([{name: "Toshiba"}, {name: "Dell"}, {name: "Sony"}, {name: "3M"}, {name: "ASUS"}, {name: "Samsung"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
 	categories = Category.create([{name: "Laptops"}, {name: "Maletines"}, {name: "Mochilas"}, {name: "Accesorios"}, {name: "Impresoras"}, {name: "Proyectores"}, {name: "Tablets"}, {name: "Mobiliarios"}])

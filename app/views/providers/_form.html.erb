@@ -1,0 +1,12 @@
+<%= form_validated_for(@provider) do |f| %>
+<CENTER>
+  <p>
+    <%= f.label :name, "Nombre de Proveedor" %>
+    <%= f.text_field :name %>
+    </p>
+  
+  <p>
+    <%= f.submit "Guardar Proveedor", class: "btn btn-large btn-primary" %>
+  </p>
+<% end %>
+</CENTER>

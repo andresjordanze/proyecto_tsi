@@ -1,0 +1,21 @@
+<h1>Todos los Proveedores</h1>
+<h3><%= link_to 'Agregar Proveedor', new_provider_path, :class => 'btn btn-success' %></h3>
+<CENTER>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th><CENTER><%=link_to "Nombre", :sort => "name" %></CENTER></th>
+  </tr>
+</thead>
+<tbody>
+<% @providers.each do |provider| %>
+  <tr>
+    <td><CENTER><%= provider.name %></CENTER></td>
+    <td><%= link_to 'Ver', provider, :class => 'btn btn-mini' %>
+    <%= link_to 'Editar', edit_provider_path(provider), :class => 'btn btn-mini' %>
+    <%= link_to 'Eliminar', provider, method: :delete, data: { confirm: 'Seguro de eliminar el proveedor?' }, :class => 'btn btn-mini btn-danger' %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</CENTER>

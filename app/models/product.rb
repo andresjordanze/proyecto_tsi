@@ -37,7 +37,7 @@ class Product < ActiveRecord::Base
 	
 	#validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
 	validates :sale_price, numericality: {:message => "El precio de venta debe ser numerico"}
-
+	validates :sale_price, numericality: {greater_than: 0, :message => "El precio de venta debe ser mayor a 0" }
 
 	#validates :description, presence: {:message => "Es un campo obligatorio"}
 	#validates :name, length: {minimum: 2, maximum: 20, :message => "La Descripcion debe tener minimo 2 y maximo 20 caracteres"}
@@ -55,9 +55,6 @@ class Product < ActiveRecord::Base
     	self.save
 	end
 
-
-
-
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')
     	parametros.each do |parametro|
@@ -67,7 +64,6 @@ class Product < ActiveRecord::Base
     	end
     	false
   	end
-
 
 	def correspondeApagina(nombre)
     	parametros = nombre.split(' ')
