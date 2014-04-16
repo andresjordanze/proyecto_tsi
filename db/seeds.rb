@@ -31,7 +31,7 @@
 	almacenero.username = 'almacenero'
 	almacenero.name = 'Almacen Alma'
 	almacenero.password = 'almacen123'
-	almacenero.rol = 'almacen'
+	almacenero.rol = 'enc_almacen'
 	almacenero.save!		
 
 	brands = Brand.create([{name: "Toshiba"}, {name: "Dell"}, {name: "Sony"}, {name: "3M"}, {name: "ASUS"}, {name: "Samsung"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
