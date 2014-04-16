@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   #validates_length_of :password, :minimum => 6, :allow_blank => false
 
   def self.authenticate(login, pass)
-    user = find_by_username(login) || find_by_email(login)
+    user = find_by_username(login) #|| find_by_email(login)
     return user if user && user.password_hash == user.encrypt_password(pass)
   end
 
