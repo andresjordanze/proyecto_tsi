@@ -21,7 +21,7 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
         </tr>
     </thead>
     <tbody>
-        <% @products.order("updated_at desc").each do |product| %>
+        <% @products.each do |product| %>
             <tr>
                 <td><CENTER><%= product.name %></CENTER></td>
                 <td><CENTER><%= product.brand %></CENTER></td>
