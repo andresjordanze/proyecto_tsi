@@ -33,13 +33,8 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
   end
 
-<<<<<<< HEAD
-  def update
-    @sale = Sale.find(params[:id])
-=======
-	def update
+def update
 		@sale = Sale.find(params[:id])
->>>>>>> 8b3b2b35484cf51d31cf3a7374722b3445dc5208
     @sale.client_name = Client.where("nit = :nit", {nit: params[:sale][:nit]}).to_a.at(0).name
     if @sale.update_attributes(params[:sale])
       flash[:success] = "Venta Confirmada"
