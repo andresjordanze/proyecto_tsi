@@ -4,16 +4,17 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :prepare_password
   validates :username, presence: {:message => "Usted debe ingresar su nombre de usuario"}
+  validates :username, format: { with: /\A[a-zA-Z]+\z/, message: "No se permite espacios" }
   validates :name, presence: {:message => "Usted debe ingresar su nombre completo"}
-  validates :username, length: {minimum: 4, maximum: 10, :message => "El nombre de usuario debe tener minimo 4 y maximo 10 caracteres"}
+  validates :username, length: {minimum: 4, maximum: 20, :message => "El nombre de usuario debe tener minimo 4 y maximo 20 caracteres"}
   validates :name, length: {minimum: 10, maximum: 45, :message => "El nombre de usuario debe tener minimo 10 y maximo 45 caracteres"}
   #validates_presence_of :username   
   #validates_length_of :username, :minimum => 6, :maximum =>45
-  validates_uniqueness_of :username, :allow_blank => true
+  validates_uniqueness_of :username, :allow_blank => true 
   validates :password, presence: {:message => "Usted debe ingresar una Contraseña"}
   validates :password, length: {minimum: 6, :message => "La Contraseña debe tener minimo 6 y caracteres"}
   #validates_presence_of :password, :on => :create
-  validates_confirmation_of :password
+  validates_confirmation_of :password 
   #validates_length_of :password, :minimum => 6, :allow_blank => false
 
   def self.authenticate(login, pass)
