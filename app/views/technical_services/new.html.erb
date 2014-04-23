@@ -7,13 +7,13 @@
 			<div class="col-xs-3">
 
 			<p><%= f.label :product_code , "Codigo del Producto:" %>
-			<%= f.text_field :product_code %>
+			<%= f.text_field :product_code, :maxlength => '20' %>
 
 			<p><%= f.label :product_name , "Nombre del Producto:" %>
-			<%= f.text_area :product_name %>
+			<%= f.text_area :product_name, :maxlength => '20' %>
 	
 			<p><%= f.label :detail , "Detalle:" %>
-			<%= f.text_area :detail %>
+			<%= f.text_area :detail, :maxlength => '100' %>
 
 			<p><%= f.label :client , "Cliente:" %>
 			<%=f.collection_select(:client, Client.all, :name, :name)%>

@@ -6,13 +6,13 @@
 			<div class="col-xs-3">
 
 			<p><%= f.label :name , "Nombre completo:" %>
-			<%= f.text_field :name %>
+			<%= f.text_field :name, :maxlength => '45' %>
 
 			<p><%= f.label :nit , "NIT:" %>
-			<%= f.text_field :nit %>
+			<%= f.text_field :nit, :maxlength => '12' %>
 
 			<p><%= f.label :phone , "Telefono/Celular:" %>
-			<%= f.text_field :phone %>
+			<%= f.text_field :phone,:maxlength => '8' %>
 	
 			<p><%= f.submit "Registrar", class: "btn btn-large btn-primary" %></p>
 			</div>

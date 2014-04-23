@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
 	attr_accessible :name, :nit, :phone
 	validates :name, presence: {:message => "Usted debe ingresar el nombre del cliente"}	
 	validates :name, uniqueness: {case_sensitive: false, :message => "El cliente ya existe"}
+    validates :name, length: {minimum: 7, maximum: 45, :message => "El Nombre debe tener minimo 7 caracter"}
 	validates :name, format: {:multiline => true, with: /^[a-zA-Z ]+$/, message: "Solo Letras Permitidas" }
     validates :name, format: {with: /\s/, :message => "Debe ingresar nombre y apellido" }
 
