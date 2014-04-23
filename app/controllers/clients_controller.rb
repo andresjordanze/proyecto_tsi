@@ -35,6 +35,7 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
+    flash[:danger] = "Cliente eliminado!"
     redirect_to :controller => :clients, :action => "index"
   end
 

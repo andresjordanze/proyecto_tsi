@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    flash[:danger] = "Usuario eliminado!"
     redirect_to :controller => :users, :action => "index"
   end
 end
