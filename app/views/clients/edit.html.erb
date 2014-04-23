@@ -1,9 +1,8 @@
 <% title "Actualizar datos" %>
 <h1>Actualizar datos</h1>
+<div class="col-xs-3">
 <%= form_validated_for @client do |f| %>
-  <%= f.error_messages %>
-    <div class="col-xs-3">
-      
+
       <p><%= f.label :name, 'Nombre completo:' %>
       <%= f.text_field :name, :readonly => true %>
 
@@ -11,8 +10,8 @@
       <%= f.text_field :nit, :readonly => true %>
 
       <p><%= f.label :phone, 'Telefono/Celular:' %>
-      <%= f.text_field :phone, :class => 'form-control' %>
+      <%= f.text_field :phone, :class => 'form-control', :maxlength => 8 %>
 
       <p><%= f.submit (@client.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>
-    </div>
 <% end %>
+</div>
