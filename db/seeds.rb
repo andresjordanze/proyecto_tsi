@@ -46,7 +46,7 @@
 	client1.save!
 
 	client2 = Client.new
-	client2.name = 'Oscar Gonzales'
+	client2.name = 'Oscar Gonzalez'
 	client2.nit = 2234567
 	client2.phone = 3489101
 	client2.save!
