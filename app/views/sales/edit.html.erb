@@ -3,24 +3,18 @@
 <CENTER>
 <h1>Registrar Datos Venta</h1>
 <br>
-<div class="col-xs-3">
-<%= form_validated_for(@sale) do |f| %>
-	
+<%= form_validated_for (@sale) do |f| %>
+	<div class="col-xs-3">
 		<p>
-			<%= f.label :client_name , "Nombre del Cliente:" %>
-			<%= f.collection_select(:client_name, Client.all, :name, :name)%>
-			<!--%= f.text_field :client_name, :value => "", :maxlength => '20'%-->
+			<%= f.label :nit , "NIT Cliente:" %>
+			<%= f.collection_select(:nit, Client.all, :nit, :nit)%>
 		</p>
+		
 
 		<p>
 			<%= f.label :check_number , "Numero de Factura:" %>
 			<%= f.text_field :check_number, :value => "", :maxlength => '12'%>
-		</p>
-	
-		<p>
-			<%= f.label :nit , "NIT Cliente:" %>
-			<%= f.text_field :nit, :value => "", :maxlength => '13'%>
-		</p>
+		</p>	
 
 		<p>
 			<%= f.submit "Confirmar Venta", class: "btn btn-large btn-primary" %>
@@ -29,3 +23,4 @@
 <%end%>
 </CENTER>
 </div>
+
