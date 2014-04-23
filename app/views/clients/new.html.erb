@@ -1,0 +1,20 @@
+<% title "Registrar Cliente" %>
+
+<h1>Registrar Cliente</h1></br>
+	<%= form_validated_for(@client) do |f| %>
+  		<!--<div class="row">-->
+			<div class="col-xs-3">
+
+			<p><%= f.label :name , "Nombre completo:" %>
+			<%= f.text_field :name %>
+
+			<p><%= f.label :nit , "NIT:" %>
+			<%= f.text_field :nit %>
+
+			<p><%= f.label :phone , "Telefono/Celular:" %>
+			<%= f.text_field :phone %>
+	
+			<p><%= f.submit "Registrar", class: "btn btn-large btn-primary" %></p>
+			</div>
+		<!--</div>-->
+	<%end%>

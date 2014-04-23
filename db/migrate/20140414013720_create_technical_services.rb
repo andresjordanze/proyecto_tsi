@@ -5,6 +5,8 @@ class CreateTechnicalServices < ActiveRecord::Migration
       t.string :client
       t.string :status
       t.string :detail
+      t.string :problems
+      t.string :repairs
       t.string :product_name
 
       t.timestamps

@@ -59,7 +59,7 @@ Informaticacomp::Application.routes.draw do
   resources :brands
   resources :orders
   resources :providers
-  
+  resources :clients
   #resources :sales do
    # resources :subproducts
   #end
