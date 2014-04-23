@@ -35,6 +35,10 @@ class SalesController < ApplicationController
 
 	def update
 		@sale = Sale.find(params[:id])
+    #@client = Client.where("nit = :nit", {nit: params[:nit]}).to_a
+
+    #@permission = Permission.find(:conditions=>["user_id=? and project_id=?", params[:user_id], params[:project_id]])
+    @sale.client_name = Client.where("nit = :nit", {nit: params[:sale][:nit]}).to_a.at(0).name
 		if @sale.update_attributes(params[:sale])
 			flash[:success] = "Venta Confirmada"
 			redirect_to @sale
