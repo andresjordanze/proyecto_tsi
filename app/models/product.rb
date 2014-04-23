@@ -2,13 +2,11 @@
 class Product < ActiveRecord::Base
 	has_many :subproducts, dependent: :destroy
 	has_many :incomes
-    #validates :title, presence: true,
-                    #length: { minimum: 8 }
+    
 	attr_accessible :name, :detail, :description, :increase, :id_order, :quantity, :general_code, :brand, :category, :bought_price, :sale_price, :created_at, :updated_at, :photo
 	belongs_to :sale
 	has_many :brands
 	has_many :categories
-
 
 	has_attached_file :photo
 	validates_attachment_size :photo, :less_than => 5.megabytes
@@ -16,8 +14,6 @@ class Product < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
 	validates :brand, :category, presence: true
-
-#	validates :name, uniqueness: {case_sensitive: false}	
 
 	validates :name, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, uniqueness: {case_sensitive: false}	
@@ -31,11 +27,6 @@ class Product < ActiveRecord::Base
 	validates :general_code, length: {minimum: 2, maximum: 15, :message => "El Codigo general debe tener minimo 2 y maximo 15 caracteres"}
 
 	validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
-
-	#validates :bought_price, presence: {:message => "Es un campo obligatorio"}
-	#validates :bought_price, numericality: {:message => "El precio de compra debe ser numerico"}
-	
-	#validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
 	validates :sale_price, numericality: {:message => "El precio de venta debe ser numerico"}
 	validates :sale_price, numericality: {greater_than: 0, :message => "El precio de venta debe ser mayor a 0" }
 
