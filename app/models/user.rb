@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :password, presence: {:message => "Usted debe ingresar una Contraseña"}
   validates :password, length: {minimum: 6, :message => "La Contraseña debe tener minimo 6 y caracteres"}
   #validates_presence_of :password, :on => :create
-  validates_confirmation_of :password 
+  validates_confirmation_of :password, password_confirmation_of: {:message => "Las contraseñas no coinsiden"} 
   #validates_length_of :password, :minimum => 6, :allow_blank => false
 
   def self.authenticate(login, pass)

@@ -5,13 +5,13 @@
       <%= f.text_field :username, :class => 'form-control', :maxlength => '20' %>
     
       <p><%= f.label :name, 'Nombre completo' %>
-      <%= f.text_field :name, :class => 'form-control',, :maxlength => '45' %>
+      <%= f.text_field :name, :class => 'form-control', :maxlength => '45' %>
       
       <p><%= f.label :password, 'Contraseña'%>
-      <%= f.password_field :password, :class => 'form-control' %>
+      <%= f.password_field :password, :class => 'form-control', :maxlength => '25' %>
       
       <p><%= f.label :password_confirmation, 'Confirme Contraseña' %>
-      <%= f.password_field :password_confirmation, :class => 'form-control' %>
+      <%= f.password_field :password_confirmation, :class => 'form-control', :maxlength => '25' %>
 
       <p><%= f.label :rol %>
         <%= f.select :rol, options_for_select([[ 'Tecnico', 'tecnico' ], ['Encargado almacen', 'enc_almacen']]) %>
