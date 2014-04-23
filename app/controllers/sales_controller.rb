@@ -17,8 +17,13 @@ class SalesController < ApplicationController
 		@sale = Sale.new(params[:sale])
 		@sale.price = 0
 		@sale.confirmed = false
-		@sale.save		
-		redirect_to @sale
+    if @sale.save   
+      flash[:message] = "Venta Creada!"
+      redirect_to @sale
+    else
+      flash[:message] = "Verifique los Campos Marcados"
+      render :action => 'new'
+    end
 	end
 
 	def edit
