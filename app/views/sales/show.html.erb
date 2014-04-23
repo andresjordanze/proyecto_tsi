@@ -1,24 +1,37 @@
 <% title @sale.client_name %>
 <div class="hero-unit">
+<%if @sale.client_name != "Harry"%>
 <CENTER><H1><%= @sale.client_name %> </H1>
+<%else%>
+<CENTER><H1>Venta</H1>
+<%end%>
 <br>
 <p>
-    Numero de Factura:<br>
-    <%= @sale.check_number %>
+    <b>Numero de Factura:</b><br>
+    <%if @sale.check_number != 1111%>
+        <%= @sale.check_number %>
+    <%else%>
+        Aun No registrado
+    <%end%>
 </p>
 
 <p>
-    Nit del Cliente:<br>
-    <%= @sale.nit%>
+    <b>Nit del Cliente:</b><br>
+    <%if @sale.nit != 1111%>
+        <%= @sale.nit%>
+    <%else%>
+        Aun No registrado
+    <%end%>
+    
 </p>
 
 <p>
-    Fecha de venta:<br>
+    <b>Fecha de venta:</b><br>
     <%= @sale.created_at %>
 </p>
 
 <p>    
-    Total Venta:<br>
+    <b>Total Venta:<b><br>
     <%= @sale.price %>
 </p>
 

@@ -14,9 +14,12 @@ class SalesController < ApplicationController
 	end
 
 	def create
-		@sale = Sale.new(params[:sale])
-		@sale.price = 0
-		@sale.confirmed = false
+		@sale = Sale.new
+		@sale.price =  params[:price]
+		@sale.confirmed =  params[:confirmed]
+    @sale.check_number =  params[:check_number]
+    @sale.client_name =  params[:client_name]
+    @sale.nit =  params[:nit]
     if @sale.save   
       flash[:message] = "Venta Creada!"
       redirect_to @sale
