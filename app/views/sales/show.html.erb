@@ -100,7 +100,7 @@
         </div>
     </p>
     <%if @sale.price !=0 %>
-        <%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br>
+        <h3><%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br><br></h3>
     <%end%>
     <%= link_to 'Cancelar venta', sale_path(@sale), method: :delete, data: { confirm: 'Seguro de Cancelar la venta?' }, :class => 'btn btn-large btn-danger' %><br>
 <%end%>
