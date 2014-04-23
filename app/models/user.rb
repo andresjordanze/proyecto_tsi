@@ -11,11 +11,13 @@ class User < ActiveRecord::Base
   validates :name, length: {minimum: 10, maximum: 45, :message => "El nombre de usuario debe tener minimo 10 y maximo 45 caracteres"}
   #validates_presence_of :username   
   #validates_length_of :username, :minimum => 6, :maximum =>45
-  validates_uniqueness_of :username, :allow_blank => true 
+ # validates_uniqueness_of :username, :allow_blank => true 
+
+  validates :username, uniqueness: {:message => "El nombre de usuario ya existe"}  
   validates :password, presence: {:message => "Usted debe ingresar una Contraseña"}
   validates :password, length: {minimum: 6, :message => "La Contraseña debe tener minimo 6 y caracteres"}
   #validates_presence_of :password, :on => :create
-  validates_confirmation_of :password, password_confirmation_of: {:message => "Las contraseñas no coinsiden"} 
+  validates :password, confirmation: {:message => "Las contraseñas no coinciden"} 
   #validates_length_of :password, :minimum => 6, :allow_blank => false
 
   def self.authenticate(login, pass)
