@@ -5,8 +5,7 @@ class Sale < ActiveRecord::Base
 	#VALID_NAME_REGEX = /^[a-zA-Z0-9-.]+$/
 	
 	validates :client_name, presence: {:message => "Nombre de cliente no puede estar vacio"}	
-	validates :client_name, format: { with: /\A[a-zA-Z\d\s]+\z/,
-    message: "Solo Letras Permitidas" }
+	validates :client_name, format: { with: /\A[a-zA-Z\d\s]+\z/, message: "Solo Letras Permitidas" }
     validates :client_name, length: {minimum: 3, maximum: 20, :message => "El Nombre del cliente debe tener minimo 3 caracteres"}
 
     validates :nit, presence: {:message => "Usted debe ingresar el NIT"}
