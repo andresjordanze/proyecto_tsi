@@ -2,6 +2,7 @@
 <div class="hero-unit">
 <h1>Lista de Ventas</h1>
 <%= link_to 'Nueva Venta', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111', :client_name => "Harry"},:class => 'btn btn-success', :method => "post" %><br><br>
+
 <%= link_to_function "Buscar Por Cliente", "$('#cliente').toggle()", :class => "btn btn-info" %>
 <div id="cliente" style="display:none">
 <br>
@@ -11,7 +12,6 @@ Cliente: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
 </form>
 </div><br><br>
 
-
 <%= link_to_function "Buscar por Nombre de Producto", "$('#producto').toggle()", :class => "btn btn-info"  %><br>
 <div id="producto" style="display:none">
 <br>
@@ -20,6 +20,16 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
 <input type="submit" value="Buscar", class="btn btn-default">
 </form>
 </div><br>
+
+<%= link_to_function "Buscar Por Fecha", "$('#fecha').toggle()", :class => "btn btn-info" %>
+<div id="fecha" style="display:none">
+<br>
+<form method="GET" action="/sales/searchDate">
+Fecha: <input type="date" name="date"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar", class="btn btn-default">
+</form>
+</div><br><br>
+
 
 <CENTER>
 
@@ -59,7 +69,7 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
                 <%if sale.confirmed == true %>
                     <td><CENTER>Confirmada</CENTER></td>
                     <%else%>
-                    <td><CENTER>Por Confirmar</CENTER></td>
+                    <td><CENTER>Reservado</CENTER></td>
                     <%end%>
                 <td><%= link_to 'Ver', sale, :class => 'btn btn-mini'  %></td>
                 <!--td--><!--%= link_to 'Editar', edit_sale_path(sale), :class => 'btn btn-mini'  %></td-->

@@ -35,6 +35,7 @@ Informaticacomp::Application.routes.draw do
 
   get 'sales/search' => 'sales#search'
   get 'sales/searchProduct' => 'sales#searchProduct'
+  get 'sales/searchDate' => 'sales#searchDate'
 
   get 'sales/daily_report' => 'sales#daily_report'
   get 'sales/weekly_report' => 'sales#weekly_report'

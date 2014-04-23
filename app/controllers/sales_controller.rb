@@ -110,7 +110,7 @@ class SalesController < ApplicationController
 
   	def searchProduct
   		@sales = buscarProd(params[:producto])
-		render 'index'
+		  render 'index'
   	end
 
   	def buscarProd(nombre)
@@ -127,6 +127,12 @@ class SalesController < ApplicationController
     	end
     	return items
   	end
+
+    def searchDate
+      selected_date = Date.parse(params[:date])
+      @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day)
+      render 'index'
+    end
 
   	def daily_report
   		@sales = filter_by_date(Time.now)
