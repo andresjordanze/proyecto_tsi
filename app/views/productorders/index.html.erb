@@ -1,0 +1,21 @@
+<h1>Todos los Nombres de Productos</h1>
+<h3><%= link_to 'Agregar Nombre de Producto', new_productorder_path, :class => 'btn btn-success' %></h3>
+<CENTER>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th><CENTER><%=link_to "Nombre", :sort => "name" %></CENTER></th>
+  </tr>
+</thead>
+<tbody>
+<% @productorders.each do |productorder| %>
+  <tr>
+    <td><CENTER><%= productorder.name %></CENTER></td>
+    <td><%= link_to 'Ver', productorder, :class => 'btn btn-mini' %>
+    <%= link_to 'Editar', edit_productorder_path(productorder), :class => 'btn btn-mini' %>
+    <%= link_to 'Eliminar', productorder, method: :delete, data: { confirm: 'Seguro de eliminar el nombre de producto?' }, :class => 'btn btn-mini btn-danger' %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</CENTER>

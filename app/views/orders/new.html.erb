@@ -9,7 +9,7 @@
 			<%= f.text_field :numero_pedido %>
 
 			<p><%= f.label :nombre_producto , "Nombre del producto:" %>
-			<%= f.text_field :nombre_producto %>
+			<%=f.collection_select(:nombre_producto, Productorder.all, :name, :name)%>
 	
 			<p><%= f.label :cantidad , "Cantidad:" %>
 			<%= f.text_field :cantidad %>

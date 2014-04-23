@@ -37,8 +37,24 @@ Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
     <tbody>
         <% @sales.each do |sale| %>
             <tr>
-                <td><CENTER><%= sale.client_name %></CENTER></td>
-                <td><CENTER><%= sale.check_number%></CENTER></td>
+                <td>
+                    <CENTER>
+                        <%if sale.client_name != "Harry"%>
+                            <%= sale.client_name %>
+                        <%else%>
+                            No Registrado
+                        <% end %>
+                    </CENTER>
+                </td>
+                <td>
+                    <CENTER>
+                        <%if sale.check_number != 1111%>
+                            <%= sale.check_number%>
+                        <%else%>
+                            No Registrado
+                        <%end%>
+                    </CENTER>
+                </td>
                 <td><CENTER><%= sale.price %></CENTER></td>
                 <%if sale.confirmed == true %>
                     <td><CENTER>Confirmada</CENTER></td>

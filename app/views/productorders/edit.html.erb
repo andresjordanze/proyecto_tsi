@@ -1,0 +1,8 @@
+<% title "Editar Nombre de Producto" %>
+
+<h1><%= @productorder.name%></h1>
+<center>
+<%= render 'form' %>
+<br>
+<%= button_to 'Volver', productorders_path, :method => :get, class: "btn btn-primary"  %>
+</center>

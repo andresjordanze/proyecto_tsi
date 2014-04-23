@@ -1,24 +1,37 @@
 <% title @sale.client_name %>
 <div class="hero-unit">
+<%if @sale.client_name != "Harry"%>
 <CENTER><H1><%= @sale.client_name %> </H1>
+<%else%>
+<CENTER><H1>Venta</H1>
+<%end%>
 <br>
 <p>
-    Numero de Factura:<br>
-    <%= @sale.check_number %>
+    <b>Numero de Factura:</b><br>
+    <%if @sale.check_number != 1111%>
+        <%= @sale.check_number %>
+    <%else%>
+        Aun No registrado
+    <%end%>
 </p>
 
 <p>
-    Nit del Cliente:<br>
-    <%= @sale.nit%>
+    <b>Nit del Cliente:</b><br>
+    <%if @sale.nit != 1111%>
+        <%= @sale.nit%>
+    <%else%>
+        Aun No registrado
+    <%end%>
+    
 </p>
 
 <p>
-    Fecha de venta:<br>
+    <b>Fecha de venta:</b><br>
     <%= @sale.created_at %>
 </p>
 
 <p>    
-    Total Venta:<br>
+    <b>Total Venta:<b><br>
     <%= @sale.price %>
 </p>
 
@@ -52,43 +65,42 @@
 </p>
 
 <% if @sale.confirmed == false %>
-<p>
-    <h2><Center><%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %></Center></h2>
-    <div id="subproduct" style="display:none">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th><Center>Nombre</Center></th>
-                    <th><Center>Codigo del SubProducto</Center></th>
-                    <th><Center>Marca</Center></th>
-                    <th><Center>Categoria</Center></th>
-                    <th><Center>Precio De Venta</Center></th>        
-                </tr>
-            </thead>
-            <tbody>
-                <% @subproducts.each do |subproduct| %>
+    <p>
+        <h2><Center><%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %></Center></h2>
+        <div id="subproduct" style="display:none">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <%if subproduct.available == true || subproduct.available == "NULL"%>
-                        <td><CENTER><%= subproduct.product.name %></CENTER></td>
-                        <td><CENTER><%= subproduct.code %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.brand %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.category %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
-                        
-                        <td><%= link_to 'Agregar a Venta', :controller => :subproducts, :action => 'agregar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
-                        <% end %>
+                        <th><Center>Nombre</Center></th>
+                        <th><Center>Codigo del SubProducto</Center></th>
+                        <th><Center>Marca</Center></th>
+                        <th><Center>Categoria</Center></th>
+                        <th><Center>Precio De Venta</Center></th>        
                     </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </div>
-</p>
-<%if @sale.price !=0 %>
-<%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br>
+                </thead>
+                <tbody>
+                    <% @subproducts.each do |subproduct| %>
+                        <tr>
+                            <%if subproduct.available == true || subproduct.available == "NULL"%>
+                                <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                                <td><CENTER><%= subproduct.code %></CENTER></td>
+                                <td><CENTER><%= subproduct.product.brand %></CENTER></td>
+                                <td><CENTER><%= subproduct.product.category %></CENTER></td>
+                                <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>            
+                                <td><%= link_to 'Agregar a Venta', :controller => :subproducts, :action => 'agregar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
+                            <% end %>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </p>
+    <%if @sale.price !=0 %>
+        <%= link_to 'Confirmar Venta', :controller => :sales, :action => 'confirm_sale', :identificator => @sale.id%><br>
+    <%end%>
+    <%= link_to 'Cancelar Venta', :controller => :sales, :action => 'cancel_sale', :deletor => @sale.id%><br>
 <%end%>
-
-<%= link_to 'Cancelar Venta', :controller => :sales, :action => 'cancel_sale', :deletor => @sale.id%><br>
-<%end%><br> 
+<br> 
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>
