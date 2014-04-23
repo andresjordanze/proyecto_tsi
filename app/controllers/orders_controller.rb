@@ -12,12 +12,30 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.new(params[:order])
-		@order.estado = "pendiente"
-		if @order.save		
-			redirect_to @order, notice: 'Pedido registrado.' 
+		if Order.all != []
+			@orders = Order.all
+			@orders.each do |order|
+				if order.numero_pedido == params[:order][:numero_pedido] && order.nombre_producto == params[:order][:nombre_producto]
+					order.cantidad += params[:order][:cantidad].to_i
+					@order = order
+				else
+					@order = Order.new(params[:order])
+					@order.estado = "pendiente"
+				end	
+			end
+			if @order.save		
+				redirect_to @order, notice: 'Pedido registrado.' 
+			else
+				render action: 'new'
+			end
 		else
-			render action: 'new'
+			@order = Order.new(params[:order])
+			@order.estado = "pendiente"
+			if @order.save		
+				redirect_to @order, notice: 'Pedido registrado.' 
+			else
+				render action: 'new'
+			end
 		end
 	end
 

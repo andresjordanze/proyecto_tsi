@@ -21,7 +21,7 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
         </tr>
     </thead>
     <tbody>
-        <% @products.each do |product| %>
+        <% @products.order("updated_at desc").each do |product| %>
             <tr>
                 <td><CENTER><%= product.name %></CENTER></td>
                 <td><CENTER><%= product.brand %></CENTER></td>
@@ -30,7 +30,9 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
                 <td><%= link_to 'Ver', product, :class => 'btn btn-mini'  %></td>
                 <% if current_user.rol == "enc_almacen" %>
                 <td><%= link_to 'Editar', edit_product_path(product), :class => 'btn btn-mini'  %></td>
+                <%if product.quantity == 0%>
                 <td><%= link_to 'Eliminar', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+                <%end%>    
                 <%end%>    
                 <%if product.home == true%>
                     <td><%= button_to 'Eliminar de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id %></td>

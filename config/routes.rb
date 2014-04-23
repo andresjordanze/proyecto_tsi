@@ -9,6 +9,8 @@ Informaticacomp::Application.routes.draw do
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
 
+  get 'registrar_ingreso' => 'products#registrar_ingreso'
+
   get 'income' => 'products#income'
   post 'income' => 'products#income'
 

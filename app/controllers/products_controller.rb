@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-		increase
 	end
 
 	def new
@@ -51,6 +50,35 @@ class ProductsController < ApplicationController
       		items = aux
     	end
     	return items
+  	end
+
+  	def registrar_ingreso
+  		@products = Product.all
+  		@order = Order.find(params[:id])
+  		control = false
+
+  		if @products != []
+	  		@products.each do |producto|
+	  			if producto.name == @order.nombre_producto
+	  				producto.quantity += @order.cantidad
+	  				producto.save
+	  				@product = producto
+	  				@order.estado = 'Recibido'
+	  				@order.save
+	  				control = true
+	  			else
+	  				@product = Product.new
+	  			end
+	  		end
+	  		if control == false
+	  			render "new"
+	  		else
+	  			redirect_to @product, notice: 'Ingreso registrado!'	  		
+	  		end
+	  	else
+	  		@product = Product.new
+	  		render 'new'
+	  	end
   	end
 
 
