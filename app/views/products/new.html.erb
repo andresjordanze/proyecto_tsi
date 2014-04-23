@@ -8,28 +8,28 @@
 			<div class="col-xs-3">
 
 			<p><%= f.label :name , "Nombre:" %>
-			<%= f.text_field :name, :value => @order.nombre_producto, :readonly => true %>
+			<%= f.text_field :name, :value => @order.nombre_producto, :readonly => true %></p>
 
 			<p><%= f.label :detail , "Detalle:" %>
-			<%= f.text_area :detail %>
+			<%= f.text_area :detail %></p>
 
 			<p><%= f.label :general_code , "Codigo General del Producto:" %>
-			<%= f.text_field :general_code %>
+			<%= f.text_field :general_code %></p>
 
  			<p><%=f.label :category, "Categoria" %>
-    		<%=f.collection_select(:category, Category.all, :name, :name)%>
+    		<%=f.collection_select(:category, Category.all, :name, :name)%></p>
 
     		<p><%=f.label :brand, "Marca" %>
-    		<%=f.collection_select(:brand, Brand.all, :name, :name)%>
+    		<%=f.collection_select(:brand, Brand.all, :name, :name)%></p>
 
 			<p><%= f.label :sale_price , "Precio De Venta:" %>
-			<%= f.text_field :sale_price %>
+			<%= f.text_field :sale_price %></p>
 
 			<p><%= f.label :quantity , "Cantidad:" %>
-			<%= f.text_field :quantity, :value => @order.cantidad, :readonly => true %>
+			<%= f.text_field :quantity, :value => @order.cantidad, :readonly => true %></p>
 
 			<p><%= f.label :id_order, "Numero de pedido:" %>
-			<%= f.text_field :id_order, :value => @order.id, :readonly => true %>
+			<%= f.text_field :id_order, :value => @order.id, :readonly => true %></p>
 	
 			<p><%= f.submit "Crear Producto", class: "btn btn-large btn-primary" %></p>
 			</div>

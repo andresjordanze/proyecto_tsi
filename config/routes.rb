@@ -47,6 +47,7 @@ Informaticacomp::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
 
+
   resources :products do    
     resources :subproducts
   end

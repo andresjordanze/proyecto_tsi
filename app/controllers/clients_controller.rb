@@ -37,4 +37,5 @@ class ClientsController < ApplicationController
     @client.destroy
     redirect_to :controller => :clients, :action => "index"
   end
+
 end
