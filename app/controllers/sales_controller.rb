@@ -36,7 +36,7 @@ class SalesController < ApplicationController
 	def update
 		@sale = Sale.find(params[:id])
 		if @sale.update_attributes(params[:sale])
-			flash[:success] = "Venta Actualizada"
+			flash[:success] = "Venta Confirmada"
 			redirect_to @sale
 		else
 			render 'edit'
@@ -54,6 +54,7 @@ class SalesController < ApplicationController
 			end
 		end
 		@sale.destroy
+    flash[:notice] = "Venta Cancelada"
 		redirect_to sales_url
 	end
 
@@ -61,12 +62,12 @@ class SalesController < ApplicationController
 		@sale = Sale.find(params[:identificator])
 		@sale.confirmed = true
 		@sale.save
-		flash[:success] = "Venta Confirmada..."
-		redirect_to @sale
+    render 'edit'
+		flash[:success] = "Venta Realizada..."
 	end
 
 	def cancel_sale
-		@sale = Sale.find(params[:deletor])
+		@sale = Sale.find(params[:id])
 		@subproducts = Subproduct.all
     @subproducts.each do |subproducto|
       if subproducto.sale_id == @sale.id
@@ -75,7 +76,9 @@ class SalesController < ApplicationController
         subproducto.save
       end
     end
-		destroyer	
+		@sale.destroy
+    flash[:notice] = "Venta Cancelada"
+    redirect_to sales_url
 	end
 
 	def destroyer

@@ -1,0 +1,29 @@
+<% title "Confirmar Venta" %>
+<div class="hero-unit">
+<CENTER>
+<h1>Registrar Datos Venta</h1>
+<br>
+<%= form_validated_for (@sale) do |f| %>
+	<div class="col-xs-3">
+		<p>
+			<%= f.label :client_name , "Nombre del Cliente:" %>
+			<%= f.text_field :client_name, :value => "" %>
+		</p>
+
+		<p>
+			<%= f.label :check_number , "Numero de Factura:" %>
+			<%= f.text_field :check_number, :value => "" %>
+		</p>
+	
+		<p>
+			<%= f.label :nit , "NIT Cliente:" %>
+			<%= f.text_field :nit, :value => "" %>
+		</p>
+
+		<p>
+			<%= f.submit "Confirmar Venta", class: "btn btn-large btn-primary" %>
+		</p>
+	</div>	
+<%end%>
+</CENTER>
+</div>
