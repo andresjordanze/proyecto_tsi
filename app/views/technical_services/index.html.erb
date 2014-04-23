@@ -24,7 +24,9 @@
     <td><%= technical_service.status %></td>
     <td><%= technical_service.created_at.strftime("%d/%m/%Y") %></td>
     <td><%= link_to 'Ver Servicio', :controller => :technical_services, :action => 'show', :id => technical_service.id %></td>
+    <%if technical_service.status == "En reparacion" || technical_service.status == "Recibido"%>
     <td><%= link_to 'Añadir problemas/reparaciones', :controller => :technical_services, :action => 'edit', :id => technical_service.id %></td>
+    <%end%>
   </tr>
 <% end %>
 </table>
