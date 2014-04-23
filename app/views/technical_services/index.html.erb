@@ -22,9 +22,9 @@
     <td><%= technical_service.product_name %></td>
     <td><%= technical_service.product_code %></td>
     <td><%= technical_service.status %></td>
-    <td><%= technical_service.created_at %></td>
+    <td><%= technical_service.created_at.strftime("%d/%m/%Y") %></td>
     <td><%= link_to 'Ver Servicio', :controller => :technical_services, :action => 'show', :id => technical_service.id %></td>
-    <td><%= link_to 'Modificar Servicio', :controller => :technical_services, :action => 'edit', :id => technical_service.id %></td>
+    <td><%= link_to 'Añadir problemas/reparaciones', :controller => :technical_services, :action => 'edit', :id => technical_service.id %></td>
   </tr>
 <% end %>
 </table>

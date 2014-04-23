@@ -16,7 +16,7 @@
 			<%= f.text_area :detail %>
 
 			<p><%= f.label :client , "Cliente:" %>
-			<%= f.text_area :client %>
+			<%=f.collection_select(:client, Client.all, :name, :name)%>
 	
 			<p><%= f.submit "Registrar servicio", class: "btn btn-large btn-primary" %></p>
 			</div>

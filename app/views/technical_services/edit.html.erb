@@ -1,20 +1,26 @@
-<% title "Modificar Servicio" %>
+<% title "Añadir problemas/reparaciones" %>
 <div class="hero-unit">
 
-<h1>Modificar Servicio</h1></br>
+<h1>Añadir problemas/reparaciones</h1></br>
 	<h3 class="text-info" align="right">Nº: <%= @technical_service.id %></h3>
 	<h3 class="text-info"><%= @technical_service.product_name %></h3>
 	<%= form_validated_for(@technical_service) do |f| %>
   		<!--<div class="row">-->
 			<div class="col-xs-3">
-	
+
 			<p><%= f.label :detail , "Detalle:" %>
-			<%= f.text_area :detail %>
+			<%= f.text_area :detail, :readonly => true %>
+	
+			<p><%= f.label :problems , "Problemas:" %>
+			<%= f.text_area :problems %>
+
+			<p><%= f.label :repairs , "Reparaciones:" %>
+			<%= f.text_area :repairs %>
 
 			<p><%= f.label :status, "Estado:" %>
         	<%= f.select :status, options_for_select([['En reparacion', 'En reparacion'], ['Finalizado', 'Finalizado']]) %>
 	
-			<p><%= f.submit "Modificar", class: "btn btn-large btn-primary" %></p>
+			<p><%= f.submit "Guardar", class: "btn btn-large btn-primary" %></p>
 			</div>
 		<!--</div>-->
 	<%end%>

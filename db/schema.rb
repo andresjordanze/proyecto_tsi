@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20140423044615) do
     t.datetime "updated_at"
   end
 
+  create_table "clients", force: true do |t|
+    t.string   "name"
+    t.integer  "nit"
+    t.integer  "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "incomes", force: true do |t|
     t.integer  "id_order"
     t.string   "product_name"
@@ -103,6 +111,8 @@ ActiveRecord::Schema.define(version: 20140423044615) do
     t.string   "client"
     t.string   "status"
     t.string   "detail"
+    t.string   "problems"
+    t.string   "repairs"
     t.string   "product_name"
     t.datetime "created_at"
     t.datetime "updated_at"

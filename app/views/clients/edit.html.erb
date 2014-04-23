@@ -1,0 +1,18 @@
+<% title "Actualizar datos" %>
+<h1>Actualizar datos</h1>
+<%= form_validated_for @client do |f| %>
+  <%= f.error_messages %>
+    <div class="col-xs-3">
+      
+      <p><%= f.label :name, 'Nombre completo:' %>
+      <%= f.text_field :name, :readonly => true %>
+
+      <p><%= f.label :nit, 'NIT:' %>
+      <%= f.text_field :nit, :readonly => true %>
+
+      <p><%= f.label :phone, 'Telefono/Celular:' %>
+      <%= f.text_field :phone, :class => 'form-control' %>
+
+      <p><%= f.submit (@client.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>
+    </div>
+<% end %>
