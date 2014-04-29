@@ -26,7 +26,7 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
         <% @orders.each do |order| %>
             <tr>
                 <td><CENTER><%= order.numero_pedido %></CENTER></td>
-                <td><CENTER><%= order.created_at %></CENTER></td>
+                <td><CENTER><%= order.created_at.strftime("%d/%m/%Y") %></CENTER></td>
                 <td><CENTER><%= order.nombre_producto %></CENTER></td>
                 <td><%= link_to 'Ver', order, :class => 'btn btn-mini'  %></td>
                 <% if order.estado == "pendiente" %>

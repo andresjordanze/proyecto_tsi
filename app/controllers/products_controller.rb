@@ -64,6 +64,7 @@ class ProductsController < ApplicationController
 	  				producto.save
 	  				@product = producto
 	  				@order.estado = 'Recibido'
+	  				@order.ingresado = true
 	  				@order.save
 	  				control = true
 	  			else
@@ -105,6 +106,7 @@ class ProductsController < ApplicationController
 		@product = Product.new(params[:product])
 		@order = Order.find(params[:product][:id_order])
 		@order.estado = "Recibido"
+		@order.ingresado = true
 		@order.save
 		@product.home = false
 		@product.description = "          "
