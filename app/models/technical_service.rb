@@ -18,4 +18,15 @@ class TechnicalService < ActiveRecord::Base
 
 	validates :product_code, presence: {:message => "Es un campo obligatorio"}
 	validates :product_code, length: {minimum: 5, maximum: 20, :message => "El Detalle debe tener minimo 5 y maximo 20 caracteres"}
+
+	def correspondeACliente(nombre)
+		texto = self.client.split
+		texto.each do |palabra|
+			if palabra.downcase.include?(nombre.downcase)
+				return true
+			end
+		end
+		false
+	end
+
 end

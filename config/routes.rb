@@ -48,6 +48,9 @@ Informaticacomp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
 
 
+  get 'technical_services/search' => 'technical_services#search'
+  get 'technical_services/searchNumber' => 'technical_services#searchNumber'
+
   resources :products do    
     resources :subproducts
   end

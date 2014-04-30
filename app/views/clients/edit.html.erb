@@ -1,13 +1,13 @@
-<% title "Actualizar datos" %>
-<h1>Actualizar datos</h1>
+<% title "Editar" %>
+<h1>Editar</h1>
 <div class="col-xs-3">
 <%= form_validated_for @client do |f| %>
 
       <p><%= f.label :name, 'Nombre completo:' %>
-      <%= f.text_field :name, :readonly => true %>
+      <%= f.text_field :name %>
 
       <p><%= f.label :nit, 'NIT:' %>
-      <%= f.text_field :nit, :readonly => true %>
+      <%= f.text_field :nit%>
 
       <p><%= f.label :phone, 'Telefono/Celular:' %>
       <%= f.text_field :phone, :class => 'form-control', :maxlength => 8 %>
