@@ -15,22 +15,28 @@ class OrdersController < ApplicationController
 		if Order.all != []
 			@orders = Order.all
 			@orders.each do |order|
-				if order.numero_pedido == params[:order][:numero_pedido] && order.nombre_producto == params[:order][:nombre_producto]
-					order.cantidad += params[:order][:cantidad].to_i
+				if order.numero_pedido == params[:order][:numero_pedido] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == true
 					@order = order
 				else
-					@order = Order.new(params[:order])
-					@order.estado = "pendiente"
-				end	
+					if order.numero_pedido == params[:order][:numero_pedido] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == false
+						order.cantidad += params[:order][:cantidad].to_i
+						@order = order
+					else
+						@order = Order.new(params[:order])
+						@order.estado = "pendiente"
+						@order.ingresado = false
+					end
+				end
 			end
-			if @order.save		
+			if @order.save	&& @order.ingresado == false
 				redirect_to @order, notice: 'Pedido registrado.' 
 			else
-				render action: 'new'
-			end
+				redirect_to @order, notice: 'Opcion invalida, este pedido ya fue ingresado!' 
+			end			
 		else
 			@order = Order.new(params[:order])
 			@order.estado = "pendiente"
+			@order.ingresado = false
 			if @order.save		
 				redirect_to @order, notice: 'Pedido registrado.' 
 			else
@@ -38,6 +44,7 @@ class OrdersController < ApplicationController
 			end
 		end
 	end
+
 
 	def search
 		@orders = buscar(params[:provider])

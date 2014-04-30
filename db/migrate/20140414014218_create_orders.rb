@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration
     	t.string :numero_pedido
     	t.string :estado
     	t.string :provider
+      t.boolean :ingresado
 
       t.timestamps
     end
