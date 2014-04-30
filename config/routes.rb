@@ -37,10 +37,11 @@ Informaticacomp::Application.routes.draw do
   get 'sales/searchProduct' => 'sales#searchProduct'
   get 'sales/searchDate' => 'sales#searchDate'
 
-  get 'sales/daily_report' => 'sales#daily_report'
-  get 'sales/weekly_report' => 'sales#weekly_report'
-  get 'sales/monthly_report' => 'sales#monthly_report'
-  get 'sales/anual_report' => 'sales#anual_report'
+  get 'sales/search_between_dates' => 'sales#search_between_dates'
+  get 'sales/report_search' => 'sales#report_search'
+  #get 'sales/weekly_report' => 'sales#weekly_report'
+  #get 'sales/monthly_report' => 'sales#monthly_report'
+  #get 'sales/anual_report' => 'sales#anual_report'
 
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'

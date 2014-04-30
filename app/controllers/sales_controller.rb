@@ -129,10 +129,26 @@ def update
       return items
     end
 
+    def report
+      @sales = filter_by_date(Date.today)
+      @total = obtain_total(@sales)
+    end
+
     def searchDate
       selected_date = Date.parse(params[:date])
       @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day)
       render 'index'
+    end
+
+    def report_search
+    end
+
+    def search_between_dates
+      initial_date = Date.parse(params[:initial_date])
+      ending_date = Date.parse(params[:ending_date])
+      @sales = Sale.where(:created_at => initial_date.beginning_of_day..ending_date.end_of_day)
+      @total = obtain_total(@sales)
+      render 'report'
     end
 
     def daily_report
