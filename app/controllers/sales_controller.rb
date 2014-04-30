@@ -129,10 +129,28 @@ def update
       return items
     end
 
+    def report
+      @sales = filter_by_date(Date.today)
+      @total = obtain_total(@sales)
+    end
+
     def searchDate
       selected_date = Date.parse(params[:date])
       @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day)
       render 'index'
+    end
+
+    def report_search
+    end
+
+    def search_between_dates
+      initial_date = Date.parse(params[:initial_date])
+      ending_date = Date.parse(params[:ending_date])
+      #@sales = filter_between_dates(initial_date, ending_date)
+      @sales = Sale.where(:created_at => initial_date.beginning_of_day..ending_date.end_of_day)
+      #Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+      @total = obtain_total(@sales)
+      render 'report'
     end
 
     def daily_report
@@ -184,6 +202,14 @@ def update
       items = Array.new
       aux = Sale.all
       items = aux.where(["created_at >= ? AND created_at <= ?", date.beginning_of_day, date.end_of_day])
+      return items
+    end
+
+    def filter_between_dates(date1, date2)
+      items = Array.new
+      aux = Sale.all
+      item = aux.where(:created_at => date1.beginning_of_day..date2.end_of_day)#["created_at >= ? OR created_at <= ?", date1.beginning_of_day, date2.end_of_day])
+      #Comment.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
       return items
     end
 
