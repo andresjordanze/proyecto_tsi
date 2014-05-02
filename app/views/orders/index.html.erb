@@ -31,6 +31,7 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
                 <td><%= link_to 'Ver', order, :class => 'btn btn-mini'  %></td>
                 <% if order.estado == "pendiente" %>
                 <td><%= link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+                <td><%= link_to 'Editar', :controller => :orders, :action => "edit", :id => order.id %></td>
                 <% end %> 
                 <% if order.estado == "pendiente" %>
                 <td><%= link_to 'Registrar ingreso', :controller => :products, :action => "registrar_ingreso", :id => order.id %></td>

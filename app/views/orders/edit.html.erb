@@ -1,0 +1,29 @@
+<% title "Editar Orden" %>
+<CENTER>
+<h1>Editar Orden</h1>
+
+<div class="row">
+	<div class="col-xs-3">
+	<%= form_validated_for(@order) do |f| %>
+  			
+  		<div class="field">
+			<p><%= f.label :numero_pedido , "Numero de pedido:" %>
+			<%= f.text_field :numero_pedido, :maxlength => '20'%>
+		</div>
+	
+			<p><%= f.label :nombre_producto , "Nombre del producto:" %>
+			<%=f.collection_select(:nombre_producto, Productorder.all, :name, :name)%>
+
+			<p><%= f.label :cantidad , "Cantidad:" %>
+			<%= f.text_field :cantidad %>
+
+			<p><%=f.label :provider, "Proveedor" %>
+    		<%=f.collection_select(:provider, Provider.all, :name, :name)%>
+
+			<p><%= f.submit "Registrar Pedido", class: "btn btn-large btn-primary" %></p>
+			</div>
+		<!--</div>-->
+		<%end%>
+	</div>
+</div>
+</CENTER>
