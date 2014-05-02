@@ -28,6 +28,7 @@ Informaticacomp::Application.routes.draw do
   get 'cancel_sale' => 'sales#cancel_sale'
   post 'cancel_sale' => 'sales#cancel_sale'
 
+
   get 'products/search' => 'products#search'
   get 'orders/search' => 'orders#search'
 
@@ -50,6 +51,10 @@ Informaticacomp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
 
 
+  get 'eliminar_producto_pedido' => 'productorders#eliminar_producto_pedido'
+  post 'eliminar_producto_pedido' => 'productorders#eliminar_producto_pedido'
+
+
   get 'technical_services/search' => 'technical_services#search'
   get 'technical_services/searchNumber' => 'technical_services#searchNumber'
 
@@ -57,6 +62,11 @@ Informaticacomp::Application.routes.draw do
     resources :subproducts
   end
 
+  resources :orders do
+    resources :productorders  
+  end
+
+  resources :productorders  
   resources :sales
   resources :sessions
   resources :users
@@ -64,8 +74,6 @@ Informaticacomp::Application.routes.draw do
   resources :technical_services  
   resources :categories
   resources :brands
-  resources :orders
-  resources :productorders
   resources :providers
   resources :clients
   #resources :sales do

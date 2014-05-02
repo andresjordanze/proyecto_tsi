@@ -54,9 +54,15 @@ ActiveRecord::Schema.define(version: 20140423044615) do
 
   create_table "productorders", force: true do |t|
     t.string   "name"
+    t.integer  "quantity"
+    t.string   "code"
+    t.boolean  "state"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "productorders", ["order_id"], name: "index_productorders_on_order_id"
 
   create_table "products", force: true do |t|
     t.string   "name"

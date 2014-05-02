@@ -5,12 +5,14 @@
 <thead>
   <tr>
     <th><CENTER><%=link_to "Nombre", :sort => "name" %></CENTER></th>
+    <th><CENTER><%=link_to "Codigo"%></CENTER></th>
   </tr>
 </thead>
 <tbody>
 <% @productorders.each do |productorder| %>
   <tr>
     <td><CENTER><%= productorder.name %></CENTER></td>
+    <td><CENTER><%= productorder.code %></CENTER></td>
     <td><%= link_to 'Ver', productorder, :class => 'btn btn-mini' %>
     <%= link_to 'Editar', edit_productorder_path(productorder), :class => 'btn btn-mini' %>
     <%= link_to 'Eliminar', productorder, method: :delete, data: { confirm: 'Seguro de eliminar el nombre de producto?' }, :class => 'btn btn-mini btn-danger' %></td>

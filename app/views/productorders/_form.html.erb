@@ -1,12 +1,21 @@
-<%= form_validated_for(@productorder) do |f| %>
+<!--%= form_validated_for(@productorder) do |f| %-->
+<%= form_for([@order, @order.productorders.build]) do |f| %>
 <CENTER>
   <p>
     <%= f.label :name, "Nombre del producto" %>
-    <%= f.text_field :name, :maxlength => '20' %>
+    <%=f.collection_select(:name, Productorder.all, :name, :name)%>
+    </p>
+    <p>
+    <%= f.label :code, "Codigo del producto" %>
+    <%= f.text_field :code, :maxlength => '20' %>
+    </p>
+    <p>
+    <%= f.label :quantity, "Cantidad" %>
+    <%= f.text_field :quantity, :maxlength => '20' %>
     </p>
   
   <p>
-    <%= f.submit "Guardar Nombre de Producto", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Registrar Producto", class: "btn btn-large btn-primary" %>
   </p>
 <% end %>
 </CENTER>

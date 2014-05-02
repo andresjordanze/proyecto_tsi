@@ -111,6 +111,7 @@
     <%= link_to 'Cancelar venta', sale_path(@sale), method: :delete, data: { confirm: 'Seguro de Cancelar la venta?' }, :class => 'btn btn-large btn-danger' %><br>
 <%end%>
 <br> 
+<%= button_to 'Imprimir', '#', :method => :get, :class => 'btn btn-default' %>
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>

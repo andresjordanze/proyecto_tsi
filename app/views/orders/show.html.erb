@@ -6,25 +6,52 @@
     <%= @order.created_at %>
 </p>
 
-<p>    
-    <strong>Nombre del producto</strong><br>
-    <%= @order.nombre_producto %>
-</p>
-
-<p>
-    <strong>Cantidad</strong><br>
-    <%= @order.cantidad %>
-</p>
-
 <p>
     <strong>Proveedor</strong><br>
     <%= @order.provider %>
 </p>
 
-<p>
-    <strong>Estado del pedido</strong><br>
-    <%= @order.estado %>
-</p>
+<Center>
+
+<h2>Productos:</h2>
+<table border=1>
+  <tr>
+    <th>Nombre</th>
+    <th>Codigo</th>  
+    <th>Cantidad</th>
+    <th>Estado</th>
+  </tr>
+
+<% @order.productorders.each do |productito| %>
+  <tr>
+    <td><CENTER><%= productito.name%></CENTER></td>
+    <td><CENTER><%= productito.code %></CENTER></td>
+    <td><CENTER><%= productito.quantity %></CENTER></td>
+    <%if productito.state ==true%>
+      <td>Ingresado</td>
+    <%else%>
+      <td>Pendiente</td>
+    <%end%> 
+    
+    <td><%= link_to 'Ver', productito, :class => 'btn btn-mini'  %></td>
+    <!--td--><!--%= link_to 'Editar', edit_productorder_path(productito), :class => 'btn btn-mini'  %></td-->
+    <td><%=link_to "Editar", :controller => :productorders, :action => 'edit', :id => productito.id, :order_id =>@order.id%></td>
+    <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => productito.id, :order_id => @order.id %></td>
+  </tr>
+<% end %>
+</table>
+</Center>
+<br><br>
+
+
+
+
+<h2>Agregar Producto a Pedido:</h2>
+<Center><%= link_to_function "Formulario de Productos", "$('#hide').toggle()" %></Center>
+<div id="hide" style="display:none">
+<%= render "productorders/form" %>
+</div>
+
 <%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>

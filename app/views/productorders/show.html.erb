@@ -4,6 +4,24 @@
   <b>Nombre:</b>
   <%= @productorder.name %>
 </p>
+<p>
+  <b>Codigo:</b>
+  <%= @productorder.code %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @productorder.quantity %>
+</p>
+
+<p>
+    <strong>Estado del pedido</strong><br>
+   <%if @productorder.state == true %>
+   	Ingresado
+   <%else%>
+   	Pendiente
+   <%end%>
+</p>
 
 <%= link_to 'Editar', edit_productorder_path(@productorder), class: "btn btn-primary"  %>
 <br><br>
