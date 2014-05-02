@@ -38,4 +38,24 @@ class TechnicalServicesController < ApplicationController
 		end
 	end
 
+	def search
+		@value = params[:value]
+    	@technical_services = buscar(@value)
+  	end
+
+  	def buscar(valor)
+      items = Array.new 
+      aux = TechnicalService.all
+      if valor != "" && valor != nil
+          aux.each do |item|
+          if (item.correspondeACliente(valor) || item.id == valor.to_i)
+              items.push(item)
+          end
+        end
+      else
+          items = []
+      end
+      return items
+    end
+
 end
