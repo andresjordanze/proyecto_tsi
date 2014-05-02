@@ -1,0 +1,46 @@
+<% title "Servicios" %>
+<div class="hero-unit">
+<h1>Lista de Servicios</h1>
+<br>
+
+<div>
+<form method="GET" action="/technical_services/search">
+Busqueda: <input type="text" name="value" placeholder="Cliente o Numero de servicio"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar", class="btn btn-info">
+</form>
+</div>
+
+<div class="alert alert-info">
+    <p>Resultados para: <%= @value %></p>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Nº</th>
+    <th>Cliente</th>
+    <th>Nombre Producto</th>
+    <th>Codigo Producto</th>
+    <th>Estado</th>
+    <th>Fecha</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @technical_services.each do |technical_service| %>
+  <tr>
+    <td><%= technical_service.id %></td>
+    <td><%= technical_service.client %></td>
+    <td><%= technical_service.product_name %></td>
+    <td><%= technical_service.product_code %></td>
+    <td><%= technical_service.status %></td>
+    <td><%= technical_service.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= link_to 'Ver Servicio', :controller => :technical_services, :action => 'show', :id => technical_service.id %></td>
+    <%if technical_service.status == "En reparacion" || technical_service.status == "Recibido"%>
+    <td><%= link_to 'Añadir problemas/ reparaciones', :controller => :technical_services, :action => 'edit', :id => technical_service.id %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+</br>
+<%= link_to 'Registrar Servicio', :controller => :technical_services, :action => 'new' %>
+</div>

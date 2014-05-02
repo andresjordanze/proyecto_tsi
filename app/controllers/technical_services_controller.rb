@@ -39,8 +39,8 @@ class TechnicalServicesController < ApplicationController
 	end
 
 	def search
-    	@technical_services = buscar(params[:value])
-    	render 'index'
+		@value = params[:value]
+    	@technical_services = buscar(@value)
   	end
 
   	def buscar(valor)
@@ -53,7 +53,7 @@ class TechnicalServicesController < ApplicationController
           end
         end
       else
-          items = aux
+          items = []
       end
       return items
     end
