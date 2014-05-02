@@ -53,7 +53,7 @@ class TechnicalServicesController < ApplicationController
           end
         end
       else
-          items = aux
+          items = []
       end
       return items
     end
