@@ -1,4 +1,8 @@
-<% title @sale.client_name %>
+<%if @sale.client_name != "Harry"%>
+    <% title @sale.client_name %>
+<%else%>
+    <% title "" %>
+<% end %>
 <div class="hero-unit">
 <%if @sale.client_name != "Harry"%>
 <CENTER><H1><%= @sale.client_name %> </H1>
@@ -36,7 +40,7 @@
 </p>
 
 <p>
-    <b><h2><Center>Detalle de Venta</Center></h2></b>
+    <b><Center>Detalle de Venta</Center></b>
     <div>
     <!--h2><Center--><!--%= link_to_function "Ver Detalle de Venta", "$('#hide').toggle()" %></Center></h2-->
     <!--div id="hide" style="display:none"-->

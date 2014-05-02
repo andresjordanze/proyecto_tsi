@@ -9,6 +9,11 @@ class SalesController < ApplicationController
     @subproducts = Subproduct.all
   end
 
+  def print
+    @sale = Sale.find(params[:id])
+    render layout: false
+  end
+
   def new
     @sale = Sale.new
   end
