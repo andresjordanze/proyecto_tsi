@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423044615) do
+ActiveRecord::Schema.define(version: 20140502211236) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 20140423044615) do
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "cantidad"
-    t.string   "nombre_producto"
     t.string   "numero_pedido"
     t.string   "estado"
     t.string   "provider"
@@ -52,11 +50,18 @@ ActiveRecord::Schema.define(version: 20140423044615) do
     t.datetime "updated_at"
   end
 
-  create_table "productorders", force: true do |t|
+  create_table "productnames", force: true do |t|
     t.string   "name"
-    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "productorders", force: true do |t|
     t.string   "code"
-    t.boolean  "state"
+    t.string   "nombre_producto"
+    t.text     "description"
+    t.integer  "quantity"
+    t.boolean  "ingresado"
     t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"

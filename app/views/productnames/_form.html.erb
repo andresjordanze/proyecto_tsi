@@ -1,0 +1,12 @@
+<%= form_validated_for(@productname) do |f| %>
+<CENTER>
+  <p>
+    <%= f.label :name, "Nombre del producto" %>
+    <%= f.text_field :name, :maxlength => '20'%>
+    </p>
+  
+  <p>
+    <%= f.submit "Guardar Producto", class: "btn btn-large btn-primary" %>
+  </p>
+<% end %>
+</CENTER>

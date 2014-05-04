@@ -24,17 +24,15 @@
 
 <% @order.productorders.each do |productito| %>
   <tr>
-    <td><CENTER><%= productito.name%></CENTER></td>
+    <td><CENTER><%= productito.nombre_producto%></CENTER></td>
     <td><CENTER><%= productito.code %></CENTER></td>
     <td><CENTER><%= productito.quantity %></CENTER></td>
-    <%if productito.state ==true%>
+    <%if productito.ingresado == true%>
       <td>Ingresado</td>
     <%else%>
       <td>Pendiente</td>
-    <%end%> 
-    
-    <td><%= link_to 'Ver', productito, :class => 'btn btn-mini'  %></td>
-    <!--td--><!--%= link_to 'Editar', edit_productorder_path(productito), :class => 'btn btn-mini'  %></td-->
+    <%end%>
+    <td><%=link_to "Ver", :controller => :productorders, :action => 'show', :id => productito.id, :order_id =>@order.id%></td> 
     <td><%=link_to "Editar", :controller => :productorders, :action => 'edit', :id => productito.id, :order_id =>@order.id%></td>
     <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => productito.id, :order_id => @order.id %></td>
   </tr>

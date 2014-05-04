@@ -2,11 +2,16 @@
 <CENTER>
 <p>
   <b>Nombre:</b>
-  <%= @productorder.name %>
+  <%= @productorder.nombre_producto %>
 </p>
 <p>
   <b>Codigo:</b>
   <%= @productorder.code %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @productorder.description %>
 </p>
 
 <p>
@@ -16,7 +21,7 @@
 
 <p>
     <strong>Estado del pedido</strong><br>
-   <%if @productorder.state == true %>
+   <%if @productorder.ingresado == true %>
    	Ingresado
    <%else%>
    	Pendiente
@@ -24,6 +29,4 @@
 </p>
 
 <%= link_to 'Editar', edit_productorder_path(@productorder), class: "btn btn-primary"  %>
-<br><br>
-<%= button_to 'Volver', productorders_path, :method => :get, class: "btn  btn-primary"  %>
 </CENTER>

@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<CENTER>
+<p>
+  <b>Nombre:</b>
+  <%= @productname.name %>
+</p>
+
+<%= link_to 'Editar', edit_productname_path(@productname), class: "btn btn-primary"  %>
+<br><br>
+<%= button_to 'Volver', productnames_path, :method => :get, class: "btn  btn-primary"  %>
+</CENTER>

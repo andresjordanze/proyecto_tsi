@@ -1,10 +1,14 @@
 class Productorder < ActiveRecord::Base
 	belongs_to :order
-	attr_accessible :name, :quantity, :code, :state
-	#validates :name, presence: {:message => "Usted debe ingresar el nombre del producto"}	
-	#validates :name, uniqueness: {case_sensitive: false, :message => "El nombre de producto ya existe"}
-	#validates :name, length: {minimum: 2, maximum: 20, :message => "El Nombre del producto debe tener minimo 2 y maximo 20 caracteres"}
+	has_many :productnames
+	attr_accessible :nombre_producto, :quantity, :code, :ingresado, :description
 
+	validates :quantity, presence: {:message => "Es un campo obligatorio"}
+	validates :quantity, numericality: {:message => "La cantidad debe ser numerico"}
+	validates :quantity, numericality: {greater_than: 0, :message => "La cantidad debe ser mayor a 0" }
+	
+	validates :code, presence: {:message => "Es un campo obligatorio"}
+	validates :code, length: {minimum: 5, maximum: 10, :message => "El Detalle debe tener minimo 5 y maximo 10 caracteres"}
 
 	def cancelar_pedido
   		self.state = nil

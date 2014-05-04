@@ -12,6 +12,20 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@order = Order.new (params[:order])
+	    @order.estado =  'Pendiente'
+	    @order.ingresado = false
+	    if @order.save
+	      flash[:message] = "Pedido Registrado!"
+	      redirect_to @order
+	    else
+	      flash[:message] = "Verifique los Campos Marcados"
+	      render :action => 'new'
+	    end
+  	end
+
+=begin
+
 		if Order.all != []
 			@orders = Order.all
 			@orders.each do |order|
@@ -43,7 +57,10 @@ class OrdersController < ApplicationController
 				render action: 'new'
 			end
 		end
+
 	end
+	
+=end
 
 
 	def search

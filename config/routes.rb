@@ -73,6 +73,7 @@ Informaticacomp::Application.routes.draw do
   resources :incomes
   resources :technical_services  
   resources :categories
+  resources :productnames
   resources :brands
   resources :providers
   resources :clients

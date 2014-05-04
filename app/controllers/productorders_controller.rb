@@ -18,15 +18,6 @@ def index
    	@productorder = Productorder.find(params[:id])
   end
 
-  #def create
-   #	@productorder = Productorder.new(params[:productorder])
-    #if @productorder.save
-     #	redirect_to @productorder, notice: 'Nombre de producto creado exitosamente.' 
-    #else
-     # render action: "new" 
-    #end
-  #end
-
   def create
     @order = Order.find(params[:order_id])
     @productorder = @order.productorders.create(params[:productorder])
@@ -42,13 +33,6 @@ def index
     else
       render action: "edit" 
     end
-    #@productorder = Productorder.find(params[:id])
-    #if @productorder.update_attributes(params[:productorder])
-	   # redirect_to @productorder, notice: 'Nombre de Producto Actualizado exitosamente.'
-
-    #else
-    #	render action: "edit" 
-    #end
   end
 
   
@@ -62,7 +46,7 @@ def index
   def agregar_producto_pedido
     @productorder = Productorder.find(params[:id])
     @productorder.order_id = params[:order_id]
-    @productorder.state = false
+    @productorder.ingresado = false
     @productorder.save
     @order = Order.find(params[:order_id])
     @order.save

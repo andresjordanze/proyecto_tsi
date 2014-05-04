@@ -1,17 +1,20 @@
-<!--%= form_validated_for(@productorder) do |f| %-->
-<%= form_for([@order, @order.productorders.build]) do |f| %>
+<%= form_validated_for([@order, @order.productorders.build]) do |f| %>
 <CENTER>
   <p>
     <%= f.label :name, "Nombre del producto" %>
-    <%=f.collection_select(:name, Productorder.all, :name, :name)%>
+    <%=f.collection_select(:nombre_producto, Productname.all, :name, :name)%>
     </p>
     <p>
     <%= f.label :code, "Codigo del producto" %>
     <%= f.text_field :code, :maxlength => '20' %>
     </p>
     <p>
+    <%= f.label :description, "descripcion" %>
+    <%= f.text_area :description, :maxlength => '100' %>
+    </p>
+    <p>
     <%= f.label :quantity, "Cantidad" %>
-    <%= f.text_field :quantity, :maxlength => '20' %>
+    <%= f.text_field :quantity, :maxlength => '4' %>
     </p>
   
   <p>

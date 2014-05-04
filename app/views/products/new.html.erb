@@ -25,7 +25,7 @@
 			<%= f.text_field :sale_price %></p>
 
 			<p><%= f.label :quantity , "Cantidad:" %>
-			<%= f.text_field :quantity, :value => @order.cantidad, :readonly => true %></p>
+			<%= f.text_field :quantity, :value => @productorder.quantity, :readonly => true %></p>
 
 			<p><%= f.label :id_order, "Numero de pedido:" %>
 			<%= f.text_field :id_order, :value => @order.id, :readonly => true %></p>

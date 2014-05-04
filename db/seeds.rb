@@ -51,4 +51,4 @@
 	client2.phone = 3489101
 	client2.save!
 
-	productorders = Productorder.create([{name: "Dell Inspiron"}, {name: "Sony Vaio"}, {name: "Pavilion DV4"}, {name: "Pavilion DV6"}, {name: "ASUS x10"}, {name: "Hp mx2"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
+	productnames = Productname.create([{name: "Dell Inspiron"}, {name: "Sony Vaio"}, {name: "Pavilion DV4"}, {name: "Pavilion DV6"}, {name: "ASUS x10"}, {name: "Hp mx2"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])

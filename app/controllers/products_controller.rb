@@ -54,13 +54,13 @@ class ProductsController < ApplicationController
 
   	def registrar_ingreso
   		@products = Product.all
-  		@order = Order.find(params[:id])
+  		@order = Productorder.find(params[:id])
   		control = false
 
   		if @products != []
 	  		@products.each do |producto|
 	  			if producto.name == @order.nombre_producto
-	  				producto.quantity += @order.cantidad
+	  				producto.quantity += @order.quantity
 	  				producto.save
 	  				@product = producto
 	  				@order.estado = 'Recibido'

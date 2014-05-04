@@ -1,8 +1,24 @@
-<% title "Editar Nombre de Producto" %>
+<% title "Editar Producto de Pedido" %>
+<CENTER>
+<h1>Editar Producto</h1>
 
-<h1><%= @productorder.name%></h1>
-<center>
-<%= render 'form' %>
-<br>
-<%= button_to 'Volver', productorders_path, :method => :get, class: "btn btn-primary"  %>
-</center>
+<div class="row">
+	<div class="col-xs-3">
+	<%= form_validated_for(@productorder) do |f| %>
+  		<div class="field">
+			<p><%= f.label :nombre_producto , "Nombre del producto:" %>
+			<%=f.collection_select(:nombre_producto, Productname.all, :name, :name)%>
+		</div>
+		<p>
+    		<%= f.label :description, "descripcion" %>
+    		<%= f.text_area :description, :maxlength => '100' %>
+    	</p>
+		<p><%=f.label :code, "Codigo" %>
+    		<%= f.text_field :code, :maxlength => '10'%>
+		<p><%= f.submit "Editar Producto", class: "btn btn-large btn-primary" %></p>
+	</div>
+	<!--</div>-->
+	<%end%>
+	</div>
+</div>
+</CENTER>
