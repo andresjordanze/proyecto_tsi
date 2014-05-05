@@ -10,6 +10,9 @@ class Productorder < ActiveRecord::Base
 	validates :code, presence: {:message => "Es un campo obligatorio"}
 	validates :code, length: {minimum: 5, maximum: 10, :message => "El Detalle debe tener minimo 5 y maximo 10 caracteres"}
 
+	validates :description, presence: {:message => "Es un campo obligatorio"}
+	validates :description, length: {minimum: 10, maximum: 100, :message => "El Detalle debe tener minimo 5 y maximo 10 caracteres"}
+
 	def cancelar_pedido
   		self.state = nil
   		self.order_id = nil      

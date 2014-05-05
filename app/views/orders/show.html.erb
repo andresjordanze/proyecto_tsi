@@ -57,6 +57,9 @@
   <div id="hide" style="display:none">
     <%= render "productorders/form" %>
   </div>
+  <%else%>
+  <%@order.ingresado = true%> 
+  <%@order.save%>
 
 <%end%>
 
