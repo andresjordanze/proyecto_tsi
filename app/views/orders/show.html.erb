@@ -21,14 +21,22 @@
     <th>Estado</th>
   </tr>
 
+<% cantidad=@order.productorders.length%>
+<% if cantidad == 0 %>
+<% nuevo = true %>
+<% end %>
 <% @order.productorders.each do |productito| %>
   <tr>
     <td><CENTER><%= productito.nombre_producto%></CENTER></td>
     <td><CENTER><%= productito.code %></CENTER></td>
     <td><CENTER><%= productito.quantity %></CENTER></td>
     <%if productito.ingresado == true%>
+      <% cantidad -= 1 %>
+      <% nuevo = false %>
       <td>Ingresado</td>
     <%else%>
+    <% cantidad += 1 %>
+    <% nuevo = false %>
       <td>Pendiente</td>
     <%end%>
     <td><%=link_to "Ver", :controller => :productorders, :action => 'show', :id => productito.id, :order_id => @order.numero_pedido %></td> 
@@ -43,12 +51,13 @@
 </Center>
 <br><br>
 
-
+<%if nuevo == true || cantidad > 0 %>
 <h2>Agregar Producto a Pedido:</h2>
 <Center><%= link_to_function "Formulario de Productos", "$('#hide').toggle()" %></Center>
 <div id="hide" style="display:none">
 <%= render "productorders/form" %>
 </div>
+<%end%>
 
 <%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
 

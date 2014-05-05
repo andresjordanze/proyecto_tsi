@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
 	    @order.ingresado = false
 	    if @order.save
 	      flash[:message] = "Pedido Registrado!"
-	      redirect_to @order
+	      redirect_to '/orders/' + @order.numero_pedido
 	    else
 	      flash[:message] = "Verifique los Campos Marcados"
 	      render :action => 'new'
@@ -103,7 +103,8 @@ class OrdersController < ApplicationController
 		if @order.update_attributes(params[:order])
 			@order.save
 			flash[:success] = "Orden Actualizada"
-			redirect_to @order			
+			#redirect_to @order			
+			redirect_to '/orders/' + @order.numero_pedido
 		else
 			render 'edit'
 		end
