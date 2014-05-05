@@ -16,6 +16,9 @@
     <td><%= link_to 'Ver', productorder, :class => 'btn btn-mini' %>
     <%= link_to 'Editar', edit_productorder_path(productorder), :class => 'btn btn-mini' %>
     <%= link_to 'Eliminar', productorder, method: :delete, data: { confirm: 'Seguro de eliminar el nombre de producto?' }, :class => 'btn btn-mini btn-danger' %></td>
+    <% if productorder.ingresado == false %>
+    <td><%= link_to 'Registrar ingreso', :controller => :products, :action => "registrar_ingreso", :id => productorder.id %></td>
+    <% end %>
   </tr>
 <% end %>
 </tbody>

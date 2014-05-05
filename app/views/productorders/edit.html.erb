@@ -15,6 +15,10 @@
     	</p>
 		<p><%=f.label :code, "Codigo" %>
     		<%= f.text_field :code, :maxlength => '10'%>
+    	<p>
+    		<%= f.label :quantity, "Cantidad" %>
+    		<%= f.text_field :quantity, :maxlength => '4' %>
+    	</p>
 		<p><%= f.submit "Editar Producto", class: "btn btn-large btn-primary" %></p>
 	</div>
 	<!--</div>-->

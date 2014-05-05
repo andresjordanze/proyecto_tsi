@@ -54,18 +54,17 @@ class ProductsController < ApplicationController
 
   	def registrar_ingreso
   		@products = Product.all
-  		@order = Productorder.find(params[:id])
+  		@productorder = Productorder.find(params[:id])
   		control = false
 
   		if @products != []
 	  		@products.each do |producto|
-	  			if producto.name == @order.nombre_producto
-	  				producto.quantity += @order.quantity
+	  			if producto.general_code == @productorder.code
+	  				producto.quantity += @productorder.quantity/2
 	  				producto.save
 	  				@product = producto
-	  				@order.estado = 'Recibido'
-	  				@order.ingresado = true
-	  				@order.save
+	  				@productorder.ingresado = true
+	  				@productorder.save
 	  				control = true
 	  			else
 	  				@product = Product.new
@@ -104,10 +103,9 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(params[:product])
-		@order = Order.find(params[:product][:id_order])
-		@order.estado = "Recibido"
-		@order.ingresado = true
-		@order.save
+		@productorder = Productorder.find(params[:product][:id])	
+		@productorder.ingresado = true
+		@productorder.save
 		@product.home = false
 		@product.description = "          "
 		@income = Income.new

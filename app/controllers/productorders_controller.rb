@@ -1,5 +1,5 @@
 class ProductordersController < ApplicationController
-def index
+  def index
     @productorders = Productorder.all
     @productorders = Productorder.order(params[:sort])
   end
@@ -14,22 +14,35 @@ def index
 	end
 
   def edit
-    @order = Order.find(params[:order_id])
    	@productorder = Productorder.find(params[:id])
   end
 
   def create
+    @control = false
     @order = Order.find(params[:order_id])
-    @productorder = @order.productorders.create(params[:productorder])
-    redirect_to order_path(@order)
+    @productorders = Productorder.where("order_id = :order_id", {order_id: @order.numero_pedido}).to_a
+    @productorders.each do |productorder|
+      if productorder.code == params[:productorder][:code]
+        @control = true
+      end
+    end
+    if @control == false
+      @productorder = @order.productorders.create(params[:productorder])
+      @productorder.ingresado = false
+      @productorder.order_id = @order.numero_pedido
+      @productorder.save
+      redirect_to '/orders/'+@order.numero_pedido
+    else
+      flash[:danger] = 'No se registro el producto, porque ya existe en pedido'
+      redirect_to '/orders/'+@order.numero_pedido
+    end
   end
 
   def update
-    @order = Order.find(params[:order_id])
     @productorder = Productorder.find(params[:id])
   	if @productorder.update_attributes(params[:productorder])
-      redirect_to @productorder.order_id, notice: 'Producto de Orden Actualizado exitosamente.'
-
+      flash[:success] = "Producto de pedido modificado!"
+      redirect_to @productorder
     else
       render action: "edit" 
     end

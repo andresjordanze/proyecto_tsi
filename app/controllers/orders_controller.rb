@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	def show
-		@order = Order.find(params[:id])
+		@order = Order.where("numero_pedido = :numero_pedido", {numero_pedido: params[:id]}).to_a.at(0)
 	end
 
 	def new	
@@ -95,6 +95,11 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
+		@productorders = Productorder.where("order_id = :order_id", {order_id: @order.id}).to_a
+		@productorders.each do |productorder|
+			productorder.order_id = params[:order][:numero_pedido]
+			productorder.save
+		end
 		if @order.update_attributes(params[:order])
 			@order.save
 			flash[:success] = "Orden Actualizada"
