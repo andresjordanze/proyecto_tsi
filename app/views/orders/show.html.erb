@@ -52,11 +52,12 @@
 <br><br>
 
 <%if nuevo == true || cantidad > 0 %>
-<h2>Agregar Producto a Pedido:</h2>
-<Center><%= link_to_function "Formulario de Productos", "$('#hide').toggle()" %></Center>
-<div id="hide" style="display:none">
-<%= render "productorders/form" %>
-</div>
+  <h2>Agregar Producto a Pedido:</h2>
+  <Center><%= link_to_function "Formulario de Productos", "$('#hide').toggle()" %></Center>
+  <div id="hide" style="display:none">
+    <%= render "productorders/form" %>
+  </div>
+
 <%end%>
 
 <%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>

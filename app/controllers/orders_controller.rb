@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
 		@order = Order.new (params[:order])
 	    @order.estado =  'Pendiente'
 	    @order.ingresado = false
+	    @order.id = params[:order][:numero_pedido]
 	    if @order.save
 	      flash[:message] = "Pedido Registrado!"
 	      redirect_to '/orders/' + @order.numero_pedido
