@@ -8,7 +8,7 @@
   			
   		<div class="field">
 			<p><%= f.label :name , "Nombre:" %>
-			<%= f.text_field :name, :maxlength => '20'%>
+			<%=f.collection_select(:name, Productname.all, :name, :name)%>
 		</div>
 	
 			<p><%= f.label :detail , "Detalle:" %>
