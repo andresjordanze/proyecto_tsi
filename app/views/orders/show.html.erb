@@ -58,7 +58,8 @@
     <%= render "productorders/form" %>
   </div>
 <%else%>
-  <% @order.ingresado = true %>
+    <%@order.ingresado = true%> 
+    <%@order.save%>
 <%end%>
 
 <%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
