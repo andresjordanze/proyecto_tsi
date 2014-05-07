@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	attr_accessible :numero_pedido, :provider, :estado
+	attr_accessible :numero_pedido, :provider, :estado, :ingresado
 	has_many :providers
 	has_many :productorders	
 	

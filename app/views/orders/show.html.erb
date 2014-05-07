@@ -57,7 +57,8 @@
   <div id="hide" style="display:none">
     <%= render "productorders/form" %>
   </div>
-
+<%else%>
+  <% @order.ingresado = true %>
 <%end%>
 
 <%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>

@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
   		if @products != []
 	  		@products.each do |producto|
 	  			if producto.general_code == @productorder.code
-	  				producto.quantity += @productorder.quantity/2
+	  				producto.quantity += @productorder.quantity
 	  				producto.save
 	  				@product = producto
 	  				@productorder.ingresado = true

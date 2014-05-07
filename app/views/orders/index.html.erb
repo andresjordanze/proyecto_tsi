@@ -30,8 +30,8 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
                 <td><CENTER><%= order.provider %></CENTER></td>
                 <td><%= link_to 'Ver', :controller => :orders, :action => "show", :id => order.numero_pedido %></td>
                 <% if order.ingresado == false %>
-                <td><%= link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
                 <td><%= link_to 'Editar', :controller => :orders, :action => "edit", :id => order.id %></td>
+                <td><%= link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
                 <% end %>        
             </tr>
         <% end %>
