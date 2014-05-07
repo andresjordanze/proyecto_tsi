@@ -33,6 +33,8 @@
     <%if productito.ingresado == true%>
       <% cantidad -= 1 %>
       <% nuevo = false %>
+      <%@order.ingresado = true%> 
+      <%@order.save%>
       <td>Ingresado</td>
     <%else%>
     <% cantidad += 1 %>
@@ -57,9 +59,6 @@
   <div id="hide" style="display:none">
     <%= render "productorders/form" %>
   </div>
-<%else%>
-    <%@order.ingresado = true%> 
-    <%@order.save%>
 <%end%>
 
 <%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
