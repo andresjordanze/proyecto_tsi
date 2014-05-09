@@ -3,7 +3,22 @@
   <p>
     <%= f.label :name, "Nombre de Proveedor" %>
     <%= f.text_field :name,:maxlength => '20' %>
-    </p>
+  </p>
+
+  <p>
+    <%= f.label :mail, "Email" %>
+    <%= f.text_field :mail,:maxlength => '30' %>
+  </p>
+
+  <p>
+    <%= f.label :phone, "Telefono" %>
+    <%= f.text_field :phone,:maxlength => '8' %>
+  </p>
+
+  <p>
+    <%= f.label :country, "Locacion" %>
+    <%= f.text_field :country,:maxlength => '20' %>
+  </p>
   
   <p>
     <%= f.submit "Guardar Proveedor", class: "btn btn-large btn-primary" %>

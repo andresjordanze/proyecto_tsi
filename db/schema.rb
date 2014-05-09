@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20140502211236) do
 
   create_table "providers", force: true do |t|
     t.string   "name"
+    t.integer  "phone"
+    t.string   "mail"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

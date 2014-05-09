@@ -11,8 +11,7 @@
 <% @categories.each do |category| %>
   <tr>
     <td><CENTER><%= category.name %></CENTER></td>
-    <td><%= link_to 'Ver', category, :class => 'btn btn-mini' %>
-    <%= link_to 'Editar', edit_category_path(category), :class => 'btn btn-mini' %>
+    <td><%= link_to 'Editar', edit_category_path(category), :class => 'btn btn-mini' %>
     <%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>
