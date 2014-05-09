@@ -1,5 +1,15 @@
 <h1>Todas las Marcas</h1>
 <h3><%= link_to 'Agregar Marca', new_brand_path, :class => 'btn btn-success' %></h3>
+
+<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<div id="hide" style="display:none">
+<br>
+<form method="GET" action="/brands/search">
+Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar">
+</form>
+</div>
+
 <CENTER>
 <table class="table table-striped">
 <thead>

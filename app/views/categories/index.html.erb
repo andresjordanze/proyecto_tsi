@@ -1,5 +1,15 @@
 <h1>Todas las Categorias</h1>
 <h3><%= link_to 'Agregar Categoria', new_category_path, :class => 'btn btn-success' %></h3>
+
+<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<div id="hide" style="display:none">
+<br>
+<form method="GET" action="/categories/search">
+Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar">
+</form>
+</div>
+
 <CENTER>
 <table class="table table-striped">
 <thead>

@@ -32,6 +32,10 @@ Informaticacomp::Application.routes.draw do
   get 'products/search' => 'products#search'
   get 'orders/search' => 'orders#search'
 
+  get 'brands/search' => 'brands#search'
+  get 'categories/search' => 'categories#search'
+  get 'productnames/search' => 'productnames#search'
+
   get 'products/search_to_home' => 'products#search_to_home'
 
   get 'sales/search' => 'sales#search'

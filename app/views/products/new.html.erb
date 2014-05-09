@@ -27,12 +27,6 @@
 			<p><%= f.label :quantity , "Cantidad:" %>
 			<%= f.text_field :quantity, :value => @productorder.quantity, :readonly => true %></p>
 
-			<p><%= f.label :id_order, "Numero de pedido:" %>
-			<%= f.text_field :id_order, :value => @productorder.order_id, :readonly => true %></p>
-
-			<p><%= f.label :id, "Numero de producto:" %>
-			<%= f.text_field :id, :value => @productorder.id, :readonly => true %></p>
-
 			<p><%= f.submit "Crear Producto", class: "btn btn-large btn-primary" %></p>
 			</div>
 		<!--</div>-->

@@ -1,7 +1,6 @@
 class ProductnamesController < ApplicationController
 	def index
     @productnames = Productname.all
-    #@productnames = Productname.order(params[:sort])
   end
 
   def show
@@ -41,4 +40,24 @@ class ProductnamesController < ApplicationController
     @productname.destroy
     redirect_to productnames_url 
   end
+
+  def search
+    @productnames = buscar(params[:name])
+    render 'index'
+  end
+
+  def buscar(nombre)
+      items = Array.new 
+      aux = Productname.all
+      if nombre != "" && nombre != nil
+          aux.each do |item|
+          if (item.correspondeAnombre(nombre))
+              items.push(item)
+          end
+        end
+      else
+          items = aux
+      end
+      return items
+    end
 end

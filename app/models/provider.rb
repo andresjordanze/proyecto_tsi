@@ -11,4 +11,15 @@ class Provider < ActiveRecord::Base
 
     validates :country, presence: {:message => "Usted debe ingresar la locacion de proveedor"}
 	validates :country, format: { with: /\A[a-zA-Z\d\s]+\z/,:message => "Solo Letras Permitidas" } 
+
+	def correspondeAnombre(nombre)
+    	parametros = nombre.split(' ')
+    	parametros.each do |parametro|
+      	if self.name.downcase.include?(parametro.downcase)
+	        return true
+    	  end
+    	end
+    	false
+  	end
+
 end

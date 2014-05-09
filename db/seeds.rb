@@ -36,7 +36,6 @@
 
 	brands = Brand.create([{name: "Toshiba"}, {name: "Dell"}, {name: "Sony"}, {name: "3M"}, {name: "ASUS"}, {name: "Samsung"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
 	categories = Category.create([{name: "Laptops"}, {name: "Maletines"}, {name: "Mochilas"}, {name: "Accesorios"}, {name: "Impresoras"}, {name: "Proyectores"}, {name: "Tablets"}, {name: "Mobiliarios"}])
-	providers = Provider.create([{name: "Toshiba"}, {name: "Dell"}, {name: "Sony"}, {name: "3M"}, {name: "ASUS"}, {name: "Samsung"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
 # Lista de Clientes
 
 	client1 = Client.new
@@ -51,4 +50,48 @@
 	client2.phone = 3489101
 	client2.save!
 
-	productnames = Productname.create([{name: "Dell Inspiron"}, {name: "Sony Vaio"}, {name: "Pavilion DV4"}, {name: "Pavilion DV6"}, {name: "ASUS x10"}, {name: "Hp mx2"}, {name: "ViewSonic"}, {name: "Amazon"}, {name: "Apple"}, {name: "eBeam"}, {name: "Epson"}, {name: "BenQ"}, {name: "NEC"}, {name: "HP"}])
+#Lista de proveedores
+
+	prov1 = Provider.new
+	prov1.name = 'Toshiba'
+	prov1.phone = 1234567
+	prov1.mail = 'toshiba@hotmail.com'
+	prov1.country = 'Miami'
+	prov1.save!
+
+	prov2 = Provider.new
+	prov2.name = 'Dell'
+	prov2.phone = 7654321
+	prov2.mail = 'dell@yahoo.com'
+	prov2.country = 'Washigton'
+	prov2.save!
+
+	prov3 = Provider.new
+	prov3.name = 'Apple'
+	prov3.phone = 7890123
+	prov3.mail = 'apple@yahoo.com'
+	prov3.country = 'California'
+	prov3.save!
+
+#Lista de productos
+
+	prod1 = Productname.new
+	prod1.name = 'Dell Inspiron'
+	prod1.code = 'dell-inp'
+	prod1.save!
+
+	prod2 = Productname.new
+	prod2.name = 'Sony Vaio'
+	prod2.code = 'sony-v64'
+	prod2.save!
+	
+	prod3 = Productname.new
+	prod3.name = 'Pavilion'
+	prod3.code = 'pav-x3'
+	prod3.save!
+	
+	prod4 = Productname.new
+	prod4.name = 'ASUS x10'
+	prod4.code = 'asus-x10'
+	prod4.save!
+	

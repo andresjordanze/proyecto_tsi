@@ -54,8 +54,7 @@
 <br><br>
 
 <%if nuevo == true || cantidad > 0 %>
-  <h2>Agregar Producto a Pedido:</h2>
-  <Center><%= link_to_function "Formulario de Productos", "$('#hide').toggle()" %></Center>
+  <Center><%= link_to_function "Agregar producto a pedido", "$('#hide').toggle()" %></Center>
   <div id="hide" style="display:none">
     <%= render "productorders/form" %>
   </div>
