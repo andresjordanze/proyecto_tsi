@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-	end
+	end	
 
 	def new
 		@product = Product.new
@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
   		if @products != []
 	  		@products.each do |producto|
 	  			if producto.general_code == @productorder.code
-	  				producto.quantity += @productorder.quantity
+	  				producto.quantity += @productorder.quantity/2
 	  				producto.save
 	  				@product = producto
 	  				@productorder.ingresado = true
@@ -135,6 +135,23 @@ class ProductsController < ApplicationController
 			render 'edit'
 		end
 	end
+
+#params[:name], params[:detail], params[:quantity],params[:general_code], params[:brand], params[:category], params[:bought_price],params[:sale_price], params[:created_at], params[:updated_at]
+	#def update 
+	#	@product = Product.find(params[:id])
+	#	if @product.update_attributes(params[:empleado])
+	#		@product.save			
+	#		if(@product.update_attributes(params[:photo], params[:description]))
+	#			flash[:success] = "Producto de Pagina Actualizado"	
+	#			redirect_to :controller => :products, :action => 'products_home'	
+	#		else
+	#			flash[:success] = "Producto Actualizado"
+	#			redirect_to @product	
+	#		end
+	#	else
+	#		render 'edit'
+	#	end
+	#end
 
 	def products_home
 		@products = Product.all
