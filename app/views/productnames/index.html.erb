@@ -1,7 +1,7 @@
 <h1>Todos los Productos</h1>
 <h3><%= link_to 'Agregar Nombre Producto', new_productname_path, :class => 'btn btn-success' %></h3>
 
-<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<%= link_to_function "Buscar Nombre de Producto", "$('#hide').toggle()", :class => "btn btn-info" %><br>
 <div id="hide" style="display:none">
 <br>
 <form method="GET" action="/productnames/search">

@@ -3,7 +3,7 @@
 
 <h3><%= link_to 'Registrar pedido', new_order_path, :class => 'btn btn-success' %></h3>
 
-<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<%= link_to_function "Buscar Pedido por Proveedor", "$('#hide').toggle()", :class => "btn btn-info" %><br>
 <div id="hide" style="display:none">
 <br>
 <form method="GET" action="/orders/search">

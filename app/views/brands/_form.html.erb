@@ -5,8 +5,6 @@
     <%= f.text_field :name, :maxlength => '20'%>
     </p>
   
-  <p>
-    <%= f.submit "Guardar Marca", class: "btn btn-large btn-primary" %>
-  </p>
+	<p><%= f.submit (@brand.new_record? ? 'Crear Marca' : 'Guardar Cambios'), :class => 'btn btn-lg btn-success' %></p>
 <% end %>
 </CENTER>

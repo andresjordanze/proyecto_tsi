@@ -10,8 +10,6 @@
     <%= f.text_field :code, :maxlength => '10'%>
   </p>
   
-  <p>
-    <%= f.submit "Guardar Producto", class: "btn btn-large btn-primary" %>
-  </p>
+  <p><%= f.submit (@productname.new_record? ? 'Crear Nombre de Producto' : 'Guardar Cambios'), :class => 'btn btn-lg btn-success' %></p>
 <% end %>
 </CENTER>
