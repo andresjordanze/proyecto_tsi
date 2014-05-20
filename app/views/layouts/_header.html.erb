@@ -27,24 +27,16 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Ver Stock de Productos", '/products' %></li>
-              <li class="dropdown-submenu">
-                <%= link_to "Pedidos", '#' %>
-                <ul class="dropdown-menu">
-                    <li><a href="/orders/new">Registrar Pedido</a></li>
-                    <li><a href="/orders">Lista de Pedidos</a></li>
-                  </ul>
-              </li>
 
-              <li><%= link_to "Ingresos/Egresos", '#' %></li>
               <li class="dropdown-submenu">
-                <%= link_to "Marcas", '#' %>
+                <%= link_to "Nombre de Productos", '#' %>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Crear Marca", '/brands/new' %></li>
-                  <li><%= link_to "Lista de Marcas", '/brands' %></li>  
+                  <li><%= link_to "Crear Nombre de Producto", '/productnames/new' %></li>
+                  <li><%= link_to "Lista de Nombres de Productos", '/productnames' %></li>  
                 </ul>
-              </li>
+              </li> 
 
+              
               <li class="dropdown-submenu">
                 <%= link_to "Categorias", '#' %>
                 <ul class="dropdown-menu">
@@ -54,12 +46,33 @@
               </li>  
 
               <li class="dropdown-submenu">
+                <%= link_to "Marcas", '#' %>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Crear Marca", '/brands/new' %></li>
+                  <li><%= link_to "Lista de Marcas", '/brands' %></li>  
+                </ul>
+              </li>
+
+              <li class="dropdown-submenu">
                 <%= link_to "Proveedores", '#' %>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Crear Proveedor", '/providers/new' %></li>
                   <li><%= link_to "Lista de Proveedores", '/providers' %></li>  
                 </ul>
               </li> 
+
+              <li class="dropdown-submenu">
+                <%= link_to "Pedidos", '#' %>
+                <ul class="dropdown-menu">
+                    <li><a href="/orders/new">Registrar Pedido</a></li>
+                    <li><a href="/orders">Lista de Pedidos</a></li>
+                  </ul>
+              </li>
+
+              <li><%= link_to "Ver Stock de Productos", '/products' %></li>
+
+              <li><%= link_to "Ingresos/Egresos", '#' %></li>
+              
 
               
             </ul>
