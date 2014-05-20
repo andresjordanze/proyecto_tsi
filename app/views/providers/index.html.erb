@@ -1,7 +1,7 @@
 <h1>Todos los Proveedores</h1>
 <h3><%= link_to 'Agregar Proveedor', new_provider_path, :class => 'btn btn-success' %></h3>
 
-<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<%= link_to_function "Buscar Proveedor", "$('#hide').toggle()", :class => "btn btn-info" %><br>
 <div id="hide" style="display:none">
 <br>
 <form method="GET" action="/providers/search">
