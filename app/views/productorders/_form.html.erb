@@ -1,7 +1,10 @@
 <%= form_validated_for([@order, @order.productorders.build]) do |f| %>
 <CENTER>
+     <p>
         <%= f.label :name, "Nombre del producto" %>
         <%=f.collection_select(:nombre_producto, Productname.all, :name, :name)%>
+     </p>
+
     <p>
         <%= f.label :code, "Codigo del producto" %>
         <%=f.collection_select(:code, Productname.all, :code, :code)%>
@@ -14,14 +17,7 @@
         <%= f.label :quantity, "Cantidad" %>
         <%= f.text_field :quantity, :maxlength => '4' %>
     </p>
-    <p>
-        <%= f.label :id_order, "Numero de pedido:" %>  
-        <%= f.text_field :id_order, :value => @productorder.id_order, :readonly => true %>          
-    </p> 
-    <p>
-        <%= f.label :id, "Numero de producto:" %> 
-        <%= f.text_field :id, :value => @productorder.id, :readonly => true %>
-    </p>
+    
   <p>
     <%= f.submit "Registrar Producto", class: "btn btn-large btn-primary" %>
   </p>
