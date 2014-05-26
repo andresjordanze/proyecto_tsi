@@ -8,16 +8,16 @@
   		<!--<div class="row">-->
 			<div class="col-xs-3">
 
-			<p><%= f.label :detail , "Detalle:" %>
+			<p><%= f.label :detail , "*Detalle:" %>
 			<%= f.text_area :detail%>
 	
-			<p><%= f.label :problems , "Problemas:" %>
+			<p><%= f.label :problems , "*Problemas:" %>
 			<%= f.text_area :problems %>
 
-			<p><%= f.label :repairs , "Reparaciones:" %>
+			<p><%= f.label :repairs , "*Reparaciones:" %>
 			<%= f.text_area :repairs %>
 
-			<p><%= f.label :status, "Estado:" %>
+			<p><%= f.label :status, "*Estado:" %>
         	<%= f.select :status, options_for_select([['En reparacion', 'En reparacion'], ['Finalizado', 'Finalizado']]) %>
 	
 			<p><%= f.submit "Guardar", class: "btn btn-large btn-primary" %></p>

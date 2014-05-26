@@ -15,7 +15,8 @@
 </div>
 
 <h1>Productos:</h1>
-<table border=1>
+<table class="table table-striped">
+<thead>
   <tr>
     <th>Nombre</th>
     <th>Codigo</th>  
@@ -26,7 +27,8 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% cantidad=@order.productorders.length%>
 <% if cantidad == 0 %>
 <% nuevo = true %>
@@ -56,6 +58,7 @@
     <%end%>
   </tr>
 <% end %>
+</tbody>
 </table>
 <br/>
 
@@ -69,7 +72,7 @@
     <%= f.label :price, "Precio Unit." %>
     <%= f.text_field :price, :maxlength => '6' %>
     <%= f.hidden_field :control, :value => "true" %>
-    <%= f.submit "Agregar Producto a Pedido", class: "btn btn-large btn-jordi" %>
+    <%= f.submit "Agregar Producto a Pedido", :class  => 'btn btn-large btn-success' %>
   </p>
 <% end %>
 <%end%>

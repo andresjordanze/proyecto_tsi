@@ -10,6 +10,29 @@
   src: url(/assets/CaviarDreams.otf) format("truetype");
 }
 
+div.field-error {
+  display: inline-block;
+  position: right;
+  color: #ff0000;
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
+  line-height: 1.6em;
+}
+
+div.field-valid {
+  display: inline-block;
+  position: right;
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
+}
+
+div.field-valid img {
+  width: 24px;
+  height: 24px;
+}
+
 .CSSTableGenerator {
   padding:0px;
   width:70%;
@@ -19,7 +42,7 @@
   -moz-border-radius-bottomleft:12px;
   -webkit-border-bottom-left-radius:12px;
   border-bottom-left-radius:12px;
-  
+    
   -moz-border-radius-bottomright:12px;
   -webkit-border-bottom-right-radius:12px;
   border-bottom-right-radius:12px;
@@ -116,10 +139,10 @@
 }
 
 .opcion_footer{
-  margin-left: 105px;
+  margin-left: 100px;
   float: left;
-  width: 250px;
-  text-align: left;
+  width: 200px;
+  text-align: left;div
  }
 .opcion_footer p a{
  text-decoration: none; 
@@ -403,7 +426,7 @@ html {
 }
 body {
   font-family: "Caviar";
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -863,10 +886,10 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  padding-right: 0px;
-  padding-left: 5px;
-  margin-right: 0px;
-  margin-left: 0px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 @media (min-width: 768px) {
   .container {
@@ -880,7 +903,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1300px;
   }
 }
 .container-fluid {
@@ -2249,53 +2272,10 @@ fieldset[disabled] .btn-primary.active {
   color: #428bca;
   background-color: #fff;
 }
-
-.btn-jordi {
-  color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-}
-.btn-jordi:hover,
-.btn-jordi:focus,
-.btn-jordi:active,
-.btn-jordi.active,
-.open .dropdown-toggle.btn-jordi {
-  color: #fff;
-  background-color: #47a447;
-  border-color: #398439;
-}
-.btn-jordi:active,
-.btn-jordi.active,
-.open .dropdown-toggle.btn-jordi {
-  background-image: none;
-}
-.btn-jordi.disabled,
-.btn-jordi[disabled],
-fieldset[disabled] .btn-jordi,
-.btn-jordi.disabled:hover,
-.btn-jordi[disabled]:hover,
-fieldset[disabled] .btn-jordi:hover,
-.btn-jordi.disabled:focus,
-.btn-jordi[disabled]:focus,
-fieldset[disabled] .btn-jordi:focus,
-.btn-jordi.disabled:active,
-.btn-jordi[disabled]:active,
-fieldset[disabled] .btn-jordi:active,
-.btn-jordi.disabled.active,
-.btn-jordi[disabled].active,
-fieldset[disabled] .btn-jordi.active {
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-}
-.btn-jordi .badge {
-  color: #5cb85c;
-  background-color: #fff;
-}
-
 .btn-success {
   color: #fff;
-  background-color: #216185;
-  border-color: #13577E;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -2303,8 +2283,8 @@ fieldset[disabled] .btn-jordi.active {
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
   color: #fff;
-  background-color: #094C72;
-  border-color: #0A4364;
+  background-color: #47a447;
+  border-color: #398439;
 }
 .btn-success:active,
 .btn-success.active,
@@ -2547,8 +2527,9 @@ input[type="button"].btn-block {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('/assets/fonts/glyphicons-halflings-regular.eot');
-  src: url('/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -3190,7 +3171,7 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   font-size: 14px;
   list-style: none;
-  background-color: #D3E5FB;
+  background-color: #DAE6EC;
   background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
@@ -3662,7 +3643,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 8px;
+  padding: 10px 15px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3942,8 +3923,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand {
   float: left;
   height: 50px;
-  padding: 17px 17px;
-  font-size: 25px;
+  padding: 15px 15px;
+  font-size: 30px;
   line-height: 22px;
 }
 .navbar-brand:hover,
@@ -4024,8 +4005,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 17px;
-    padding-bottom: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   .navbar-nav.navbar-right:last-child {
     margin-right: -15px;
@@ -4590,13 +4571,12 @@ a.list-group-item.active > .badge,
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 85px;
-    padding-bottom: 30px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
   .container .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
-    padding-top: 1000px;
   }
   .jumbotron h1,
   .jumbotron .h1 {

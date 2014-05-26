@@ -2,19 +2,17 @@
 
 <h1>Registrar Cliente</h1></br>
 	<%= form_validated_for(@client) do |f| %>
-  		<!--<div class="row">-->
-			<div class="col-xs-3">
+  		<!--<div class="row">-->			
+			<%= f.label :name , "*Nombre completo:" %>
+			<p><%= f.text_field :name, :maxlength => '45' %></p>
 
-			<p><%= f.label :name , "Nombre completo:" %>
-			<%= f.text_field :name, :maxlength => '45' %>
+			<%= f.label :nit , "*NIT:" %>
+			<p><%= f.text_field :nit, :maxlength => '12' %></p>
 
-			<p><%= f.label :nit , "NIT:" %>
-			<%= f.text_field :nit, :maxlength => '12' %>
-
-			<p><%= f.label :phone , "Telefono/Celular:" %>
-			<%= f.text_field :phone,:maxlength => '8' %>
+			<%= f.label :phone , "*Telefono/Celular:" %>
+			<p><%= f.text_field :phone,:maxlength => '8' %></p>
 	
 			<p><%= f.submit "Registrar", class: "btn btn-large btn-primary" %></p>
-			</div>
+			
 		<!--</div>-->
 	<%end%>

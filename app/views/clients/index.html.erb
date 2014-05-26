@@ -1,25 +1,28 @@
 <% title "Clientes" %>
 <h1>Lista de Clientes</h1>
 
-<table class="table table-bordered">
-  <tr>
-    <th>Nombre Completo</th>
-    <th>NIT</th>
-    <th>Telefono/Celular</th>
-    <th>Fecha de registro</th>
-    <th></th>
-  </tr>
-
-<% @clients.each do |client| %>
-  <tr class="info">
-    <td><%= client.name %></td>
-    <td><%= client.nit %></td>
-    <td><%= client.phone %></td>
-    <td><%= client.created_at.strftime("%d/%m/%Y") %></td>
-    <td><%= link_to 'Editar', {:controller => :clients, :action => "edit", :id => client.id}, :class => 'btn btn-mini btn-info'  %></td>
-    <td><%= button_to 'Eliminar Cliente', client_path(client),method: :delete, data: { confirm: 'Seguro?' }, :class => "btn btn-mini btn-danger" %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre Completo</th>
+      <th>NIT</th>
+      <th>Telefono/Celular</th>
+      <th>Fecha de registro</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= client.name %></td>
+      <td><%= client.nit %></td>
+      <td><%= client.phone %></td>
+      <td><%= client.created_at.strftime("%d/%m/%Y") %></td>
+      <td><%= link_to 'Editar', {:controller => :clients, :action => "edit", :id => client.id}, :class => 'btn btn-mini btn-warning'  %></td>
+      <td><%= button_to 'Eliminar Cliente', client_path(client),method: :delete, data: { confirm: 'Seguro?' }, :class => "btn btn-mini btn-danger" %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 </br>
 <%= link_to 'Registrar Cliente', :controller => :clients, :action => 'new' %>

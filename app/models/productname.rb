@@ -1,14 +1,21 @@
 class Productname < ActiveRecord::Base
 	attr_accessible :name, :code, :description, :serial, :brand
-	validates :name, presence: {:message => "Usted debe ingresar el nombre del producto"}	
+	validates :name, presence: {:message => "Debe ingresar el nombre del producto"}	
 	validates :name, uniqueness: {case_sensitive: false, :message => "El nombre ya existe"}
 	validates :name, format: { with: /\A[a-zA-Z\d\s]+\z/,
     message: "Solo Letras Permitidas" }
-    validates :name, length: {minimum: 5, :message => "El Nombre debe tener minimo 5 caracteres"}
+    validates :name, length: {minimum: 5, :message => "Minimo 5 caracteres"}
 
-    validates :code, presence: {:message => "Usted debe ingresar el codigo del producto"}	
+    validates :code, presence: {:message => "Debe ingresar el codigo del producto"}	
 	validates :code, uniqueness: {case_sensitive: false, :message => "El codigo ya existe"}
 	validates :code, length: {minimum: 5, :message => "El codigo debe tener minimo 5 caracteres"}
+
+    validates :description, presence: {:message => "Debe ingresar una descripcion"}   
+    validates :description, length: {minimum: 10, :message => "Minimo 5 caracteres"}
+
+    validates :serial, presence: {:message => "Debe ingresar el serial del producto"}   
+    validates :serial, uniqueness: {case_sensitive: false, :message => "El codigo ya existe"}
+    validates :serial, length: {minimum: 10, :message => "Minimo 10 caracteres"}
 
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')

@@ -1,20 +1,19 @@
-<div class="col-xs-3">
+
 <%= form_validated_for @user do |f| %>
   <!--<%= f.error_messages %>-->
-      <p><%= f.label :username, 'Nombre de usuario' %>
-      <%= f.text_field :username, :class => 'form-control', :maxlength => '20' %>
+      <%= f.label :username, '*Nombre de usuario' %>
+      <p><%= f.text_field :username, :class => 'form-control', :maxlength => '45' %></p>
     
-      <p><%= f.label :name, 'Nombre completo' %>
-      <%= f.text_field :name, :class => 'form-control', :maxlength => '45' %>
+      <%= f.label :name, '*Nombre completo' %>
+      <p><%= f.text_field :name, :class => 'form-control', :maxlength => '45' %></p>
       
-      <p><%= f.label :password, 'Contraseña'%>
-      <%= f.password_field :password, :class => 'form-control', :maxlength => '25' %>
+      <%= f.label :password, '*Contraseña'%>
+      <p><%= f.password_field :password, :class => 'form-control', :maxlength => '25' %></p>
       
-      <p><%= f.label :password_confirmation, 'Confirme Contraseña' %>
-      <%= f.password_field :password_confirmation, :class => 'form-control', :maxlength => '25' %>
+      <%= f.label :password_confirmation, '*Confirme Contraseña' %>
+      <p><%= f.password_field :password_confirmation, :class => 'form-control', :maxlength => '25' %></p>
 
       <p><%= f.label :rol %>
         <%= f.select :rol, options_for_select([[ 'Tecnico', 'tecnico' ], ['Encargado almacen', 'enc_almacen']]) %>
       <p><%= f.submit (@user.new_record? ? 'Crear' : 'Update'), :class => 'btn btn-lg btn-success' %></p>
 <% end %>
-</div>
