@@ -4,6 +4,10 @@ class CreateIncomes < ActiveRecord::Migration
       t.integer :id_order
       t.string :product_name
       t.integer :quantity
+      t.string :description
+      t.string :code
+      t.integer :price
+      t.integer :total_price
       t.timestamps
     end
   end

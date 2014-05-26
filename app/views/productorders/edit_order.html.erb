@@ -1,0 +1,20 @@
+<% title "Editar Producto de Pedido" %>
+<CENTER>
+<h1>Editar Producto <%= @productorder.nombre_producto%></h1>
+<div class="row">
+	<div class="col-xs-3">
+	<%= form_validated_for(@productorder) do |f| %>		
+    	<p>
+    		<%= f.label :quantity, "Cantidad" %>
+    		<%= f.text_field :quantity, :maxlength => '4' %>
+    		<%=f.label :price, "Precio unitario" %>
+    		<%= f.text_field :price, :maxlength => '4'%>
+    		<%= f.hidden_field :control, :value => 'true' %>
+    		<%= f.submit "Editar Producto", class: "btn btn-large btn-primary" %>
+    	</p>
+	</div>
+	<!--</div>-->
+	<%end%>
+	</div>
+</div>
+</CENTER>

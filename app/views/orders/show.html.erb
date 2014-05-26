@@ -1,36 +1,44 @@
-<CENTER><H1><%= @order.numero_pedido %> </H1>
+<h1>Registrar Pedido</h1>
 
-<p>
-    <strong>Fecha</strong><br>
-    <%= @order.created_at %>
-</p>
+<div class="row">
+  <div class="col-xs-3">
+  
+  <%= form_validated_for(@order) do |f| %>
+    <table width="400">
+      <tr>
+        <th><h3><%=f.label :provider, "Proveedor" %> <%=f.collection_select(:provider, Provider.all, :name, :name)%></h3></th>
+        <th align="center"><%=f.submit "Registrar Pedido", class: "btn btn-large btn-primary" %></th>
+      </tr>
+    </table>
+  <%end%>
+  </div>
+</div>
 
-<p>
-    <strong>Proveedor</strong><br>
-    <%= @order.provider %>
-</p>
-
-<Center>
-
-<h2>Productos:</h2>
+<h1>Productos:</h1>
 <table border=1>
   <tr>
     <th>Nombre</th>
     <th>Codigo</th>  
     <th>Cantidad</th>
+    <th>Precio Unit.</th>
+    <th>Precio Total</th>
     <th>Estado</th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% cantidad=@order.productorders.length%>
 <% if cantidad == 0 %>
 <% nuevo = true %>
 <% end %>
-<% @order.productorders.each do |productito| %>
+<% @order.productorders.each do |producto| %>
   <tr>
-    <td><CENTER><%= productito.nombre_producto%></CENTER></td>
-    <td><CENTER><%= productito.code %></CENTER></td>
-    <td><CENTER><%= productito.quantity %></CENTER></td>
-    <%if productito.ingresado == true%>
+    <td><CENTER><%= producto.nombre_producto%></CENTER></td>
+    <td><CENTER><%= producto.code %></CENTER></td>
+    <td><CENTER><%= producto.quantity %></CENTER></td>
+    <td><CENTER><%= producto.price %></CENTER></td>
+    <td><CENTER><%= producto.total_price %></CENTER></td>
+    <%if producto.ingresado == true%>
       <% cantidad -= 1 %>
       <% nuevo = false %>
       <%@order.ingresado = true%> 
@@ -40,26 +48,17 @@
     <% cantidad += 1 %>
     <% nuevo = false %>
       <td>Pendiente</td>
+    <%end%> 
+    <% if producto.ingresado == false %>
+    <td><%=link_to "Editar de pedido", :controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id %></td>
+    <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id %></td>
     <%end%>
-    <td><%=link_to "Ver", :controller => :productorders, :action => 'show', :id => productito.id, :order_id => @order.numero_pedido %></td> 
-    <% if productito.ingresado == false %>
-    <td><%=link_to "Editar", :controller => :productorders, :action => 'edit', :id => productito.id, :order_id => @order.numero_pedido %></td>
-    <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => productito.id, :order_id => @order.numero_pedido %></td>
-    <td><%= link_to 'Registrar ingreso', :controller => :products, :action => "registrar_ingreso", :id => productito.id %></td>
-    <% end %>
   </tr>
 <% end %>
 </table>
-</Center>
-<br><br>
-
+<br/>
 <%if nuevo == true || cantidad > 0 %>
-  <Center><%= link_to_function "Agregar producto a pedido", "$('#hide').toggle()" %></Center>
-  <div id="hide" style="display:none">
     <%= render "productorders/form" %>
-  </div>
 <%end%>
 
-<%= button_to 'Volver', orders_path, :method => :get, :class => 'btn btn-default' %><br>
-
-  </CENTER>
+<%= link_to 'Cancelar', order_path(@order), method: :delete, :class => 'btn btn-danger' %>

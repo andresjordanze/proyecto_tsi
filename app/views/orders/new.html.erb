@@ -5,8 +5,8 @@
   		<!--<div class="row">-->
 			<div class="col-xs-3">
 
-			<p><%= f.label :numero_pedido , "Numero de pedido:" %>
-			<%= f.text_field :numero_pedido %>
+			<p><%= f.label :id , "Numero de pedido:" %>
+			<%= f.text_field :id %>
 
 			<p><%=f.label :provider, "Proveedor" %>
     		<%=f.collection_select(:provider, Provider.all, :name, :name)%>

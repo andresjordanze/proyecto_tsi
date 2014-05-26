@@ -26,7 +26,6 @@ class SalesController < ApplicationController
     @sale.client_name =  params[:client_name]
     @sale.nit =  params[:nit]
     if @sale.save   
-      flash[:message] = "Venta Creada!"
       redirect_to @sale
     else
       flash[:message] = "Verifique los Campos Marcados"

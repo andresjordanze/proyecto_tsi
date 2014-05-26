@@ -1,23 +1,77 @@
-<% title "Editar Orden" %>
-<CENTER>
-<h1>Editar Orden</h1>
+<h1>Editar Pedido</h1>
 
 <div class="row">
-	<div class="col-xs-3">
-	<%= form_validated_for(@order) do |f| %>
-  			
-  		<div class="field">
-			<p><%= f.label :numero_pedido , "Numero de pedido:" %>
-			<%= f.text_field :numero_pedido, :maxlength => '20'%>
-		</div>
-
-			<p><%=f.label :provider, "Proveedor" %>
-    		<%=f.collection_select(:provider, Provider.all, :name, :name)%>
-
-			<p><%= f.submit "Guardar cambios", class: "btn btn-large btn-primary" %></p>
-			</div>
-		<!--</div>-->
-		<%end%>
-	</div>
+  <div class="col-xs-3">
+  
+  <%= form_validated_for(@order) do |f| %>
+    <table width="400">
+      <tr>
+        <th><h3><%=f.label :provider, "Proveedor" %> <%=f.collection_select(:provider, Provider.all, :name, :name)%></h3></th>
+        <th><%=f.submit "Editar Pedido", class: "btn btn-warning" %></th>
+      </tr>
+    </table>
+  <%end%>
+  </div>
 </div>
-</CENTER>
+
+<h1>Productos:</h1>
+<table border=1>
+  <tr>
+    <th>Nombre</th>
+    <th>Codigo</th>  
+    <th>Cantidad</th>
+    <th>Precio Unit.</th>
+    <th>Precio Total</th>
+    <th>Estado</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% cantidad=@order.productorders.length%>
+<% if cantidad == 0 %>
+<% nuevo = true %>
+<% end %>
+<% @order.productorders.each do |producto| %>
+  <tr>
+    <td><CENTER><%= producto.nombre_producto%></CENTER></td>
+    <td><CENTER><%= producto.code %></CENTER></td>
+    <td><CENTER><%= producto.quantity %></CENTER></td>
+    <td><CENTER><%= producto.price %></CENTER></td>
+    <td><CENTER><%= producto.total_price %></CENTER></td>
+    <%if producto.ingresado == true%>
+      <% cantidad -= 1 %>
+      <% nuevo = false %>
+      <%@order.ingresado = true%> 
+      <%@order.save%>
+      <td>Ingresado</td>
+    <%else%>
+    <% cantidad += 1 %>
+    <% nuevo = false %>
+      <td>Pendiente</td>
+    <%end%> 
+    <% if producto.ingresado == false %>
+    <td><%=link_to "Editar de pedido", :controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id %></td>
+    <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id %></td>
+    <td><%= link_to 'Registrar ingreso', :controller => :products, :action => "registrar_ingreso", :id => producto.id %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+<br/>
+
+<%if nuevo == true || cantidad > 0 %>
+  <%= form_validated_for([@order, @order.productorders.build]) do |f| %>
+  <p>
+    <%= f.label :name, "Producto" %>
+    <%=f.collection_select(:nombre_producto, Productname.all, :id, :name)%>
+    <%= f.label :quantity, "Cantidad" %>
+    <%= f.text_field :quantity, :maxlength => '4' %>
+    <%= f.label :price, "Precio Unit." %>
+    <%= f.text_field :price, :maxlength => '6' %>
+    <%= f.hidden_field :control, :value => "true" %>
+    <%= f.submit "Agregar Producto a Pedido", class: "btn btn-large btn-jordi" %>
+  </p>
+<% end %>
+<%end%>
+
+<a href="/orders" class="btn btn-default">Volver</a>

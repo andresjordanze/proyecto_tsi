@@ -1,8 +1,6 @@
 <% title "Lista de pedidos" %>
 <h1>Lista de pedidos</h1>
 
-<h3><%= link_to 'Registrar pedido', new_order_path, :class => 'btn btn-success' %></h3>
-
 <%= link_to_function "Buscar Pedido por Proveedor", "$('#hide').toggle()", :class => "btn btn-info" %><br>
 <div id="hide" style="display:none">
 <br>
@@ -11,8 +9,6 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
 <input type="submit" value="Buscar">
 </form>
 </div>
-
-<CENTER>
 
 <table class="table table-striped">
     <thead>
@@ -25,17 +21,17 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
     <tbody>
         <% @orders.each do |order| %>
             <tr>
-                <td><CENTER><%= order.numero_pedido %></CENTER></td>
+                <td><CENTER><%= order.id %></CENTER></td>
                 <td><CENTER><%= order.created_at.strftime("%d/%m/%Y") %></CENTER></td>
                 <td><CENTER><%= order.provider %></CENTER></td>
-                <td><%= link_to 'Ver', :controller => :orders, :action => "show", :id => order.numero_pedido %></td>
+                <td><%= link_to 'Ver pedido', {:controller => :orders, :action => "mostrar", :id => order.id }, :class => 'btn btn-mini btn-success'%></td>
                 <% if order.ingresado == false %>
-                <td><%= link_to 'Editar', :controller => :orders, :action => "edit", :id => order.id %></td>
-                <td><%= link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+                <td><%= link_to 'Editar pedido', {:controller => :orders, :action => "edit", :id => order.id}, :class => 'btn btn-mini btn-warning' %></td>
+                <td><%= link_to 'Eliminar pedido', order_path(order), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
                 <% end %>        
             </tr>
         <% end %>
     </tbody>
 </table>
 <br>
-</Center>
+<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "Harry"}, :method => "post" %>

@@ -3,6 +3,9 @@ class CreateProductnames < ActiveRecord::Migration
     create_table :productnames do |t|
     	t.string :name
     	t.string :code
+    	t.string :description
+    	t.string :serial
+    	t.string :brand
 
       t.timestamps
     end
