@@ -56,10 +56,18 @@ class ProductordersController < ApplicationController
     @productorder.total_price = params[:productorder][:quantity].to_i*params[:productorder][:price].to_i
   	if @productorder.update_attributes(params[:productorder])
       flash[:success] = "Producto de pedido modificado!"
-      if params[:control]='true'
-        redirect_to '/orders/'+@productorder.order_id.to_s
+      if params[:control] = 'true'
+        if params[:valor] = 'true'
+          redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
+        else
+          redirect_to '/orders/'+@productorder.order_id.to_s
+        end
       else
-        redirect_to @productorder
+        if params[:valor] = 'true'
+          redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
+        else
+          redirect_to '/orders/'+@productorder.order_id.to_s
+        end
       end
     else
       render action: "edit" 

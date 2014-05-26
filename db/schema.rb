@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502211236) do
+ActiveRecord::Schema.define(version: 20140526100255) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20140502211236) do
     t.string   "estado"
     t.string   "provider"
     t.boolean  "ingresado"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "outflows", force: true do |t|
+    t.integer  "sale_id"
+    t.integer  "total_price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,10 +131,12 @@ ActiveRecord::Schema.define(version: 20140502211236) do
     t.boolean  "available"
     t.integer  "product_id"
     t.integer  "sale_id"
+    t.integer  "outflow_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "subproducts", ["outflow_id"], name: "index_subproducts_on_outflow_id"
   add_index "subproducts", ["product_id"], name: "index_subproducts_on_product_id"
   add_index "subproducts", ["sale_id"], name: "index_subproducts_on_sale_id"
 

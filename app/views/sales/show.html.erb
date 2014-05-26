@@ -1,3 +1,4 @@
+<body onLoad="window.scroll(0, 300)">
 <%if @sale.client_name != "Harry"%>
     <% title @sale.client_name %>
 <%else%>
@@ -36,7 +37,7 @@
 
 <p>    
     <b>Total Venta:<b><br>
-    <%= @sale.price %>
+    <%= @sale.price/2 %>
 </p>
 
 <p>
@@ -74,8 +75,10 @@
 
 <% if @sale.confirmed == false %>
     <p>
-        <h2><Center><%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()", :class =>'btn btn-mini btn-warning    ' %></Center></h2>
-        <div id="subproduct" style="display:none">
+
+        <h2><Center><!--%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %-->Agregar Producto a Venta</Center></h2>
+        <div id="subproduct" ><!--style="display:none"-->
+
 
             <table class="table table-striped">
                 <thead>
@@ -103,6 +106,7 @@
                     <% end %>
                 </tbody>
             </table>
+            <%= will_paginate @subproducts %>
         </div>
     </p>
     <%if @sale.price !=0 %>
@@ -115,4 +119,4 @@
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>
-  </div>
+  </div></body>

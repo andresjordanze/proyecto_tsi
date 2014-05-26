@@ -1,0 +1,37 @@
+<% title "Servicios" %>
+<div class="hero-unit">
+<h1>Reporte de Servicios</h1>
+<br>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Nº</th>
+    <th>Cliente</th>
+    <th>Nombre Producto</th>
+    <th>Codigo Producto</th>
+    <th>Estado</th>
+    <th>Fecha</th>
+    <th>Detalles</th>
+    <th>Problemas</th>
+    <th>Reparaciones</th>
+  </tr>
+</thead>
+<% @technical_services.each do |technical_service| %>
+  <tbody>
+  <tr>
+    <td><%= technical_service.id %></td>
+    <td><%= technical_service.client %></td>
+    <td><%= technical_service.product_name %></td>
+    <td><%= technical_service.product_code %></td>
+    <td><%= technical_service.detail %></td>
+    <td><%= technical_service.problems %></td>
+    <td><%= technical_service.repair %></td>
+    <td><%= technical_service.status %></td>
+    <td><%= technical_service.created_at.strftime("%d/%m/%Y") %></td>
+  </tr>
+</tbody>
+<% end %>
+</table>
+</br>
+</div>

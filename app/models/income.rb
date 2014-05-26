@@ -10,6 +10,5 @@ class Income < ActiveRecord::Base
       	self.id_order = @productname.order_id
       	self.price = @productname.price
       	self.total_price = @productname.total_price
-      	self.save
   	end
 end

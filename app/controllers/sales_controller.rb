@@ -6,12 +6,17 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
-    @subproducts = Subproduct.all
+    @subproducts = Subproduct.paginate(:per_page => 5, :page => params[:page])
   end
 
   def print
     @sale = Sale.find(params[:id])
     render layout: false
+  end
+
+  def egresos
+    @sales = Sale.all
+    @subproducts = Subproduct.all
   end
 
   def new
@@ -66,6 +71,8 @@ def update
   def confirm_sale
     @sale = Sale.find(params[:identificator])
     @sale.confirmed = true
+    @outflow = Outflow.new
+    @outflow.registrar(params[:identificator])
     @sale.save
     render 'edit'
     flash[:success] = "Venta Realizada..."
