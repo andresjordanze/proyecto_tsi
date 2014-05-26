@@ -6,7 +6,7 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
-    @subproducts = Subproduct.all
+    @subproducts = Subproduct.paginate(:per_page => 5, :page => params[:page])
   end
 
   def print
