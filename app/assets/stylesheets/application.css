@@ -903,7 +903,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1300px;
+    width: 1180px;
   }
 }
 .container-fluid {
@@ -2272,10 +2272,54 @@ fieldset[disabled] .btn-primary.active {
   color: #428bca;
   background-color: #fff;
 }
-.btn-success {
+
+
+.btn-jordi {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
+}
+.btn-jordi:hover,
+.btn-jordi:focus,
+.btn-jordi:active,
+.btn-jordi.active,
+.open .dropdown-toggle.btn-jordi {
+  color: #fff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+.btn-jordi:active,
+.btn-jordi.active,
+.open .dropdown-toggle.btn-jordi {
+  background-image: none;
+}
+.btn-jordi.disabled,
+.btn-jordi[disabled],
+fieldset[disabled] .btn-jordi,
+.btn-jordi.disabled:hover,
+.btn-jordi[disabled]:hover,
+fieldset[disabled] .btn-jordi:hover,
+.btn-jordi.disabled:focus,
+.btn-jordi[disabled]:focus,
+fieldset[disabled] .btn-jordi:focus,
+.btn-jordi.disabled:active,
+.btn-jordi[disabled]:active,
+fieldset[disabled] .btn-jordi:active,
+.btn-jordi.disabled.active,
+.btn-jordi[disabled].active,
+fieldset[disabled] .btn-jordi.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-jordi .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #216185;
+  border-color: #13577E;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -2283,8 +2327,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
   color: #fff;
-  background-color: #47a447;
-  border-color: #398439;
+  background-color: #094C72;
+  border-color: #0A4364;
 }
 .btn-success:active,
 .btn-success.active,
@@ -2313,6 +2357,8 @@ fieldset[disabled] .btn-success.active {
   color: #5cb85c;
   background-color: #fff;
 }
+
+
 .btn-info {
   color: #fff;
   background-color: #5bc0de;
@@ -3643,7 +3689,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 10px 10px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -4571,8 +4617,8 @@ a.list-group-item.active > .badge,
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 85px;
+    padding-bottom: 30px;
   }
   .container .jumbotron {
     padding-right: 60px;
