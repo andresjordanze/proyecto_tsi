@@ -1,27 +1,27 @@
 <h1>Todas las Marcas</h1>
 <h3><%= link_to 'Agregar Marca', new_brand_path, :class => 'btn btn-success' %></h3>
 
-<%= link_to_function "Buscar Marca", "$('#hide').toggle()", :class => "btn btn-info" %><br>
-<div id="hide" style="display:none">
-<br>
-<form method="GET" action="/brands/search">
-Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
-</form>
-</div>
+	<%= link_to_function "Buscar Marca", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+		<div id="hide" style="display:none">
+		<br>
+			<form method="GET" action="/brands/search">
+				Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+				<input type="submit" value="Buscar">
+			</form>
+		</div>
 
 <CENTER>
-<table class="table table-striped">
+	<table class="table table-striped">
 <thead>
   <tr>
-    <th><CENTER><%=link_to "Nombre", :sort => "name" %></CENTER></th>
+    <th><CENTER>Nombre</CENTER></th>
   </tr>
 </thead>
 <tbody>
 <% @brands.each do |brand| %>
   <tr>
     <td><CENTER><%= brand.name %></CENTER></td>
-    <td><%= link_to 'Editar', edit_brand_path(brand), :class => 'btn btn-mini' %>
+    <td><%= link_to 'Editar', {:controller => :brands, :action => "edit", :id => brand.id}, :class => 'btn btn-mini btn-info' %>
     <%= link_to 'Eliminar', brand, method: :delete, data: { confirm: 'Seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>

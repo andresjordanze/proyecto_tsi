@@ -16,11 +16,6 @@
     <%= f.label :description, "Descripcion" %>
     <%= f.text_area :description, :maxlength => '160'%>
   </p>
-  <p>
-    
-  </p>
-  <p></p>
 
-
-  <p><%= f.submit (@productname.new_record? ? 'Registrar Producto' : 'Guardar Cambios'), :class => 'btn btn-lg btn-success' %></p>
+  <p><%= f.submit (@productname.new_record? ? 'Registrar Producto' : 'Guardar Cambios'), :class => 'btn btn-lg btn-primary' %></p>
 <% end %>

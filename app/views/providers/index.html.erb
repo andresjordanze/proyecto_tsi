@@ -22,8 +22,8 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
 <% @providers.each do |provider| %>
   <tr>
     <td><CENTER><%= provider.name %></CENTER></td>
-    <td><%= link_to 'Ver', provider, :class => 'btn btn-mini' %>
-    <%= link_to 'Editar', edit_provider_path(provider), :class => 'btn btn-mini' %>
+    <td><%= link_to 'Ver', {:controller => :providers, :action => 'show', :id => provider.id} , :class => 'btn btn-mini btn-success' %>
+    <%= link_to 'Editar', {:controller => :providers, :action => "edit", :id => provider.id}, :class => 'btn btn-mini btn-info' %>
     <%= link_to 'Eliminar', provider, method: :delete, data: { confirm: 'Seguro de eliminar el proveedor?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>

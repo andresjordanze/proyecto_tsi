@@ -12,7 +12,6 @@ Informaticacomp::Application.routes.draw do
   post 'edit_order' => 'productorders#edit_order'
   get 'edit_order' => 'productorders#edit_order'
 
-
   post 'ver_pedido' => 'orders#mostrar'
   get 'ver_pedido' => 'orders#mostrar'
 

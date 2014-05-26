@@ -34,9 +34,9 @@ Busqueda: <input type="text" name="value" placeholder="Cliente o Numero de servi
     <td><%= technical_service.product_code %></td>
     <td><%= technical_service.status %></td>
     <td><%= technical_service.created_at.strftime("%d/%m/%Y") %></td>
-    <td><%= link_to 'Ver Servicio', :controller => :technical_services, :action => 'show', :id => technical_service.id %></td>
+    <td><%= link_to 'Ver Servicio', {:controller => :technical_services, :action => 'show', :id => technical_service.id}, :class => 'btn btn-mini btn-success'  %></td>
     <%if technical_service.status == "En reparacion" || technical_service.status == "Recibido"%>
-    <td><%= link_to 'Añadir problemas/ reparaciones', :controller => :technical_services, :action => 'edit', :id => technical_service.id %></td>
+    <td><%= link_to 'Añadir problemas/ reparaciones', {:controller => :technical_services, :action => 'edit', :id => technical_service.id},:class => 'btn btn-mini btn-info ' %></td>
     <%end%>
   </tr>
 <% end %>

@@ -1,4 +1,4 @@
-<h1>Todos los Productos</h1>
+<h1>Lista de Productos</h1>
 <h3><%= link_to 'Agregar Nombre Producto', new_productname_path, :class => 'btn btn-success' %></h3>
 
 <%= link_to_function "Buscar Nombre de Producto", "$('#hide').toggle()", :class => "btn btn-info" %><br>
@@ -23,8 +23,8 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
   <tr>
     <td><CENTER><%= producto.name %></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
-    <td><%= link_to 'Editar', edit_productname_path(producto), :class => 'btn btn-mini' %>
-    <%= link_to 'Eliminar', producto, method: :delete, data: { confirm: 'Seguro de eliminar el nombre del producto?' }, :class => 'btn btn-mini btn-danger' %></td>
+    <td><%= link_to 'Editar producto', edit_productname_path(producto), :class => 'btn btn-mini  btn-warning' %>
+    <%= link_to 'Eliminar producto', producto, method: :delete, data: { confirm: 'Seguro de eliminar el nombre del producto?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>
 </tbody>

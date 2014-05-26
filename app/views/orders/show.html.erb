@@ -2,7 +2,6 @@
 
 <div class="row">
   <div class="col-xs-3">
-  
   <%= form_validated_for(@order) do |f| %>
     <table width="400">
       <tr>
@@ -14,8 +13,10 @@
   </div>
 </div>
 
+
 <h1>Productos:</h1>
-<table border=1>
+<table class='table table-striped'>
+<thead>
   <tr>
     <th>Nombre</th>
     <th>Codigo</th>  
@@ -26,12 +27,15 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% cantidad=@order.productorders.length%>
 <% if cantidad == 0 %>
 <% nuevo = true %>
 <% end %>
+
 <% @order.productorders.each do |producto| %>
+
   <tr>
     <td><CENTER><%= producto.nombre_producto%></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
@@ -55,10 +59,12 @@
     <%end%>
   </tr>
 <% end %>
+</tbody>
 </table>
 <br/>
+
 <%if nuevo == true || cantidad > 0 %>
     <%= render "productorders/form" %>
 <%end%>
 
-<%= link_to 'Cancelar', order_path(@order), method: :delete, :class => 'btn btn-danger' %>
+<%= link_to 'Cancelar pedido', order_path(@order), method: :delete, :class => 'btn btn-danger' %>

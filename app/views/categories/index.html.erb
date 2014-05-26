@@ -1,4 +1,4 @@
-<h1>Todas las Categorias</h1>
+<h1>Lista de Categorias</h1>
 <h3><%= link_to 'Agregar Categoria', new_category_path, :class => 'btn btn-success' %></h3>
 
 <%= link_to_function "Buscar Categoria", "$('#hide').toggle()", :class => "btn btn-info" %><br>
@@ -21,7 +21,7 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
 <% @categories.each do |category| %>
   <tr>
     <td><CENTER><%= category.name %></CENTER></td>
-    <td><%= link_to 'Editar', edit_category_path(category), :class => 'btn btn-mini' %>
+    <td><%= link_to 'Editar', {:controller => :categories, :action => "edit", :id => category.id}, :class => 'btn btn-mini btn-info' %>
     <%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>

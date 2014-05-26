@@ -10,6 +10,102 @@
   src: url(/assets/CaviarDreams.otf) format("truetype");
 }
 
+.CSSTableGenerator {
+  padding:0px;
+  width:70%;
+  box-shadow: 10px 10px 5px #1C4B69;
+  border:0px solid #000000;
+  
+  -moz-border-radius-bottomleft:12px;
+  -webkit-border-bottom-left-radius:12px;
+  border-bottom-left-radius:12px;
+  
+  -moz-border-radius-bottomright:12px;
+  -webkit-border-bottom-right-radius:12px;
+  border-bottom-right-radius:12px;
+  
+  -moz-border-radius-topright:12px;
+  -webkit-border-top-right-radius:12px;
+  border-top-right-radius:12px;
+  
+  -moz-border-radius-topleft:12px;
+  -webkit-border-top-left-radius:12px;
+  border-top-left-radius:12px;
+}.CSSTableGenerator table{
+    border-collapse: collapse;
+        border-spacing: 0;
+  width:100%;
+  height:100%;
+  margin:0px;padding:0px;
+}.CSSTableGenerator tr:last-child td:last-child {
+  -moz-border-radius-bottomright:12px;
+  -webkit-border-bottom-right-radius:12px;
+  border-bottom-right-radius:12px;
+}
+.CSSTableGenerator table tr:first-child td:first-child {
+  -moz-border-radius-topleft:12px;
+  -webkit-border-top-left-radius:12px;
+  border-top-left-radius:12px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+  -moz-border-radius-topright:12px;
+  -webkit-border-top-right-radius:12px;
+  border-top-right-radius:12px;
+}.CSSTableGenerator tr:last-child td:first-child{
+  -moz-border-radius-bottomleft:1200pxpx;
+  -webkit-border-bottom-left-radius:21px;
+  border-bottom-left-radius:12px;
+}.CSSTableGenerator tr:hover td{
+  
+}
+.CSSTableGenerator tr:nth-child(odd){ background-color:#1C4B69; }
+.CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
+  vertical-align:middle;
+  
+  
+  border:0px solid #000000;
+  border-width:0px 0px 0px 0px;
+  text-align:left;
+  padding:5px;
+  font-size:15px;
+  font-family:Arial;
+  font-weight:normal;
+  color:#000000;
+}.CSSTableGenerator tr:last-child td{
+  border-width:0px 0px 0px 0px;
+}.CSSTableGenerator tr td:last-child{
+  border-width:0px 0px 0px 0px;
+}.CSSTableGenerator tr:last-child td:last-child{
+  border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child td{
+    background:-o-linear-gradient(bottom, #1C4B69 5%, #1C4B69 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #1C4B69), color-stop(1, #1C4B69) );
+  background:-moz-linear-gradient( center top, #1C4B69 5%, #000000 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#1C4B69", endColorstr="#000000");  background: -o-linear-gradient(top,#1C4B69,000000);
+
+  background-color:#1C4B69;
+  border:0px solid #000000;
+  text-align:center;
+  border-width:0px 0px 0px 0px;
+  font-size:14px;
+  font-family:Arial;
+  font-weight:bold;
+  color:#ffffff;
+}
+.CSSTableGenerator tr:first-child:hover td{
+  background:-o-linear-gradient(bottom, #1C4B69 5%, #000000 100%);  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #000000) );
+  background:-moz-linear-gradient( center top, #1C4B69 5%, #000000 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#1C4B69", endColorstr="#000000");  background: -o-linear-gradient(top,#000000,000000);
+
+  background-color:#000000;
+}
+.CSSTableGenerator tr:first-child td:first-child{
+  border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+  border-width:0px 0px 0px 0px;
+}
+
 .boton{
   background-color: black;
   border-radius: 10px;
@@ -2153,6 +2249,7 @@ fieldset[disabled] .btn-primary.active {
   color: #428bca;
   background-color: #fff;
 }
+
 .btn-jordi {
   color: #fff;
   background-color: #5cb85c;
@@ -2194,30 +2291,6 @@ fieldset[disabled] .btn-jordi.active {
   color: #5cb85c;
   background-color: #fff;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .btn-success {
   color: #fff;
@@ -2474,7 +2547,6 @@ input[type="button"].btn-block {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-
   src: url('/assets/fonts/glyphicons-halflings-regular.eot');
   src: url('/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
@@ -3590,7 +3662,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 10px 8px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3871,7 +3943,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 17px 17px;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 22px;
 }
 .navbar-brand:hover,
@@ -4518,12 +4590,13 @@ a.list-group-item.active > .badge,
 }
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 85px;
+    padding-bottom: 30px;
   }
   .container .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
+    padding-top: 1000px;
   }
   .jumbotron h1,
   .jumbotron .h1 {
