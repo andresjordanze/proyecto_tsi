@@ -69,4 +69,12 @@ class Product < ActiveRecord::Base
 	before_create do
 		self.increase = 0
 	end
+
+	def disminuir
+		self.quantity -= 1
+	end
+
+	def aumentar
+		self.quantity += 1
+	end
 end

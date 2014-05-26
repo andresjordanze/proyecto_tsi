@@ -45,7 +45,7 @@ gem "protected_attributes", "~> 1.0.5"
 gem "bcrypt-ruby", :require => "bcrypt"
 
 group :production do
-	gem 'pg', '0.15.1'
+	gem 'pg'
 	gem 'rails_12factor', '0.0.2'
 end
 

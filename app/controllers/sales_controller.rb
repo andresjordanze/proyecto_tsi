@@ -14,6 +14,11 @@ class SalesController < ApplicationController
     render layout: false
   end
 
+  def egresos
+    @sales = Sale.all
+    @subproducts = Subproduct.all
+  end
+
   def new
     @sale = Sale.new
   end
@@ -66,6 +71,8 @@ def update
   def confirm_sale
     @sale = Sale.find(params[:identificator])
     @sale.confirmed = true
+    @outflow = Outflow.new
+    @outflow.registrar(params[:identificator])
     @sale.save
     render 'edit'
     flash[:success] = "Venta Realizada..."

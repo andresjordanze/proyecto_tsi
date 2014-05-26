@@ -50,7 +50,7 @@
       <td>Pendiente</td>
     <%end%> 
     <% if producto.ingresado == false %>
-    <td><%=link_to "Editar de pedido", :controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id %></td>
+    <td><%=link_to "Editar de pedido", :controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id , :valor => "true" %></td>
     <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id %></td>
     <td><%= link_to 'Registrar ingreso', :controller => :products, :action => "registrar_ingreso", :id => producto.id %></td>
     <%end%>
