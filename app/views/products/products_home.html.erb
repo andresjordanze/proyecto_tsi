@@ -26,11 +26,11 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
           <td><CENTER><%= product.name %></CENTER></td>
           <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60 class="img-rounded"></a></CENTER></td>
           <% if current_user %>
-          <td><%= link_to 'Ver', :class => 'btn btn-mini', :controller => :products, :action => 'view_product', :id => product.id%></td>
+          <td><%= link_to 'Ver', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%></td>
 
-          <td><%= link_to 'Editar', :class => 'btn btn-mini', :controller => :products, :action => 'edit_to_home', :id => product.id%></td>
+          <td><%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-info'%></td>
           
-          <td><%= button_to 'Eliminar Producto de pagina', :controller => :products, :action => 'delete_from_home', :id => product.id, :class => 'btn btn-mini btn-danger' %></td>
+          <td><%= button_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
           <% end %>
       <% end %>
         </tr>

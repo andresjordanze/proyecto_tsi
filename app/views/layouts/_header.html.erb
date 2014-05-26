@@ -1,168 +1,105 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Informaticacomp", root_url, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Productos
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Ver Lista de Productos", '/products_home' %></li>    
-              <% if current_user %>
-              <li><%= link_to "Añadir producto a pagina", '/products/' %></li>
-              <% end %>
-            </ul>
-          </li>
-
-          <% if current_user %>
-
-          <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Almacen 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-
-              <li class="dropdown-submenu">
-                <%= link_to "Nombre de Productos", '#' %>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Crear Nombre de Producto", '/productnames/new' %></li>
-                  <li><%= link_to "Lista de Nombres de Productos", '/productnames' %></li>  
-                </ul>
-              </li> 
-
-              
-              <li class="dropdown-submenu">
-                <%= link_to "Categorias", '#' %>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Crear Categoria", '/categories/new' %></li>
-                  <li><%= link_to "Lista de Categorias", '/categories' %></li>  
-                </ul>
-              </li>  
-
-              <li class="dropdown-submenu">
-                <%= link_to "Marcas", '#' %>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Crear Marca", '/brands/new' %></li>
-                  <li><%= link_to "Lista de Marcas", '/brands' %></li>  
-                </ul>
-              </li>
-
-              <li class="dropdown-submenu">
-                <%= link_to "Proveedores", '#' %>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Crear Proveedor", '/providers/new' %></li>
-                  <li><%= link_to "Lista de Proveedores", '/providers' %></li>  
-                </ul>
-              </li> 
-
-              <li class="dropdown-submenu">
-                <%= link_to "Pedidos", '#' %>
-                <ul class="dropdown-menu">
-                    <li><a href="/orders/new">Registrar Pedido</a></li>
-                    <li><a href="/orders">Lista de Pedidos</a></li>
-                  </ul>
-              </li>
-
-              <li><%= link_to "Ver Stock de Productos", '/products' %></li>
-
-              <li><%= link_to "Ingresos/Egresos", '#' %></li>
-              
-
-              
-            </ul>
-          </li>
-          <%end%>         
-          
-          <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Ventas 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <!--li--><!--%= link_to "Registrar", new_sale_path %></li-->
-              <li><%= link_to 'Registrar', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"}, :method => "post" %></li>
-              <li><%= link_to "Ver Reporte de fecha", "/sales/report_search" %></li>
-              <!--li class="dropdown-submenu"-->
-                <!--%= link_to "Reportes", '#' %>
-                <ul class="dropdown-menu">
-                    <li><a href="/sales/daily_report">Ver Reporte Diario</a></li>
-                    <li><a href="/sales/weekly_report">Ver Reporte Semanal</a></li>
-                    <li><a href="/sales/monthly_report">Ver Reporte Mensual</a></li>
-                    <li><a href="/sales/anual_report">Ver Reporte Anual</a></li>
-                  </ul>
-              </li-->
-              <li><%= link_to "Todas las ventas", sales_path %></li>
-            </ul>
-          </li>
-          <%end%>
-          <% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Servicio Tecnico 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Registrar servicio", '/technical_services/new' %></li>
-              <li><%= link_to "Buscar servicios", '/technical_services' %></li>
-            </ul>
-          </li>
-          <%end%>
-
-          <% if current_user.rol == "tecnico" || current_user.rol == "gerente" || current_user.rol == "secre" %>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Clientes 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Registrar cliente", '/clients/new', :target => "_blank" %></li>
-              <li><%= link_to "Lista de clientes", '/clients', :target => "_blank" %></li>
-            </ul>
-          </li>
-          <%end%>
-
-          <% if current_user.rol == "admin" || current_user.rol == "gerente" %>
-          <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Usuarios 
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Crear usuario", '/users/new' %></li>
-              <li><%= link_to "Lista de Usuarios", '/users' %></li>
-            </ul>
-          </li>
-          <%end%>
-                   <!--form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Buscar" width='10'>
-              </div>        
-            </form>
-          </li-->
-          <% end %>
-          <%if current_user%>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.username.capitalize%> 
-                <b class="caret"></b>
-              </a>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container" style="height: 50px;">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">INFORMATICACOMP</a>
+    </div>
+    <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pagina<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Cambiar Contraseña", :controller => :users, :action => 'edit', :id => current_user.id%></li>
-                <li><%= link_to "Cerrar Sesion", logout_path %></li>
+                <li class="dropdown-header">Productos de pagina</li>
+                <li><a href="/products/">Añadir producto a pagina</a></li>
+                <li><a href="/products_home/">Lista de productos de pagina</a></li>
+                <li class="dropdown-header">Categorias</li>
+                <li><a href="/categories/new">Crear categoria</a></li>
+                <li><a href="/categories">Lista de categorias</a></li>
               </ul>
             </li>
-          <%else%>
-            <li><%= link_to "Iniciar Sesion", login_path %></li>
-          <%end%>
-        </ul>
-      </nav>
+
+            <% if current_user %>
+            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacen<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Productos</li>
+                <li><a href="/productnames/new">Registrar producto</a></li>
+                <li><a href="/productnames">Lista de productos</a></li>
+                <li><a href="/products">Stock de productos</a></li>
+                <li class="dropdown-header">Marcas</li>
+                <li><a href="/brands/new">Registrar marca</a></li>
+                <li><a href="/brands">Lista de marcas</a></li>
+                <li class="dropdown-header">Proveedores</li>
+                <li><a href="/providers/new">Añadir proveedor</a></li>
+                <li><a href="/providers">Lista de proveedores</a></li>
+                <li class="dropdown-header">Pedidos</li>
+                <li><a href="/orders/new">Registrar pedido</a></li>
+                <li><a href="/orders">Lista de pedidos</a></li>
+              </ul>
+            </li>
+
+            <%end%>
+            <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Registrar Ventas', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"}, :method => "post" %></li>
+                <li><a href="/sales/report_search">Reporte de ventas</a></li>
+                <li><%= link_to "Todas las ventas", sales_path %></li>
+              </ul>
+            </li>
+
+            <%end%>
+            <% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicio Tecnico<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/technical_services/new">Registrar servicio</a></li>
+                <li><a href="/technical_services">Buscar servicios</a></li>
+              </ul>
+            </li>
+
+            <%end%>
+            <% if current_user.rol == "tecnico" || current_user.rol == "gerente" || current_user.rol == "secre" %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/clients/new">Registrar cliente</a></li>
+                <li><a href="/clients">Lista de clientes</a></li>
+              </ul>
+            </li>
+
+            <%end%>
+            <% if current_user.rol == "admin" || current_user.rol == "gerente" %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/users/new">Crear usuario</a></li>
+                <li><a href="/users/">Lista de usuarios</a></li>
+              </ul>
+            </li>
+
+            <%end%>
+
+          </ul>
+            <%end%>
+          <p class="navbar-text navbar-right">
+            <% if current_user%>
+            <div align="right">
+              </br><%= link_to "Cerrar sesión", logout_path %> 
+              <!--</br><%= link_to 'Editar perfil', :controller => :users, :action => "edit", :id => current_user.id %>-->
+            <% else %>
+              <%= link_to "Iniciar sesión", login_path, :class => "btn btn-xs btn-info" %>
+            <% end %>
+            </div>
+          </p><!--/.nav-collapse -->
+
     </div>
   </div>
-</header>
+</div>

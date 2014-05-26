@@ -19,7 +19,7 @@ class ProductnamesController < ApplicationController
   def create
    	@productname = Productname.new(params[:productname])
     if @productname.save
-     	redirect_to @productname, notice: 'Nombre de producto creado exitosamente.' 
+     	redirect_to @productname, notice: 'Producto creado exitosamente.' 
     else
       render action: "new" 
     end

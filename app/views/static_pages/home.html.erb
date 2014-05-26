@@ -1,45 +1,31 @@
 <% title "Inicio" %>
-<!--<div class="center hero-unit">-->
-	<!--h1>Bienvenido a InformaticaComp SRL</h1-->
-	<!--<img src="images/logo.jpg" height="250" /><br><br>
-  	<h2>Pagina En Construccion</h2>
-</div>-->
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
+<div id="container">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sollicitudin mi in semper dignissim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec eget elit non tortor condimentum rutrum id eu sapien. Duis malesuada purus elit, ut vestibulum augue ultrices id. Etiam fringilla ut nisl at dictum. Suspendisse sodales in mauris vel vestibulum. Nulla sollicitudin a mauris ut consectetur. Ut varius tellus ut laoreet suscipit. Phasellus dignissim semper ipsum, in pharetra purus ultricies nec. Vivamus eleifend non sem id lacinia. Fusce venenatis tincidunt nisl, a suscipit est viverra eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam sed ante vel ipsum vulputate euismod.
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-                 
-    <div class="item active">
-    	<center><img src="images/1.jpeg" height=1000 width=1000 alt="1" class="img-rounded"> </center> 
-    	<div class="carousel-caption">
-    		<h3 class="img-rounded"><center>Flor</center></h3>
-    	</div>
-    </div>
-    <div class="item">
-    	<center><img src="images/3.jpg" height=1000 width=1000 alt="2" class="img-rounded"></center>       	
-    	<div class="carousel-caption">
-    		<h3 class="img-rounded"><center>Computadora</center> </h3>
-    	</div>
-    </div>
-    <div class="item">    	
-      	<center><img src="images/2.jpg" height=1000 width=1000 alt="3" class="img-rounded"></center>       	
-      	<div class="carousel-caption">
-    		<h3 class="img-rounded"><center>Fondo</center> </h3>
-    	</div>
-    </div>
-  </div>
+Mauris nulla augue, posuere vel neque consectetur, feugiat scelerisque eros. Nunc tempor malesuada quam, non accumsan odio pellentesque et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam lobortis ornare sollicitudin. Suspendisse enim orci, consectetur a urna at, rhoncus fermentum risus. Quisque arcu libero, luctus mollis feugiat et, euismod sed orci. Morbi tellus quam, mollis a gravida in, semper sed risus. Nullam dolor diam, suscipit eu turpis in, placerat tristique justo. Fusce posuere, velit vitae fringilla hendrerit, dui massa congue est, congue gravida elit diam ut neque. Donec nec porttitor felis, et tristique erat. Integer rhoncus, risus id pellentesque faucibus, augue sem commodo metus, eget tristique nulla nisl ac nibh. Aenean sed dolor velit. Nulla suscipit sem eu pharetra porttitor. Sed velit dolor, bibendum vitae libero sed, dictum sagittis felis.
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"><img src="images/izq.png"> </span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"><img src="images/der.png"></span>
-  </a>
+Maecenas eu pretium nisi. Suspendisse viverra quam id lacus dictum volutpat. Integer varius lectus nisi, sed mattis mi condimentum vitae. Etiam hendrerit, massa eu aliquam egestas, libero augue fringilla urna, sit amet blandit nibh augue eget dui. Vivamus rutrum eu lacus quis sagittis. Aliquam porta justo ut faucibus eleifend. Vivamus aliquam accumsan dui elementum aliquam. Vivamus bibendum velit non euismod aliquam. Sed pretium laoreet quam a elementum. Proin vulputate nunc purus. Fusce sem sem, convallis at aliquam facilisis, consequat sit amet ligula. Aenean condimentum enim sit amet nunc rhoncus condimentum. Ut adipiscing mi in nibh vulputate, ac egestas eros fringilla.
+<!--  <div id="slides">
+      <img src="/assets/imagen1.jpg">
+      <img src="/assets/imagen2.jpg">
+      <img src="/assets/imagen3.jpg">
+  </div>  
 </div>
+js para el funcionamiento del slide-->
+</div>
+<script src="/assets/jquery.slides.min.js"></script>
+<script>
+  $(function() {
+    $('#slides').slidesjs({
+      height: 300,
+      width: 920,
+      play: {
+        active: true,
+        auto: true,
+        interval: 5000,
+        swap: true
+      }
+    });
+  });
+</script>
+

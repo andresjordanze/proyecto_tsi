@@ -9,27 +9,32 @@
   <%else%>
 
 <div class="container" color="blue" position="center">
-	<div class="row" position="center">
-			<div class="span6">
-			<p class="text-left">
-			  <strong> Fotografia</strong><br><br>
-				<%= image_tag @product.photo.url, size: "280x280" , :class => 'img-rounded' %>
-			</p>
-		<%end%>
-		</div>  
-		
-			<div class="span4">
-				<blockquote>
-				    <strong>Descripcion</strong><br><br>
-				    <% @product.description.split.each do |palabra|%>
+	
+		<%end%>	
+			<div class="CSSTableGenerator" >
+                <table >
+                    <tr>
+                        <td>
+                        	<strong> Fotografia</strong><br><br>	                            
+                        </td>
+                        <td >
+                            <strong>Descripcion</strong><br><br>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td >
+                            <center><%= image_tag @product.photo.url, size: "280x280" , :class => 'img-rounded' %></center>
+                        </td>
+                        <td>
+                            <% @product.description.split.each do |palabra|%>
 				    	<p align="left"><%= palabra %></p></br>
-				    <%end%>
-				</p>
-				</blockquote>
-			</div>
-		
+				    <%end%>	
+                        </td>                      
+                    </tr>                  
+                </table>
+            </div>				   				   				
 	</div>
 </div>
-<%= button_to 'Volver', :controller => :products, :action => 'products_home', :class => 'btn btn-info' %>
+<%= button_to 'Volver', {:controller => :products, :action => 'products_home'}, :class => 'btn btn-default' %>
   
   </CENTER>

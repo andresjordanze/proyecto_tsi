@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 20140502211236) do
   create_table "productnames", force: true do |t|
     t.string   "name"
     t.string   "code"
+    t.string   "description"
+    t.string   "serial"
+    t.string   "brand"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,6 +66,8 @@ ActiveRecord::Schema.define(version: 20140502211236) do
     t.text     "description"
     t.integer  "quantity"
     t.boolean  "ingresado"
+    t.integer  "price"
+    t.integer  "total_price"
     t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"

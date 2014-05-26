@@ -8,7 +8,6 @@ class ProductordersController < ApplicationController
    	@productorder = Productorder.find(params[:id])
 	end
 
-  
   def new
    	@productorder = Productorder.new
 	end
@@ -20,34 +19,57 @@ class ProductordersController < ApplicationController
   def create
     @control = false
     @order = Order.find(params[:order_id])
-    @productorders = Productorder.where("order_id = :order_id", {order_id: @order.numero_pedido}).to_a
+    @productname = Productname.find(params[:productorder][:nombre_producto])
+    @productorders = Productorder.where("order_id = :order_id", {order_id: @order.id}).to_a
     @productorders.each do |productorder|
-      if productorder.code == params[:productorder][:code]
+      if productorder.code == @productname.code
         @control = true
       end
     end
     if @control == false
-      @productorder = @order.productorders.create(params[:productorder])
+      @productorder = Productorder.new(params[:productorder])
+      @productorder.nombre_producto = @productname.name
+      @productorder.code = @productname.code
+      @productorder.description = @productname.description
       @productorder.ingresado = false
-      @productorder.order_id = @order.numero_pedido
+      @productorder.order_id = @order.id
+      @productorder.total_price = params[:productorder][:quantity].to_i*params[:productorder][:price].to_i
       @productorder.save
-      redirect_to '/orders/'+@order.numero_pedido
+      redirect_to '/orders/'+@order.id.to_s
     else
       flash[:danger] = 'No se registro el producto, porque ya existe en pedido'
-      redirect_to '/orders/'+@order.numero_pedido
+      redirect_to '/orders/'+@order.id.to_s
     end
   end
 
   def update
     @productorder = Productorder.find(params[:id])
+    @productorder.total_price = params[:productorder][:quantity].to_i*params[:productorder][:price].to_i
   	if @productorder.update_attributes(params[:productorder])
       flash[:success] = "Producto de pedido modificado!"
-      redirect_to @productorder
+      if params[:control]='true'
+        redirect_to '/orders/'+@productorder.order_id.to_s
+      else
+        redirect_to @productorder
+      end
     else
       render action: "edit" 
     end
   end
 
+  def edit_order
+    @productorder = Productorder.find(params[:id])
+  end
+
+  def update_order
+    @productorder = Productorder.find(params[:id])
+    if @productorder.update_attributes(params[:productorder])
+      flash[:success] = "Producto de pedido modificado!"
+      redirect_to '/orders/'+@productorder.order_id.to_s
+    else
+      render action: "edit" 
+    end
+  end
   
   def destroy
     @productorder = Productorder.find(params[:id])

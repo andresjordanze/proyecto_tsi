@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	def show
-		@order = Order.where("numero_pedido = :numero_pedido", {numero_pedido: params[:id]}).to_a.at(0)
+		@order = Order.find(params[:id])
 	end
 
 	def new	
@@ -12,13 +12,14 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.new (params[:order])
-	    @order.estado =  'Pendiente'
-	    @order.ingresado = false
-	    @order.id = params[:order][:numero_pedido]
+		@order = Order.new
+		@order.id = @order.id
+		@order.numero_pedido = @order.id
+	    @order.estado = params[:estado]
+	    @order.provider = params[:provider]
+	    @order.ingresado = params[:ingresado]
 	    if @order.save
-	      flash[:message] = "Pedido Registrado!"
-	      redirect_to '/orders/' + @order.numero_pedido
+	      redirect_to '/orders/' + @order.id.to_s
 	    else
 	      flash[:message] = "Verifique los Campos Marcados"
 	      render :action => 'new'
@@ -30,10 +31,10 @@ class OrdersController < ApplicationController
 		if Order.all != []
 			@orders = Order.all
 			@orders.each do |order|
-				if order.numero_pedido == params[:order][:numero_pedido] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == true
+				if order.id == params[:order][:id] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == true
 					@order = order
 				else
-					if order.numero_pedido == params[:order][:numero_pedido] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == false
+					if order.id == params[:order][:id] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == false
 						order.cantidad += params[:order][:cantidad].to_i
 						@order = order
 					else
@@ -96,19 +97,21 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
-		@productorders = Productorder.where("order_id = :order_id", {order_id: @order.id}).to_a
-		@productorders.each do |productorder|
-			productorder.order_id = params[:order][:numero_pedido]
-			productorder.save
-		end
 		if @order.update_attributes(params[:order])
 			@order.save
-			flash[:success] = "Orden Actualizada"
+			flash[:success] = "Pedido registrado exitosamente!"
 			#redirect_to @order			
-			redirect_to '/orders/' + @order.numero_pedido
+			redirect_to '/orders/'
 		else
 			render 'edit'
 		end
+	end
+
+	def guardar_proveedor
+		@order = Order.find(params[:id])
+		@order.provider = params[:provider]
+		@order.save
+		redirect_to '/orders/'
 	end
 
 end

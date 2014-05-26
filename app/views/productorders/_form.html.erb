@@ -1,25 +1,14 @@
 <%= form_validated_for([@order, @order.productorders.build]) do |f| %>
-<CENTER>
-     <p>
-        <%= f.label :name, "Nombre del producto" %>
-        <%=f.collection_select(:nombre_producto, Productname.all, :name, :name)%>
-     </p>
+  <div class="col-xs-3">
+    <b><%= f.label :name, "Producto" %></b>
+    <p><%=f.collection_select(:nombre_producto, Productname.all, :id, :name)%></p>
 
-    <p>
-        <%= f.label :code, "Codigo del producto" %>
-        <%=f.collection_select(:code, Productname.all, :code, :code)%>
-    </p>
-    <p>
-        <%= f.label :description, "descripcion" %>
-        <%= f.text_area :description, :maxlength => '100' %>
-    </p>
-    <p>
-        <%= f.label :quantity, "Cantidad" %>
-        <%= f.text_field :quantity, :maxlength => '4' %>
-    </p>
-    
-  <p>
-    <%= f.submit "Registrar Producto", class: "btn btn-large btn-primary" %>
-  </p>
+   <p> <%= f.label :quantity, "Cantidad" %>
+    <%= f.text_field :quantity, :maxlength => '4' %><br>
+   <p> <%= f.label :price, "Precio Unit." %>
+    <%= f.text_field :price, :maxlength => '4' %><br>
+    <p><%= f.submit "Agregar Producto a Pedido", class: "btn btn-large btn-primary" %>
+    <p><%= link_to 'Cancelar', order_path(@order), method: :delete, :class => 'btn btn-danger' %></p>
+    </div>
+  
 <% end %>
-</CENTER>
