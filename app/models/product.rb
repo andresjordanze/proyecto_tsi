@@ -39,7 +39,7 @@ class Product < ActiveRecord::Base
 #		subproducts.create("code" => general_code+"-0")
 		i = 0
 		while i < self.quantity do
-      		self.subproducts.create("code" => self.general_code + "-#{i}")
+      		self.subproducts.create("code" => self.general_code + "-#{i}", "name" => self.name)
       		i = i + 1
     	end
     	self.increase = 0

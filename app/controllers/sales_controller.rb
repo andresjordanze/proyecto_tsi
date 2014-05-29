@@ -6,11 +6,16 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
-    @subproducts = Subproduct.paginate(:per_page => 5, :page => params[:page])
+    if params[:name] == nil
+      @subproducts = Subproduct.paginate(:per_page => 5, :page => params[:page])
+    else
+      #@subproducts = Subproduct.where({name: "#{params[:name]}"}).paginate(:per_page => 5, :page => params[:page])
+      @subproducts = Subproduct.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 5, :page => params[:page])
+    end
   end
 
   def print
-    @sale = Sale.find(params[:id])
+    @sales = params[:sales]
     render layout: false
   end
 

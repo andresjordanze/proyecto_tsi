@@ -2,7 +2,7 @@ class SubproductsController < ApplicationController
 
 	def create
 		@product = Product.find(params[:product_id])
-		@subproduct = @product.subproducts.create(params[:subproduct].permit(:code))
+		@subproduct = @product.subproducts.create(params[:subproduct].permit(:code, :name))
 		redirect_to product_path(@product)
   	end
 

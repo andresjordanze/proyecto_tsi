@@ -3,6 +3,7 @@ class CreateSubproducts < ActiveRecord::Migration
     create_table :subproducts do |t|
       t.string :code
       t.boolean :available
+      t.string :name
       t.references :product, index: true
       t.references :sale, index: true
       t.timestamps

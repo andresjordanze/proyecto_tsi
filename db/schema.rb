@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20140502211236) do
   create_table "subproducts", force: true do |t|
     t.string   "code"
     t.boolean  "available"
+    t.string   "name"
     t.integer  "product_id"
     t.integer  "sale_id"
     t.datetime "created_at"
