@@ -15,7 +15,7 @@
 
 			<p><%= f.label :description , "Descripcion:" %>		
 			<%= f.text_area :description %><br>
-			
+			<%= f.hidden_field :control, :value=>'true'%>
 			<p><%= f.submit "Añadir Producto"%></p>
 		<%end%>
 	</div>

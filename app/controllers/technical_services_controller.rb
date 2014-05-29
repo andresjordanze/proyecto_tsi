@@ -7,6 +7,10 @@ class TechnicalServicesController < ApplicationController
 		@technical_service= TechnicalService.find(params[:id])
 	end
 
+	def servicios
+		@technical_services = TechnicalService.all
+	end
+
 	def new
 		@technical_service= TechnicalService.new
 	end

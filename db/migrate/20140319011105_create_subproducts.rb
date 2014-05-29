@@ -6,6 +6,8 @@ class CreateSubproducts < ActiveRecord::Migration
       t.string :name
       t.references :product, index: true
       t.references :sale, index: true
+      t.references :outflow, index: true
+
       t.timestamps
     end
   end

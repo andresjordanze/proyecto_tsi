@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end	
 
+	def inventario
+		@products = Product.all
+	end
+
 	def new
 		@product = Product.new
 		@order = Order.find(params[:id])
@@ -55,6 +59,9 @@ class ProductsController < ApplicationController
   	def registrar_ingreso
   		@products = Product.all
   		@productorder = Productorder.find(params[:id])
+  		@income = Income.new
+  		@income.registrar(params[:id])
+  		@income.save
   		control = false
   		if @products != []
 	  		@products.each do |producto|
@@ -64,8 +71,6 @@ class ProductsController < ApplicationController
 	  				@product = producto
 	  				@productorder.ingresado = true
 	  				@productorder.save
-	  				@income = Income.new
-  					@income.registrar(params[:id])
 	  				control = true
 	  			else
 	  				@product = Product.new
@@ -129,9 +134,17 @@ class ProductsController < ApplicationController
 		if @product.update_attributes(params[:product])
 			@product.save
 			flash[:success] = "Producto Actualizado"
-			redirect_to @product			
+			if params[:product][:control]=='true'
+				redirect_to '/products_home'
+			else
+				redirect_to @product
+			end			
 		else
-			render 'edit'
+			if params[:product][:control]=='true'
+				redirect_to '/add_to_home?id='+@product.id.to_s
+			else
+				render 'edit'
+			end
 		end
 	end
 

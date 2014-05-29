@@ -1,35 +1,33 @@
 <% title @product.name %>
 <CENTER><H1><%= @product.name %> </H1>
 
-<p>
+
     
     <strong>Detalle:</strong><br>    
     
-          <% @product.detail.split.each do |palabra|%>
+<p>         <% @product.detail.split.each do |palabra|%>
                             <%= palabra %></br>
                         <%end%>
-    
-    
 </p>
 
-<p>    
+    
     <strong>Cantidad</strong><br>
-    <%= @product.quantity %>
+<p>    <%= @product.quantity %>
 </p>
 
-<p>
+
     <strong>Codigo del producto: </strong><br>
-    <%= @product.general_code %>
+<p>    <%= @product.general_code %>
 </p>
 
-<p>
+
     <strong>Marca: </strong><br>
-    <%= @product.brand %>
+<p>    <%= @product.brand %>
 </p>
 
-<p>
+
     <strong>Categoria: </strong><br>
-    <%= @product.category %>
+<p>    <%= @product.category %>
 </p>
 
  
@@ -38,12 +36,12 @@
     <%= @product.bought_price %>
 </p>-->
 
-<p>
+
     <strong>Precio de venta: </strong><br>
-    <%= @product.sale_price %>
+<p>    <%= @product.sale_price %>
 </p>    
-<%= button_to 'Editar', edit_product_path(@product), :class => 'btn btn-primary',:method => :get %><br>
-<%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-primary' %><br>
+<%= button_to 'Editar', edit_product_path(@product), :class => 'btn btn-warning',:method => :get %><br>
+<%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-default  ' %><br>
 
   </CENTER>
  

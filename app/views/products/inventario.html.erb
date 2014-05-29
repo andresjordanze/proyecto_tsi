@@ -1,0 +1,37 @@
+<% title "Stock de productos" %>
+<h1>Reporte de Inventario</h1>
+<%= link_to_function "Buscar Producto", "$('#hide').toggle()", :class => "btn btn-info" %><br>
+<div id="hide" style="display:none">
+<br>
+<form method="GET" action="/products/search">
+Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar">
+</form>
+</div>
+
+<CENTER>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><Center>Nombre</Center></th>
+            <th><Center>Marca</Center></th>
+            <th><Center>Categoria</Center></th>
+            <th><Center>Cantidad</Center></th>      
+        </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+            <tr>
+                <td><CENTER><%= product.name %></CENTER></td>
+                <td><CENTER><%= product.brand %></CENTER></td>
+                <td><CENTER><%= product.category %></CENTER></td>
+                <td><CENTER><%= product.quantity %></CENTER></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<br>
+</Center>
+
+<form><input type="button" name="imprimir" value="Imprimir" onclick="window.print();"></form>

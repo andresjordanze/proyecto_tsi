@@ -43,9 +43,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Registrar Ventas', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"}, :method => "post" %></li>
-                <li><a href="/sales/report_search">Reporte de ventas</a></li>
-                <li><%= link_to "Todas las ventas", sales_path %></li>
+                <li><%= link_to 'Registrar Venta', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"}, :method => "post" %></li>
+                <li><%= link_to "Lista de ventas", sales_path %></li>
               </ul>
             </li>
             <%end%>
@@ -64,11 +63,11 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="/technical_services/new">Reporte de inventario</a></li>
+                <li><a href="/inventario">Reporte de inventario</a></li>
                 <li><a href="/incomes">Reporte de ingresos</a></li>
-                <li><a href="/technical_services">Reporte de egresos</a></li>
+                <li><a href="/egresos">Reporte de egresos</a></li>
                 <li><a href="/sales/report_search">Reporte de ventas</a></li>
-                <li><a href="/technical_services">Reporte de servicios</a></li>
+                <li><a href="/servicios">Reporte de servicios</a></li>
               </ul>
             </li>
             <%end%>

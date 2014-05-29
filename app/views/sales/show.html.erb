@@ -37,7 +37,7 @@
 
 <p>    
     <b>Total Venta:<b><br>
-    <%= @sale.price %>
+    <%= @sale.price/2 %>
 </p>
 
 <p>
@@ -64,7 +64,7 @@
                         <td><CENTER><%= subproduct.product.category %></CENTER></td>
                         <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
                         <% if @sale.confirmed == false %>
-                        <td><%= link_to 'Eliminar de venta', :controller => :subproducts, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
+                        <td><%= link_to 'Eliminar de venta', {:controller => :subproducts, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id}, :class =>'btn btn-mini btn-danger'%></td>
                         <%end%>
                     </tr>
                 <% end %>
@@ -75,6 +75,7 @@
 
 <% if @sale.confirmed == false %>
     <p>
+
         <h2><Center><!--%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %-->Agregar Producto a Venta</Center></h2>
         <div id="subproduct" ><!--style="display:none"-->
             <br>
@@ -102,7 +103,7 @@
                                 <td><CENTER><%= subproduct.product.brand %></CENTER></td>
                                 <td><CENTER><%= subproduct.product.category %></CENTER></td>
                                 <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>            
-                                <td><%= link_to 'Agregar a Venta', :controller => :subproducts, :action => 'agregar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id %></td>
+                                <td><%= link_to 'Agregar a Venta', {:controller => :subproducts, :action => 'agregar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id}, :class =>'btn btn-mini btn-primary'  %></td>
                             <% end %>
                         </tr>
                     <% end %>
@@ -117,7 +118,11 @@
     <%= link_to 'Cancelar venta', sale_path(@sale), method: :delete, data: { confirm: 'Seguro de Cancelar la venta?' }, :class => 'btn btn-large btn-danger' %><br>
 <%end%>
 <br> 
+<<<<<<< HEAD
 <%= button_to 'Imprimir', '#', :method => :get, :class => 'btn btn-default' %><br>
+=======
+<%= button_to 'Imprimir', '#', :method => :get, :class => 'btn btn-success' %><br>
+>>>>>>> 04aa36bd943b04f2b9cd3f6abb6328783aa3be0d
 <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
 
   </CENTER>

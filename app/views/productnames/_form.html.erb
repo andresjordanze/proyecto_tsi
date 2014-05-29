@@ -1,20 +1,20 @@
 <%= form_validated_for(@productname) do |f| %>
-  <p>
-    <%= f.label :name, "Nombre del producto" %>
-    <%= f.text_field :name, :maxlength => '20'%>
-    <%=f.label :brand, "Marca" %>
-    		<%=f.collection_select(:brand, Brand.all, :name, :name)%>
-  </p>
+  
+    <%= f.label :name, "*Nombre del producto" %>
+    <p><%= f.text_field :name, :maxlength => '20'%></p>
+    <%=f.label :brand, "*Marca" %>
+    <p><%=f.collection_select(:brand, Brand.all, :name, :name)%></p>
+  
 
-  <p>
-    <%= f.label :code, "Codigo del producto" %>
-    <%= f.text_field :code, :maxlength => '10'%>
-    <%= f.label :serial, "Numero serial" %>
-    <%= f.text_field :serial, :maxlength => '15' %>
-  </p>
-  <p>
-    <%= f.label :description, "Descripcion" %>
-    <%= f.text_area :description, :maxlength => '160'%>
+  
+    <%= f.label :code, "*Codigo del producto" %>
+    <p><%= f.text_field :code, :maxlength => '10'%></p>
+    <%= f.label :serial, "*Numero serial" %>
+    <p><%= f.text_field :serial, :maxlength => '15' %></p>
+  
+  
+    <%= f.label :description, "*Descripcion" %>
+    <p><%= f.text_area :description, :maxlength => '160'%>
   </p>
 
   <p><%= f.submit (@productname.new_record? ? 'Registrar Producto' : 'Guardar Cambios'), :class => 'btn btn-lg btn-primary' %></p>

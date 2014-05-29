@@ -3,13 +3,13 @@
 <div class="col-xs-3">
 <%= form_validated_for @client do |f| %>
 
-      <p><%= f.label :name, 'Nombre completo:' %>
+      <p><%= f.label :name, '*Nombre completo:' %>
       <%= f.text_field :name %>
 
-      <p><%= f.label :nit, 'NIT:' %>
+      <p><%= f.label :nit, '*NIT:' %>
       <%= f.text_field :nit%>
 
-      <p><%= f.label :phone, 'Telefono/Celular:' %>
+      <p><%= f.label :phone, '*Telefono/Celular:' %>
       <%= f.text_field :phone, :class => 'form-control', :maxlength => 8 %>
 
       <p><%= f.submit (@client.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>

@@ -1,10 +1,15 @@
 <% title "Ingresar Fechas" %>
 
 <div class="hero-unit">
-<h1>Seleccion de fechas</h1><br><br>
+
+<h1>Reporte de ventas</h1><br><br>
+
 <form method="GET" action="/sales/search_between_dates">
 Fecha Inicio: <input type="date" name="initial_date"> &nbsp;&nbsp;&nbsp;
 Fecha Fin: <input type="date" name="ending_date"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar", class="btn btn-default">
+<input type="submit" value="Buscar", class="btn btn-info">
 </form>
 </div>
+</center>
+
+<form><input type="button" name="imprimir" value="Imprimir" onclick="window.print();"></form>

@@ -8,6 +8,11 @@ Informaticacomp::Application.routes.draw do
   get 'view_product' => 'products#view_product'
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
+  get 'add_to_home' => 'products#add_to_home'
+
+  get 'egresos' => 'sales#egresos'
+  get 'servicios' => 'technical_services#servicios'
+  get 'inventario' => 'products#inventario'
 
   post 'edit_order' => 'productorders#edit_order'
   get 'edit_order' => 'productorders#edit_order'
@@ -90,6 +95,7 @@ Informaticacomp::Application.routes.draw do
   resources :brands
   resources :providers
   resources :clients
+  resources :outflows
   #resources :sales do
    # resources :subproducts
   #end
