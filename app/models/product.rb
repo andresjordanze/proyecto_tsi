@@ -4,6 +4,9 @@ class Product < ActiveRecord::Base
 	has_many :incomes
     
 	attr_accessible :name, :detail, :description, :increase, :id_order, :quantity, :general_code, :brand, :category, :bought_price, :created_at, :updated_at, :photo
+    has_one :kardex
+
+
 	belongs_to :sale
 	has_many :brands
 	has_many :categories

@@ -15,4 +15,17 @@ class Client < ActiveRecord::Base
     validates :phone, numericality: {:message => "El valor de telefono/celular debe ser numerico"}
     validates :phone, length: {minimum: 7, maximum: 8, :message => "El numero de telefono/celular debe tener minimo 7 y maximo 8 numeros"}
     validates :phone, numericality: {greater_than: 0, :message => "El numero de telefono/celular no puede ser un numero negativo" }
+
+
+
+    def correspondeAnombre(nombre)
+        parametros = nombre.split
+        parametros.each do |parametro|
+        if self.name.downcase.include?(parametro.downcase)
+            return true
+          end
+        end
+        false
+    end
+
 end
