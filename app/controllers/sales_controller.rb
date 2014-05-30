@@ -74,6 +74,13 @@ def update
     @outflow = Outflow.new
     @outflow.registrar(params[:identificator])
     @sale.save
+    @sale.productsales.each do |producto|
+      
+    end
+    @kadex = Kardex.new
+    @kardex.detail = @sale.client_name
+    @kardex.date = @sale.updated_at
+    @kardex.residue = @sale.productsales.
     render 'edit'
     flash[:success] = "Venta Realizada..."
   end

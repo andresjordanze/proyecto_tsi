@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   	end
 
 	def search
-		@orders = buscar(params[:provider_id])
+		@orders = buscar(params[:name])
 		render 'index'
 	end
 

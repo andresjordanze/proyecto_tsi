@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
 	def correspondeAproveedor(proveedor)
     	parametros = proveedor.split(' ')
     	parametros.each do |parametro|
-      	if self.provider.downcase.include?(parametro.downcase)
+      	if Provider.find(self.provider_id.to_i).name.downcase.include?(parametro.downcase)
 	        return true
     	  end
     	end

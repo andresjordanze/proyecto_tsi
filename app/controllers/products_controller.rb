@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 	def new
 		@product = Product.new
 		@order = Order.find(params[:id])
+		@kardex = Kardex.new
 	end
 
 	def search
@@ -63,10 +64,10 @@ class ProductsController < ApplicationController
   		@income = Income.new
   		@income.registrar(@productorder)
   		@income.save
-  		@kardex = Kardex.new
-  		@kardex.detail = "Pedido " + @productorder.order_id.to_s
-  		@kardex.income = @productorder.quantity
-  		@kardex.date = @productorder.updated_at
+  		#@kardex = Kardex.new
+  		#@kardex.detail = "Pedido " + @productorder.order_id.to_s
+  		#@kardex.income = @productorder.quantity
+  		#@kardex.date = @productorder.updated_at
 
   		control = false
   		if @products.length > 0
@@ -75,9 +76,9 @@ class ProductsController < ApplicationController
 	  				product.quantity += @productorder.quantity
 	  				product.save
 	  				@product = product
-	  				@kardex.residue = @product.quantity
-	  				@kardex.product_id = @product.id
-	  				@kardex.save
+	  				#@kardex.residue = @product.quantity
+	  				#@kardex.product_id = @product.id
+	  				#@kardex.save
 	  				@productorder.ingresado = true
 	  				@productorder.save
 	  				control = true
@@ -90,18 +91,18 @@ class ProductsController < ApplicationController
 	  			@product = Product.new
 	  			@product.registrar(@productorder)
 	  			@product.save
-	  			@kardex.residue = @product.quantity
-	  			@kardex.product_id = @product.id
-	  			@kardex.save
+	  			#@kardex.residue = @product.quantity
+	  			#@kardex.product_id = @product.id
+	  			#@kardex.save
 	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
 	  		end
 	  	else
 	  		@product = Product.new
 	  		@product.registrar(@productorder)
 	  		@product.save
-	  		@kardex.residue = @product.quantity
-	  		@kardex.product_id = @product.id
-	  		@kardex.save
+	  		#@kardex.residue = @product.quantity
+	  		#@kardex.product_id = @product.id
+	  		#@kardex.save
 	  		redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  	
 	  	end
   	end
@@ -127,12 +128,15 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(params[:product])
+		@kardex = Kardex.new(params[:id])
 		@productorder = Productorder.find(params[:product][:id])	
 		@productorder.ingresado = true
 		@productorder.save
 		@product.home = false
 		@product.description = "          "
-		if @product.save		
+		if @product.save
+			@kardex.product_id = @product.id.to_i
+			@kardex.save		
 			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
 			render action: 'new'
