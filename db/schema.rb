@@ -70,10 +70,7 @@ ActiveRecord::Schema.define(version: 20140526100255) do
   end
 
   create_table "productorders", force: true do |t|
-    t.string   "code"
-    t.string   "name"
     t.integer  "productname_id"
-    t.text     "description"
     t.integer  "quantity"
     t.boolean  "ingresado"
     t.integer  "price"
