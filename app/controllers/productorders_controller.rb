@@ -89,9 +89,17 @@ class ProductordersController < ApplicationController
   end
   
   def destroy
-    @productorder = Productorder.find(params[:id])
+    @control = params[:producto][:control]
+    @productorder = Productorder.find(params[:producto][:id])
+    @order_id = @productorder.order_id
     @productorder.destroy
-    redirect_to productorders_url 
+    if @control == "true"
+      flash[:success] = "Producto de pedido eliminado exitosamente."
+      redirect_to '/orders/'+@order_id.to_s+'/edit'
+    else
+      flash[:success] = "Producto de pedido eliminado exitosamente."
+      redirect_to '/orders/'+@order_id.to_s
+    end
   end
 
   def agregar_producto_pedido
@@ -105,11 +113,6 @@ class ProductordersController < ApplicationController
   end
 
   def eliminar_producto_pedido
-    @productorder = Productorder.find(params[:id])
-    @productorder.order_id = nil
-    @productorder.save
-    @order = Order.find(params[:order_id])
-    @order.save
-    redirect_to order_path(@order)
   end
+  
 end
