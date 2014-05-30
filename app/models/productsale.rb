@@ -1,5 +1,5 @@
 class Productsale < ActiveRecord::Base
-	attr_accessible :name, :code, :price, :sale_id
+	attr_accessible :name, :code, :price, :sale_id, :subproduct_id
 
 	belongs_to :sale
 

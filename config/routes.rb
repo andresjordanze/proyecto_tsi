@@ -40,10 +40,10 @@
 
   get 'edit_to_home' => 'products#edit_to_home'
   post 'edit_to_home' => 'products#edit_to_home'
-  get 'agregar_subproducto_venta' => 'subproducts#agregar_subproducto_venta'
-  post 'agregar_subproducto_venta' => 'subproducts#agregar_subproducto_venta'
-  get 'eliminar_subproducto_venta' => 'subproducts#eliminar_subproducto_venta'
-  post 'eliminar_subproducto_venta' => 'subproducts#eliminar_subproducto_venta'
+  get 'agregar_subproducto_venta' => 'productsales#agregar_subproducto_venta'
+  post 'agregar_subproducto_venta' => 'productsales#agregar_subproducto_venta'
+  get 'eliminar_subproducto_venta' => 'productsales#eliminar_subproducto_venta'
+  post 'eliminar_subproducto_venta' => 'productsales#eliminar_subproducto_venta'
   get 'confirm_sale' => 'sales#confirm_sale'
   post 'confirm_sale' => 'sales#confirm_sale'
 

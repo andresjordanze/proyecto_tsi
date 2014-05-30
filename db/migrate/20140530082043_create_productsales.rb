@@ -5,6 +5,7 @@ class CreateProductsales < ActiveRecord::Migration
  	  t.string :code
  	  t.integer :price
  	  t.integer :sale_id
+ 	  t.integer :subproduct_id
       t.timestamps
     end
   end

@@ -55,8 +55,8 @@ def update
 
   def destroy
     @sale = Sale.find(params[:id])
-    @subproducts = Subproduct.all
-    @subproducts.each do |subproducto|
+    @productsales = Productsale.all
+    @productsales.each do |subproducto|
       if subproducto.sale_id == @sale.id
         subproducto.sale_id = nil
         subproducto.available = true
