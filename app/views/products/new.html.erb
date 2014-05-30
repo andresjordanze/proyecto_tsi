@@ -1,13 +1,12 @@
-<% title "Registrar Ingreso de Producto" %>
+<% title "Registrar Ingreso" %>
 
-<h1>Registrar Ingreso de Producto</h1>
+<h1>Registrar Ingreso</h1>
 <CENTER>
 	<%= form_validated_for(@product) do |f| %>
 
 			<div class="col-xs-3">
 
-			<p><%= f.label :name , "Nombre:" %>
-			<%= f.hidden_field :name, :value => @productorder.nombre_producto %></p>
+			<h2>Nombre: <%= @productorder.name %></h2>
 
 			<p><%= f.label :detail , "Detalle:" %>
 			<%= f.text_area :detail, :value => @productorder.description, :readonly => true %></p>
@@ -28,10 +27,10 @@
 			<%= f.text_field :quantity, :value => @productorder.quantity, :readonly => true %></p>
 
 			<p><%= f.label :id_order, "Numero de pedido:" %>
-			<%= f.text_field :id_order, :value => @productorder.order_id, :readonly => true %></p>
+			<%= f.hidden_field :id_order, :value => @productorder.order_id, :readonly => true %></p>
 
-			<p><%= f.label :id, "Numero de producto:" %>
-			<%= f.text_field :id, :value => @productorder.id, :readonly => true %></p>
+			<!--Numero de producto-->
+			<p><%= f.hidden_field :id, :value => @productorder.id, :readonly => true %></p>
 
 			<p><%= f.submit "Crear Producto", class: "btn btn-large btn-jordi" %></p>
 			</div>

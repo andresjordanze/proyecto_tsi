@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
 	has_many :subproducts, dependent: :destroy
 	has_many :incomes
     
-	attr_accessible :name, :detail, :description, :increase, :id_order, :quantity, :general_code, :brand, :category, :bought_price, :sale_price, :created_at, :updated_at, :photo
+	attr_accessible :name, :detail, :description, :increase, :id_order, :quantity, :general_code, :brand, :category, :bought_price, :created_at, :updated_at, :photo
 	belongs_to :sale
 	has_many :brands
 	has_many :categories
@@ -26,14 +26,23 @@ class Product < ActiveRecord::Base
 	validates :general_code, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, length: {minimum: 2, maximum: 15, :message => "El Codigo general debe tener minimo 2 y maximo 15 caracteres"}
 
-	validates :sale_price, presence: {:message => "Es un campo obligatorio"}	
-	validates :sale_price, numericality: {:message => "El precio de venta debe ser numerico"}
-	validates :sale_price, numericality: {greater_than: 0, :message => "El precio de venta debe ser mayor a 0" }
-
 	#validates :description, presence: {:message => "Es un campo obligatorio"}
 	#validates :name, length: {minimum: 2, maximum: 20, :message => "La Descripcion debe tener minimo 2 y maximo 20 caracteres"}
 
 	after_create :crear_subproducto
+
+	def registrar(productorder)
+		@productname = Productname.find(productorder.productname_id.to_i)
+		self.name = @productname.name
+	  	self.detail = @productname.description
+	  	self.id_order = productorder.order_id
+	  	self.quantity = productorder.quantity
+	  	self.general_code = @productname.code
+	  	self.brand = @productname.brand_id
+	  	self.category = "categoria"
+	  	self.bought_price = productorder.price
+	end
+
 
 	def crear_subproducto
 #		subproducts.create("code" => general_code+"-0")

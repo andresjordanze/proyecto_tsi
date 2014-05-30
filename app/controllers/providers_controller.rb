@@ -37,12 +37,23 @@ class ProvidersController < ApplicationController
     end
   end
 
-  
   def destroy
+    control = true
     @provider = Provider.find(params[:id])
-    @provider.destroy
+    @provider.orders.each do |order|
+      if order.provider_id == @provider.id
+        control = false
+        flash[:danger] = "No puede eliminar el proveedor porque existen pedidos asociados a este."    
+      end
+      break if control == false
+    end
+    if control == true
+      flash[:success] = "Se elimino el proveedor exitosamente."
+      @provider.destroy
+    end
     redirect_to providers_url 
   end
+
 
   def search
     @providers = buscar(params[:name])

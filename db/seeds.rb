@@ -56,20 +56,20 @@
 	prov1.name = 'Toshiba'
 	prov1.phone = 1234567
 	prov1.mail = 'toshiba@hotmail.com'
-	prov1.country = 'Miami'
+	prov1.address = 'Miami'
 	prov1.save!
 
 	prov2 = Provider.new
 	prov2.name = 'Dell'
 	prov2.phone = 7654321
 	prov2.mail = 'dell@yahoo.com'
-	prov2.country = 'Washigton'
+	prov2.address = 'Washigton'
 	prov2.save!
 
 	prov3 = Provider.new
 	prov3.name = 'Apple'
 	prov3.phone = 7890123
 	prov3.mail = 'apple@yahoo.com'
-	prov3.country = 'California'
+	prov3.address = 'California'
 	prov3.save!
 	

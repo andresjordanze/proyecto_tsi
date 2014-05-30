@@ -10,7 +10,7 @@
           </div>
           <div class="modal-body">
           <%= form_validated_for(@order) do |f| %>
-          <h3><%=f.label :provider, "Proveedor" %> <%= f.collection_select(:provider, Provider.all, :id, :name)%></h3>
+          <h3><%=f.label :provider, "Proveedor" %> <%= f.collection_select(:provider_id, Provider.all, :id, :name)%></h3>
           <h3> Fecha:<%= f.date_select :created_at %></h3>
           </div>
           <div class="modal-footer">
@@ -48,8 +48,8 @@
 <% @order.productorders.each do |producto| %>
 
   <tr>
-    <td><CENTER><%= producto.name%></CENTER></td>
-    <td><CENTER><%= producto.code %></CENTER></td>
+    <td><CENTER><%= Productname.find(producto.productname_id).name %></CENTER></td>
+    <td><CENTER><%= Productname.find(producto.productname_id).code %></CENTER></td>
     <td><CENTER><%= producto.quantity %></CENTER></td>
     <td><CENTER><%= producto.price %></CENTER></td>
     <td><CENTER><%= producto.total_price %></CENTER></td>

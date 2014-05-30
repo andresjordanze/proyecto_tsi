@@ -28,9 +28,6 @@ class ProductordersController < ApplicationController
     end
     if @control == false
       @productorder = Productorder.new(params[:productorder])
-      @productorder.name = @productname.name
-      @productorder.code = @productname.code
-      @productorder.description = @productname.description
       @productorder.ingresado = false
       @productorder.order_id = @order.id
       @productorder.total_price = params[:productorder][:quantity].to_i*params[:productorder][:price].to_i

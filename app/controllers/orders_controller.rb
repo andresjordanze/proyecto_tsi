@@ -18,9 +18,8 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new
 		@order.id = @order.id
-		@order.numero_pedido = @order.id
 	    @order.estado = params[:estado]
-	    @order.provider = params[:provider]
+	    @order.provider_id = params[:provider_id]
 	    @order.ingresado = params[:ingresado]
 	    if @order.save
 	      redirect_to '/orders/' + @order.id.to_s
@@ -30,47 +29,8 @@ class OrdersController < ApplicationController
 	    end
   	end
 
-=begin
-
-		if Order.all != []
-			@orders = Order.all
-			@orders.each do |order|
-				if order.id == params[:order][:id] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == true
-					@order = order
-				else
-					if order.id == params[:order][:id] && order.nombre_producto == params[:order][:nombre_producto] && order.ingresado == false
-						order.cantidad += params[:order][:cantidad].to_i
-						@order = order
-					else
-						@order = Order.new(params[:order])
-						@order.estado = "pendiente"
-						@order.ingresado = false
-					end
-				end
-			end
-			if @order.save	&& @order.ingresado == false
-				redirect_to @order, notice: 'Pedido registrado.' 
-			else
-				redirect_to @order, notice: 'Opcion invalida, este pedido ya fue ingresado!' 
-			end			
-		else
-			@order = Order.new(params[:order])
-			@order.estado = "pendiente"
-			@order.ingresado = false
-			if @order.save		
-				redirect_to @order, notice: 'Pedido registrado.' 
-			else
-				render action: 'new'
-			end
-		end
-
-	end
-	
-=end
-
-
 	def search
-		@orders = buscar(params[:provider])
+		@orders = buscar(params[:provider_id])
 		render 'index'
 	end
 
@@ -115,7 +75,7 @@ class OrdersController < ApplicationController
 
 	def guardar_proveedor
 		@order = Order.find(params[:id])
-		@order.provider = params[:provider]
+		@order.provider_id = params[:provider_id]
 		@order.save
 		redirect_to '/orders/'
 	end

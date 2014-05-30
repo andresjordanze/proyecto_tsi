@@ -46,9 +46,8 @@ ActiveRecord::Schema.define(version: 20140526100255) do
   end
 
   create_table "orders", force: true do |t|
-    t.string   "numero_pedido"
     t.string   "estado"
-    t.string   "provider"
+    t.integer  "provider_id"
     t.boolean  "ingresado"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -111,7 +110,7 @@ ActiveRecord::Schema.define(version: 20140526100255) do
     t.string   "name"
     t.integer  "phone"
     t.string   "mail"
-    t.string   "country"
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

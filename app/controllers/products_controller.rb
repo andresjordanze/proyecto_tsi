@@ -58,35 +58,39 @@ class ProductsController < ApplicationController
 
   	def registrar_ingreso
   		@products = Product.all
-  		@productorder = Productorder.find(params[:id])
+  		@productorder = Productorder.find(params[:id].to_i)
+  		@productname = Productname.find(@productorder.productname_id.to_i)
   		@income = Income.new
-  		@income.registrar(params[:id])
+  		@income.registrar(@productorder)
   		@income.save
   		control = false
-  		if @products != []
-	  		@products.each do |producto|
-	  			if producto.general_code == @productorder.code
-	  				producto.quantity += @productorder.quantity
-	  				producto.save
-	  				@product = producto
+  		if @products.length > 0
+	  		@products.each do |product|
+	  			if product.general_code == @productname.code
+	  				product.quantity += @productorder.quantity
+	  				product.save
+	  				@product = product
 	  				@productorder.ingresado = true
 	  				@productorder.save
 	  				control = true
-	  			else
-	  				@product = Product.new
 	  			end
+	  			break if control == true
 	  		end
-	  		if control == false
-	  			render "new"
+	  		if control == true
+	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  		
 	  		else
-	  			redirect_to @product, notice: 'Ingreso registrado!'	  		
+	  			@product = Product.new
+	  			@product.registrar(@productorder)
+	  			@product.save
+	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
 	  		end
 	  	else
 	  		@product = Product.new
-	  		render 'new'
+	  		@product.registrar(@productorder)
+	  		@product.save
+	  		redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  	
 	  	end
   	end
-
 
 	private
 	def increase

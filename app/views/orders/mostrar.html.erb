@@ -1,7 +1,7 @@
 <h1>Ver Pedido</h1>
 
     <h2>Numero de pedido: <%=@order.id%></h2>
-    <h2>Proveedor: <%=Provider.find(@order.provider).name%></h2>
+    <h2>Proveedor: <%=Provider.find(@order.provider_id).name%></h2>
     <h2>Fecha pedido: <%=@order.created_at.strftime("%d/%m/%Y")%>
 
 <h1>Productos:</h1>
