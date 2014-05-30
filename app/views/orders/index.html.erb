@@ -1,15 +1,17 @@
 <% title "Lista de pedidos" %>
 <h1>Lista de pedidos</h1>
-
-<%= link_to_function "Buscar Pedido por Proveedor", "$('#hide').toggle()", :class => "btn btn-info" %><br>
-<div id="hide" style="display:none">
+<div align="right">
+<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "Harry"}, :method => "post", :class => 'btn btn-mini btn-jordi' %>
+</div>
+<center>
+<div >
 <br>
 <form method="GET" action="/orders/search">
-Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
+Proveedor: <input type="text" name="provider" placeholder="Nombre de proveedor"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar proveedor" , class="btn btn-info">
 </form>
 </div>
-
+</center>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -34,4 +36,3 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
     </tbody>
 </table>
 <br>
-<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "Harry"}, :method => "post" %>

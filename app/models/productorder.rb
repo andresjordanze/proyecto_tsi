@@ -6,6 +6,8 @@ class Productorder < ActiveRecord::Base
 	validates :quantity, presence: {:message => "Es un campo obligatorio"}
 	validates :quantity, numericality: {:message => "La cantidad debe ser numerico"}
 	validates :quantity, numericality: {greater_than: 0, :message => "La cantidad debe ser mayor a 0" }
+
+	
 	
 	#validates :code, presence: {:message => "Es un campo obligatorio"}
 	#validates :code, length: {minimum: 5, maximum: 10, :message => "El Detalle debe tener minimo 5 y maximo 10 caracteres"}

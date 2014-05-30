@@ -1,20 +1,23 @@
 <h1>Lista de Productos</h1>
-<h3><%= link_to 'Agregar Nombre Producto', new_productname_path, :class => 'btn btn-success' %></h3>
-
-<%= link_to_function "Buscar Nombre de Producto", "$('#hide').toggle()", :class => "btn btn-info" %><br>
-<div id="hide" style="display:none">
-<br>
-<form method="GET" action="/productnames/search">
-Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
-</form>
+<div align="right">
+  <h3><%= link_to 'Agregar Nombre Producto', new_productname_path, :class => 'btn btn-jordi' %></h3>
 </div>
+
+<center>
+  <div >
+  <br>
+    <form method="GET" action="/productnames/search">
+      Nombre: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp;&nbsp;&nbsp;
+      <input type="submit" value="Buscar producto", class = 'btn btn-mini btn-info '>
+    </form>
+  </div>
+</center>
 
 <CENTER>
 <table class="table table-striped">
 <thead>
   <tr>
-   <th><CENTER>Nombre</CENTER></th>
+    <th><CENTER>Nombre</CENTER></th>
     <th><CENTER> Codigo </CENTER></th>
   </tr>
 </thead>

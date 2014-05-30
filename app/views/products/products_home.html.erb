@@ -1,14 +1,24 @@
-<% title "Todos los productos" %>
+  <% title "Todos los productos" %>
 <h1>Todos Los Productos</h1>
 
-<%= link_to_function "Buscar", "$('#hide').toggle()", :class => "btn btn-info" %><br>
-<div id="hide" style="display:none">
+
+<div align="right">
+<% if current_user %>
+<h3><%= link_to 'Añadir Producto', products_path, :class => 'btn btn-jordi'%></h3>
+<% end %>
+</div>
+
+
+
+<center>
+<div>
 <br>
 <form method="GET" action="/products/search_to_home">
-Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
+Busqueda:  <input type="text" name="name" placeholder="Nombre de producto"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar producto" class="btn btn-mini btn-info">
 </form>
 </div>
+</center>
 <CENTER>
   
  <table class="table table-striped">
@@ -26,11 +36,11 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
           <td><CENTER><%= product.name %></CENTER></td>
           <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60 class="img-rounded"></a></CENTER></td>
           <% if current_user %>
-          <td><%= link_to 'Ver', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%></td>
+          <td><%= link_to 'Ver', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
 
-          <td><%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-info'%></td>
+          <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
           
-          <td><%= button_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
+          <%= link_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
           <% end %>
       <% end %>
         </tr>
@@ -41,8 +51,6 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
 
 </Center>
 
-<% if current_user %>
-<h3><CENTER><%= link_to 'Añadir Producto', products_path, :class => 'btn btn-success'%><CENTER></h3>
-<% end %>
+
 
 

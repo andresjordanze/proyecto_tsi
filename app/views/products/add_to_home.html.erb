@@ -1,5 +1,5 @@
 <% title "Añadir a pagina" %>
-<CENTER>
+
 <h1>Añadir Producto</h1>
 
 
@@ -8,16 +8,15 @@
 		<%= form_validated_for (@product) do |f| %>
   			<%= f.error_messages %>
 
-			<%= @product.name %>
+			<center><strong><p><%= @product.name %></p></strong></center>
 	
-			<%= f.label :photo, "Foto:" %>
+			<p><%= f.label :photo, "Foto:" %></p>
 			<%= f.file_field :photo %><br>
 
-			<p><%= f.label :description , "Descripcion:" %>		
+			<p><%= f.label :description , "Descripcion:" %>	</p>
 			<%= f.text_area :description %><br>
-			<%= f.hidden_field :control, :value=>'true'%>
-			<p><%= f.submit "Añadir Producto"%></p>
+			<%= f.hidden_field :control, :value=>'true'%><br>
+			<p><%= f.submit "Añadir Producto",  class: "btn  btn-jordi"%></p>
 		<%end%>
 	</div>
 </div>
-</CENTER>

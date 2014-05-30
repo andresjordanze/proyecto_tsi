@@ -35,7 +35,7 @@
 <% end %>
 <% @order.productorders.each do |producto| %>
   <tr>
-    <td><CENTER><%= producto.nombre_producto%></CENTER></td>
+    <td><CENTER><%= producto.name%></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
     <td><CENTER><%= producto.quantity %></CENTER></td>
     <td><CENTER><%= producto.price %></CENTER></td>
@@ -52,9 +52,9 @@
       <td>Pendiente</td>
     <%end%> 
     <% if producto.ingresado == false %>
-    <td><%=link_to "Editar de pedido", :controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id , :valor => "true" %></td>
-    <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id %></td>
-    <td><%= link_to 'Registrar ingreso', :controller => :products, :action => "registrar_ingreso", :id => producto.id %></td>
+    <td><%=link_to "Editar de pedido", {:controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id , :valor => "true"}, :class  => 'btn btn-large btn-warning' %></td>
+    <td><%= link_to 'Eliminar de pedido', {:controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id}, :class  => 'btn btn-large btn-danger' %></td>
+    <td><%= link_to 'Registrar ingreso', {:controller => :products, :action => "registrar_ingreso", :id => producto.id}, :class  => 'btn btn-large btn-jordi' %></td>
     <%end%>
   </tr>
 <% end %>
@@ -66,13 +66,13 @@
   <%= form_validated_for([@order, @order.productorders.build]) do |f| %>
   <p>
     <%= f.label :name, "Producto" %>
-    <%=f.collection_select(:nombre_producto, Productname.all, :id, :name)%>
+    <%= f.collection_select(:nombre_producto, Productname.all, :id, :name)%>
     <%= f.label :quantity, "Cantidad" %>
     <%= f.text_field :quantity, :maxlength => '4' %>
-    <%= f.label :price, "Precio Unit." %>
-    <%= f.text_field :price, :maxlength => '6' %>
+    <%= f.label :price, "Precio Unit." %> 
+    <%= f.text_field :price, :maxlength => '6' %> Bs.
     <%= f.hidden_field :control, :value => "true" %>
-    <%= f.submit "Agregar Producto a Pedido", :class  => 'btn btn-large btn-success' %>
+    <%= f.submit "Agregar Producto a Pedido", :class  => 'btn btn-large btn-jordi' %>
   </p>
 <% end %>
 <%end%>

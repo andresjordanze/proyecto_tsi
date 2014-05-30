@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= flash[:notice] = "Successfully created..." %></p>
 <CENTER>
 <p>
   <b>Nombre:</b>
@@ -7,5 +7,8 @@
 
 <%= link_to 'Editar producto', edit_productname_path(@productname), class: "btn btn-warning"  %>
 <br><br>
-<%= button_to 'Volver', productnames_path, :method => :get, class: "btn  btn-default"  %>
+
 </CENTER>
+<div align="left">
+	<%= button_to 'Volver', productnames_path, :method => :get, class: "btn  btn-default"  %>
+</div>

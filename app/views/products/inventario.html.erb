@@ -1,14 +1,16 @@
 <% title "Stock de productos" %>
 <h1>Reporte de Inventario</h1>
-<%= link_to_function "Buscar Producto", "$('#hide').toggle()", :class => "btn btn-info" %><br>
-<div id="hide" style="display:none">
+
+<center>
+<div >
 <br>
 <form method="GET" action="/products/search">
-Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
+Busqueda: <input type="text" name="name" placeholder="Nombre de producto" > &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar producto" class="btn btn-info">
 </form>
 </div>
-
+</center>
+<br>
 <CENTER>
 
 <table class="table table-striped">

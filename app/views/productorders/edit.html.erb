@@ -19,10 +19,13 @@
     		<%= f.label :quantity, "Cantidad" %>
     		<%= f.text_field :quantity, :maxlength => '4' %>
     	</p>
-		<p><%= f.submit "Editar Producto", class: "btn btn-large btn-primary" %></p>
+		<p><%= f.submit "Editar Producto", class: "btn btn-large btn-warning" %></p>
 	</div>
 	<!--</div>-->
 	<%end%>
 	</div>
 </div>
 </CENTER>
+<div align="left">
+	<%= button_to 'Volver', productorders	_path, :method => :get, class: "btn  btn-default"  %>
+</div>

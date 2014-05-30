@@ -1,15 +1,17 @@
 <h1>Lista de Categorias</h1>
-<h3><%= link_to 'Agregar Categoria', new_category_path, :class => 'btn btn-success' %></h3>
 
-<%= link_to_function "Buscar Categoria", "$('#hide').toggle()", :class => "btn btn-info" %><br>
-<div id="hide" style="display:none">
-<br>
-<form method="GET" action="/categories/search">
-Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar">
-</form>
+<div align="right">
+  <h3><%= link_to 'Crear Categoria', new_category_path, :class => 'btn btn-jordi' %></h3>
 </div>
 
+<center>
+	<div>
+		<form method="GET" action="/categories/search">
+			Busqueda: <input type="text" name="value" placeholder="Nombre de categoria"> &nbsp;&nbsp;&nbsp;
+			<input type="submit" value="Buscar categoria", class="btn btn-info">
+		</form>
+	</div>
+</center>
 <CENTER>
 <table class="table table-striped">
 <thead>
