@@ -1,5 +1,5 @@
-<% title "Reporte" %>
 <%=@total = 0%>
+<% title "Reporte" %>
 <HTML>
     <HEAD>
         <link rel="stylesheet" href="print.css" type="text/css" media="print" />
@@ -25,7 +25,7 @@
                                 <tr>
                                     <td><CENTER><%= sale.client_name %></CENTER></td>
                                     <td><CENTER><%= sale.check_number%></CENTER></td>
-                                    <td><CENTER><%= sale.price/2 %></CENTER></td>
+                                    <td><CENTER><%= sale.price %></CENTER></td>
                                     <td>
                                         <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#<%=sale.id%>">Detalles</a>
                                         <div class="modal fade" id="<%=sale.id%>" tabindex="-1" role="dialog" aria-labelledby="<%=sale.id%>" aria-hidden="true">
@@ -43,22 +43,16 @@
                                                                 <tr>
                                                                     <th><Center>Nombre</Center></th>
                                                                     <th><Center>Codigo del SubProducto</Center></th>
-                                                                    <th><Center>Marca</Center></th>
-                                                                    <th><Center>Categoria</Center></th>
                                                                     <th><Center>Precio De Venta</Center></th>        
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <% sale.subproducts.each do |subproduct| %>
+                                                                <% sale.productsales.each do |subproduct| %>
                                                                     <tr>
-                                                                        <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                                                                        <td><CENTER><%= subproduct.name %></CENTER></td>
                                                                         <td><CENTER><%= subproduct.code %></CENTER></td>
-                                                                        <td><CENTER><%= subproduct.product.brand %></CENTER></td>
-                                                                        <td><CENTER><%= subproduct.product.category %></CENTER></td>
-                                                                        <td>
-                                                                            <CENTER><%= subproduct.product.sale_price %></CENTER>
-                                                                            <%=@total+=subproduct.product.sale_price%>
-                                                                        </td>
+                                                                        <td><CENTER><%= subproduct.price %></CENTER></td>
+                                                                        <%=@total += subproduct.price%>
                                                                     </tr>
                                                                 <%end%>
                                                             </tbody>
