@@ -18,7 +18,6 @@
 <% @incomes.each do |income| %>
   <tbody>
   <tr>
-    <% if income.id%2 == 0 %>
     <td><%= income.id_order%></td>
     <td><%= income.product_name %></td>
     <td><%= income.code %></td>
@@ -27,7 +26,6 @@
     <td><%= income.price %></td>
     <td><%= income.total_price %></td>
     <td><%= income.created_at.strftime("%d/%m/%Y") %></td>
-    <%end%>
   </tr>
   </tbody>
 <% end %>
