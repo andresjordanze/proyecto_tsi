@@ -32,7 +32,7 @@
     <td><CENTER><%= producto.description %></CENTER></td>
     <td><%= link_to 'Editar producto', edit_productname_path(producto), :class => 'btn btn-mini  btn-warning' %>
     <%= link_to 'Eliminar producto', producto, method: :delete, data: { confirm: 'Seguro de eliminar el nombre del producto?' }, :class => 'btn btn-mini btn-danger' %>
-    <td><%= link_to 'kardex', kardex_productname_path(producto), :class => 'btn btn-mini  btn-warning' %></td>
+    </td>
   </tr>
 <% end %>
 </tbody>

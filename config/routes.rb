@@ -30,7 +30,7 @@
 
   get '/income/index'=> 'income#index'
   
-  get 'products/kardex' => 'products#kardex'
+  get 'products/kardex/:id' => 'products#kardex'
 
   get 'clients/search' => 'clients#search'
 
