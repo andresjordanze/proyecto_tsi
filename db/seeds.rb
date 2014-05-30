@@ -79,7 +79,6 @@
 	prod1.name = 'Dell Inspiron'
 	prod1.code = 'dell-inp'
 	prod1.description = 'Laptop 17px RAM 4gb DD 512gb'
-	prod1.serial = 'del-ins-13781'
 	prod1.brand = 'Dell'
 	prod1.save!
 
@@ -87,7 +86,6 @@
 	prod2.name = 'Sony Vaio'
 	prod2.code = 'sony-v64'
 	prod2.description = 'Laptop 17px RAM 6gb DD 1tb'
-	prod2.serial = '3654-312789'
 	prod2.brand = 'Sony'
 	prod2.save!
 	
@@ -95,7 +93,6 @@
 	prod3.name = 'Pavilion'
 	prod3.code = 'pav-x3'
 	prod3.description = 'Laptop 15px RAM 4gb DD 512gb'
-	prod3.serial = 'hp-pav-123159'
 	prod3.brand = 'HP'
 	prod3.save!
 	
@@ -103,7 +100,6 @@
 	prod4.name = 'ASUS x10'
 	prod4.code = 'asus-x10'
 	prod4.description = 'Laptop 13px RAM 2gb DD 256gb'
-	prod4.serial = 'sux71954'
 	prod4.brand = 'Asus'
 	prod4.save!
 	

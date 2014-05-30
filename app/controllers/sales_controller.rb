@@ -14,11 +14,6 @@ class SalesController < ApplicationController
     end
   end
 
-  def print
-    @sales = params[:sales]
-    render layout: false
-  end
-
   def egresos
     @sales = Sale.all
     @subproducts = Subproduct.all
@@ -146,8 +141,9 @@ def update
     end
 
     def report
-      @sales = filter_by_date(Date.today)
-      @total = obtain_total(@sales)
+      #@sales = filter_by_date(Date.today)
+      #@total = obtain_total(@sales)
+      #render 'print'
     end
 
     def searchDate

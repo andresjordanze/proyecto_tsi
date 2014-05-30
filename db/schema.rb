@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20140526100255) do
     t.string   "name"
     t.string   "code"
     t.string   "description"
-    t.string   "serial"
     t.string   "brand"
     t.datetime "created_at"
     t.datetime "updated_at"
