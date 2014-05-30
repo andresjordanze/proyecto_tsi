@@ -66,7 +66,7 @@
     <%end%> 
     <% if producto.ingresado == false %>
     <td><%=link_to "Editar de pedido", {:controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id} , :class => 'btn btn-mini btn-warning' %></td>
-    <td><%= link_to 'Eliminar de pedido', {:controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id}, :class => 'btn btn-mini btn-danger' %></td>
+    <td><%= button_to 'Eliminar de pedido', productorder_path(:producto => { :control => "false", :id => producto.id}), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
     <%end%>
   </tr>
 <% end %>

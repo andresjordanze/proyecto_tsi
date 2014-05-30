@@ -7,7 +7,7 @@
 	<%= form_validated_for(@productorder) do |f| %>
   		<div class="field">
 			<p><%= f.label :nombre_producto , "Nombre del producto:" %>
-			<%=f.collection_select(:nombre_producto, Productname.all, :name, :name)%>
+			<%=f.collection_select(:name, Productname.all, :id, :name)%>
 		</div>
 		<p>
     		<%= f.label :description, "descripcion" %>
