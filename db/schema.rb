@@ -51,9 +51,12 @@ ActiveRecord::Schema.define(version: 20140530043946) do
     t.integer  "income"
     t.integer  "output"
     t.integer  "residue"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "kardexes", ["product_id"], name: "index_kardexes_on_product_id"
 
   create_table "orders", force: true do |t|
     t.string   "estado"
