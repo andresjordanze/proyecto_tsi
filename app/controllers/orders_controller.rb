@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 	end
   
 	def index
-		@orders = Order.all		
+		@orders = Order.order('created_at DESC').all
 	end
 
 	def mostrar
