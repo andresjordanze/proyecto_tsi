@@ -4,7 +4,7 @@ class KardexesController < ApplicationController
   # GET /kardexes
   # GET /kardexes.json
   def index
-    @kardexes = Kardex.all
+    @kardexes = Kardex.where("product_id like ?", "%#{params[:id]}%")
   end
 
   # GET /kardexes/1

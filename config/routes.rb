@@ -71,6 +71,8 @@
   #get 'sales/monthly_report' => 'sales#monthly_report'
   #get 'sales/anual_report' => 'sales#anual_report'
 
+  get 'kardexes/index/:id' => 'kardexes#index'
+
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
@@ -111,6 +113,7 @@
   resources :clients
   resources :outflows
   resources :productsales
+  resources :kardexes
   #resources :sales do
    # resources :subproducts
   #end
