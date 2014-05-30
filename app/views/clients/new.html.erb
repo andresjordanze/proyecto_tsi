@@ -12,7 +12,11 @@
 			<%= f.label :phone , "*Telefono/Celular:" %>
 			<p><%= f.text_field :phone,:maxlength => '8' %></p>
 	
-			<p><%= f.submit "Registrar", class: "btn btn-large btn-primary" %></p>
+			<p><%= f.submit "Registrar cliente", class: "btn btn-large btn-jordi" %></p>
 			
 		<!--</div>-->
 	<%end%>
+
+	<div align="left">
+		<%= button_to 'Volver', clients_path, :method => :get, class: "btn btn-default"  %>
+	</div>

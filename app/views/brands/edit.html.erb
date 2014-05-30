@@ -3,6 +3,10 @@
 <h1><%= @brand.name%></h1>
 <center>
 <%= render 'form' %>
-<br>
-<%= button_to 'Volver', brands_path, :method => :get, class: "btn btn-primary"  %>
 </center>
+<br>
+
+<div align="left">
+	<%= button_to 'Volver', brands_path, :method => :get, class: "btn btn-default"  %>
+</div>
+

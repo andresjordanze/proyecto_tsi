@@ -32,7 +32,7 @@
 
 <p>
     <b>Fecha de venta:</b><br>
-    <%= @sale.created_at %>
+    <%= @sale.created_at.strftime("%d/%m/%Y") %>
 </p>
 
 <p>    
@@ -58,7 +58,7 @@
             <tbody>
                 <% @sale.subproducts.each do |subproduct| %>
                     <tr>
-                        <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                        <td><CENTER><%= subproduct.name %></CENTER></td>
                         <td><CENTER><%= subproduct.code %></CENTER></td>
                         <td><CENTER><%= subproduct.product.brand %></CENTER></td>
                         <td><CENTER><%= subproduct.product.category %></CENTER></td>
@@ -78,8 +78,11 @@
 
         <h2><Center><!--%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %-->Agregar Producto a Venta</Center></h2>
         <div id="subproduct" ><!--style="display:none"-->
-
-
+            <br>
+            <form method="GET">
+                Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Buscar", class="btn btn-default">
+            </form>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -95,7 +98,7 @@
                     <% @subproducts.each do |subproduct| %>
                         <tr>
                             <%if subproduct.available == true || subproduct.available == "NULL"%>
-                                <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                                <td><CENTER><%= subproduct.name %></CENTER></td>
                                 <td><CENTER><%= subproduct.code %></CENTER></td>
                                 <td><CENTER><%= subproduct.product.brand %></CENTER></td>
                                 <td><CENTER><%= subproduct.product.category %></CENTER></td>
@@ -115,8 +118,14 @@
     <%= link_to 'Cancelar venta', sale_path(@sale), method: :delete, data: { confirm: 'Seguro de Cancelar la venta?' }, :class => 'btn btn-large btn-danger' %><br>
 <%end%>
 <br> 
-<%= button_to 'Imprimir', '#', :method => :get, :class => 'btn btn-success' %><br>
-<%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
+
+<%= button_to 'Imprimir', '#', :method => :get, :class => 'btn btn-default' %><br>
+
+
+<div align="left">
+    <%= button_to 'Volver', sales_path, :method => :get, :class => 'btn btn-default' %><br>
+</div>
+
 
   </CENTER>
   </div></body>

@@ -23,20 +23,23 @@
     </div>    
 
 <h1>Productos:</h1>
+<center>
 <table class='table table-striped'>
 <thead>
   <tr>
-    <th>Nombre</th>
-    <th>Codigo</th>  
-    <th>Cantidad</th>
-    <th>Precio Unit.</th>
-    <th>Precio Total</th>
-    <th>Estado</th>
+    <th><center>Nombre</center></th>
+    <th><center>Codigo</center></th>  
+    <th><center>Cantidad</center></th>
+    <th><center>Precio Unit.</center></th>
+    <th><center>Precio Total</center></th>
+    <th><center>Estado</center></th>
     <th></th>
     <th></th>
   </tr>
 </thead>
+</center>
 <tbody>
+
 <% cantidad=@order.productorders.length%>
 <% if cantidad == 0 %>
 <% nuevo = true %>
@@ -55,15 +58,15 @@
       <% nuevo = false %>
       <%@order.ingresado = true%> 
       <%@order.save%>
-      <td>Ingresado</td>
+      <td><center>Ingresado</center></td>
     <%else%>
     <% cantidad += 1 %>
     <% nuevo = false %>
-      <td>Pendiente</td>
+      <td><center>Pendiente</center></td>
     <%end%> 
     <% if producto.ingresado == false %>
-    <td><%=link_to "Editar de pedido", :controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id %></td>
-    <td><%= link_to 'Eliminar de pedido', :controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id %></td>
+    <td><%=link_to "Editar de pedido", {:controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id} , :class => 'btn btn-mini btn-warning' %></td>
+    <td><%= link_to 'Eliminar de pedido', {:controller => :productorders, :action => 'eliminar_producto_pedido', :id => producto.id, :order_id => @order.id}, :class => 'btn btn-mini btn-danger' %></td>
     <%end%>
   </tr>
 <% end %>
@@ -102,7 +105,6 @@
       </div>
     </div>
   </div>
-
 <%end%>
 
 <br/>

@@ -5,7 +5,9 @@
   <%= @brand.name %>
 </p>
 
-<%= link_to 'Editar', edit_brand_path(@brand), class: "btn btn-primary"  %>
+<%= link_to 'Editar', edit_brand_path(@brand), class: "btn btn-warning"  %>
 <br><br>
-<%= button_to 'Volver', brands_path, :method => :get, class: "btn  btn-primary"  %>
 </CENTER>
+<div align="left">
+	<%= button_to 'Volver', brands_path, :method => :get, class: "btn  btn-default"  %>
+</div>

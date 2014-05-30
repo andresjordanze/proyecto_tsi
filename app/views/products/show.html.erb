@@ -40,8 +40,8 @@
     <strong>Precio de venta: </strong><br>
 <p>    <%= @product.sale_price %>
 </p>    
-<%= button_to 'Editar', edit_product_path(@product), :class => 'btn btn-warning',:method => :get %><br>
-<%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-default  ' %><br>
-
+<%= button_to 'Editar producto', edit_product_path(@product), :class => 'btn btn-warning',:method => :get %><br>
   </CENTER>
- 
+<div align="left">
+  <%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-default  ' %><br> 
+</div>
