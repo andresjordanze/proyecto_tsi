@@ -12,6 +12,8 @@
       <p><%= f.label :phone, '*Telefono/Celular:' %>
       <%= f.text_field :phone, :class => 'form-control', :maxlength => 8 %>
 
-      <p><%= f.submit (@client.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>
+      <p><%= f.submit (@client.new_record? ? 'Crear cliente' : 'Guardar cambios'), :class => 'btn btn-lg btn-jordi' %></p>
 <% end %>
+	<%= button_to 'Volver', clients_path, :method => :get, class: "btn btn-default"  %>
 </div>
+

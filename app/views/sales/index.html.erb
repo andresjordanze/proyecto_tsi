@@ -1,32 +1,36 @@
 <% title "Lista de Ventas" %>
 <div class="hero-unit">
 <h1>Lista de Ventas</h1>
-<%= link_to 'Registrar Venta', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"},:class => 'btn btn-success', :method => "post" %><br><br>
+<div align="right">
+<%= link_to 'Registrar Venta', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"},:class => 'btn btn-jordi', :method => "post" %><br><br>
+</div>
 
-<%= link_to_function "Buscar Por Cliente", "$('#cliente').toggle()", :class => "btn btn-info" %>
-<div id="cliente" style="display:none">
+
+<div >
 <br>
 <form method="GET" action="/sales/search">
-Cliente: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar", class="btn btn-default">
+Busqueda: <input type="text" name="name" placeholder="Nombre de cliente"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar cliente", class="btn btn-info">
 </form>
-</div><br><br>
+</div>
 
-<%= link_to_function "Buscar por Producto", "$('#producto').toggle()", :class => "btn btn-info"  %><br>
-<div id="producto" style="display:none">
+
+
+<div>
 <br>
 <form method="GET" action="/sales/searchProduct">
-Nombre Producto: <input type="text" name="producto"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar", class="btn btn-default">
+Nombre Producto: <input type="text" name="producto" placeholder="Nombre de producto"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar producto", class="btn btn-info">
 </form>
-</div><br>
+</div>
 
-<%= link_to_function "Buscar Por Fecha", "$('#fecha').toggle()", :class => "btn btn-info" %>
-<div id="fecha" style="display:none">
+
+
+<div>
 <br>
 <form method="GET" action="/sales/searchDate">
 Fecha: <input type="date" name="date"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar", class="btn btn-default">
+<input type="submit" value="Buscar por fecha", class="btn btn-info">
 </form>
 </div><br><br>
 

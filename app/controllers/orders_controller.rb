@@ -101,6 +101,8 @@ class OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
+		order = params[:order]
+		@order.created_at = Date.new order["created_at(1i)"].to_i, order["created_at(2i)"].to_i, order["created_at(3i)"].to_i
 		if @order.update_attributes(params[:order])
 			@order.save
 			flash[:success] = "Pedido registrado exitosamente!"

@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
 	has_many :providers
 	has_many :productorders	
 
+
 	def correspondeAproveedor(proveedor)
     	parametros = proveedor.split(' ')
     	parametros.each do |parametro|

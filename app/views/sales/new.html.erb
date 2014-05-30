@@ -1,6 +1,6 @@
 	<% title "Registrar Venta" %>
 <div class="hero-unit">
-<CENTER>
+
 <h1>Registrar Venta</h1>
 <br>
 <%= form_validated_for (@sale) do |f| %>
@@ -18,9 +18,12 @@
 		<%= f.text_field :nit, :maxlength => '12' %>
 </p>
 <p>
-		<%= f.submit "Registrar Venta", class: "btn btn-large btn-primary" %>
+		<%= f.submit "Registrar Venta", class: "btn btn-large btn-jordi" %>
 		</p>
 	</div>	
 <%end%>
-</CENTER>
+
+</div>
+<div align="left">
+	<%= button_to 'Volver', sales_path, :method => :get, class: "btn btn-default"  %>
 </div>

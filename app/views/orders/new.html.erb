@@ -11,7 +11,10 @@
 			<p><%=f.label :provider, "Proveedor" %>
     		<%=f.collection_select(:provider, Provider.all, :name, :name)%>
 
-			<p><%= f.submit "Registrar Pedido", class: "btn btn-large btn-primary" %></p>
+			<p><%= f.submit "Registrar Pedido", class: "btn btn-large btn-jordi" %></p>
 			</div>
 		<!--</div>-->
 	<%end%>
+	<div align="left">
+	<%= button_to 'Volver', orders_path, :method => :get, class: "btn btn-default"  %>
+</div>

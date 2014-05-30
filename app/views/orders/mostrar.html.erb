@@ -5,7 +5,8 @@
     <h2>Fecha pedido: <%=@order.created_at.strftime("%d/%m/%Y")%>
 
 <h1>Productos:</h1>
-<table border=1>
+<table class="table table-striped">
+<thead>
   <tr>
     <th>Nombre</th>
     <th>Codigo</th>  
@@ -14,14 +15,15 @@
     <th>Precio Total</th>
     <th>Estado</th>
   </tr>
-
+</thead>
+<tbody>
 <% cantidad=@order.productorders.length%>
 <% if cantidad == 0 %>
 <% nuevo = true %>
 <% end %>
 <% @order.productorders.each do |producto| %>
   <tr>
-    <td><CENTER><%= producto.nombre_producto%></CENTER></td>
+    <td><CENTER><%= producto.name%></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
     <td><CENTER><%= producto.quantity %></CENTER></td>
     <td><CENTER><%= producto.price %></CENTER></td>
@@ -39,6 +41,7 @@
     <%end%>
   </tr>
 <% end %>
+</tbody>
 </table>
 <br/>
 

@@ -2,7 +2,8 @@ class CreateProductorders < ActiveRecord::Migration
   def change
     create_table :productorders do |t|
       t.string :code
-      t.string :nombre_producto
+      t.string :name
+      t.integer :productname_id
       t.text :description
       t.integer :quantity
       t.boolean :ingresado

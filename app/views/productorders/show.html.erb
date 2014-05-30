@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<CENTER>
+
 <p>
   <b>Nombre:</b>
   <%= @productorder.nombre_producto %>
@@ -31,5 +31,6 @@
 <%= link_to 'Editar', edit_productorder_path(@productorder), class: "btn btn-primary"  %>
 <br>
 <br>
-<%= link_to 'Volver', :controller => :orders, :action => "show", :id => @productorder.order_id %>
-</CENTER>
+
+
+<%= link_to 'Volver', {:controller => :orders, :action => "show", :id => @productorder.order_id}, :class => 'btn btn - btnmini-default' %>
