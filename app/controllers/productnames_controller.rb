@@ -17,11 +17,14 @@ class ProductnamesController < ApplicationController
   end
 
   def create
-   	@productname = Productname.new(params[:productname])
-    if @productname.save
-     	redirect_to @productname, notice: 'Producto creado exitosamente.' 
+    @brand = Brand.find(params[:productname][:brand_id])
+    @productname = @brand.productnames.create(params[:productname])
+    if @productname.save 
+      flash[:success] = "Producto creado exitosamente!"
+      redirect_to "/productnames"
     else
-      render action: "new" 
+      flash[:danger] = "No funciona ><"
+      render action: "new"
     end
   end
 
@@ -36,8 +39,19 @@ class ProductnamesController < ApplicationController
 
   
   def destroy
+    control = true
     @productname = Productname.find(params[:id])
-    @productname.destroy
+    @productname.productorders.each do |productorder|
+      if productorder.productname_id = @productname.id
+        control = false
+        flash[:danger] = "No puede eliminar el producto porque existen pedidos asociados a este."    
+      end
+      break if control == false
+    end
+    if control == true
+      flash[:success] = "Se elimino el producto exitosamente."
+      @productname.destroy
+    end
     redirect_to productnames_url 
   end
 

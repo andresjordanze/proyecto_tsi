@@ -1,4 +1,4 @@
-<% title "Lista de pedidos" %>
+<% title "Lista de pedidos"%>
 <h1>Lista de pedidos</h1>
 
 <%= link_to_function "Buscar Pedido por Proveedor", "$('#hide').toggle()", :class => "btn btn-info" %><br>
@@ -23,7 +23,7 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
             <tr>
                 <td><CENTER><%= order.id %></CENTER></td>
                 <td><CENTER><%= order.created_at.strftime("%d/%m/%Y") %></CENTER></td>
-                <td><CENTER><%= order.provider %></CENTER></td>
+                <td><CENTER><%= Provider.find(order.provider).name %></CENTER></td>
                 <td><%= link_to 'Ver pedido', {:controller => :orders, :action => "mostrar", :id => order.id }, :class => 'btn btn-mini btn-success'%></td>
                 <% if order.ingresado == false %>
                 <td><%= link_to 'Editar pedido', {:controller => :orders, :action => "edit", :id => order.id}, :class => 'btn btn-mini btn-warning' %></td>
@@ -34,4 +34,4 @@ Proveedor: <input type="text" name="provider"> &nbsp;&nbsp;&nbsp;
     </tbody>
 </table>
 <br>
-<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "Harry"}, :method => "post" %>
+<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "1".to_i}, class: 'btn btn-jordi', :method => "post" %>

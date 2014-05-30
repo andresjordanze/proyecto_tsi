@@ -14,8 +14,10 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
 <table class="table table-striped">
 <thead>
   <tr>
-   <th><CENTER>Nombre</CENTER></th>
-    <th><CENTER> Codigo </CENTER></th>
+    <th><CENTER>Nombre</CENTER></th>
+    <th><CENTER>Codigo</CENTER></th>
+    <th><CENTER>Marca</CENTER></th>
+    <th><CENTER>Descripcion</CENTER></th>
   </tr>
 </thead>
 <tbody>
@@ -23,6 +25,8 @@ Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;
   <tr>
     <td><CENTER><%= producto.name %></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
+    <td><CENTER><%= Brand.find(producto.brand_id).name %></CENTER></td>
+    <td><CENTER><%= producto.description %></CENTER></td>
     <td><%= link_to 'Editar producto', edit_productname_path(producto), :class => 'btn btn-mini  btn-warning' %>
     <%= link_to 'Eliminar producto', producto, method: :delete, data: { confirm: 'Seguro de eliminar el nombre del producto?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>

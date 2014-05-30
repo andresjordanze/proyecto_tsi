@@ -66,14 +66,15 @@ ActiveRecord::Schema.define(version: 20140526100255) do
     t.string   "code"
     t.string   "description"
     t.string   "serial"
-    t.string   "brand"
+    t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "productorders", force: true do |t|
     t.string   "code"
-    t.string   "nombre_producto"
+    t.string   "name"
+    t.integer  "productname_id"
     t.text     "description"
     t.integer  "quantity"
     t.boolean  "ingresado"

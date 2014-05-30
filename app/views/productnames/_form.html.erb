@@ -3,16 +3,9 @@
     <%= f.label :name, "*Nombre del producto" %>
     <p><%= f.text_field :name, :maxlength => '20'%></p>
     <%=f.label :brand, "*Marca" %>
-    <p><%=f.collection_select(:brand, Brand.all, :name, :name)%></p>
-  
-
-  
+    <p><%=f.collection_select(:brand_id, Brand.all, :id, :name)%></p> 
     <%= f.label :code, "*Codigo del producto" %>
-    <p><%= f.text_field :code, :maxlength => '10'%></p>
-    <%= f.label :serial, "*Numero serial" %>
-    <p><%= f.text_field :serial, :maxlength => '15' %></p>
-  
-  
+    <p><%= f.text_field :code, :maxlength => '10'%></p>  
     <%= f.label :description, "*Descripcion" %>
     <p><%= f.text_area :description, :maxlength => '160'%>
   </p>

@@ -5,7 +5,7 @@ class CreateProductnames < ActiveRecord::Migration
     	t.string :code
     	t.string :description
     	t.string :serial
-    	t.string :brand
+    	t.integer :brand_id
 
       t.timestamps
     end

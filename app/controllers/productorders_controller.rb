@@ -19,7 +19,7 @@ class ProductordersController < ApplicationController
   def create
     @control = false
     @order = Order.find(params[:order_id])
-    @productname = Productname.find(params[:productorder][:nombre_producto])
+    @productname = Productname.find(params[:productorder][:productname_id])
     @productorders = Productorder.where("order_id = :order_id", {order_id: @order.id}).to_a
     @productorders.each do |productorder|
       if productorder.code == @productname.code
@@ -28,7 +28,7 @@ class ProductordersController < ApplicationController
     end
     if @control == false
       @productorder = Productorder.new(params[:productorder])
-      @productorder.nombre_producto = @productname.name
+      @productorder.name = @productname.name
       @productorder.code = @productname.code
       @productorder.description = @productname.description
       @productorder.ingresado = false
@@ -93,7 +93,6 @@ class ProductordersController < ApplicationController
     @productorder.destroy
     redirect_to productorders_url 
   end
-
 
   def agregar_producto_pedido
     @productorder = Productorder.find(params[:id])
