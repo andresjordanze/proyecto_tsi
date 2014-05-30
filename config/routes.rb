@@ -58,7 +58,7 @@ Informaticacomp::Application.routes.draw do
 
   get 'sales/search_between_dates' => 'sales#search_between_dates'
   get 'sales/report_search' => 'sales#report_search'
-  get 'sales/:id/print' => 'sales#print'
+  post 'sales/@sales/print' => 'sales#print'
   #get 'sales/weekly_report' => 'sales#weekly_report'
   #get 'sales/monthly_report' => 'sales#monthly_report'
   #get 'sales/anual_report' => 'sales#anual_report'
@@ -83,7 +83,7 @@ Informaticacomp::Application.routes.draw do
   resources :orders do
     resources :productorders  
   end
-
+  resources :subproducts
   resources :productorders  
   resources :sales
   resources :sessions
