@@ -63,6 +63,11 @@ class ProductsController < ApplicationController
   		@income = Income.new
   		@income.registrar(@productorder)
   		@income.save
+  		@kardex = Kardex.new
+  		@kardex.detail = "Pedido " + @productorder.order_id.to_s
+  		@kardex.income = @productorder.quantity
+  		@kardex.date = @productorder.updated_at
+
   		control = false
   		if @products.length > 0
 	  		@products.each do |product|
@@ -70,6 +75,9 @@ class ProductsController < ApplicationController
 	  				product.quantity += @productorder.quantity
 	  				product.save
 	  				@product = product
+	  				@kardex.residue = @product.quantity
+	  				@kardex.product_id = @product.id
+	  				@kardex.save
 	  				@productorder.ingresado = true
 	  				@productorder.save
 	  				control = true
@@ -82,12 +90,18 @@ class ProductsController < ApplicationController
 	  			@product = Product.new
 	  			@product.registrar(@productorder)
 	  			@product.save
+	  			@kardex.residue = @product.quantity
+	  			@kardex.product_id = @product.id
+	  			@kardex.save
 	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
 	  		end
 	  	else
 	  		@product = Product.new
 	  		@product.registrar(@productorder)
 	  		@product.save
+	  		@kardex.residue = @product.quantity
+	  		@kardex.product_id = @product.id
+	  		@kardex.save
 	  		redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  	
 	  	end
   	end
