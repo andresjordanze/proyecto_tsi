@@ -20,8 +20,12 @@
 			<p><%= f.label :status, "*Estado:" %>
         	<%= f.select :status, options_for_select([['En reparacion', 'En reparacion'], ['Finalizado', 'Finalizado']]) %>
 	
-			<p><%= f.submit "Guardar", class: "btn btn-large btn-primary" %></p>
+			<p><%= f.submit "Guardar", class: "btn btn-large btn-jordi" %></p>
 			</div>
 		<!--</div>-->
 	<%end%>
+</div>
+
+<div align="left">
+	<%= button_to 'Volver', technical_services_path, :method => :get, class: "btn btn-default"  %>
 </div>
