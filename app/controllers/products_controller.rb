@@ -64,10 +64,10 @@ class ProductsController < ApplicationController
   		@income = Income.new
   		@income.registrar(@productorder)
   		@income.save
-  		#@kardex = Kardex.new
-  		#@kardex.detail = "Pedido " + @productorder.order_id.to_s
-  		#@kardex.income = @productorder.quantity
-  		#@kardex.date = @productorder.updated_at
+  		@kardex = Kardex.new
+  		@kardex.detail = "Pedido " + @productorder.order_id.to_s
+  		@kardex.income = @productorder.quantity
+  		@kardex.date = @productorder.updated_at
 
   		control = false
   		if @products.length > 0
@@ -76,9 +76,9 @@ class ProductsController < ApplicationController
 	  				product.quantity += @productorder.quantity
 	  				product.save
 	  				@product = product
-	  				#@kardex.residue = @product.quantity
-	  				#@kardex.product_id = @product.id
-	  				#@kardex.save
+	  				@kardex.residue = @product.quantity
+	  				@kardex.product_id = @product.id
+	  				@kardex.save
 	  				@productorder.ingresado = true
 	  				@productorder.save
 	  				control = true
@@ -86,23 +86,26 @@ class ProductsController < ApplicationController
 	  			break if control == true
 	  		end
 	  		if control == true
+	  			flash[:success] = "Producto ingresado exitosamente."
 	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  		
 	  		else
 	  			@product = Product.new
 	  			@product.registrar(@productorder)
 	  			@product.save
-	  			#@kardex.residue = @product.quantity
-	  			#@kardex.product_id = @product.id
-	  			#@kardex.save
+	  			@kardex.residue = @product.quantity
+	  			@kardex.product_id = @product.id
+	  			@kardex.save
+	  			flash[:success] = "Producto ingresado exitosamente."
 	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
 	  		end
 	  	else
 	  		@product = Product.new
 	  		@product.registrar(@productorder)
 	  		@product.save
-	  		#@kardex.residue = @product.quantity
-	  		#@kardex.product_id = @product.id
-	  		#@kardex.save
+	  		@kardex.residue = @product.quantity
+	  		@kardex.product_id = @product.id
+	  		@kardex.save
+	  		flash[:success] = "Producto ingresado exitosamente."
 	  		redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  	
 	  	end
   	end

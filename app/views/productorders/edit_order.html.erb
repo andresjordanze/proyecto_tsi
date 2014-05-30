@@ -1,6 +1,6 @@
 <% title "Editar Producto de Pedido" %>
 
-<h1>Editar Producto <%= @productorder.name%></h1>
+<h1>Editar Producto <%= Productname.find(@productorder.productname_id).name%></h1>
 <div class="row">
 	<div class="col-xs-3">
 	<%= form_validated_for(@productorder) do |f| %>		
@@ -9,7 +9,12 @@
     		<%= f.text_field :quantity, :maxlength => '4' %>
     		<%=f.label :price, "Precio unitario" %>
     		<%= f.text_field :price, :maxlength => '4'%>
-    		<%= f.hidden_field :control, :value => 'true' %>
+            <%= f.hidden_field :control, :value => @control %>
+            <% if @control == 'true' %>
+    		<%= f.hidden_field :valor, :value => 'true' %>
+            <%else%>
+            <%= f.hidden_field :valor, :value => 'false' %>
+            <%end%>
     		<%= f.submit "Editar Producto", class: "btn btn-large btn-warning" %>
     	</p>
 	</div>
