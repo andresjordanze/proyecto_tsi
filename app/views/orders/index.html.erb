@@ -36,5 +36,3 @@ Proveedor: <input type="text" name="provider" placeholder="Nombre de proveedor">
     </tbody>
 </table>
 <br>
-
-<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "1".to_i}, class: 'btn btn-jordi', :method => "post" %>

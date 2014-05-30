@@ -53,7 +53,7 @@ class BrandsController < ApplicationController
     end
     redirect_to brands_url 
   end
-
+  
   def search
     @brands = buscar(params[:name])
     render 'index'
