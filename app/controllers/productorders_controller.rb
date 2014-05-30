@@ -22,7 +22,7 @@ class ProductordersController < ApplicationController
     @productname = Productname.find(params[:productorder][:productname_id])
     @productorders = Productorder.where("order_id = :order_id", {order_id: @order.id}).to_a
     @productorders.each do |productorder|
-      if productorder.code == @productname.code
+      if Productname.find(productorder.productname_id).code == @productname.code
         @control = true
       end
     end
