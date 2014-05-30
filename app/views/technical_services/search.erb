@@ -2,6 +2,11 @@
 <div class="hero-unit">
 <h1>Lista de Servicios</h1>
 <br>
+<div align="right">
+<%= link_to 'Registrar Servicio', {:controller => :technical_services, :action => 'new'}, :class => 'btn btn-mini btn-jordi'%>
+</div>
+
+
 <center>
 <div>
 <form method="GET" action="/technical_services/search">
@@ -42,5 +47,5 @@ Busqueda: <input type="text" name="value" placeholder="Cliente o Numero de servi
 <% end %>
 </table>
 </br>
-<%= link_to 'Registrar Servicio', :controller => :technical_services, :action => 'new' %>
+
 </div>
