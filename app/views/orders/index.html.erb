@@ -1,7 +1,7 @@
 <% title "Lista de pedidos"%>
 <h1>Lista de pedidos</h1>
 <div align="right">
-<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "Harry"}, :method => "post", :class => 'btn btn-mini btn-jordi' %>
+<%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "1"}, :method => "post", :class => 'btn btn-mini btn-jordi' %>
 </div>
 <center>
 <div >

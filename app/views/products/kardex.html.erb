@@ -5,9 +5,6 @@
  <H1><%= @product.code %> </H1>
  
 
-
-
-
 <h1>Kardex de Producto</h1>
 <table class="table table-striped">
   <tr>
@@ -21,13 +18,12 @@
     <th></th>
   </tr>
 
-<% @technical_services.each do |technical_service| %>
   <tr>
-    <td><%= product.created_at.strftime("%d/%m/%Y") %></td>
-    <td><%= product.detail %></td>
-    <td><%= product.product_name %></td>
-    <td><%= product.product_code %></td>
-    <td><%= product.status %></td>
+    <td><%= @product.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= @product.detail %></td>
+    <td><%= @product.income %></td>
+    <td><%= @product.ingreso %></td>
+    <td><%= @product.status %></td>
   </tr>
-<% end %>
+
 </table>

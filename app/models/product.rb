@@ -3,6 +3,9 @@ class Product < ActiveRecord::Base
 	has_many :subproducts, dependent: :destroy
 	has_many :incomes
     
+    has_one :kardex
+
+
 	attr_accessible :name, :detail, :description, :increase, :id_order, :quantity, :general_code, :brand, :category, :bought_price, :sale_price, :created_at, :updated_at, :photo
 	belongs_to :sale
 	has_many :brands

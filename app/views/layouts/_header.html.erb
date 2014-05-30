@@ -33,7 +33,7 @@
                 <li><a href="/providers/new">Añadir proveedor</a></li>
                 <li><a href="/providers">Lista de proveedores</a></li>
                 <li class="dropdown-header">Pedidos</li>
-                <li><%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "Harry"}, :method => "post" %></li>
+                <li><%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider => "1"}, :method => "post" %></li>
                 <li><a href="/orders">Lista de pedidos</a></li>
               </ul>
             </li>

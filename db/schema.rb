@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526100255) do
+ActiveRecord::Schema.define(version: 20140530043946) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20140526100255) do
     t.string   "code"
     t.integer  "price"
     t.integer  "total_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kardexes", force: true do |t|
+    t.date     "date"
+    t.string   "detail"
+    t.integer  "income"
+    t.integer  "output"
+    t.integer  "residue"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
