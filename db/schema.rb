@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20140530082043) do
     t.string   "code"
     t.integer  "price"
     t.integer  "sale_id"
+    t.integer  "subproduct_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -17,6 +17,7 @@ class ProductsalesController < ApplicationController
 		@productsale.code = @subproduct.code
 		@productsale.sale_id = params[:sale_id]
 		@productsale.price = params[:productsale][:price]
+		@productsale.subproduct_id = @subproduct.id
 		@subproduct.available = false
 		@subproduct.save
 		if @productsale.save
@@ -25,6 +26,21 @@ class ProductsalesController < ApplicationController
 		else
 
 		end
+	end
+
+	def eliminar_subproducto_venta
+		@productsale = Productsale.find(params[:id])
+		@subproduct = Subproduct.find(@productsale.subproduct_id)
+		@product = Product.find(@subproduct.product_id)
+		@product.quantity += 1
+		@product.save
+		@subproduct.available = true
+		@subproduct.save
+		@sale = Sale.find(@productsale.sale_id)
+		@sale.price = @sale.price - @productsale.price
+      	@sale.save
+     	@productsale.destroy
+		redirect_to sale_path(@sale)
 	end
 
 end
