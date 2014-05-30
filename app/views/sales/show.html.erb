@@ -37,32 +37,26 @@
 
 <p>    
     <b>Total Venta:<b><br>
-    <%= @sale.price/2 %>
+    <%= @sale.price %>
 </p>
 
 <p>
     <b><Center>Detalle de Venta</Center></b>
     <div>
-    <!--h2><Center--><!--%= link_to_function "Ver Detalle de Venta", "$('#hide').toggle()" %></Center></h2-->
-    <!--div id="hide" style="display:none"-->
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th><Center>Nombre</Center></th>
-                    <th><Center>Codigo del SubProducto</Center></th>
-                    <th><Center>Marca</Center></th>
-                    <th><Center>Categoria</Center></th>
+                    <th><Center>Codigo del Producto</Center></th>
                     <th><Center>Precio</Center></th>        
                 </tr>
             </thead>
             <tbody>
-                <% @sale.subproducts.each do |subproduct| %>
+                <% @sale.productsales.each do |subproduct| %>
                     <tr>
                         <td><CENTER><%= subproduct.name %></CENTER></td>
                         <td><CENTER><%= subproduct.code %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.brand %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.category %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
+                        <td><CENTER><%= subproduct.price %></CENTER></td>
                         <% if @sale.confirmed == false %>
                         <td><%= link_to 'Eliminar de venta', {:controller => :subproducts, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id}, :class =>'btn btn-mini btn-danger'%></td>
                         <%end%>
@@ -87,10 +81,7 @@
                 <thead>
                     <tr>
                         <th><Center>Nombre</Center></th>
-                        <th><Center>Codigo del SubProducto</Center></th>
-                        <th><Center>Marca</Center></th>
-                        <th><Center>Categoria</Center></th>
-                        <th><Center>Precio De Venta</Center></th>        
+                        <th><Center>Codigo del Producto</Center></th>        
                     </tr>
                 </thead>
                 <tbody>
@@ -100,10 +91,32 @@
                             <%if subproduct.available == true || subproduct.available == "NULL"%>
                                 <td><CENTER><%= subproduct.name %></CENTER></td>
                                 <td><CENTER><%= subproduct.code %></CENTER></td>
-                                <td><CENTER><%= subproduct.product.brand %></CENTER></td>
-                                <td><CENTER><%= subproduct.product.category %></CENTER></td>
-                                <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>            
-                                <td><%= link_to 'Agregar a Venta', {:controller => :subproducts, :action => 'agregar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id}, :class =>'btn btn-mini btn-jordi'  %></td>
+                                        
+                                <td>
+                                <div align="right">
+                                    <button class="btn btn-jordi" data-toggle="modal" data-target="#myModal">Agregar producto a pedido</button>
+                                </div>
+
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="myModalLabel">Agregar precio</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                      <%= form_validated_for([@sale, @sale.productsales.build]) do |f| %>
+                                                        <%= f.label :price , "Precio de venta:" %>
+                                                        <%= f.text_field :price, :maxlength => '6' %>
+                                                        <%= f.hidden_field :subproduct_id, :value => subproduct.id %>
+                                                        <%= f.submit "Agregar", class: "btn btn-jordi"%>
+                                                </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+                                            <!--%= f.submit "Agregar", class: "btn btn-large btn-primary" %-->
+                                            <%end%>
+                                        </div>
+                                    </div></td>
                             <% end %>
                         </tr>
                     <% end %>

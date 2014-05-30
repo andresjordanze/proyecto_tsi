@@ -84,12 +84,18 @@
   get 'technical_services/search' => 'technical_services#search'
   get 'technical_services/searchNumber' => 'technical_services#searchNumber'
 
+  get 'add_product_sale' => 'productsales#registrar'
+
   resources :products do    
     resources :subproducts
   end
 
   resources :orders do
     resources :productorders  
+  end
+  
+  resources :sales do
+    resources :productsales
   end
 
   resources :productorders  
@@ -104,6 +110,7 @@
   resources :providers
   resources :clients
   resources :outflows
+  resources :productsales
   #resources :sales do
    # resources :subproducts
   #end

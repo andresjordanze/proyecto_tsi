@@ -1,6 +1,6 @@
 class Subproduct < ActiveRecord::Base
-	belongs_to :product
-  	belongs_to :sale
+	  belongs_to :product
+    
   	attr_accessible :code, :sale_id, :available, :name
 
   	def cancelar_venta
