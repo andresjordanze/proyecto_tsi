@@ -1,4 +1,4 @@
-Informaticacomp::Application.routes.draw do
+  Informaticacomp::Application.routes.draw do
   get 'user/edit' => 'users#edit', :as => :edit_current_user
   get 'signup' => 'users#new', :as => :signup
   get 'logout' => 'sessions#destroy', :as => :logout
@@ -30,6 +30,10 @@ Informaticacomp::Application.routes.draw do
 
   get '/income/index'=> 'income#index'
   
+  get 'products/kardex' => 'products#kardex'
+
+  get 'clients/search' => 'clients#search'
+
   get 'edit_to_home' => 'products#edit_to_home'
   post 'edit_to_home' => 'products#edit_to_home'
   get 'agregar_subproducto_venta' => 'subproducts#agregar_subproducto_venta'
@@ -58,9 +62,7 @@ Informaticacomp::Application.routes.draw do
 
   get 'sales/search_between_dates' => 'sales#search_between_dates'
   get 'sales/report_search' => 'sales#report_search'
-  
-  get 'technical_services/search_between_dates' => 'technical_services#search_between_dates'
-  get 'technical_services/report_search' => 'technical_services#report_search'
+  get 'sales/:id/print' => 'sales#print'
   #get 'sales/weekly_report' => 'sales#weekly_report'
   #get 'sales/monthly_report' => 'sales#monthly_report'
   #get 'sales/anual_report' => 'sales#anual_report'
@@ -85,7 +87,7 @@ Informaticacomp::Application.routes.draw do
   resources :orders do
     resources :productorders  
   end
-  resources :subproducts
+
   resources :productorders  
   resources :sales
   resources :sessions

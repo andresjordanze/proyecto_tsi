@@ -1,0 +1,6 @@
+<% title "Buscar cliente" %>
+<h1>Cliente con nombre <%=@name%></h1>
+<%= render "clients_controller/clients" %>
+<DIV Align=left>
+<%= button_to 'Volver', clients_path, :method => :get, :class => 'btn btn-default' %><br>
+</DIV>

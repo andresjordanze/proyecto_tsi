@@ -1,5 +1,15 @@
 <% title "Clientes" %>
 <h1>Lista de Clientes</h1>
+
+<center>
+<div>
+<br>
+<form method="GET" action="/clients/search">
+Busqueda: <input type="text" name="name" placeholder="Nombre de cliente"> &nbsp;&nbsp;&nbsp;
+<input type="submit" value="Buscar cliente" class="btn btn-mini btn-info   ">
+</form>
+</div>
+</center>
 <div align="right">
   <%= link_to 'Registrar Cliente', {:controller => :clients, :action => 'new'}, :class => "btn btn-mini btn-jordi" %>
 </div>

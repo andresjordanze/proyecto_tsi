@@ -39,4 +39,25 @@ class ClientsController < ApplicationController
     redirect_to :controller => :clients, :action => "index"
   end
 
+  def search
+    @clients = buscar(params[:name])
+    render 'index'
+  end
+
+  def buscar(nombre)
+      items = Array.new 
+      aux = Client.all
+      if nombre != "" && nombre != nil
+          aux.each do |item|
+          if (item.correspondeAnombre(nombre))
+              items.push(item)
+          end
+        end
+      else
+          items = aux
+      end
+      return items
+    end
+
+
 end

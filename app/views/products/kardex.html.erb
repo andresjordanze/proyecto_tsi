@@ -1,0 +1,33 @@
+<% title "kardex" %>
+
+
+ <H1><%= @product.name %> </H1>
+ <H1><%= @product.code %> </H1>
+ 
+
+
+
+
+<h1>Kardex de Producto</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Nº</th>
+    <th>Fecha</th>
+    <th>Detalle</th>
+    <th>Ingreso</th>
+    <th>Salida</th>
+    <th>Saldo</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @technical_services.each do |technical_service| %>
+  <tr>
+    <td><%= product.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= product.detail %></td>
+    <td><%= product.product_name %></td>
+    <td><%= product.product_code %></td>
+    <td><%= product.status %></td>
+  </tr>
+<% end %>
+</table>
