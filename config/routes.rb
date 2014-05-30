@@ -100,6 +100,10 @@
     resources :productsales
   end
 
+  resources :sales do
+    resources :clients
+  end
+
   resources :productorders  
   resources :sales
   resources :sessions
