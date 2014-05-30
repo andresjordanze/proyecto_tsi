@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 	def new
 		@product = Product.new
 		@order = Order.find(params[:id])
+		@kardex = Kardex.new
 	end
 
 	def search
@@ -85,6 +86,7 @@ class ProductsController < ApplicationController
 	  			break if control == true
 	  		end
 	  		if control == true
+	  			flash[:success] = "Producto ingresado exitosamente."
 	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  		
 	  		else
 	  			@product = Product.new
@@ -93,6 +95,7 @@ class ProductsController < ApplicationController
 	  			@kardex.residue = @product.quantity
 	  			@kardex.product_id = @product.id
 	  			@kardex.save
+	  			flash[:success] = "Producto ingresado exitosamente."
 	  			redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'
 	  		end
 	  	else
@@ -102,6 +105,7 @@ class ProductsController < ApplicationController
 	  		@kardex.residue = @product.quantity
 	  		@kardex.product_id = @product.id
 	  		@kardex.save
+	  		flash[:success] = "Producto ingresado exitosamente."
 	  		redirect_to '/orders/'+@productorder.order_id.to_s+'/edit'	  	
 	  	end
   	end
@@ -127,12 +131,15 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(params[:product])
+		@kardex = Kardex.new(params[:id])
 		@productorder = Productorder.find(params[:product][:id])	
 		@productorder.ingresado = true
 		@productorder.save
 		@product.home = false
 		@product.description = "          "
-		if @product.save		
+		if @product.save
+			@kardex.product_id = @product.id.to_i
+			@kardex.save		
 			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
 			render action: 'new'

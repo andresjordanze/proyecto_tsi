@@ -23,8 +23,8 @@
 <% end %>
 <% @order.productorders.each do |producto| %>
   <tr>
-    <td><CENTER><%= producto.name%></CENTER></td>
-    <td><CENTER><%= producto.code %></CENTER></td>
+    <td><CENTER><%= Productname.find(producto.productname_id).name %></CENTER></td>
+    <td><CENTER><%= Productname.find(producto.productname_id).code %></CENTER></td>
     <td><CENTER><%= producto.quantity %></CENTER></td>
     <td><CENTER><%= producto.price %></CENTER></td>
     <td><CENTER><%= producto.total_price %></CENTER></td>
