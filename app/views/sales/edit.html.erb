@@ -1,5 +1,4 @@
 <% title "Confirmar Venta" %>
-<% javascript 'dynamic_clients' %>
 <HTML>
 <BODY>
 
@@ -13,7 +12,7 @@
 			<%= f.label :nit , "NIT Cliente:" %>
 			<%= f.collection_select(:nit, Client.all, :nit, :nit, :prompt => "Seleccione un NIT")%>
 		</p>
-
+		
 		<p>
 			<%= f.label :check_number , "Numero de Factura:" %>
 			<%= f.text_field :check_number, :value => "", :maxlength => '12'%>

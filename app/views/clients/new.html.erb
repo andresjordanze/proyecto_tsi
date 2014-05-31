@@ -1,21 +1,7 @@
 <% title "Registrar Cliente" %>
 
 <h1>Registrar Cliente</h1></br>
-	<%= form_validated_for(@client) do |f| %>
-  		<!--<div class="row">-->			
-			<%= f.label :name , "*Nombre completo:" %>
-			<p><%= f.text_field :name, :maxlength => '45' %></p>
-
-			<%= f.label :nit , "*NIT:" %>
-			<p><%= f.text_field :nit, :maxlength => '12' %></p>
-
-			<%= f.label :phone , "*Telefono/Celular:" %>
-			<p><%= f.text_field :phone,:maxlength => '8' %></p>
-	
-			<p><%= f.submit "Registrar cliente", class: "btn btn-large btn-jordi" %></p>
-			
-		<!--</div>-->
-	<%end%>
+<%= render 'form' %>	
 
 	<div align="left">
 		<%= button_to 'Volver', clients_path, :method => :get, class: "btn btn-default"  %>

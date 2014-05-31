@@ -56,7 +56,7 @@
                     <tr>
                         <td><CENTER><%= subproduct.name %></CENTER></td>
                         <td><CENTER><%= subproduct.code %></CENTER></td>
-                        <td><CENTER><%= subproduct.price %></CENTER></td>
+                        <td><CENTER><%= subproduct.price %> Bs.</CENTER></td>
                         <% if @sale.confirmed == false %>
                         <td><%= link_to 'Eliminar de venta', {:controller => :productsales, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id}, :class =>'btn btn-mini btn-danger'%>
 
@@ -93,7 +93,6 @@
                             <%if subproduct.available == true || subproduct.available == "NULL"%>
                                 <td><CENTER><%= subproduct.name %></CENTER></td>
                                 <td><CENTER><%= subproduct.code %></CENTER></td>
-                                        
                                 <td>
                                 <div align="right">
                                     <button class="btn btn-jordi" data-toggle="modal" data-target="#myModal">Agregar producto a pedido</button>
@@ -108,7 +107,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                       <%= form_validated_for([@sale, @sale.productsales.build]) do |f| %>
-                                                        <%= f.label :price , "Precio de venta:" %>
+                                                        <%= f.label :price , "Precio de venta (Bs.):" %>
                                                         <%= f.text_field :price, :maxlength => '6' %>
                                                         <%= f.hidden_field :subproduct_id, :value => subproduct.id %>
                                                         <%= f.submit "Agregar", class: "btn btn-jordi"%>
