@@ -53,6 +53,7 @@
 
   get 'products/search' => 'products#search'
   get 'orders/search' => 'orders#search'
+  get 'providers/search' => 'providers#search'
 
   get 'brands/search' => 'brands#search'
   get 'categories/search' => 'categories#search'

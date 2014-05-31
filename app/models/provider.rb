@@ -5,8 +5,8 @@ class Provider < ActiveRecord::Base
 
     validates :name, presence: {:message => "Usted debe ingresar el nombre de proveedor"}
 	validates :name, uniqueness: {case_sensitive: false, :message => "El proveedor ya existe"}
-	validates :name, format: { with: /\A[a-zA-Z\d\s]+\z/,
-    message: "Solo Letras Permitidas" }
+	#validates :name, format: { with: /\A[a-zA-Z\d\s]+\z/,
+    #message: "Solo Letras Permitidas" }
 
     validates :phone, numericality: {:message => "El valor de telefono/celular debe ser numerico"}
     validates :phone, length: {minimum: 7, maximum: 8, :message => "El numero de telefono/celular debe tener minimo 7 y maximo 8 numeros"}

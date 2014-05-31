@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
 	def new
 		@product = Product.new
 		@order = Order.find(params[:id])
-		@kardex = Kardex.new
 	end
 
 	def search
@@ -130,15 +129,12 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(params[:product])
-		@kardex = Kardex.new(params[:id])
 		@productorder = Productorder.find(params[:product][:id])	
 		@productorder.ingresado = true
 		@productorder.save
 		@product.home = false
 		@product.description = "          "
 		if @product.save
-			@kardex.product_id = @product.id.to_i
-			@kardex.save		
 			redirect_to @product, notice: 'Producto creado correctamente.' 
 		else
 			render action: 'new'

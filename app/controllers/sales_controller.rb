@@ -70,22 +70,6 @@ def update
     redirect_to sales_url
   end
 
-  def confirm_sale(id)
-    @sale = Sale.find(id)
-    @productsales = Productsale.where("sale_id = :sale_id", {sale_id: @sale.id}).to_a
-    @productsales.each do |productsale|
-      productsale.client_name = @sale.client_name
-      productsale.save
-    end
-    @sale.save
-    #@kadex = Kardex.new
-    #@kardex.detail = @sale.client_name
-    #@kardex.date = @sale.updated_at
-    #@kardex.residue = @sale.productsales.
-    render 'edit'
-    flash[:success] = "Venta Realizada..."
-  end
-
   def cancel_sale
     @sale = Sale.find(params[:id])
     @subproducts = Subproduct.all

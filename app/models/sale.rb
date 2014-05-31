@@ -44,4 +44,18 @@ class Sale < ActiveRecord::Base
 			subproducto.cancelar_venta
 		end
 	end
+
+	def confirm_sale(id)
+    	@sale = Sale.find(id)
+	    @kardex = Kardex.new
+	    @kardex.detail = @sale.client_name
+	    @kardex.date = @sale.updated_at
+	    @productsales = Productsale.where("sale_id = :sale_id", {sale_id: @sale.id}).to_a
+	    @productsales.each do |productsale|
+	      productsale.client_name = @sale.client_name
+	      productsale.save
+	      @kardex.output += 1
+	    end
+	    @sale.save
+  	end
 end
