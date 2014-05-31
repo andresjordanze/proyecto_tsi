@@ -1,14 +1,23 @@
-<p id="notice"><%= flash[:notice] = "Successfully created..." %></p>
-<CENTER>
 <p>
   <b>Nombre:</b>
   <%= @productname.name %>
 </p>
 
+  <b>Codigo:</b>
+  <%= @productname.code%>
+</p>
+
+  <b>Categoria:</b>
+  <%= @productname.description %>
+</p>
+
+  <b>Marca:</b>
+  <%= @productname.brand %>
+</p>
+
 <%= link_to 'Editar producto', edit_productname_path(@productname), class: "btn btn-warning"  %>
 <br><br>
 
-</CENTER>
 <div align="left">
 	<%= button_to 'Volver', productnames_path, :method => :get, class: "btn  btn-default"  %>
 </div>

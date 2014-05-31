@@ -19,10 +19,6 @@
 <strong>Categoria: </strong><br>
 <p><%= @product.category %></p>
 
-<strong>Precio de venta: </strong><br>
-<p><%= @product.sale_price %></p>
-
-<br>
 <%= button_to 'Editar producto', edit_product_path(@product), :class => 'btn btn-warning',:method => :get %><br>
 
 <div align="left">

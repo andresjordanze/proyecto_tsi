@@ -31,7 +31,7 @@ class ProductnamesController < ApplicationController
   def update
   	@productname = Productname.find(params[:id])
     if @productname.update_attributes(params[:productname])
-	    redirect_to @productname, notice: 'Nombre Actualizado exitosamente.'
+	    redirect_to @productname, notice: 'Producto Editado exitosamente.'
     else
     	render action: "edit" 
     end
