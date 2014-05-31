@@ -8,25 +8,24 @@ class ProvidersController < ApplicationController
   def show
   	@provider = Provider.find(params[:id])
 	end
-
   
  	def new
    	@provider = Provider.new
 	end
 
-  
-  	def edit
-    	@provider = Provider.find(params[:id])
-  	end
+ 	def edit
+   	@provider = Provider.find(params[:id])
+ 	end
 
-  	def create
-    	@provider = Provider.new(params[:provider])
-      if @provider.save
-       	redirect_to @provider, notice: 'Proveedor creado exitosamente.'
-      else
-        render action: "new" 
-      end
-  	end
+ 	def create
+   	@provider = Provider.new(params[:provider])
+    if @provider.save
+      flash[:success] ='Proveedor creado exitosamente.'
+     	redirect_to "/providers"
+    else
+      render action: "new" 
+    end
+	end
 
   def update
   	@provider = Provider.find(params[:id])
@@ -53,7 +52,6 @@ class ProvidersController < ApplicationController
     end
     redirect_to providers_url 
   end
-
 
   def search
     @providers = buscar(params[:name])

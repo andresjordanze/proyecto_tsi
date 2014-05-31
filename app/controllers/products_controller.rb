@@ -68,7 +68,6 @@ class ProductsController < ApplicationController
   		@kardex.detail = "Pedido " + @productorder.order_id.to_s
   		@kardex.income = @productorder.quantity
   		@kardex.date = @productorder.updated_at
-
   		control = false
   		if @products.length > 0
 	  		@products.each do |product|

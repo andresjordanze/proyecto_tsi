@@ -6,6 +6,7 @@ class CreateProductsales < ActiveRecord::Migration
  	  t.integer :price
  	  t.integer :sale_id
  	  t.integer :subproduct_id
+ 	  t.string :client_name
       t.timestamps
     end
   end

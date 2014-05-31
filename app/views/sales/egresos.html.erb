@@ -2,10 +2,6 @@
 <div class="hero-unit">
 <h1>Reporte de Egresos</h1>
 
-
-
-<div class="hero-unit">
-
 <p>
     <div>
     <!--h2><Center--><!--%= link_to_function "Ver Detalle de Venta", "$('#hide').toggle()" %></Center></h2-->
@@ -15,7 +11,6 @@
                 <tr>
                     <th><Center>Nombre</Center></th>
                     <th><Center>Codigo del SubProducto</Center></th>
-                    <th><Center>Marca</Center></th>
                     <th><Center>Precio</Center></th> 
                     <th><Center>Numero de factura</Center></th>
                     <th><Center>Cliente</Center></th>
@@ -24,12 +19,11 @@
             </thead>
 <% @sales.each do |sale| %>
             <tbody>
-                <% sale.subproducts.each do |subproduct| %>
+                <% sale.productsales.each do |subproduct| %>
                     <tr>
-                        <td><CENTER><%= subproduct.product.name %></CENTER></td>
+                        <td><CENTER><%= subproduct.name %></CENTER></td>
                         <td><CENTER><%= subproduct.code %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.brand %></CENTER></td>
-                        <td><CENTER><%= subproduct.product.sale_price %></CENTER></td>
+                        <td><CENTER><%= subproduct.price %></CENTER></td>
                         <td><CENTER><%= sale.check_number %></CENTER></td> 
                         <td><CENTER><%= sale.client_name %></CENTER></td>
                         <td><CENTER><%= sale.created_at.strftime("%d/%m/%Y") %></CENTER></td>  

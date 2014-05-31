@@ -4,8 +4,10 @@ class Outflow < ActiveRecord::Base
 	
 	def registrar(sale_id)
 		@sale = Sale.find(sale_id.to_i)
-      	@subproducts = Subproduct.where("sale_id = :sale_id", {sale_id: @sale.id}).to_a
-
+		@sale.confirmed = true
+		@sale.save
+		self.sale_id = sale_id
+      	@subproducts = Productsale.where("sale_id = :sale_id", {sale_id: @sale.id}).to_a
       	self.total_price = @sale.price
       	self.save
   	end

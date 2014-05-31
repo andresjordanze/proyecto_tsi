@@ -10,7 +10,7 @@
 	<div class="col-xs-3">
 		<p>
 			<%= f.label :nit , "NIT Cliente:" %>
-			<%= f.collection_select(:nit, Client.all, :nit, :nit, :prompt => "Seleccione un NIT")%>
+			<%= f.collection_select(:nit, Client.all, :nit, :nit+:name, :prompt => "Seleccione un NIT")%>
 		</p>
 		
 		<p>

@@ -7,8 +7,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :general_code
       t.string :brand
       t.string :category
-      t.float :bought_price         
-      t.float :sale_price     
+      t.float :bought_price             
       t.integer :quantity
       t.integer :increase
       t.boolean :home

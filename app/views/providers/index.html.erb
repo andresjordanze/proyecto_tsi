@@ -21,7 +21,7 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de proveedor "> &nb
     <th><CENTER><%=link_to "Nombre", :sort => "name" %></CENTER></th>
     <th><CENTER>Email</CENTER></th>
     <th><CENTER>Telefono</CENTER></th>
-    <th><CENTER>Locacion</CENTER></th>
+    <th><CENTER>Direccion</CENTER></th>
   </tr>
 </thead>
 <tbody>
@@ -30,7 +30,7 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de proveedor "> &nb
     <td><CENTER><%= provider.name %></CENTER></td>
     <td><CENTER><%= provider.mail %></CENTER></td>
     <td><CENTER><%= provider.phone %></CENTER></td>
-    <td><CENTER><%= provider.country %></CENTER></td>
+    <td><CENTER><%= provider.address %></CENTER></td>
     <td><%= link_to 'Editar', {:controller => :providers, :action => "edit", :id => provider.id}, :class => 'btn btn-mini btn-warning' %>
     <%= link_to 'Eliminar', provider, method: :delete, data: { confirm: 'Seguro de eliminar el proveedor?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>

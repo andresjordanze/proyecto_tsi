@@ -1,4 +1,3 @@
-
 class Product < ActiveRecord::Base
 	has_many :subproducts, dependent: :destroy
 	has_many :incomes
@@ -41,11 +40,10 @@ class Product < ActiveRecord::Base
 	  	self.id_order = productorder.order_id
 	  	self.quantity = productorder.quantity
 	  	self.general_code = @productname.code
-	  	self.brand = @productname.brand_id
+	  	self.brand = Brand.find(@productname.brand_id).name
 	  	self.category = "categoria"
 	  	self.bought_price = productorder.price
 	end
-
 
 	def crear_subproducto
 #		subproducts.create("code" => general_code+"-0")

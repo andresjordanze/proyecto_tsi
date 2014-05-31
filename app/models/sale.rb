@@ -2,7 +2,7 @@ class Sale < ActiveRecord::Base
 
 	has_many :productsales, :dependent => :destroy
 
-	attr_accessible :price, :check_number, :client_name, :created_at, :updated_at, :nit
+	attr_accessible :price, :check_number, :client_name, :confirmed, :created_at, :updated_at, :nit
 
 	#VALID_NAME_REGEX = /^[a-zA-Z0-9-.]+$/
 	

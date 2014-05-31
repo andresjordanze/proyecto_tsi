@@ -44,7 +44,9 @@ class SalesController < ApplicationController
 
 def update
 		@sale = Sale.find(params[:id])
+    @sale.confirmed = true
     @sale.client_name = Client.where("nit = :nit", {nit: params[:sale][:nit]}).to_a.at(0).name
+    @sale.confirm_sale(@sale.id)
     if @sale.update_attributes(params[:sale])
       flash[:success] = "Venta Confirmada"
       redirect_to @sale
@@ -68,19 +70,18 @@ def update
     redirect_to sales_url
   end
 
-  def confirm_sale
-    @sale = Sale.find(params[:identificator])
-    @sale.confirmed = true
-    @outflow = Outflow.new
-    @outflow.registrar(params[:identificator])
-    @sale.save
-    @sale.productsales.each do |producto|
-      
+  def confirm_sale(id)
+    @sale = Sale.find(id)
+    @productsales = Productsale.where("sale_id = :sale_id", {sale_id: @sale.id}).to_a
+    @productsales.each do |productsale|
+      productsale.client_name = @sale.client_name
+      productsale.save
     end
-    @kadex = Kardex.new
-    @kardex.detail = @sale.client_name
-    @kardex.date = @sale.updated_at
-    @kardex.residue = @sale.productsales.
+    @sale.save
+    #@kadex = Kardex.new
+    #@kardex.detail = @sale.client_name
+    #@kardex.date = @sale.updated_at
+    #@kardex.residue = @sale.productsales.
     render 'edit'
     flash[:success] = "Venta Realizada..."
   end
