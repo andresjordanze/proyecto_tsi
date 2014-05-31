@@ -39,40 +39,49 @@
 # Lista de Clientes
 
 	client1 = Client.new
-	client1.name = 'Andres Jordan'
-	client1.nit = 1234567
-	client1.phone = 4489290
+	client1.name = 'Andres Martines'
+	client1.nit = 2123344223
+	client1.phone = 4489223
 	client1.save!
 
 	client2 = Client.new
-	client2.name = 'Oscar Gonzalez'
-	client2.nit = 2234567
+	client2.name = 'Oscar Arce'
+	client2.nit = 212345353
 	client2.phone = 3489101
 	client2.save!
 
+	
 #Lista de proveedores
 
 	prov1 = Provider.new
 	prov1.name = 'Toshiba'
 	prov1.phone = 1234567
 	prov1.mail = 'toshiba@hotmail.com'
-	prov1.address = 'Miami'
+	prov1.address = 'La Paz'
 	prov1.save!
 
 	prov2 = Provider.new
 	prov2.name = 'Dell'
 	prov2.phone = 7654321
 	prov2.mail = 'dell@yahoo.com'
-	prov2.address = 'Washigton'
+	prov2.address = 'La Paz'
 	prov2.save!
 
 	prov3 = Provider.new
 	prov3.name = 'Apple'
 	prov3.phone = 7890123
 	prov3.mail = 'apple@yahoo.com'
-	prov3.address = 'California'
+	prov3.address = 'Cochabamba'
 	prov3.save!
 	
+	prov4 = Provider.new
+	prov4.name = 'Sony'
+	prov4.phone = 7003934
+	prov4.mail = 'sony@gmail.com'
+	prov4.address = 'Santa Cruz'
+	prov4.save!
+
+	#product names
 
 	prodnames1 = Productname.new
 	prodnames1.name = 'toshiba-x10'
@@ -155,6 +164,9 @@
 	prodnames11.description = 'chorro de tinta, 5 kg, 5 colores'
 	prodnames11.brand_id = 11
 	prodnames11.save!
+
+
+
 
 
 

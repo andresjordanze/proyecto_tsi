@@ -29,14 +29,14 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
                 <td><CENTER><%= product.brand %></CENTER></td>
                 <td><CENTER><%= product.category %></CENTER></td>
                 <td><CENTER><%= product.quantity %></CENTER></td>
-                <td><%= link_to 'Ver Producto', {:controller => :products, :action => "show", :id => product.id }, :class => 'btn btn-mini btn-success '  %></td>
+                <td><%= link_to 'Ver Producto', {:controller => :products, :action => "show", :id => product.id }, :class => 'btn btn-mini btn-success '  %>
 
                 <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
-                    <td><%= link_to 'Editar Producto', {:controller => :products, :action => "edit", :id => product.id }, :class => 'btn btn-mini btn-warning'  %></td>
+                    <%= link_to 'Editar Producto', {:controller => :products, :action => "edit", :id => product.id }, :class => 'btn btn-mini btn-warning'  %>
                     <%if product.quantity == 0%>
-                        <td><%= link_to 'Eliminar Producto', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+                        <%= link_to 'Eliminar Producto', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %>
                     <%end%>
-                     <td><%= link_to 'Ver Kardex', {:controller => :kardexes, :action => "index", :id => product.id , :name => product.name}, :class => 'btn btn-mini btn-default'  %></td>    
+                     <%= link_to 'Ver Kardex', {:controller => :kardexes, :action => "index", :id => product.id , :name => product.name}, :class => 'btn btn-mini btn-default'  %></td>    
                 <%end%>    
                 <%if product.home == true%>
                     <td><%= button_to 'Eliminar de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
