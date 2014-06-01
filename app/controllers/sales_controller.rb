@@ -46,8 +46,9 @@ def update
 		@sale = Sale.find(params[:id])
     @sale.confirmed = true
     @sale.client_name = Client.where("nit = :nit", {nit: params[:sale][:nit]}).to_a.at(0).name
-    @sale.confirm_sale(@sale.id)
     if @sale.update_attributes(params[:sale])
+      @sale.confirm_sale
+      @sale.save
       flash[:success] = "Venta Confirmada"
       redirect_to @sale
     else

@@ -45,17 +45,19 @@ class Sale < ActiveRecord::Base
 		end
 	end
 
-	def confirm_sale(id)
-    	@sale = Sale.find(id)
+	def confirm_sale
 	    @kardex = Kardex.new
-	    @kardex.detail = @sale.client_name
-	    @kardex.date = @sale.updated_at
-	    @productsales = Productsale.where("sale_id = :sale_id", {sale_id: @sale.id}).to_a
+	    @kardex.output = 0
+	    @kardex.detail = self.client_name
+	    @kardex.date = self.updated_at
+	    @productsales = Productsale.where("sale_id = :sale_id", {sale_id: self.id}).to_a
 	    @productsales.each do |productsale|
-	      productsale.client_name = @sale.client_name
+	      productsale.client_name = self.client_name
 	      productsale.save
+	      @kardex.product_id = Subproduct.find(productsale.subproduct_id).product_id
+	      @kardex.residue = Product.find(Subproduct.find(productsale.subproduct_id).product_id).quantity
 	      @kardex.output += 1
 	    end
-	    @sale.save
+	    @kardex.save
   	end
 end

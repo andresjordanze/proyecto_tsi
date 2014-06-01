@@ -25,7 +25,6 @@ class KardexesController < ApplicationController
   # POST /kardexes.json
   def create
     @kardex = Kardex.new(kardex_params)
-    @kardex.output = 0
     respond_to do |format|
       if @kardex.save
         format.html { redirect_to @kardex, notice: 'Kardex was successfully created.' }

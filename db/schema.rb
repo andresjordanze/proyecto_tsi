@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20140530082043) do
     t.string   "brand"
     t.string   "category"
     t.float    "bought_price"
-    t.float    "sale_price"
     t.integer  "quantity"
     t.integer  "increase"
     t.boolean  "home"
@@ -122,6 +121,7 @@ ActiveRecord::Schema.define(version: 20140530082043) do
     t.integer  "price"
     t.integer  "sale_id"
     t.integer  "subproduct_id"
+    t.string   "client_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
