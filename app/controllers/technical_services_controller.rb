@@ -31,7 +31,8 @@ class TechnicalServicesController < ApplicationController
 		@technical_service.repairs = "Reparaciones no realizadas aun."
 		@technical_service.status = "Recibido"
 		if @technical_service.save		
-			redirect_to @technical_service, notice: 'Servicio tecnico registrado correctamente.' 
+			flash[:success] 'Servicio tecnico registrado correctamente.' 
+			redirect_to @technical_service
 		else
 			render action: 'new'
 		end
