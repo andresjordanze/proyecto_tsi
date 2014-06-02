@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       #redirect_to_target_or_default root_url, :notice => "Sesion Iniciada Correctamente."
       redirect_to root_url
     else
-      flash[:error] = "Login o Contraseña Invalido."
+      flash[:danger] = "Login o Contraseña Invalido."
       render :action => 'new'
     end
   end

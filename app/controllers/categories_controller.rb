@@ -22,7 +22,8 @@ class CategoriesController < ApplicationController
   	def create
     	@category = Category.new(params[:category])
       if @category.save
-       	redirect_to @category, notice: 'Categoria Creada exitosamente.' 
+         flash[:success] = 'Categoria Creada exitosamente.' 
+       	redirect_to @category
       else
         render action: "new" 
       end
@@ -31,7 +32,8 @@ class CategoriesController < ApplicationController
   def update
   	@category = Category.find(params[:id])
     if @category.update_attributes(params[:category])
-	    redirect_to @category, notice: 'Categoria Actualizada exitosamente.'
+       flash[:success] = 'Categoria Actualizada exitosamente.'
+	    redirect_to @category
     else
     	render action: "edit" 
     end
