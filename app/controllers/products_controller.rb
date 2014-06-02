@@ -59,6 +59,8 @@ class ProductsController < ApplicationController
   	def registrar_ingreso
   		@products = Product.all
   		@productorder = Productorder.find(params[:id].to_i)
+  		@productorder.ingresado = true
+	  	@productorder.save
   		@productname = Productname.find(@productorder.productname_id.to_i)
   		@income = Income.new
   		@income.registrar(@productorder)
@@ -73,12 +75,9 @@ class ProductsController < ApplicationController
 	  			if product.general_code == @productname.code
 	  				product.quantity += @productorder.quantity
 	  				product.save
-	  				@product = product
-	  				@kardex.residue = @product.quantity
-	  				@kardex.product_id = @product.id
+	  				@kardex.residue = product.quantity
+	  				@kardex.product_id = product.id
 	  				@kardex.save
-	  				@productorder.ingresado = true
-	  				@productorder.save
 	  				control = true
 	  			end
 	  			break if control == true
@@ -89,6 +88,7 @@ class ProductsController < ApplicationController
 	  		else
 	  			@product = Product.new
 	  			@product.registrar(@productorder)
+	  			@product.quantity = @productorder.quantity
 	  			@product.save
 	  			@kardex.residue = @product.quantity
 	  			@kardex.product_id = @product.id
@@ -99,6 +99,7 @@ class ProductsController < ApplicationController
 	  	else
 	  		@product = Product.new
 	  		@product.registrar(@productorder)
+	  		@product.quantity = @productorder.quantity
 	  		@product.save
 	  		@kardex.residue = @product.quantity
 	  		@kardex.product_id = @product.id

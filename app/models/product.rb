@@ -38,7 +38,6 @@ class Product < ActiveRecord::Base
 		self.name = @productname.name
 	  	self.detail = @productname.description
 	  	self.id_order = productorder.order_id
-	  	self.quantity = productorder.quantity
 	  	self.general_code = @productname.code
 	  	self.brand = Brand.find(@productname.brand_id).name
 	  	self.category = "categoria"

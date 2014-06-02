@@ -13,7 +13,7 @@
   get 'add_to_home' => 'products#add_to_home'
 
   get 'destroyer' => 'productorders#destroyer'
-
+  get 'technical_services/report_search' => 'technical_services#report_search'
   get 'egresos' => 'sales#egresos'
   get 'servicios' => 'technical_services#servicios'
   get 'inventario' => 'products#inventario'

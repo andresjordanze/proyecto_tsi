@@ -31,8 +31,8 @@ class Sale < ActiveRecord::Base
 	end
 
 	def tieneAlProducto(nombre)
-		self.subproducts.each do |subproducto|
-			if subproducto.product.name.downcase.include?(nombre.downcase)
+		self.producsales.each do |subproducto|
+			if subproducto.name.downcase.include?(nombre.downcase)
 				return true
 			end
 		end
