@@ -85,6 +85,7 @@
 
 
   get 'technical_services/search' => 'technical_services#search'
+  get 'technical_services/report_search' => 'technical_services#report_search'
   get 'technical_services/searchNumber' => 'technical_services#searchNumber'
 
   get 'add_product_sale' => 'productsales#registrar'
