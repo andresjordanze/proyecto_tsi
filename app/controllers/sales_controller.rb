@@ -134,9 +134,6 @@ def update
     end
 
     def report
-      #@sales = filter_by_date(Date.today)
-      #@total = obtain_total(@sales)
-      #render 'print'
     end
 
     def searchDate

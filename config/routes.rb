@@ -67,7 +67,6 @@
 
   get 'sales/search_between_dates' => 'sales#search_between_dates'
   get 'sales/report_search' => 'sales#report_search'
-  get 'sales/:id/print' => 'sales#print'
   #get 'sales/weekly_report' => 'sales#weekly_report'
   #get 'sales/monthly_report' => 'sales#monthly_report'
   #get 'sales/anual_report' => 'sales#anual_report'
@@ -87,12 +86,15 @@
   get 'technical_services/search' => 'technical_services#search'
   get 'technical_services/report_search' => 'technical_services#report_search'
   get 'technical_services/searchNumber' => 'technical_services#searchNumber'
+  get 'technical_services/search_between_dates' => 'technical_services#search_between_dates'
 
   get 'incomes/search' => 'incomes#search'
   get 'incomes/report_search' => 'incomes#report_search'
+  get 'incomes/search_between_dates' => 'incomes#search_between_dates'
 
   get 'outflows/search' => 'outflows#search'
   get 'outflows/report_search' => 'outflows#report_search'
+  get 'outflows/search_between_dates' => 'outflows#search_between_dates'
   
   
 
