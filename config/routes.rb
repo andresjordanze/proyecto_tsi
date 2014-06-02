@@ -95,11 +95,6 @@
   get 'outflows/search' => 'outflows#search'
   get 'outflows/report_search' => 'outflows#report_search'
   get 'outflows/search_between_dates' => 'outflows#search_between_dates'
-  
-  
-
-
-
 
   get 'add_product_sale' => 'productsales#registrar'
 
