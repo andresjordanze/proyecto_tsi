@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
-	validates :brand, :category, presence: true
+	validates :brand, presence: true
 
 	validates :name, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, uniqueness: {case_sensitive: false, :message => "El codigo ya existe"}	

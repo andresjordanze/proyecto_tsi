@@ -41,8 +41,8 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
                 <%if product.home == true%>
                     <td><%= button_to 'Eliminar de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
                     <%else%>
-                    <% if current_user.rol == "admin" %>
-                <td><%= button_to 'Añadir a pagina', :controller => :products, :action => 'add_to_home', :id => product.id%></td>
+                    <% if current_user.rol == "admin" || current_user.rol == "gerente"%>
+                <td><%= button_to 'Añadir a pagina', {:controller => :products, :action => 'add_to_home', :id => product.id}, :class => 'btn btn-jordi'%></td>
                 <%end%>    
                 <%end%>
             </tr>

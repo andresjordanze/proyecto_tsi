@@ -12,7 +12,7 @@
 </p>
 
   <b>Marca:</b>
-  <%= @productname.brand %>
+  <%= Brand.find(@productname.brand_id).name %>
 </p>
 
 <%= link_to 'Editar producto', edit_productname_path(@productname), class: "btn btn-warning"  %>

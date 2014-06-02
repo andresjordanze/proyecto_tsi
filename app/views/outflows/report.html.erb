@@ -1,43 +1,31 @@
-<% title "Reporte de Ingresos" %>
-<h1>Reporte de ingresos</h1>
+<% title "Reporte de Egresos" %>
+<h1>Reporte de egresos</h1>
 
 <table class="table table-striped">
 
   <thead>
   <tr>
-    <th>Numero de Venta</th>
     <th>Nombre</th>
     <th>Codigo</th>
-    <th>Descripcion</th>
-    <th>Cantidad</th>
-    <th>Precio Unit.</th>
-    <th>Precio total</th>
-    <th>Fecha de ingreso</th>
+    <th>Precio venta</th>
+    <th>Numero de venta</th>
+    <th>Fecha de egreso</th>
   </tr>
 </thead>
-<% @incomes.each do |income| %>
+<% @sales.each do |sale|%>
+
+<% sale.productsales.each do |productsale| %>
   <tbody>
   <tr>
-    <td><%= income.id_order%></td>
-    <td><%= income.product_name %></td>
-    <td><%= income.code %></td>
-    <td><%= income.description %></td>
-    <td><%= income.quantity %></td>
-    <td><%= income.price %></td>
-    <td><%= income.total_price %></td>
-    <td><%= income.created_at.strftime("%d/%m/%Y") %></td>
+    <td><%= productsale.name %></td>
+    <td><%= productsale.code %></td>
+    <td><%= productsale.price %></td>
+    <td><%= productsale.sale_id %></td>
+    <td><%= productsale.created_at.strftime("%d/%m/%Y") %></td>
   </tr>
   </tbody>
 <% end %>
-
+<%end%>
 </table>
 
 <form><input type="button" name="imprimir" value="Imprimir" onclick="window.print();"></form>
-
-
-
-
- t.integer  "sale_id"
-    t.integer  "total_price"
-    t.datetime "created_at"
-    t.datetime "updated_at"

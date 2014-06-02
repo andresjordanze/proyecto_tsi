@@ -156,13 +156,13 @@ class ProductsController < ApplicationController
 		if @product.update_attributes(params[:product])
 			@product.save
 			flash[:success] = "Producto Actualizado"
-			if params[:product][:control]=='true'
+			if params[:product][:control] == "true"
 				redirect_to '/products_home'
 			else
 				redirect_to @product
 			end			
 		else
-			if params[:product][:control]=='true'
+			if params[:product][:control] == "true"
 				redirect_to '/add_to_home?id='+@product.id.to_s
 			else
 				render 'edit'
@@ -208,7 +208,6 @@ class ProductsController < ApplicationController
 		@product.description =''
 		@product.save
 		redirect_to :controller => :products, :action => 'index'
-		
 	end
 
 	def destroy

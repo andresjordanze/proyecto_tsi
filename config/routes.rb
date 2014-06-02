@@ -11,6 +11,7 @@
   get 'products_home' => 'products#products_home'
   post 'products_home' => 'products#products_home'
   get 'add_to_home' => 'products#add_to_home'
+  get 'delete_from_home' => 'products#delete_from_home'
 
   get 'destroyer' => 'productorders#destroyer'
   get 'technical_services/report_search' => 'technical_services#report_search'
