@@ -1,0 +1,43 @@
+<% title "Reporte de Ingresos" %>
+<h1>Reporte de ingresos</h1>
+
+<table class="table table-striped">
+
+  <thead>
+  <tr>
+    <th>Numero de Venta</th>
+    <th>Nombre</th>
+    <th>Codigo</th>
+    <th>Descripcion</th>
+    <th>Cantidad</th>
+    <th>Precio Unit.</th>
+    <th>Precio total</th>
+    <th>Fecha de ingreso</th>
+  </tr>
+</thead>
+<% @incomes.each do |income| %>
+  <tbody>
+  <tr>
+    <td><%= income.id_order%></td>
+    <td><%= income.product_name %></td>
+    <td><%= income.code %></td>
+    <td><%= income.description %></td>
+    <td><%= income.quantity %></td>
+    <td><%= income.price %></td>
+    <td><%= income.total_price %></td>
+    <td><%= income.created_at.strftime("%d/%m/%Y") %></td>
+  </tr>
+  </tbody>
+<% end %>
+
+</table>
+
+<form><input type="button" name="imprimir" value="Imprimir" onclick="window.print();"></form>
+
+
+
+
+ t.integer  "sale_id"
+    t.integer  "total_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"

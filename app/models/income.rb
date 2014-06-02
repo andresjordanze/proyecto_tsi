@@ -1,7 +1,9 @@
 class Income < ActiveRecord::Base
 	attr_accessible :id_order, :product_name, :quantity, :description, :price, :total_price, :code
-
-	def registrar(productorder)
+  
+  validates_uniqueness_of :id_order, :scope => :product_name
+	
+  def registrar(productorder)
       	@productname = Productname.find(productorder.productname_id.to_i)
       	self.code = @productname.code
       	self.product_name = @productname.name
