@@ -135,7 +135,7 @@ class ProductsController < ApplicationController
 		@product.home = false
 		@product.description = "          "
 		if @product.save
-			 flash[:success] 'Producto creado correctamente.' 
+			 flash[:success] = 'Producto creado correctamente.' 
 			redirect_to @product
 		else
 			render action: 'new'
