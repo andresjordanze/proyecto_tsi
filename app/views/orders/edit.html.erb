@@ -61,7 +61,7 @@
     <% if producto.ingresado == false %>
     <td><%=link_to "Editar de pedido", {:controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id , :control => 'true'}, :class  => 'btn btn-large btn-warning' %></td>
     <td><%= button_to 'Eliminar de pedido', productorder_path(:producto => { :control => "true", :id => producto.id}), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
-    <td><%= link_to 'Registrar ingreso', {:controller => :products, :action => "registrar_ingreso", :id => producto.id}, :class  => 'btn btn-large btn-primary' %></td>
+    <td><%= link_to 'Registrar ingreso', {:controller => :products, :action => "registrar_ingreso", :id => producto.id}, data: { confirm: 'Esta seguro de registrar el ingreso?'}, :class  => 'btn btn-large btn-primary' %></td>
     <%end%>
   </tr>
 <% end %>
