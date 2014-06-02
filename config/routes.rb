@@ -88,6 +88,17 @@
   get 'technical_services/report_search' => 'technical_services#report_search'
   get 'technical_services/searchNumber' => 'technical_services#searchNumber'
 
+  get 'incomes/search' => 'incomes#search'
+  get 'incomes/report_search' => 'incomes#report_search'
+
+  get 'outflows/search' => 'outflows#search'
+  get 'outflows/report_search' => 'outflows#report_search'
+  
+  
+
+
+
+
   get 'add_product_sale' => 'productsales#registrar'
 
   resources :products do    
