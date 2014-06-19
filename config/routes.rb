@@ -99,6 +99,8 @@
 
   get 'add_product_sale' => 'productsales#registrar'
 
+  get 'products/search_home' => 'products#search_home'
+
   resources :products do    
     resources :subproducts
   end

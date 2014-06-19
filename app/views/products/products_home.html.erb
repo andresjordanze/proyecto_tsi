@@ -14,7 +14,7 @@
 <div>
 <br>
 <form method="GET" action="/products/search_to_home">
-Busqueda:  <input type="text" name="name" placeholder="Nombre de producto"> &nbsp;&nbsp;&nbsp;
+Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp;&nbsp;&nbsp;
 <input type="submit" value="Buscar producto" class="btn btn-mini btn-info">
 </form>
 </div>
@@ -35,9 +35,8 @@ Busqueda:  <input type="text" name="name" placeholder="Nombre de producto"> &nbs
         <tr>
           <td><CENTER><%= product.name %></CENTER></td>
           <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60 class="img-rounded"></a></CENTER></td>
-          <% if current_user %>
           <td><%= link_to 'Ver', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
-
+            <% if current_user %>
           <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
           
           <%= link_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
@@ -50,6 +49,120 @@ Busqueda:  <input type="text" name="name" placeholder="Nombre de producto"> &nbs
 
 </Center>
 
+
+
+
+
+<!--<h1>Lista de Productos de Pagina</h1>
+
+
+<div align="right">
+  <% if current_user %>
+    <h3><%= link_to 'Añadir Producto a Pagina', products_path, :class => 'btn btn-jordi'%></h3>
+  <% end %>
+</div>
+
+
+<center>
+  <div>
+  <br>
+    <form method="GET" action="/products/search_to_home">
+      Busqueda:  <input type="text" name="name" placeholder="Nombre de producto"> &nbsp;&nbsp;&nbsp;
+      <input type="submit" value="Buscar producto" class="btn btn-mini btn-info">
+    </form>
+  </div>
+</center>
+
+
+
+<head>
+    <meta charset="UTF-8">
+      <% title "Todos los productos" %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/app/assets/stylesheets/aplication.css">
+    <script src="/app/public/javascript/products_home.js"></script>
+</head>
+<body>
+ <% @products.each do |product| %>
+      <% if product.home == true %>
+    <div id="divContenedor">
+      <% if current_user %>
+        <div class="divImagen">
+            <img src='<%=product.photo.url %>' class="img-rounded">
+            <div class="info">
+                <h3><CENTER><%= product.name %></CENTER></h3>
+                    <br>
+                <center>
+                   <%= link_to 'Ver', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
+                   <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
+                   <%= link_to 'Eliminar', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %>
+                </center>
+                
+            </div>
+        </div>
+        <div class="divImagen">
+            <img src='<%=product.photo.url %>'>
+            <div class="info">
+              <h3><CENTER><%= product.name %></CENTER></h3>
+                <center>
+                   <%= link_to 'Ver', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
+                   <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
+                   <%= link_to 'Eliminar', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %>
+                </center>
+            </div>
+        </div>
+       
+        </div>
+        <% end %>
+    </div>
+       <% end %>
+      <% end %>
+</body>
+
+
+
+
+<script>
+  
+$(document).ready(function()
+{
+  $('.divImagen').hover(
+    function() {
+      $(this).find('img').stop().animate({ 
+        width:100,
+        marginTop:10,
+        marginLeft:10
+      }, 500);
+    },
+
+    function() {
+      $(this).find('img').stop().animate({
+        width:300,
+        marginTop:10,
+        marginLeft:10
+      },300);
+    }
+  );
+});
+
+
+
+
+</script>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 
 

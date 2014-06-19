@@ -5,6 +5,59 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
+#divContenedor
+{
+  width: 150px;
+  margin: 0px;
+  
+}
+
+.divImagen {
+  height:110px;
+  overflow:hidden;
+  margin:1px;
+  width: 180px;
+}
+
+.info{
+  margin-left:2px;
+  font-family:arial;
+  padding:0px;
+}
+
+.info h2{
+  color:gray;
+}
+
+.info p {
+  color:white
+}
+
+#nebaris{
+  color: white;
+  padding: 0px;
+  text-align: left;
+  margin-top: 50px;
+  font-family: helvetica;
+}
+
+#nebaris a{
+  color:rgb(178, 255, 178);
+}
+
+#nebaris a:hover{
+  color:white;
+}
+
+
+
+
+
+
+
+
+
 @font-face{
   font-family: "Caviar";
   src: url(/assets/CaviarDreams.otf) format("truetype");

@@ -36,6 +36,28 @@ class ProductsController < ApplicationController
     	return items
   	end
 
+
+	def search_home
+		@products = buscar_home(params[:category])
+		render 'products_home'
+	end
+
+	def buscar_home(categoria)
+    	items = Array.new	
+    	aux = Product.all
+    	if categoria != "" && categoria != nil
+      		aux.each do |item|
+        	if (item.correspondeAcategoria(categoria))
+          		items.push(item)
+        	end
+      	end
+    	else
+      		items = aux
+    	end
+    	return items
+  	end
+
+
   	def search_to_home
 		@products = buscar_por_nombre(params[:name])
 		render 'products_home'

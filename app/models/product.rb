@@ -75,6 +75,13 @@ class Product < ActiveRecord::Base
     	false
   	end
 
+  	def correspondeAcategoria(categoria)
+      	if self.category.downcase.include?(categoria.downcase)
+	        return true
+    	  end
+    	false
+  	end
+
 	before_create do
 		self.increase = 0
 	end
