@@ -1,7 +1,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container" style="height: 50px;">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">INFORMATICACOMP</a>
+      <a class="navbar-brand" href="/"><img src="/images/logoFinal.png"></a>
     </div>
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -104,3 +104,29 @@
     </div>
   </div>
 </div>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/app/assets/stylesheets/aplication.css">
+    
+</head>
+
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        var cambio = false;
+        $('.nav li a').each(function(index) 
+        {
+            if(this.href.trim() == window.location)
+            {
+                $(this).parent().addClass("active");                  
+                cambio = true;
+            }
+        });
+        if(!cambio)
+        {
+          $('.nav li:first').addClass("active");
+        }
+    });
+</script>
