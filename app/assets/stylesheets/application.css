@@ -6,6 +6,14 @@
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
+
+
+.socialLinks
+{
+  text-align: right;
+}
+
+
 #divContenedor
 {
   width: 150px;
