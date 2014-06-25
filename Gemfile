@@ -24,6 +24,13 @@ gem 'uglifier', '2.1.1'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '4.0.1'
 
+gem 'dropbox'
+gem 'paperclipdropbox'
+gem 'dropbox-sdk'
+gem 'dropbox-api'
+gem 'carrierwave-dropbox'
+gem "paperclip-dropbox", ">= 1.1.7"
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
