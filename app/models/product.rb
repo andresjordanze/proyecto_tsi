@@ -10,10 +10,19 @@ class Product < ActiveRecord::Base
 	has_many :brands
 	has_many :categories
 
-	has_attached_file :photo
-	validates_attachment_size :photo, :less_than => 5.megabytes
-	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
-	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+	#has_attached_file :photo
+	#validates_attachment_size :photo, :less_than => 5.megabytes
+	#validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+	#validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+
+
+	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+		:storage => :dropbox,
+    	:dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+	 	:default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+
+
 
 	validates :brand, presence: true
 
