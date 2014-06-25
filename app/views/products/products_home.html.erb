@@ -23,35 +23,33 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
 </div>
 </center>
 <CENTER>
+<br>
+<div class="container marketing">
+     <!-- Three columns of text below the carousel -->
+      <div class="row">
+<% @products.each do |product| %>
+  <% if product.home == true %>
   
- <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><CENTER>Nombre</CENTER></th>
-        <th><CENTER>Foto</CENTER></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @products.each do |product| %>
-      <% if product.home == true %>
-        <tr>
-          <td><CENTER><%= product.name %></CENTER></td>
-          <td><CENTER><img src= '<%=product.photo.url %>' width=60 height=60 class="img-rounded"></a></CENTER></td>
-          
-          <td><%= link_to 'Ver Producto', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
-            <% if current_user %>
-          <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
-          
-          <%= link_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
-          <% end %>
-      <% end %>
-        </tr>
-    <% end %>
-  </table>
-  <br>
 
+        <div class="col-lg-4">
+          <img src= '<%=product.photo.url %>' width=150 height=150 class="img-rounded"></a> 
+          <h2><%= product.name %></h2>
+          <p>Categoria: <%= product.category %></p>
+          <p><%= link_to 'Ver detalles', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
+          <% if current_user %>
+
+          <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
+          <p></p>
+          <%= link_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></p>
+          <% end %>
+        </div><!-- /.col-lg-4 -->
+      
+  <% end %>
+<% end %>
+</div><!-- /.row -->
+    </div><!-- /.container -->
 </Center>
+
 
 
 
