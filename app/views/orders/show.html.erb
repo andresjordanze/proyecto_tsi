@@ -30,8 +30,8 @@
     <th><center>Nombre</center></th>
     <th><center>Codigo</center></th>  
     <th><center>Cantidad</center></th>
-    <th><center>Precio Unit.(Bs)</center></th>
-    <th><center>Precio Total(Bs.)</center></th>
+    <th><center>Costo Unit.(Bs)</center></th>
+    <th><center>Costo Total(Bs.)</center></th>
     <th><center>Estado</center></th>
     <th></th>
     <th></th>
@@ -93,7 +93,7 @@
             <%=f.collection_select(:productname_id, Productname.all, :id, :name)%>
             <%= f.label :quantity, "Cantidad" %>
             <%= f.text_field :quantity, :maxlength => '4' %>
-            <%= f.label :price, "Precio Unit.(Bs.)" %>
+            <%= f.label :price, "Costo Unit.(Bs.)" %>
             <%= f.text_field :price, :maxlength => '4' %>
             <%= f.hidden_field :control, :value => 'false' %> 
         </div>

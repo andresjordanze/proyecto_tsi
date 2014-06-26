@@ -78,6 +78,12 @@
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/mision', to: 'static_pages#mision', via: 'get'
+  match '/vision', to: 'static_pages#vision', via: 'get'
+  match '/confianza', to: 'static_pages#confianza', via: 'get'
+  match '/proveedores', to: 'static_pages#proveedores', via: 'get'
+  match '/historia', to: 'static_pages#historia', via: 'get'
+  
 
 
   get 'eliminar_producto_pedido' => 'productorders#eliminar_producto_pedido'
@@ -100,6 +106,8 @@
   get 'add_product_sale' => 'productsales#registrar'
 
   get 'products/search_home' => 'products#search_home'
+
+  #get 'static_pages' => ''
 
   resources :products do    
     resources :subproducts

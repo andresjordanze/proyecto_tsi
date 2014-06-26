@@ -1,6 +1,9 @@
   <% title "Todos los productos" %>
+<% if current_user %>  
 <h1>Lista de Productos de Pagina</h1>
-
+<% else%>
+<h1>Productos</h1>
+<%end%>
 
 <div align="right">
 <% if current_user %>
@@ -27,12 +30,14 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
 <% @products.each do |product| %>
   <% if product.home == true %>
   
+
         <div class="col-lg-4">
           <img src= '<%=product.photo.url %>' width=150 height=150 class="img-rounded"></a> 
           <h2><%= product.name %></h2>
           <p>Categoria: <%= product.category %></p>
           <p><%= link_to 'Ver detalles', {:controller => :products, :action => 'view_product', :id => product.id} , :class => 'btn btn-mini btn-success'%>
           <% if current_user %>
+
           <%= link_to 'Editar', {:controller => :products, :action => 'edit_to_home', :id => product.id}, :class => 'btn btn-mini btn-warning'%>
           <p></p>
           <%= link_to 'Eliminar Producto de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></p>

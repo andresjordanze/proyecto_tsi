@@ -7,7 +7,54 @@
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
 
+/*paginas estaticas*/
 
+.redondo {
+    border-radius: 20%;
+}
+
+.contenedor {
+    margin-right: 10px;
+    margin-left: 250px;
+    width: 960px;
+}
+
+.contenedor1 {
+    margin-right: 150px;
+    margin-left: 100px;
+    width: 1500px;
+}
+
+.columna4 {
+    width: 33.333333%;
+    float: right;
+}
+
+.columna8 {
+    width: 66.666667%;
+    float: left;
+}
+
+.seccion {
+    padding: 8em 0;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+}
+
+.seccion2 {
+    padding: 1em 0;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+}
+
+.fondo {
+    background-color: transparent;
+}
+
+
+/*links de redes sociales*/
 .socialLinks
 {
   text-align: right;
@@ -32,6 +79,9 @@
     transform: scale(1);
 }
 
+
+
+/*imagenes de categiras pagina principal*/
 #divContenedor
 {
   width: 150px;

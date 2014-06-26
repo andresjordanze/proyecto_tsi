@@ -17,26 +17,42 @@
               </ul>
             </li>
           
-            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
+
+
+          <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacen<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compras<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Marcas</li>
                 <li><a href="/brands/new">Registrar marca</a></li>
-                <li><a href="/brands">Lista de marcas</a></li>
-                <li class="dropdown-header">Productos</li>
-                <li><a href="/productnames/new">Registrar producto</a></li>
-                <li><a href="/productnames">Lista de productos</a></li>
-                <li><a href="/products">Stock de productos</a></li>
+                <li><a href="/brands">Lista de marcas</a></li>               
                 <li class="dropdown-header">Proveedores</li>
                 <li><a href="/providers/new">Añadir proveedor</a></li>
                 <li><a href="/providers">Lista de proveedores</a></li>
                 <li class="dropdown-header">Pedidos</li>
                 <li><%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider_id => "1"}, :method => "post" %></li>
                 <li><a href="/orders">Lista de pedidos</a></li>
+                <li><a href="/incomes/report_search">Reporte de ingresos</a></li>
               </ul>
             </li>
             <%end%>
+
+
+
+            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacen<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">Productos</li>
+                <li><a href="/productnames/new">Registrar producto</a></li>
+                <li><a href="/productnames">Lista de productos</a></li>
+                <li><a href="/products">Stock de productos</a></li>               
+              </ul>
+            </li>
+            <%end%>
+
+
+
 
             <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
             <li class="dropdown">
@@ -44,9 +60,12 @@
               <ul class="dropdown-menu">
                 <li><%= link_to 'Registrar Venta', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"}, :method => "post" %></li>
                 <li><%= link_to "Lista de ventas", sales_path %></li>
+                <li><a href="/outflows/report_search">Reporte de egresos</a></li>
+                <li><a href="/sales/report_search">Reporte de ventas</a></li>
               </ul>
             </li>
             <%end%>
+
 
             <% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
             <li class="dropdown">
@@ -54,21 +73,11 @@
               <ul class="dropdown-menu">
                 <li><a href="/technical_services/new">Registrar servicio</a></li>
                 <li><a href="/technical_services">Buscar servicios</a></li>
-              </ul>
-            </li>
-            <%end%>
-
-            <% if current_user %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="/incomes/report_search">Reporte de ingresos</a></li>
-                <li><a href="/outflows/report_search">Reporte de egresos</a></li>
-                <li><a href="/sales/report_search">Reporte de ventas</a></li>
                 <li><a href="/technical_services/report_search">Reporte de servicios</a></li>
               </ul>
             </li>
             <%end%>
+           
 
             <% if current_user.rol == "tecnico" || current_user.rol == "gerente" || current_user.rol == "secre" %>
             <li class="dropdown">
@@ -119,7 +128,8 @@
         {
             if(this.href.trim() == window.location)
             {
-                $(this).parent().addClass("active");                  
+                $(this).parent().addClass("active");
+                $('.nav a li').addClass("active");
                 cambio = true;
             }
         });
@@ -129,3 +139,24 @@
         }
     });
 </script>
+
+
+<!--
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        var cambio = false;
+        $('.nav li a').each(function(index) 
+        {
+            if(this.href.trim() == window.location)
+            {
+                $(this).parent().addClass("active");                  
+                cambio = true;
+            }
+        });
+        if(!cambio)
+        {
+          $('.nav li:first').addClass("active");
+        }
+    });
+</script>-->
