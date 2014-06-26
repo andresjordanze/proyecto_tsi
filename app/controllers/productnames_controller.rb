@@ -7,7 +7,6 @@ class ProductnamesController < ApplicationController
    	@productname = Productname.find(params[:id])
 	end
 
-  
   def new
    	@productname = Productname.new
 	end

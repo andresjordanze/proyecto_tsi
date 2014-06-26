@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 	def new
 		@product = Product.new
 		@order = Order.find(params[:id])
+		@select = "almacen"
 	end
 
 	def search
