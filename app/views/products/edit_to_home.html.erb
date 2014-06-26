@@ -12,8 +12,8 @@
 			<%= f.file_field :photo %><br>
 
 			<p><%= f.label :description , "Descripcion:" %></p>
-			<%= f.text_area :description, :maxlength => '30' %><br> <br>
-
+			<%= f.text_area :description, :maxlength => '100' %><br> <br>
+			<%= f.hidden_field :control, :value => true%>
 			<%= f.submit "Guardar cambios" , class: "btn btn-large btn-jordi"%>
 		<%end%>
 	</div>

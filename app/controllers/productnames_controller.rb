@@ -22,7 +22,7 @@ class ProductnamesController < ApplicationController
       flash[:success] = "Producto creado exitosamente!"
       redirect_to "/productnames"
     else
-      flash[:danger] = "No funciona ><"
+      flash[:danger] = "Producto no creado, faltan llenar campos"
       render action: "new"
     end
   end
