@@ -36,14 +36,18 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
                     <%if product.quantity == 0%>
                         <%= link_to 'Eliminar Producto', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %>
                     <%end%>
-                     <%= link_to 'Ver Kardex', {:controller => :kardexes, :action => "index", :id => product.id , :name => product.name}, :class => 'btn btn-mini btn-default'  %></td>    
-                <%end%>    
-                <%if product.home == true%>
+                     <%= link_to 'Ver Kardex', {:controller => :kardexes, :action => "index", :id => product.id , :name => product.name}, :class => 'btn btn-mini btn-default'  %>
+                    <%if product.quantity <= 5 %>
+                     <span class="btn btn-mini btn-danger">Minimo de productos!</span>
+                    <%end%>
+                    </td>    
+                <%end%>
+                <% if current_user.rol == "admin" || current_user.rol == "gerente"%>
+                    <%if product.home == true%>
                     <td><%= button_to 'Eliminar de pagina', {:controller => :products, :action => 'delete_from_home', :id => product.id}, :class => 'btn btn-mini btn-danger' %></td>
                     <%else%>
-                    <% if current_user.rol == "admin" || current_user.rol == "gerente"%>
-                <td><%= button_to 'Añadir a pagina', {:controller => :products, :action => 'add_to_home', :id => product.id}, :class => 'btn btn-jordi'%></td>
-                <%end%>    
+                    <td><%= button_to 'Añadir a pagina', {:controller => :products, :action => 'add_to_home', :id => product.id}, :class => 'btn btn-jordi'%></td>
+                    <%end%>    
                 <%end%>
             </tr>
         <% end %>
