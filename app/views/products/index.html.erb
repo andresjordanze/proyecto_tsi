@@ -59,9 +59,12 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
                         <%= link_to 'Eliminar Producto', product_path(product), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %>
                     <%end%>
                      <%= link_to 'Ver Kardex', {:controller => :kardexes, :action => "index", :id => product.id , :name => product.name}, :class => 'btn btn-mini btn-default'  %>
-                    <%if product.quantity <= 5 %>
-                     <span class="btn btn-mini btn-danger">Minimo de productos!</span>
+                    
+                    <%if product.quantity <= 5 %>                    
+                        <button type="button" class="btn btn-mini btn-danger popover-dismiss" data-toggle="popover" title="CANTIDAD MINIMA" data-content="El cantidad de productos se encuentra en el minimo.">ALERTA!
+                        </button>                                        
                     <%end%>
+                    
                     </td>    
                 <%end%>
                 <% if current_user.rol == "admin" || current_user.rol == "gerente"%>
@@ -78,3 +81,7 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
 <%= will_paginate @products, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
 <br>
 </Center>
+
+<script>
+    $('.popover-dismiss').popover({trigger: 'focus'})
+</script>
