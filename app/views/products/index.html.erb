@@ -29,7 +29,29 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
                 <td><CENTER><%= product.brand %></CENTER></td>
                 <td><CENTER><%= product.category %></CENTER></td>
                 <td><CENTER><%= product.quantity %></CENTER></td>
-                <td><%= link_to 'Ver Producto', {:controller => :products, :action => "show", :id => product.id }, :class => 'btn btn-mini btn-success '  %>
+                <td><div align="right">
+                      <button class="btn btn-success" data-toggle="modal" data-target="#myModal" >Ver producto</button>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title" id="myModalLabel" align="center"><%= product.name %></h3>
+                          </div>
+                          <div class="modal-body">
+                            <b>Codigo del producto:</b> <%= product.general_code %><br>
+                            <b>Marca:</b> <%= product.brand %><br>
+                            <b>Categoria:</b> <%= product.category %><br>
+                            <b>Detalle:</b> <%= product.detail %><br>
+                            <b>Cantidad:</b> <%= product.quantity %>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div></td><td>
 
                 <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
                     <%= link_to 'Editar Producto', {:controller => :products, :action => "edit", :id => product.id }, :class => 'btn btn-mini btn-warning'  %>
