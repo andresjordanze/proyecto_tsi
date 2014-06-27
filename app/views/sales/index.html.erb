@@ -69,7 +69,7 @@ Fecha: <input type="date" name="date"> &nbsp;&nbsp;&nbsp;
                         <%end%>
                     </CENTER>
                 </td>
-                <td><CENTER><%= sale.price %></CENTER></td>
+                <td><CENTER><%= number_with_precision(sale.price, :precision => 2, :delimiter => ',') %></CENTER></td>
                 <%if sale.confirmed == true %>
                     <td><CENTER>Confirmada</CENTER></td>
                     <%else%>
