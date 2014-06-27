@@ -8,7 +8,7 @@ class TechnicalServicesController < ApplicationController
 	end
 
 	def servicios
-		@technical_services = TechnicalService.all
+		@technical_services = TechnicalService.paginate(:per_page => 5, :page => params[:page])
 	end
 
 	 def search_between_dates

@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
 
 	def index
-    @categories = Category.all
-    @categories = Category.order(params[:sort])
+    @categories = Category.order(params[:sort]).paginate(:per_page => 6, :page => params[:page])
   	end
 
   	def show

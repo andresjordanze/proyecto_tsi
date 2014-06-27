@@ -1,8 +1,7 @@
 class ProvidersController < ApplicationController
 
 	def index
-    @providers = Provider.all
-    @providers = Provider.order(params[:sort])
+    @providers = Provider.order(params[:sort]).paginate(:per_page => 5, :page => params[:page])
   end
 
   def show

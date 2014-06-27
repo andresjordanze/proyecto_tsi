@@ -1,8 +1,8 @@
 class BrandsController < ApplicationController
 
 	def index
-    @brands = Brand.all
-    @brands = Brand.order(params[:sort])
+    @brands = Brand.order(params[:sort]).paginate(:per_page => 6, :page => params[:page])
+    #@brands = Brand.
   end
 
   def show

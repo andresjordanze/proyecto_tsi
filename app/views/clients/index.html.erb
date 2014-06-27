@@ -36,4 +36,5 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de cliente"> &nbsp;
   <% end %>
   </tbody>
 </table>
+<%= will_paginate @clients, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
 </br>
