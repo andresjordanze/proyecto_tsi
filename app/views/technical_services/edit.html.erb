@@ -1,31 +1,27 @@
 <% title "Añadir problemas/reparaciones" %>
 <div class="hero-unit">
 
-<h1>Añadir problemas/reparaciones</h1></br>
+	<center><h1>Añadir problemas/reparaciones</h1></center></br>
 	<h3 class="text-info" align="right">Nº: <%= @technical_service.id %></h3>
-	<h3 class="text-info"><%= @technical_service.product_name %></h3>
-	<%= form_validated_for(@technical_service) do |f| %>
-  		<!--<div class="row">-->
-			<div class="col-xs-3">
+	<h2 class="text-info"><%= @technical_service.product_name %></h2><br>
+		<%= form_validated_for(@technical_service) do |f| %>	  	
+				<div class="col-xs-3">
 
-			<p><%= f.label :detail , "*Detalle:" %>
-			<%= f.text_area :detail%>
-	
-			<p><%= f.label :problems , "*Problemas:" %>
-			<%= f.text_area :problems %>
+					<p><%= f.label :detail , "*Detalle:" %>
+					<%= f.text_area :detail%>
+			
+					<p><%= f.label :problems , "*Problemas:" %>
+					<%= f.text_area :problems %>
 
-			<p><%= f.label :repairs , "*Reparaciones:" %>
-			<%= f.text_area :repairs %>
+					<p><%= f.label :repairs , "*Reparaciones:" %>
+					<%= f.text_area :repairs %>
 
-			<p><%= f.label :status, "*Estado:" %>
-        	<%= f.select :status, options_for_select([['En reparacion', 'En reparacion'], ['Finalizado', 'Finalizado']]) %>
-	
-			<p><%= f.submit "Guardar", class: "btn btn-large btn-jordi" %></p>
-			</div>
-		<!--</div>-->
-	<%end%>
+					<p><%= f.label :status, "*Estado:" %>
+		        	<%= f.select :status, options_for_select([['En reparacion', 'En reparacion'], ['Finalizado', 'Finalizado']]) %>
+
+					<p><%= f.submit "Guardar", class: "btn btn-large btn-jordi" %></p>
+				</div>			
+		<%end%>
 </div>
 
-<div align="left">
-	<%= button_to 'Volver', technical_services_path, :method => :get, class: "btn btn-default"  %>
-</div>
+
