@@ -53,7 +53,8 @@ class ProvidersController < ApplicationController
   end
 
   def search
-    @providers = buscar(params[:name])
+    #@providers = buscar(params[:name])
+    @providers = Provider.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
     render 'index'
   end
 

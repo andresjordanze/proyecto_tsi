@@ -30,7 +30,8 @@ class OrdersController < ApplicationController
   	end
 
 	def search
-		@orders = buscar(params[:name])
+		#@orders = buscar(params[:name])
+		@orders = Order.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
 		render 'index'
 	end
 

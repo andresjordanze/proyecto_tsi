@@ -94,7 +94,8 @@ def update
   end
 
   def search
-    @sales = buscar(params[:name])
+    #@sales = buscar(params[:name])
+    @sales = Sale.where("client_name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
     render 'index'
   end
 

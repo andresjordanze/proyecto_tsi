@@ -46,7 +46,8 @@ class CategoriesController < ApplicationController
   end
 
   def search
-    @categories = buscar(params[:name])
+    #@categories = buscar(params[:name])
+    @categories = Category.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
     render 'index'
   end
 

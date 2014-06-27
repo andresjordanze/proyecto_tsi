@@ -40,7 +40,8 @@ class ClientsController < ApplicationController
   end
 
   def search
-    @clients = buscar(params[:name])
+    #@clients = buscar(params[:name])
+    @clients = Client.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
     render 'index'
   end
 

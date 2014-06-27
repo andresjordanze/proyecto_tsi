@@ -56,7 +56,8 @@ class ProductnamesController < ApplicationController
   end
 
   def search
-    @productnames = buscar(params[:name])
+    #@productnames = buscar(params[:name])
+    @productnames = Productname.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
     render 'index'
   end
 
