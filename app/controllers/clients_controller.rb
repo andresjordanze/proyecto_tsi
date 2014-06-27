@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
   end
 
   def index
-    @clients = Client.all
+    @clients = Client.paginate(:per_page => 6, :page => params[:page])
   end
 
   def destroy

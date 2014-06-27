@@ -19,6 +19,7 @@ class Sale < ActiveRecord::Base
 	validates :check_number, numericality: {:message => "El valor del numero de factura debe ser numerico"}
 	validates :check_number, length: {minimum: 4, maximum: 12, :message => "El numero de factura debe tener minimo 4 caracteres"}
 	validates :check_number, numericality: {greater_than: 0, :message => "El numero de factura no puede ser menor a 0" }
+	validates :check_number, uniqueness: {case_sensitive: false, :message => "El numero de factura ya existe"}
 	
 	def correspondeACliente(nombre)
 		texto = self.client_name.split

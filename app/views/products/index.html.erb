@@ -49,5 +49,6 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
         <% end %>
     </tbody>
 </table>
+<%= will_paginate @products, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
 <br>
 </Center>

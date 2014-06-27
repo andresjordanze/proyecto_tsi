@@ -1,7 +1,8 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container" style="height: 50px;">
-
+    <div class="navbar-header">
       <a class="navbar-brand" href="/"><img src="/images/logoFinal.png"></a>
+    </div>
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           <% if current_user %>  
@@ -16,42 +17,25 @@
                 <li><a href="/categories">Lista de categorias</a></li>
               </ul>
             </li>
-          
 
-
-          <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
+            <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compras<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Marcas</li>
                 <li><a href="/brands/new">Registrar marca</a></li>
-                <li><a href="/brands">Lista de marcas</a></li>               
+                <li><a href="/brands">Lista de marcas</a></li>
                 <li class="dropdown-header">Proveedores</li>
                 <li><a href="/providers/new">Añadir proveedor</a></li>
                 <li><a href="/providers">Lista de proveedores</a></li>
                 <li class="dropdown-header">Pedidos</li>
                 <li><%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider_id => "1"}, :method => "post" %></li>
                 <li><a href="/orders">Lista de pedidos</a></li>
+                <li class="dropdown-header">Reportes</li>
                 <li><a href="/incomes/report_search">Reporte de ingresos</a></li>
               </ul>
             </li>
-            <%end%>
-
-
-
-            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacen<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Productos</li>
-                <li><a href="/productnames/new">Registrar producto</a></li>
-                <li><a href="/productnames">Lista de productos</a></li>
-                <li><a href="/products">Stock de productos</a></li>               
-              </ul>
-            </li>
-            <%end%>
-
-
+            <%end%>          
 
 
             <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
@@ -60,12 +44,22 @@
               <ul class="dropdown-menu">
                 <li><%= link_to 'Registrar Venta', {:controller => "sales", :action => "create", :price => '0', :confirmed => 'false', :check_number => '1111', :nit =>'1111111', :client_name => "Harry"}, :method => "post" %></li>
                 <li><%= link_to "Lista de ventas", sales_path %></li>
-                <li><a href="/outflows/report_search">Reporte de egresos</a></li>
                 <li><a href="/sales/report_search">Reporte de ventas</a></li>
+                <li><a href="/outflows/report_search">Reporte de egresos</a></li>
               </ul>
             </li>
             <%end%>
 
+            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacen<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/productnames/new">Registrar producto</a></li>
+                <li><a href="/productnames">Lista de productos</a></li>
+                <li><a href="/products">Stock de productos</a></li>
+              </ul>
+            </li>
+            <%end%>
 
             <% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
             <li class="dropdown">
@@ -77,7 +71,6 @@
               </ul>
             </li>
             <%end%>
-           
 
             <% if current_user.rol == "tecnico" || current_user.rol == "gerente" || current_user.rol == "secre" %>
             <li class="dropdown">
@@ -112,13 +105,6 @@
     </div>
   </div>
 </div>
-<head>
-    <meta charset="UTF-8">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/app/assets/stylesheets/aplication.css">
-    
-</head>
-
 
 <script type="text/javascript">
     $(document).ready(function()
@@ -139,24 +125,3 @@
         }
     });
 </script>
-
-
-<!--
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        var cambio = false;
-        $('.nav li a').each(function(index) 
-        {
-            if(this.href.trim() == window.location)
-            {
-                $(this).parent().addClass("active");                  
-                cambio = true;
-            }
-        });
-        if(!cambio)
-        {
-          $('.nav li:first').addClass("active");
-        }
-    });
-</script>-->

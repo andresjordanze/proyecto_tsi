@@ -1,13 +1,12 @@
 class ProductnamesController < ApplicationController
 	def index
-    @productnames = Productname.all
+    @productnames = Productname.paginate(:per_page => 6, :page => params[:page])
   end
 
   def show
    	@productname = Productname.find(params[:id])
 	end
 
-  
   def new
    	@productname = Productname.new
 	end
@@ -23,7 +22,7 @@ class ProductnamesController < ApplicationController
       flash[:success] = "Producto creado exitosamente!"
       redirect_to "/productnames"
     else
-      flash[:danger] = "No funciona ><"
+      flash[:danger] = "Producto no creado, faltan llenar campos"
       render action: "new"
     end
   end
