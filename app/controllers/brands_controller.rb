@@ -1,7 +1,7 @@
 class BrandsController < ApplicationController
 
 	def index
-    @brands = Brand.order(params[:sort]).paginate(:per_page => 6, :page => params[:page])
+    @brands = Brand.order('name ASC').paginate(:per_page => 6, :page => params[:page])
     #@brands = Brand.
   end
 
@@ -22,7 +22,7 @@ class BrandsController < ApplicationController
    	@brand = Brand.new(params[:brand])
     if @brand.save
       flash[:success] = 'Categoria Creada exitosamente.' 
-     	redirect_to @brand 
+     	redirect_to '/brands' 
     else
       render action: "new" 
     end
@@ -32,8 +32,7 @@ class BrandsController < ApplicationController
   	@brand = Brand.find(params[:id])
     if @brand.update_attributes(params[:brand])
        flash[:success] = 'Marca Actualizada exitosamente.'
-	    redirect_to @brand
-
+	    redirect_to '/brands'
     else
     	render action: "edit" 
     end

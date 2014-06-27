@@ -19,7 +19,7 @@
   <tr>
     <th><CENTER>Nombre</CENTER></th>
     <th><CENTER>Codigo</CENTER></th>
-    <th><CENTER>Marca</CENTER></th>
+    <th></th>
   </tr>
 </thead>
 <tbody>
@@ -27,30 +27,13 @@
   <tr>
     <td><CENTER><%= producto.name %></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
-    <td><CENTER><%= Brand.find(producto.brand_id).name %></CENTER></td>
-    <td><div align="right">
-          <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Ver detalles</button>
-        </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title" id="myModalLabel"><%= producto.name %></h3>
-              </div>
-              <div class="modal-body">
-                <b>Codigo:</b> <%= producto.code %><br>
-                <b>Marca:</b> <%= Brand.find(producto.brand_id).name %><br>
-                <b>Descripcion:</b> <%= producto.description %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </td>
-    <td><%= link_to 'Editar producto', edit_productname_path(producto), :class => 'btn btn-mini  btn-warning' %>
+    <td>
+    <%= link_to 'Ver detalles', productname_path(producto), :class => 'btn btn-mini  btn-success' %>
+    </td>
+    <td>
+    <%= link_to 'Editar producto', edit_productname_path(producto), :class => 'btn btn-mini  btn-warning' %>
+    </td>
+    <td>
     <%= link_to 'Eliminar producto', producto, method: :delete, data: { confirm: 'Seguro de eliminar el nombre del producto?' }, :class => 'btn btn-mini btn-danger' %>
     </td>
   </tr>
