@@ -75,9 +75,11 @@ Fecha: <input type="date" name="date"> &nbsp;&nbsp;&nbsp;
                     <%else%>
                     <td><CENTER>Reservado</CENTER></td>
                     <%end%>
+                <%if sale.confirmed == true %>
                 <td><%= link_to 'Ver venta', {:controller => :sales, :action => "show", :id => sale.id }, :class => 'btn btn-mini btn-success'  %></td>
-                <!--td--><!--%= link_to 'Editar', edit_sale_path(sale), :class => 'btn btn-mini'  %></td-->
-                <!--td--><!--%= link_to 'Eliminar', sale_path(sale), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td-->
+                <%else%>
+                <td><%= link_to 'Editar venta', {:controller => :sales, :action => "show", :id => sale.id }, :class => 'btn btn-mini btn-warning'  %></td>
+                <%end%>
             </tr>
         <% end %>
     </tbody>

@@ -5,19 +5,18 @@
     </div>
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-          <% if current_user %>  
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pagina<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Productos de pagina</li>
                 <li><a href="/products/">Añadir producto a pagina</a></li>
-                <li><a href="/products_home/">Lista de productos de pagina</a></li>
+                <li><a href="/products_home/">Productos de pagina</a></li>
                 <li class="dropdown-header">Categorias</li>
                 <li><a href="/categories/new">Crear categoria</a></li>
                 <li><a href="/categories">Lista de categorias</a></li>
               </ul>
             </li>
-
+          <% if current_user %>
             <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Compras<b class="caret"></b></a>
