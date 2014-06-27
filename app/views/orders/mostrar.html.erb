@@ -8,12 +8,12 @@
 <table class="table table-striped">
 <thead>
   <tr>
-    <th>Nombre</th>
-    <th>Codigo</th>  
-    <th>Cantidad</th>
-    <th>Costo Unit.(Bs.)</th>
-    <th>Costo Total (Bs.)</th>
-    <th>Estado</th>
+    <th><CENTER>Nombre</CENTER></th>
+    <th><CENTER>Codigo</CENTER></th>  
+    <th><CENTER>Cantidad</CENTER></th>
+    <th><CENTER>Costo Unit.(Bs.)</CENTER></th>
+    <th><CENTER>Costo Total (Bs.)</CENTER></th>
+    <th><CENTER>Estado</CENTER></th>
   </tr>
 </thead>
 <tbody>
@@ -33,11 +33,11 @@
       <% nuevo = false %>
       <%@order.ingresado = true%> 
       <%@order.save%>
-      <td>Ingresado</td>
+      <td><CENTER>Ingresado</CENTER></td>
     <%else%>
     <% cantidad += 1 %>
     <% nuevo = false %>
-      <td>Pendiente</td>
+      <td><CENTER>Pendiente</CENTER></td>
     <%end%>
   </tr>
 <% end %>

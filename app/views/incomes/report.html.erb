@@ -5,27 +5,27 @@
 
   <thead>
   <tr>
-    <th>Numero de pedido</th>
-    <th>Nombre</th>
-    <th>Codigo</th>
-    <th>Descripcion</th>
-    <th>Cantidad</th>
-    <th>Costo Unit.</th>
-    <th>Costo total</th>
-    <th>Fecha de ingreso</th>
+    <th><CENTER>Numero de pedido</CENTER></th>
+    <th><CENTER>Nombre</CENTER></th>
+    <th><CENTER>Codigo</CENTER></th>
+    <th><CENTER>Descripcion</CENTER></th>
+    <th><CENTER>Cantidad</CENTER></th>
+    <th><CENTER>Costo Unit.</CENTER></th>
+    <th><CENTER>Costo total</CENTER></th>
+    <th><CENTER>Fecha de ingreso</CENTER></th>
   </tr>
 </thead>
 <% @incomes.each do |income| %>
   <tbody>
   <tr>
-    <td><%= income.id_order%></td>
-    <td><%= income.product_name %></td>
-    <td><%= income.code %></td>
-    <td><%= income.description %></td>
-    <td><%= income.quantity %></td>
-    <td><%= income.price %></td>
-    <td><%= income.total_price %></td>
-    <td><%= income.created_at.strftime("%d/%m/%Y") %></td>
+    <td><CENTER><%= income.id_order%></CENTER></td>
+    <td><CENTER><%= income.product_name %></CENTER></td>
+    <td><CENTER><%= income.code %></CENTER></td>
+    <td><CENTER><%= income.description %></CENTER></td>
+    <td><CENTER><%= income.quantity %></CENTER></td>
+    <td><CENTER><%= number_with_precision(income.price, :precision => 2, :delimiter => ',') %></CENTER></td>
+    <td><CENTER><%= number_with_precision(income.total_price, :precision => 2, :delimiter => ',') %></CENTER></td>
+    <td><CENTER><%= income.created_at.strftime("%d/%m/%Y") %></CENTER></td>
   </tr>
   </tbody>
 <% end %>

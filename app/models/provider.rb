@@ -13,7 +13,7 @@ class Provider < ActiveRecord::Base
     validates :phone, numericality: {greater_than: 0, :message => "El numero de telefono/celular no puede ser un numero negativo" }
 
     validates :address, presence: {:message => "Usted debe ingresar la direccion de proveedor"}
-	validates :address, format: { with: /\A[a-zA-Z\d\s]+\z/,:message => "Solo Letras Permitidas" } 
+	#validates :address, format: { with: /\A[a-zA-Z\d\s]+\z/,:message => "Solo Letras Permitidas" } 
 
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')
