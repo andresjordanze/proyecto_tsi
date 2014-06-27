@@ -10,7 +10,7 @@
 			<h2><%= @product.name %></h2>
 	
 			<p><%= f.label :photo, "Foto:" %></p>
-			<%= f.file_field :photo %><br>
+			<%= f.file_field :photo %><br>	
 
 			<p><%= f.label :description , "Descripcion:" %>	</p>
 			<%= f.text_area :description %><br><br>
@@ -23,3 +23,7 @@
 		<%end%>
 	</div>
 </div>
+
+<script>
+	$(":file").filestyle({buttonName: "btn-primary"});
+</script>

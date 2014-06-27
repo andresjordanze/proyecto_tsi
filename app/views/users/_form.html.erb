@@ -15,7 +15,7 @@
 
       <p><%= f.label :rol %>
         <%= f.select :rol, options_for_select([[ 'Tecnico', 'tecnico' ], ['Encargado almacen', 'enc_almacen']]) %>
-      <p><%= f.submit (@user.new_record? ? 'Crear usuario' : 'Update'), :class => 'btn btn-lg btn-jordi' %></p>
+      <p><%= f.submit (@user.new_record? ? 'Crear usuario' : 'Update'), :class => 'btn btn-mini btn-jordi' %></p>
 <% end %>
 
 <div align="left">
