@@ -3,7 +3,7 @@ class CreateProductsales < ActiveRecord::Migration
     create_table :productsales do |t|
  	  t.string :name
  	  t.string :code
- 	  t.integer :price
+ 	  t.float :price
  	  t.integer :sale_id
  	  t.integer :subproduct_id
  	  t.string :client_name

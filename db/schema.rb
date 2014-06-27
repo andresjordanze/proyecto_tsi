@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20140530082043) do
   create_table "productsales", force: true do |t|
     t.string   "name"
     t.string   "code"
-    t.integer  "price"
+    t.float    "price"
     t.integer  "sale_id"
     t.integer  "subproduct_id"
     t.string   "client_name"

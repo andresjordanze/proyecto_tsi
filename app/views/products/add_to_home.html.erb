@@ -15,6 +15,9 @@
 			<p><%= f.label :description , "Descripcion:" %>	</p>
 			<%= f.text_area :description %><br><br>
 
+			<p><%=f.label :category, "Categoria" %>
+    		<%=f.collection_select(:category, Category.all, :name, :name)%></p>
+
 			<%= f.hidden_field :control, :value=>'true'%><br>
 			<p><%= f.submit "Añadir Producto",  class: "btn  btn-jordi"%></p>
 		<%end%>

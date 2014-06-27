@@ -21,7 +21,7 @@
             <tr>
                 <th><Center>Nombre</Center></th>
                 <th><Center>Codigo del Producto</Center></th>
-                <th><Center>Precio</Center></th>        
+                <th><Center>Precio(Bs.)</Center></th>        
             </tr>
             </thead>
             <tbody>
@@ -29,7 +29,7 @@
                 <tr>
                     <td><CENTER><%= subproduct.name %></CENTER></td>
                     <td><CENTER><%= subproduct.code %></CENTER></td>
-                    <td><CENTER><%= subproduct.price %> Bs.</CENTER></td>
+                    <td><CENTER><%= number_with_precision(subproduct.price, :precision => 2, :delimiter => ',') %></CENTER></td>
                     <% if @sale.confirmed == false %>
                     <td><%= link_to 'Eliminar de venta', {:controller => :productsales, :action => 'eliminar_subproducto_venta', :id => subproduct.id, :sale_id => @sale.id}, :class =>'btn btn-mini btn-danger'%></td>
                     <%end%>
@@ -39,7 +39,7 @@
         </table>
     </div>
 </p>
-    <h2 align="right">Total Venta: <%= @sale.price %></h2>
+    <h2 align="right">Total Venta: <%= number_with_precision(@sale.price, :precision => 2, :delimiter => ',') %></h2>
 
 <% if @sale.confirmed == false %>
     <p>
@@ -74,7 +74,7 @@
                                     <div class="modal-body">
                                         <%= form_validated_for([@sale, @sale.productsales.build]) do |f| %>
                                         <%= f.label :price , "Precio de venta (Bs.):" %>
-                                        <%= f.text_field :price, :maxlength => '6' %>
+                                        <%= f.text_field :price, :maxlength => '9' %>
                                         <%= f.hidden_field :subproduct_id, :value => subproduct.id %>
                                         <%= f.submit "Agregar", class: "btn btn-jordi"%>
                                     </div>

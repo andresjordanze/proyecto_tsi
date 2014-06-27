@@ -45,8 +45,8 @@
     <td><CENTER><%= Productname.find(producto.productname_id).name %></CENTER></td>
     <td><CENTER><%= Productname.find(producto.productname_id).code %></CENTER></td>
     <td><CENTER><%= producto.quantity %></CENTER></td>
-    <td><CENTER><%= producto.price %></CENTER></td>
-    <td><CENTER><%= producto.total_price %></CENTER></td>
+    <td><CENTER><%= number_with_precision(producto.price, :precision => 2, :delimiter => ',') %></CENTER></td>
+    <td><CENTER><%= number_with_precision(producto.total_price, :precision => 2, :delimiter => ',') %></CENTER></td>
     <%if producto.ingresado == true%>
       <% cantidad -= 1 %>
       <% nuevo = false %>
