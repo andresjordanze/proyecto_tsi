@@ -89,7 +89,7 @@
                 <% end %>
             </tbody>
         </table>
-        <%= will_paginate @subproducts %>
+        <%= will_paginate @subproducts, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
     </div>
 
     </p>

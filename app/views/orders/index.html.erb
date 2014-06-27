@@ -35,4 +35,5 @@ Proveedor: <input type="text" name="name" placeholder="Nombre de proveedor"> &nb
         <% end %>
     </tbody>
 </table>
+<%= will_paginate @orders, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
 <br>
