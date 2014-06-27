@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
 
 
 	def search_home
-		@products = buscar_home(params[:category])
+		@products = Product.where("category like ?", "%#{params[:category]}%").paginate(:per_page => 6, :page => params[:page])
 		render 'products_home'
 	end
 
