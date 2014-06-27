@@ -1,6 +1,6 @@
 class ProductnamesController < ApplicationController
 	def index
-    @productnames = Productname.paginate(:per_page => 6, :page => params[:page])
+    @productnames = Productname.order('name ASC').paginate(:per_page => 6, :page => params[:page])
   end
 
   def show
@@ -30,7 +30,8 @@ class ProductnamesController < ApplicationController
   def update
   	@productname = Productname.find(params[:id])
     if @productname.update_attributes(params[:productname])
-	    redirect_to '/productnames'
+	    flash[:success] = "Producto editado exitosamente!"
+      redirect_to '/productnames'
     else
     	render action: "edit" 
     end
