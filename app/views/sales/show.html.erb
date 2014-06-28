@@ -4,17 +4,22 @@
 <%else%>
     <% title "" %>
 <% end %>
+
 <div class="hero-unit">
-<%if @sale.client_name != "Harry"%>
-<CENTER><H1><%= @sale.client_name %></H1>
-        <h2>Nit: <%= @sale.nit%></h2>
-<%else%>
-<CENTER><H1>Venta Nº: <%=@sale.id%></H1>
+<img src="/images/logo.jpg" width="200">
+<%if @sale.confirmed == true %>
+    <h2 align="right"><b class="text-info">Factura Nº<br><%= @sale.check_number %></b></h2>
 <%end%>
-<h2>Fecha de venta: <%= @sale.created_at.strftime("%d/%m/%Y") %></h2>
+<h2><b class="text-info">Fecha de venta:</b> <%= @sale.created_at.strftime("%d/%m/%Y") %></h2>
+<%if @sale.client_name != "Harry"%>
+    <H2><b class="text-info">Nombre:</b> <%= @sale.client_name %></H2>
+    <h2><b class="text-info">Nit:</b> <%= @sale.nit%></h2>
+<%else%>
+<H1>Venta Nº: <%=@sale.id%></H1>
+<%end%>
 
 <p>
-    <h1><Center>Detalle de Venta</Center></h1>
+    <h2 class="text-info"><b><Center>Detalle de Venta</Center></b></h2>
     <div>
         <table class="table table-striped">
             <thead>
@@ -43,10 +48,11 @@
 
 <% if @sale.confirmed == false %>
     <p>
-        <h2><Center><!--%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %-->Agregar Producto a Venta</Center></h2>
+        <h2><Center><!--%= link_to_function "Agregar Producto a venta", "$('#subproduct').toggle()" %-->Agregar Producto a Venta</h2></Center>
+        <center>
         <div id="subproduct" ><!--style="display:none"--><br>
         <form method="GET">Nombre: <input type="text" name="name"> &nbsp;&nbsp;&nbsp;<input type="submit" value="Buscar producto", class="btn btn-info"></form>
-        
+        </center>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -89,10 +95,12 @@
                 <% end %>
             </tbody>
         </table>
-        <%= will_paginate @subproducts, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
+        <center>
+        <%= will_paginate @subproducts, :previous_label => 'Anterior', :next_label => 'Siguiente' %></center>
     </div>
 
     </p>
+    <center>
     <%if @sale.price !=0 %>
     <div>
         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#sale">Confirmar venta</button>
