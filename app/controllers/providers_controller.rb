@@ -29,7 +29,8 @@ class ProvidersController < ApplicationController
   def update
   	@provider = Provider.find(params[:id])
     if @provider.update_attributes(params[:provider])
-	    redirect_to @provider, notice: 'Proveedor editado exitosamente.'
+      flash[:success] = "Proveedor editado exitosamente!"
+	    redirect_to "/providers"
     else
     	render action: "edit" 
     end

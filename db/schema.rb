@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140530082043) do
     t.string   "estado"
     t.integer  "provider_id"
     t.boolean  "ingresado"
+    t.boolean  "confirm"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

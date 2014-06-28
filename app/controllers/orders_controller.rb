@@ -8,7 +8,13 @@ class OrdersController < ApplicationController
 	end
   
 	def index
-		@orders = Order.order('created_at DESC').paginate(:per_page => 6, :page => params[:page])
+		@orders1 = Order.all
+		@orders1.each do |order|
+			if order.confirm == false
+				order.destroy
+			end
+		end
+		@orders = @orders1.order('created_at DESC').paginate(:per_page => 6, :page => params[:page])
 	end
 
 	def mostrar
@@ -21,6 +27,7 @@ class OrdersController < ApplicationController
 	    @order.estado = params[:estado]
 	    @order.provider_id = params[:provider_id]
 	    @order.ingresado = params[:ingresado]
+	    @order.confirm = false
 	    if @order.save
 	      redirect_to '/orders/' + @order.id.to_s
 	    else
@@ -63,6 +70,7 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 		order = params[:order]
 		@order.created_at = Date.new order["created_at(1i)"].to_i, order["created_at(2i)"].to_i, order["created_at(3i)"].to_i
+		@order.confirm = true
 		if @order.update_attributes(params[:order])
 			@order.save
 			flash[:success] = "Pedido registrado exitosamente!"

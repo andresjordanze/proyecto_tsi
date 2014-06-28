@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	attr_accessible :numero_pedido, :provider_id, :estado, :ingresado
+	attr_accessible :numero_pedido, :provider_id, :estado, :ingresado, :confirm
 	
   belongs_to :providers
   

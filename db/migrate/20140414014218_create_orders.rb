@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration
     	t.string :estado
     	t.integer :provider_id
     	t.boolean :ingresado
-
+    	t.boolean :confirm
       t.timestamps
     end
   end
