@@ -9,11 +9,15 @@ class Provider < ActiveRecord::Base
     #message: "Solo Letras Permitidas" }
 
     validates :phone, numericality: {:message => "El valor de telefono/celular debe ser numerico"}
-    validates :phone, length: {minimum: 7, maximum: 8, :message => "El numero de telefono/celular debe tener minimo 7 y maximo 8 numeros"}
+    validates :phone, length: {minimum: 7, maximum: 8, :message => "El numero de telefono/celular debe tener entre 7 y 8 digitos"}
     validates :phone, numericality: {greater_than: 0, :message => "El numero de telefono/celular no puede ser un numero negativo" }
 
     validates :address, presence: {:message => "Usted debe ingresar la direccion de proveedor"}
 	#validates :address, format: { with: /\A[a-zA-Z\d\s]+\z/,:message => "Solo Letras Permitidas" } 
+    validates :mail, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "Formato no valido"}
+    
+
+
 
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')

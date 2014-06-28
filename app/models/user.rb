@@ -6,15 +6,15 @@ class User < ActiveRecord::Base
   
   validates :username, presence: {:message => "Usted debe ingresar su nombre de usuario"}
   validates :username, format: { with: /\A[a-zA-Z]+\z/, message: "Solo letras permitidas.No se permite espacios" }
-  validates :username, length: {minimum: 4, maximum: 20, :message => "El nombre de usuario debe tener minimo 4 y maximo 20 caracteres"}
+  validates :username, length: {minimum: 4, maximum: 20, :message => "El nombre de usuario debe tener entre 4 y 20 caracteres"}
   validates :username, uniqueness: {:message => "El nombre de usuario ya existe"}  
 
   validates :name, presence: {:message => "Usted debe ingresar su nombre completo"}
   validates :name, format: {:multiline => true, with: /^[a-zA-Z ]+$/, message: "Solo letras permitidas" }
-  validates :name, length: {minimum: 10, maximum: 45, :message => "El nombre de usuario debe tener minimo 10 y maximo 45 caracteres"}
+  validates :name, length: {minimum: 10, maximum: 45, :message => "El nombre de usuario debe tener entre 10 y 45 caracteres"}
   
   validates :password, presence: {:message => "Usted debe ingresar una Contraseña"}
-  validates :password, length: {minimum: 6, :message => "La Contraseña debe tener minimo 6 y caracteres"}
+  validates :password, length: {minimum: 6, :message => "La Contraseña debe tener minimo 6 caracteres"}
   validates :password, confirmation: {:message => "Las contraseñas no coinciden"} 
  
 

@@ -1,12 +1,9 @@
-<% title "Editar" %>
+<center><% title "Editar" %></center>
 <h1>Editar</h1>
-<div class="col-xs-3">
-<h1><%= @client.name%></h1>
-<center>
-<%= render 'form' %>
-</center>
-<br>
-
+<h2><%= @client.name%></h2>
+		<%= render 'form' %>
 <div align="left">
 	<%= button_to 'Volver', clients_path, :method => :get, class: "btn btn-default"  %>
 </div>
+
+ 

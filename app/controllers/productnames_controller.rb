@@ -20,7 +20,7 @@ class ProductnamesController < ApplicationController
     @productname = @brand.productnames.create(params[:productname])
     if @productname.save 
       flash[:success] = "Producto creado exitosamente!"
-      redirect_to "/productnames"
+      redirect_to @productname
     else
       flash[:danger] = "Producto no creado, faltan llenar campos"
       render action: "new"
@@ -31,7 +31,8 @@ class ProductnamesController < ApplicationController
   	@productname = Productname.find(params[:id])
     if @productname.update_attributes(params[:productname])
 	    flash[:success] = "Producto editado exitosamente!"
-      redirect_to '/productnames'
+      redirect_to @productname
+      #redirect_to '/productnames'
     else
     	render action: "edit" 
     end
@@ -56,7 +57,8 @@ class ProductnamesController < ApplicationController
   end
 
   def search
-    @productnames = buscar(params[:name])
+    #@productnames = buscar(params[:name])
+    @productnames = Productname.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
     render 'index'
   end
 

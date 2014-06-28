@@ -1,9 +1,15 @@
 <% title "Usuarios" %>
-<h1>Lista de Usuarios</h1>
+<center> <h1>Lista de Usuarios</h1></center>
+
+<div align="right">  
+  <%= link_to 'Crear Usuario', new_user_path, :class => 'btn btn-jordi' %>  
+</div>
+
 
 <table class="table table-striped">
   <thead>
     <tr>
+
       <th>Nombre Completo</th>
       <th>Nombre de Usuario</th>
       <th>Rol</th>
@@ -19,7 +25,7 @@
         <td><%= user.rol %></td>
         <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
         <% if current_user.username != user.username %>
-        <td><%= button_to 'Eliminar Usuario', user_path(user),method: :delete, data: { confirm: 'Seguro?' }, :class => "btn btn-lg btn-danger" %></td>
+        <td><%= button_to 'Eliminar Usuario', user_path(user),method: :delete, data: { confirm: 'Seguro?' }, :class => "btn btn-mini btn-danger" %></td>
         <% else %>
         <td></td>
         <% end %>
@@ -28,4 +34,3 @@
   </tbody>
 </table>
 </br>
-<%= link_to 'Crear Usuario', :controller => :users, :action => 'new' %>
