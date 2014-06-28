@@ -1,13 +1,24 @@
-<center><H1><%= @provider.name %> </H1></center>  
 
-<strong>Email:</strong><br>    
-<p><%= @provider.mail %></p>
 
-<strong>Telefono:</strong><br>
-<p><%= @provider.phone %></p>
+<div class="panel panel-info">
+  <div class="panel-heading"><center><H1><%= @provider.name %> </H1></center>  </div>
+  <div class="panel-body">
+  	<table align="center">
+			<th align="left" style="background-color:white" width="600">
+		<b class="text-info">Email:</b>   
+		<p><%= @provider.mail %></p>
 
-<strong>Direccion: </strong><br>
-<p><%= @provider.address %></p>
+		<b class="text-info">Telefono:</b><br>
+		<p><%= @provider.phone %></p>
+
+		<b class="text-info">Direccion:</b> <br>
+		<p><%= @provider.address %></p>
+
+		</th>
+		</table>
+	</div>
+  </div>
+<div align="left">		
 
 <div align="left">
   <%= button_to 'Volver', providers_path, :method => :get, :class => 'btn btn-default  ' %><br> 

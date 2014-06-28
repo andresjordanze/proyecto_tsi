@@ -14,6 +14,10 @@ class Provider < ActiveRecord::Base
 
     validates :address, presence: {:message => "Usted debe ingresar la direccion de proveedor"}
 	#validates :address, format: { with: /\A[a-zA-Z\d\s]+\z/,:message => "Solo Letras Permitidas" } 
+    validates :mail, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message => "Formato no valido"}
+    
+
+
 
 	def correspondeAnombre(nombre)
     	parametros = nombre.split(' ')

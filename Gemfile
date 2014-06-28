@@ -9,6 +9,7 @@ gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem 'paperclip'
 gem 'will_paginate', '3.0.4'
+gem 'validates_email_format_of'
 
 # Use sqlite3 as the database for Active Record
 group :development do
