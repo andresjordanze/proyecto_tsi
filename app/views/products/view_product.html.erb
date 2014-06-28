@@ -10,7 +10,7 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <!--<h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>-->
           <p class="lead"><% @product.description.split.each do |palabra|%>
                         <p align="left"><%= palabra %></p></br>
                     <%end%> </p>
@@ -19,7 +19,7 @@
           <%= image_tag @product.photo.url, size: "500x500" , :class => 'featurette-image img-responsive' %>
         </div>
       </div>
-
+<!--
       <hr class="featurette-divider">
 
       <div class="row featurette">
@@ -47,6 +47,6 @@
       <hr class="featurette-divider">
     
       <!-- /END THE FEATURETTES -->
-
+-->
 <%= button_to 'Volver', {:controller => :products, :action => 'products_home'}, :class => 'btn btn-default' %>
   
