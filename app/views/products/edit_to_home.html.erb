@@ -13,6 +13,10 @@
 
 			<p><%= f.label :description , "Descripcion:" %></p>
 			<%= f.text_area :description, :maxlength => '100' %><br> <br>
+			
+			<p><%=f.label :category, "Categoria" %>
+    		<%=f.collection_select(:category, Category.all, :name, :name)%></p>
+
 			<%= f.hidden_field :control, :value => true%>
 			<%= f.submit "Guardar cambios" , class: "btn btn-large btn-jordi"%>
 		<%end%>
