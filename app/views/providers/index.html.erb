@@ -31,8 +31,8 @@
     <td><CENTER><%= provider.mail %></CENTER></td>
     <td><CENTER><%= provider.phone %></CENTER></td>
     <td><CENTER><%= provider.address %></CENTER></td>
-    <td><%= link_to 'Editar', {:controller => :providers, :action => "edit", :id => provider.id}, :class => 'btn btn-mini btn-warning' %>
-    <%= link_to 'Eliminar', provider, method: :delete, data: { confirm: 'Seguro de eliminar el proveedor?' }, :class => 'btn btn-mini btn-danger' %></td>
+    <td><%= link_to 'Editar Proveedor', {:controller => :providers, :action => "edit", :id => provider.id}, :class => 'btn btn-mini btn-warning' %>
+    <%= link_to 'Eliminar Proveedor', provider, method: :delete, data: { confirm: 'Seguro de eliminar el proveedor?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>
 </tbody>

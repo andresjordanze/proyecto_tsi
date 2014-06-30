@@ -1,7 +1,7 @@
 <h1>Lista de Marcas</h1>
 
 <div align="right">
-  <h3><%= link_to 'Agregar Marca', new_brand_path, :class => 'btn btn-jordi ' %></h3>
+  <h3><%= link_to 'Registrar Marca', new_brand_path, :class => 'btn btn-jordi ' %></h3>
 </div>
 <center>
   <div>
@@ -23,8 +23,8 @@
 			<% @brands.each do |brand| %>
   			<tr>
     			<td><CENTER><%= brand.name %></CENTER></td>
-    			<td><%= link_to 'Editar', {:controller => :brands, :action => "edit", :id => brand.id}, :class => 'btn btn-mini btn-warning' %>
-    			<%= link_to 'Eliminar', brand, method: :delete, data: { confirm: 'Esta seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
+    			<td><%= link_to 'Editar Marca', {:controller => :brands, :action => "edit", :id => brand.id}, :class => 'btn btn-mini btn-warning' %>
+    			<%= link_to 'Eliminar Marca', brand, method: :delete, data: { confirm: 'Esta seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
   			</tr>
 			<% end %>
 		</tbody>
