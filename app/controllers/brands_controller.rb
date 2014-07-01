@@ -1,7 +1,8 @@
 class BrandsController < ApplicationController
 
 	def index
-    @brands = Brand.order('updated_at DESC').paginate(:per_page => 6, :page => params[:page])
+    @brands = Brand.order(params[:sort]).paginate(:per_page => 6, :page => params[:page])
+    
     #@brands = Brand.
   end
 
