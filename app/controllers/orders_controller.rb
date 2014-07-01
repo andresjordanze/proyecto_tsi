@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 	def index
 		@orders1 = Order.all
 		@orders1.each do |order|
-			if order.confirm == false
+			if order != nil && order.confirm == false
 				order.destroy
 			end
 		end
