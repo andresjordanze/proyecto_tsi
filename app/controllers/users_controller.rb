@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:message] = "Usuario creado!"
+      flash[:success] = "Usuario creado!"
       redirect_to :controller => :users, :action => "index"
     else
       render :action => 'new'

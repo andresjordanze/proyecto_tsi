@@ -7,8 +7,8 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(params[:client])
     if @client.save
-      flash[:message] = "Cliente registrado!"
-      redirect_to :controller => :clients, :action => "index"
+      flash[:success] = "Cliente registrado!"
+      redirect_to '/clients'
     else
       render :action => 'new'
     end
@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     if @client.update_attributes(params[:client])
       flash[:success] = "Cliente modificado!"
-      redirect_to :controller => :clients, :action => "index"
+      redirect_to '/clients'
     else
       render :action => 'edit'
     end
@@ -59,6 +59,4 @@ class ClientsController < ApplicationController
       end
       return items
     end
-
-
 end

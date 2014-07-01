@@ -2,7 +2,7 @@
 <%= form_validated_for @user do |f| %>
   <!--<%= f.error_messages %>-->
       <%= f.label :username, '*Nombre de usuario' %>
-      <p><%= f.text_field :username, :class => 'form-control', :maxlength => '45' %></p>
+      <p><%= f.text_field :username, :maxlength => '45' %></p>
     
       <%= f.label :name, '*Nombre completo' %>
       <p><%= f.text_field :name, :class => 'form-control', :maxlength => '45' %></p>
