@@ -30,7 +30,7 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de cliente"> &nbsp;
       <td><%= client.nit %></td>
       <td><%= client.phone %></td>
       <td><%= client.created_at.strftime("%d/%m/%Y") %></td>
-      <td><%= link_to 'Editar', {:controller => :clients, :action => "edit", :id => client.id}, :class => 'btn btn-mini btn-warning'  %></td>
+      <td><%= link_to 'Editar Cliente', {:controller => :clients, :action => "edit", :id => client.id}, :class => 'btn btn-mini btn-warning'  %></td>
       <td><%= button_to 'Eliminar Cliente', client_path(client),method: :delete, data: { confirm: 'Seguro?' }, :class => "btn btn-mini btn-danger" %></td>
     </tr>
   <% end %>

@@ -5,7 +5,9 @@
     </div>
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
+            <li class="dropdown">            
+          <% if current_user %>
+            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pagina<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Productos de pagina</li>
@@ -16,8 +18,6 @@
                 <li><a href="/categories">Lista de categorias</a></li>
               </ul>
             </li>
-          <% if current_user %>
-            <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Almacen<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -32,7 +32,7 @@
             </li>
             <%end%>
 
-            <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
+            <% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Compras<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -42,7 +42,7 @@
                 <li class="dropdown-header">Pedidos</li>
                 <li><%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider_id => "1"}, :method => "post" %></li>
                 <li><a href="/orders">Lista de pedidos</a></li>
-                <li class="dropdown-header">Reportes</li>
+                <li class="dropdown-header">Reporte de Compras</li>
                 <li><a href="/incomes/report_search">Reporte de ingresos</a></li>
               </ul>
             </li>
