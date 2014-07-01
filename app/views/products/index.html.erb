@@ -22,7 +22,6 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
         <tr>
             <th><Center>Nombre</Center></th>
             <th><Center>Marca</Center></th>
-            <th><Center>Categoria</Center></th>
             <th><Center>Cantidad</Center></th>      
         </tr>
     </thead>
@@ -31,7 +30,6 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
             <tr>
                 <td><CENTER><%= product.name %></CENTER></td>
                 <td><CENTER><%= product.brand %></CENTER></td>
-                <td><CENTER><%= product.category %></CENTER></td>
                 <td><CENTER><%= product.quantity %></CENTER></td>
                 <td><%= link_to 'Ver Producto', product_path(product), :class => 'btn btn-mini btn-success'  %>
 
