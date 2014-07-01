@@ -23,8 +23,8 @@
 <% @categories.each do |category| %>
   <tr>
     <td><CENTER><%= category.name %></CENTER></td>
-    <td><%= link_to 'Editar', {:controller => :categories, :action => "edit", :id => category.id}, :class => 'btn btn-mini btn-warning	' %>
-    <%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
+    <td><%= link_to 'Editar Categoria', {:controller => :categories, :action => "edit", :id => category.id}, :class => 'btn btn-mini btn-warning	' %>
+    <%= link_to 'Eliminar Categoria', category, method: :delete, data: { confirm: 'Seguro de eliminar la marca?' }, :class => 'btn btn-mini btn-danger' %></td>
   </tr>
 <% end %>
 </tbody>
