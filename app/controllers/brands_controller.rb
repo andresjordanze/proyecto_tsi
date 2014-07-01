@@ -21,7 +21,7 @@ class BrandsController < ApplicationController
    	@brand = Brand.new(params[:brand])
     if @brand.save
       flash[:success] = 'Marca creada exitosamente.' 
-     	redirect_to @brand
+     	redirect_to '/brands'
     else
       render action: "new" 
     end
@@ -31,7 +31,7 @@ class BrandsController < ApplicationController
   	@brand = Brand.find(params[:id])
     if @brand.update_attributes(params[:brand])
        flash[:success] = 'Marca actualizada exitosamente.'
-	    redirect_to @brand
+	    redirect_to '/brands'
     else
     	render action: "edit" 
     end

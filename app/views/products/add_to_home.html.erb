@@ -13,7 +13,7 @@
 			<%= f.file_field :photo %><br>	
 
 			<p><%= f.label :description , "Descripcion:" %>	</p>
-			<%= f.text_area :description %><br><br>
+			<%= f.text_area :description, :maxlength => '300'  %><br><br>
 
 			<p><%=f.label :category, "Categoria" %>
     		<%=f.collection_select(:category, Category.all, :name, :name)%></p>
