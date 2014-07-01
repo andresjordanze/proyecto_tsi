@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
 				order.destroy
 			end
 		end
-		@orders = @orders1.order('created_at DESC').paginate(:per_page => 6, :page => params[:page])
+		@orders = @orders1.order('created_at DESC')#.paginate(:per_page => 6, :page => params[:page])
 	end
 
 	def mostrar
@@ -37,8 +37,8 @@ class OrdersController < ApplicationController
   	end
 
 	def search
-		#@orders = buscar(params[:name])
-		@orders = Order.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
+		@orders = buscar(params[:name])
+		#@orders = Order.where("name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
 		render 'index'
 	end
 
