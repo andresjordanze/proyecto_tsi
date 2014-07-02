@@ -57,7 +57,7 @@ class TechnicalServicesController < ApplicationController
 		#@value = params[:value]
     	#@technical_services = buscar(@value)
 		#@technical_services = TechnicalService.where("client like ? or id like ?", "%#{params[:value]}%", "%#{params[:value]}%")#.paginate(:per_page => 6, :page => params[:page])
-    	@technical_services = TechnicalService.where("id like ?", "%#{params[:name]}%")
+    	@technical_services = TechnicalService.where("id = :id", {id: params[:name]}).to_a
     	#render 'index'
   	end
 
