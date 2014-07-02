@@ -44,7 +44,7 @@
                 <li class="dropdown-header">Pedidos</li>
                 <li><%= link_to 'Registrar pedido', {:controller => "orders", :action => "create", :numero_pedido => (rand() * 100).to_i, :id => '1', :estado => 'Pendiente', :ingresado =>false, :provider_id => "1"}, :method => "post" %></li>
                 <li><a href="/orders">Lista de pedidos</a></li>
-                <li class="dropdown-header">Reporte de Compras</li>
+                <li class="dropdown-header">Reportes</li>
                 <li><a href="/incomes/report_search">Reporte de ingresos</a></li>
               </ul>
             </li>
@@ -97,8 +97,8 @@
 
           <p class="navbar-text navbar-right">
             <% if current_user%>
-              <%= link_to "Cerrar sesión", logout_path, :class => "btn btn-xs btn-danger" %>
               <%= link_to "Cambiar Contraseña", {:controller => :users, :action => 'edit', :id => current_user.id}, :class => "btn btn-xs btn-warning"%>
+              <%= link_to "Cerrar sesión", logout_path, :class => "btn btn-xs btn-danger" %>
             <% else %>
               <%= link_to "Iniciar sesión", login_path, :class => "btn btn-xs btn-info" %>
             <% end %>

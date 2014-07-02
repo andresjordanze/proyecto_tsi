@@ -122,7 +122,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-                    <%= f.submit "Confirmar Venta", class: "btn btn-large btn-jordi" %>
+                        <%if @sale.confirmed == false %>
+                            <%= f.submit "Confirmar Venta", class: "btn btn-large btn-jordi" %>
+                        <%else%>
+                            <%= f.submit "Registrar Venta", class: "btn btn-large btn-jordi" %>
+                        <%end%>
                     <%end%>
                 </div>
             </div>
