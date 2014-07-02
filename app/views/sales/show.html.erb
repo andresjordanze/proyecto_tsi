@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <body onLoad="window.scroll(0, 300)">
 <%if @sale.client_name != "Harry"%>
     <% title @sale.client_name %>
@@ -139,3 +141,8 @@
 
   </CENTER>
   </div></body>
+    <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

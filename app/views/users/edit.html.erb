@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "admin" || current_user.rol == "gerente" %>
 <% title "Editar Perfil" %>
 <center><h1>Cambiar contraseña</h1></center>
 <div class="col-xs-3">
@@ -11,3 +13,9 @@
       <p><%= f.submit (@user.new_record? ? 'Crear' : 'Guardar cambios'), :class => 'btn btn-lg btn-success' %></p>
 <% end %>
 </div>
+
+    <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

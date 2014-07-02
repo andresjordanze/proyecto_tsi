@@ -1,4 +1,8 @@
+
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <% title "Reporte de Egresos" %>
+
 <h1><center>Reporte de egresos</center></h1>
 
 <table class="table table-striped">
@@ -29,3 +33,10 @@
 </table>
 
 <form><input type="button" name="imprimir" value="Imprimir" onclick="window.print();"></form>
+
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

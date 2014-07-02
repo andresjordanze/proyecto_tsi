@@ -1,3 +1,8 @@
+
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
+
+
 <% title "Lista de pedidos"%>
 <h1>Lista de pedidos</h1>
 <div align="right">
@@ -36,3 +41,9 @@ Proveedor: <input type="text" name="name" placeholder="Nombre de proveedor"> &nb
     </tbody>
 </table>
 <br>
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

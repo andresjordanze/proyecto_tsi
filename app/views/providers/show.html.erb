@@ -1,5 +1,7 @@
 
 
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
 <div class="panel panel-info">
   <div class="panel-heading"><center><H1><%= @provider.name %> </H1></center>  </div>
   <div class="panel-body">
@@ -23,3 +25,10 @@
 <div align="left">
   <%= button_to 'Volver', providers_path, :method => :get, :class => 'btn btn-default  ' %><br> 
 </div>
+
+
+  <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

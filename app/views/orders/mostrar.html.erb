@@ -1,3 +1,6 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
+
 <h1>Ver Pedido</h1>
 
     <h2>Numero de pedido: <%=@order.id%></h2>
@@ -47,3 +50,8 @@
 
 <a href="/orders" class="btn btn-default">Volver</a>
 
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

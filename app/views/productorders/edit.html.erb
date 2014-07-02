@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
 <% title "Editar Producto de Pedido" %>
 <CENTER>
 <h1>Editar Producto</h1>
@@ -29,3 +31,9 @@
 <div align="left">
 	<%= button_to 'Volver', productorders_path, :method => :get, class: "btn  btn-default"  %>
 </div>
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

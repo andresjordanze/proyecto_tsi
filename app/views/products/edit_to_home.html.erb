@@ -1,3 +1,5 @@
+<% if current_user %>
+            <% if current_user.rol == "admin" || current_user.rol == "gerente" %>
 <% title "Editar de pagina" %>
 
 <h1>Editar producto de pagina</h1>
@@ -22,3 +24,9 @@
 		<%end%>
 	</div>
 </div>
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

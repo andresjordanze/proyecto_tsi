@@ -1,6 +1,8 @@
+
 <% title "Editar Producto" %>
 <h1>Editar Producto</h1>
-
+<% if current_user %>
+<% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
 <div class="row">
 	
 	<%= form_validated_for(@product) do |f| %>
@@ -30,3 +32,10 @@
 <div align="left">
   <%= button_to 'Volver', products_path, :method => :get, :class => 'btn btn-default  ' %><br> 
 </div>
+
+
+  <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>
