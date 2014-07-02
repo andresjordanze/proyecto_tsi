@@ -60,10 +60,8 @@ class TechnicalServicesController < ApplicationController
 	end
 
 	def search
-		
-		@technical_services = TechnicalService.where("client like", "%#{params[:name]}%").paginate(:per_page => 5, :page => params[:page])
-    	
-    	render 'index'
+		@value = params[:name]
+		@technical_services = TechnicalService.where("client like ?", "%#{params[:name]}%").paginate(:per_page => 5, :page => params[:page])
   	end
 
   	def buscar(valor)
