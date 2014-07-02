@@ -12,12 +12,12 @@ class Sale < ActiveRecord::Base
 
     validates :nit, presence: {:message => "Usted debe ingresar el NIT"}
     validates :nit, numericality: {:message => "El valor de NIT debe ser numerico"}
-    validates :nit, length: {minimum: 7, maximum: 10, :message => "El numero de NIT debe tener minimo 7 caracter"}
+    validates :nit, length: {minimum: 7, :message => "El numero de NIT debe tener minimo 7 caracter"}
     validates :nit, numericality: {greater_than: 0, :message => "El numero de nit no puede ser un numero negativo" }
 	
 	validates :check_number, presence: {:message => "Usted debe ingresar el numero de factura"}	
 	validates :check_number, numericality: {:message => "El valor del numero de factura debe ser numerico"}
-	validates :check_number, length: {minimum: 4, maximum: 12, :message => "El numero de factura debe tener minimo 4 caracteres"}
+	validates :check_number, length: {minimum: 4, :message => "El numero de factura debe tener minimo 4 caracteres"}
 	validates :check_number, numericality: {greater_than: 0, :message => "El numero de factura no puede ser menor a 0" }
 	validates :check_number, uniqueness: {case_sensitive: false, :message => "El numero de factura ya existe"}
 	
