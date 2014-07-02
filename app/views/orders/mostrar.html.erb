@@ -20,7 +20,7 @@
   </tr>
 </thead>
 <tbody>
-<% cantidad=@order.productorders.length%>
+<% cantidad = @order.productorders.length %>
 <% if cantidad == 0 %>
 <% nuevo = true %>
 <% end %>
@@ -31,11 +31,13 @@
     <td><CENTER><%= producto.quantity %></CENTER></td>
     <td><CENTER><%= number_with_precision(producto.price, :precision => 2, :delimiter => ',') %></CENTER></td>
     <td><CENTER><%= number_with_precision(producto.total_price, :precision => 2, :delimiter => ',') %></CENTER></td>
-    <%if producto.ingresado == true%>
+    <%if producto.ingresado == true %>
       <% cantidad -= 1 %>
       <% nuevo = false %>
-      <%@order.ingresado = true%> 
-      <%@order.save%>
+      <%if cantidad == 0 %>
+      <% @order.ingresado = true%> 
+      <% @order.save %>
+      <%end%>
       <td><CENTER>Ingresado</CENTER></td>
     <%else%>
     <% cantidad += 1 %>
