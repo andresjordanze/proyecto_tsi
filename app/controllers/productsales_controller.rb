@@ -10,23 +10,25 @@ class ProductsalesController < ApplicationController
 		@product.quantity -= 1
 		@product.save
 		@sale = Sale.find(params[:sale_id])
-		@sale.price += params[:productsale][:price].to_f
-		@sale.save 
-		@productsale = Productsale.new
-		@productsale.name = @subproduct.name
-		@productsale.code = @subproduct.code
-		@productsale.sale_id = params[:sale_id]
-		@productsale.price = params[:productsale][:price]
-		@productsale.subproduct_id = @subproduct.id
-		@subproduct.sale_id = params[:sale_id]
-		@subproduct.available = false
-		@subproduct.save
-		if @productsale.save
-			flash[:success] = "Producto agregado a venta exitosamente."
-			redirect_to "/sales/"+@productsale.sale_id.to_s
+		if params[:productsale][:price].to_f >= 0
+			@sale.price += params[:productsale][:price].to_f
+			@sale.save 
+			@productsale = Productsale.new
+			@productsale.name = @subproduct.name
+			@productsale.code = @subproduct.code
+			@productsale.sale_id = params[:sale_id]
+			@productsale.price = params[:productsale][:price]
+			@productsale.subproduct_id = @subproduct.id
+			@subproduct.sale_id = params[:sale_id]
+			@subproduct.available = false
+			@subproduct.save
+			if @productsale.save
+				flash[:success] = "Producto agregado a venta exitosamente."
+				redirect_to "/sales/"+@productsale.sale_id.to_s
+			end
 		else
-		flash[:danger] = "Precio de veta no puede ser negativo"
-	    redirect_to sale_path(@sale)
+			flash[:danger] = "Precio de venta no puede ser negativo"
+		    redirect_to sale_path(@sale)
 		end
 	end
 
