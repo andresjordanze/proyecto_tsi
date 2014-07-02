@@ -18,6 +18,7 @@ class ProductsalesController < ApplicationController
 		@productsale.sale_id = params[:sale_id]
 		@productsale.price = params[:productsale][:price]
 		@productsale.subproduct_id = @subproduct.id
+		@subproduct.sale_id = params[:sale_id]
 		@subproduct.available = false
 		@subproduct.save
 		if @productsale.save
