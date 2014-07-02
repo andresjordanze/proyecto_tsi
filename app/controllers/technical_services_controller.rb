@@ -60,11 +60,9 @@ class TechnicalServicesController < ApplicationController
 	end
 
 	def search
-		#@value = params[:name]
-    	#@technical_services = buscar(@value).
-    	@technical_services = buscar(params[:name]).paginate(:page => params[:page], :per_page => 6 )
-		#@technical_services = TechnicalService.where("client like ? or id like ?", "%#{params[:name]}%", "%#{params[:name]}%").paginate(:per_page => 5, :page => params[:page])
-    	#@technical_services = TechnicalService.where("id = :id or client = :client", {id: params[:name], client: params[:name]}).to_a
+		
+		@technical_services = TechnicalService.where("client like", "%#{params[:name]}%").paginate(:per_page => 5, :page => params[:page])
+    	
     	render 'index'
   	end
 
@@ -76,11 +74,10 @@ class TechnicalServicesController < ApplicationController
           if (item.correspondeACliente(valor) || item.id == valor.to_i)
               items.push(item)
           end
-        end
+      end
       else
           items = []
       end
       return items
     end
-
 end

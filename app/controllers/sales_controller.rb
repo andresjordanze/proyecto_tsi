@@ -140,11 +140,11 @@ def update
     def searchDate
       if params[:date] != "" 
         selected_date = Date.parse(params[:date])
-        @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day)  
+        @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day).paginate(:page => params[:page], :per_page => 6 )  
         render 'index'
       else
         flash[:danger] = "Ingrese una fecha correcta"
-        @sales = Sale.all
+        @sales = Sale.paginate(:page => params[:page], :per_page => 6 )
         render 'index'
       end
       

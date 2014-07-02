@@ -28,5 +28,4 @@ class TechnicalService < ActiveRecord::Base
 		end
 		false
 	end
-
 end
