@@ -10,6 +10,7 @@ class Client < ActiveRecord::Base
     validates :nit, numericality: {:message => "El valor de NIT debe ser numerico"}
     validates :nit, uniqueness: {case_sensitive: false, :message => "El NIT ya existe"}
     validates :nit, length: {minimum: 7, :message => "Numero de NIT debe tener minimo 7 caracter"}
+
     validates :nit, numericality: {greater_than: 0, :message => "Numero de NIT no puede ser un numero negativo" }
 
     validates :phone, numericality: {:message => "El valor de telefono/celular debe ser numerico"}

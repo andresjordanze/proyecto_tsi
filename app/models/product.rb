@@ -37,6 +37,8 @@ class Product < ActiveRecord::Base
 	validates :general_code, presence: {:message => "Es un campo obligatorio"}
 	validates :general_code, length: {minimum: 2, maximum: 15, :message => "El Codigo general debe tener entre 2 y 15 caracteres"}
 
+	validates :bought_price, numericality: {greater_than: -1, :message => "El costo no puede ser negativo" }
+
 	#validates :description, presence: {:message => "Es un campo obligatorio"}
 	#validates :name, length: {minimum: 2, maximum: 20, :message => "La Descripcion debe tener minimo 2 y maximo 20 caracteres"}
 

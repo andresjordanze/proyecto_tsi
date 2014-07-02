@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
 				order.destroy
 			end
 		end
-		@orders = @orders1.order('created_at DESC').paginate(:per_page => 6, :page => params[:page])
+		@orders = Order.order(params[:created_at]).paginate(:per_page => 6, :page => params[:page])
 	end
 
 	def mostrar
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
 	    @order.ingresado = params[:ingresado]
 	    @order.confirm = false
 	    if @order.save
-	      redirect_to '/orders/' + @order.id.to_s
+	      redirect_to @order
 	    else
 	      flash[:message] = "Verifique los Campos Marcados"
 	      render :action => 'new'

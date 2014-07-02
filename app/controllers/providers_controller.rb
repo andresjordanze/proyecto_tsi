@@ -20,7 +20,7 @@ class ProvidersController < ApplicationController
    	@provider = Provider.new(params[:provider])
     if @provider.save
       flash[:success] ='Proveedor creado exitosamente.'
-     	redirect_to "/providers"
+     	redirect_to @provider
     else
       render action: "new" 
     end

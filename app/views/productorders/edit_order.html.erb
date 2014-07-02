@@ -10,7 +10,7 @@
     		<%= f.label :quantity, "Cantidad" %>
     		<%= f.text_field :quantity, :maxlength => '4' %>
     		<%=f.label :price, "Precio unitario" %>
-    		<%= f.text_field :price, :maxlength => '4'%>
+    		<%= f.text_field :price, :maxlength => '9'%>
             <%= f.hidden_field :control, :value => @control %>
             <% if @control == 'true' %>
     		<%= f.hidden_field :valor, :value => 'true' %>
@@ -26,7 +26,7 @@
 </div>
 
 <div align="left">
-    <%= button_to 'Volver', productorders_path, :method => :get, class: "btn  btn-default"  %>
+    <%= button_to 'Volver', @productorder.order, :method => :get, class: "btn  btn-default"  %>
 </div>
 
 
