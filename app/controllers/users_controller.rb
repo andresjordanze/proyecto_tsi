@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.order(params[:sort]).paginate(:per_page => 6, :page => params[:page])
   end
 
   def destroy
