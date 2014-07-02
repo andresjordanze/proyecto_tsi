@@ -49,7 +49,7 @@ class Product < ActiveRecord::Base
 	  	self.id_order = productorder.order_id
 	  	self.general_code = @productname.code
 	  	self.brand = Brand.find(@productname.brand_id).name
-	  	self.category = "categoria"
+	  	self.category = "Categoria no asignada"
 	  	self.bought_price = productorder.price
 	end
 
