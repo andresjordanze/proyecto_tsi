@@ -46,6 +46,7 @@ Busqueda: <input type="text" name="name" placeholder="Cliente o Numero de servic
   </tr>
 <% end %>
 </table>    
+<Center><%= will_paginate @users, :previous_label => 'Anterior', :next_label => 'Siguiente' %></Center>
 </br>
 
 </div>

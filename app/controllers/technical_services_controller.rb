@@ -11,11 +11,17 @@ class TechnicalServicesController < ApplicationController
 		@technical_services = TechnicalService.paginate(:per_page => 5, :page => params[:page])
 	end
 
-	 def search_between_dates
-      initial_date = Date.parse(params[:initial_date])
-      ending_date = Date.parse(params[:ending_date])
-      @technical_services = TechnicalService.where(:created_at => initial_date.beginning_of_day..ending_date.end_of_day)
-      render 'report'
+	def search_between_dates
+		if params[:initial_date] != "" || params[:ending_date] != ""
+      		initial_date = Date.parse(params[:initial_date])
+      		ending_date = Date.parse(params[:ending_date])
+      		@technical_services = TechnicalService.where(:created_at => initial_date.beginning_of_day..ending_date.end_of_day)
+      		render 'report'
+      	else
+      		flash[:danger] = "Ingrese una fecha correcta"
+      		#@sales = Sale.all
+      		render 'report_search'
+      	end
     end
 
     def report
@@ -56,8 +62,8 @@ class TechnicalServicesController < ApplicationController
 	def search
 		#@value = params[:value]
     	#@technical_services = buscar(@value)
-		#@technical_services = TechnicalService.where("client like ? or id like ?", "%#{params[:name]}%", "%#{params[:name]}%")#.paginate(:per_page => 6, :page => params[:page])
-    	@technical_services = TechnicalService.where("id = :id or client = :client", {id: params[:name], client: params[:name]}).to_a
+		@technical_services = TechnicalService.where("client like ? or id like ?", "%#{params[:name]}%", "%#{params[:name]}%").paginate(:per_page => 5, :page => params[:page])
+    	#@technical_services = TechnicalService.where("id = :id or client = :client", {id: params[:name], client: params[:name]}).to_a
     	#render 'index'
   	end
 
