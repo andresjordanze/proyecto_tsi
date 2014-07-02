@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
 <% title "Reporte" %>
 <div class="hero-unit">
 <center><h1>Reporte de Servicios</h1></center>
@@ -35,3 +37,10 @@
 </table>
 </br>
 </div>
+
+
+    <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>
