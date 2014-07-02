@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
 
   def index
-    @sales = Sale.all   
+    @sales = Sale.paginate(:per_page => 5, :page => params[:page])
   end
 
   def show
@@ -94,8 +94,8 @@ def update
   end
 
   def search
-    #@sales = buscar(params[:name])
-    @sales = Sale.where("client_name like ?", "%#{params[:name]}%").paginate(:per_page => 6, :page => params[:page])
+    @sales = buscar(params[:name]).paginate(:page => params[:page], :per_page => 6 )
+    #@sales = Sale.where("client_name like ?", "%#{params[:name]}%").paginate(:per_page => 3, :page => params[:page])
     render 'index'
   end
 
@@ -115,7 +115,7 @@ def update
     end
 
     def searchProduct
-      @sales = buscarProd(params[:producto])
+      @sales = buscarProd(params[:producto]).paginate(:page => params[:page], :per_page => 6 )
       render 'index'
     end
 
@@ -140,11 +140,11 @@ def update
     def searchDate
       if params[:date] != "" 
         selected_date = Date.parse(params[:date])
-        @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day)  
+        @sales = Sale.where(:created_at => selected_date.beginning_of_day..selected_date.end_of_day).paginate(:page => params[:page], :per_page => 6 )  
         render 'index'
       else
         flash[:danger] = "Ingrese una fecha correcta"
-        @sales = Sale.all
+        @sales = Sale.paginate(:page => params[:page], :per_page => 6 )
         render 'index'
       end
       
