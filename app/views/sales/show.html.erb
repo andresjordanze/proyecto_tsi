@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <body onLoad="window.scroll(0, 300)">
 <%if @sale.client_name != "Harry"%>
     <% title @sale.client_name %>
@@ -120,7 +122,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-                    <%= f.submit "Confirmar Venta", class: "btn btn-large btn-jordi" %>
+                        <%if @sale.confirmed == false %>
+                            <%= f.submit "Confirmar Venta", class: "btn btn-large btn-jordi" %>
+                        <%else%>
+                            <%= f.submit "Registrar Venta", class: "btn btn-large btn-jordi" %>
+                        <%end%>
                     <%end%>
                 </div>
             </div>
@@ -139,3 +145,8 @@
 
   </CENTER>
   </div></body>
+    <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

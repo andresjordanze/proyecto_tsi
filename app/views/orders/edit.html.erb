@@ -1,3 +1,6 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
+
 <h1>Recepcionar Pedido Nº:<%= @order.id%></h1>
 <h2>Proveedor: <%= Provider.find(@order.provider_id).name %></h2>
 <h2>Fecha: <%= @order.created_at.strftime("%d/%m/%Y")%></h2>
@@ -60,7 +63,7 @@
     <%end%> 
     <% if producto.ingresado == false %>
     <td><%=link_to "Editar de pedido", {:controller => :productorders, :action => 'edit_order', :id => producto.id, :order_id => @order.id , :control => 'true'}, :class  => 'btn btn-large btn-warning' %></td>
-    <td><%= button_to 'Eliminar de pedido', productorder_path(:producto => { :control => "true", :id => producto.id}), method: :delete, data: { confirm: 'Seguro?' }, :class => 'btn btn-mini btn-danger' %></td>
+    <td><%= button_to 'Eliminar de pedido', productorder_path(:producto => { :control => "true", :id => producto.id}), method: :delete, data: { confirm: 'Esta seguro de eliminar este producto del pedido?' }, :class => 'btn btn-mini btn-danger' %></td>
     <td><%= link_to 'Registrar ingreso', {:controller => :products, :action => "registrar_ingreso", :id => producto.id}, data: { confirm: 'Esta seguro de registrar el ingreso?'}, :class  => 'btn btn-large btn-primary' %></td>
     <%end%>
   </tr>
@@ -108,4 +111,10 @@
 <%else%>
   <a href="/orders" class="btn btn-default btn-lg">Volver</a>
   <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#pedido">Editar pedido</button>
+<%end%>
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
 <%end%>

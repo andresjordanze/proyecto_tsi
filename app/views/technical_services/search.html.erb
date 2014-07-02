@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "tecnico" || current_user.rol == "gerente" %>
 <% title "Servicios" %>
 <div class="hero-unit">
 <center><h1>Lista de Servicios</h1></center>
@@ -50,3 +52,9 @@ Busqueda: <input type="text" name="name" placeholder="Cliente o Numero de servic
 </br>
 
 </div>
+
+    <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

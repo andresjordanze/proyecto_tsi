@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <% @total = 0%>
 <% title "Reporte de Ventas" %>
 <HTML>
@@ -52,6 +54,7 @@
                                                                         <td><CENTER><%= subproduct.name %></CENTER></td>
                                                                         <td><CENTER><%= subproduct.code %></CENTER></td>
                                                                         <td><CENTER><%= subproduct.price %> Bs.</CENTER></td>
+                                                                        <%=@total += subproduct.price%>
                                                                     </tr>
                                                                 <%end%>
                                                             </tbody>
@@ -82,3 +85,10 @@
 </div>
 </BODY>
 </HTML>
+
+
+    <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

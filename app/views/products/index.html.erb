@@ -62,57 +62,7 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de producto"> &nbsp
 <br>
 </Center>
 
-<head>
-    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
-</head>
 
 <script>
     $('.popover-dismiss').popover({trigger: 'focus'})
 </script>
-
-
-
-<script type="text/javascript">
-    fb.ready(function(){ 
-  if (fb.logged)
-  {
-    // Cambiamos el link de identificarse por el nombre y la foto del usuario.
-    html = "<p>Hola " + fb.user.name + "</p>";
-    html += '<p><img src="' + fb.user.picture + '"/></p>';
-    html += '<p><a href="#" onclick="fb.logout(); return false;">Salir</a></p>';
-    document.getElementById("conectar_facebook").innerHTML = html;
-  }
-});
-
-// Funcion para logarse con Facebook.
-function login() {
-  fb.login(function(){ 
-    if (fb.logged) {
-      // Cambiamos el link de identificarse por el nombre y la foto del usuario.
-      html = "<p>Hola " + fb.user.name + "</p>";
-      html += "<p><img src='" + fb.user.picture + "'/></p>";
-      document.getElementById("conectar_facebook").innerHTML = html;
-    } else {
-      alert("No se pudo identificar al usuario");
-    }
-  })
-};
-
-
-var publish = function () {
-    fb.publish({
-      message : "Estoy probando un script para que la gente publique desde mi/s web/s en Facebook",
-      picture : "http://blog.ikhuerta.com/wp-content/themes/ikhuerta3/images/ikhuerta.jpg",
-      link : "http://blog.ikhuerta.com/usando-facebook-graph-api-con-javascript-sdk-pero-aun-mas-sencillo",
-      name : "Simple Facebook Graph Javascript SDK",
-      description : "Facebook Graph es una nueva forma de conectar tu web Facebook. Con este script es muy fácil conseguirlo :)"
-    },function(published){ 
-      if (published)
-       alert("publicado!");
-      else
-       alert("No publicado :(, seguramente porque no estas identificado o no diste permisos");
-    });  
-} 
-</script>
-
-

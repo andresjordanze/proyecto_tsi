@@ -1,6 +1,10 @@
-<% title "Editar Producto de Pedido" %>
+
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
+<% title "Editar de pedido" %>
+
 <CENTER>
-<h1>Editar Producto</h1>
+<h1>Editar de pedido:</h1>
 
 <div class="row">
 	<div class="col-xs-3">
@@ -19,7 +23,7 @@
     		<%= f.label :quantity, "Cantidad" %>
     		<%= f.text_field :quantity, :maxlength => '4' %>
     	</p>
-		<p><%= f.submit "Editar Producto", class: "btn btn-large btn-warning" %></p>
+		<p><%= f.submit "Guardar cambios", class: "btn btn-large btn-warning" %></p>
 	</div>
 	<!--</div>-->
 	<%end%>
@@ -29,3 +33,9 @@
 <div align="left">
 	<%= button_to 'Volver', productorders_path, :method => :get, class: "btn  btn-default"  %>
 </div>
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

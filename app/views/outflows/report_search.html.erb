@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <% title "Ingresar Fechas" %>
 
 <div class="hero-unit">
@@ -13,3 +15,9 @@ Fecha Fin: <input type="date" name="ending_date"> &nbsp;&nbsp;&nbsp;
 </div>
 </center>
 
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

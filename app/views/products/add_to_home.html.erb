@@ -1,3 +1,5 @@
+<% if current_user %>
+            <% if current_user.rol == "admin" || current_user.rol == "gerente" %>
 <% title "Añadir a pagina" %>
 
 <h1>Añadir producto a pagina</h1>
@@ -27,3 +29,10 @@
 <script>
 	$(":file").filestyle({buttonName: "btn-primary"});
 </script>
+
+
+<%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "tecnico" || current_user.rol == "gerente" || current_user.rol == "secre" %>
 <% title "Clientes" %>
 <center><h1>Lista de Clientes</h1></center>
 
@@ -38,3 +40,11 @@ Busqueda: <input type="text" name="name" placeholder="Nombre de cliente"> &nbsp;
 </table>
 <center><%= will_paginate @clients, :previous_label => 'Anterior', :next_label => 'Siguiente' %></center>
 </br>
+
+  <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>
+
+ 

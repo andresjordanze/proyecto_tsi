@@ -1,3 +1,5 @@
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <% title "Lista de Ventas" %>
 <div class="hero-unit">
 <h1>Lista de Ventas</h1>
@@ -87,3 +89,9 @@ Fecha: <input type="date" name="date"> &nbsp;&nbsp;&nbsp;
 <br>
 </Center>
 </div>
+
+  <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>

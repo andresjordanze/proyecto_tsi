@@ -1,3 +1,6 @@
+
+<% if current_user %>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
 <h1>Todos los Proveedores</h1>
 <div align="right">
 	<h3><%= link_to 'Añadir Proveedor', new_provider_path, :class => 'btn btn-jordi' %></h3>
@@ -39,3 +42,9 @@
 </table>
     <%= will_paginate @providers, :previous_label => 'Anterior', :next_label => 'Siguiente' %>
 </CENTER>
+
+  <%else%>
+    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
+    <center><img src="/images/candado.png"></center>
+  <%end%>
+<%end%>
