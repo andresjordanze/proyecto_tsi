@@ -24,7 +24,8 @@ class ProductsalesController < ApplicationController
 			flash[:success] = "Producto agregado a venta exitosamente."
 			redirect_to "/sales/"+@productsale.sale_id.to_s
 		else
-
+		flash[:danger] = "Precio de veta no puede ser negativo"
+	    redirect_to sale_path(@sale)
 		end
 	end
 

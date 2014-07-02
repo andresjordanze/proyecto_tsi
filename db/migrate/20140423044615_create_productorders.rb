@@ -4,8 +4,8 @@ class CreateProductorders < ActiveRecord::Migration
       t.integer :productname_id
       t.integer :quantity
       t.boolean :ingresado
-      t.integer :price
-      t.integer :total_price
+      t.float :price
+      t.float :total_price
       t.references :order, index: true
       t.timestamps
     end
