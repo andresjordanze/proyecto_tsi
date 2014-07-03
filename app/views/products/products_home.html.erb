@@ -1,5 +1,5 @@
-<% if current_user %>
-    <% if current_user.rol == "admin" || current_user.rol == "gerente" %>
+
+    
 
   <% title "Productos de pagina" %>
 <% if current_user %>  
@@ -166,9 +166,4 @@ $(document).ready(function()
 
   
 
-<%else%>
-    <%flash[:danger] = "ACCESO RESTRINGIDO"%>
-    <center><img src="/images/candado.png"></center>
-  <%end%>
-<%end%>
 
