@@ -98,14 +98,10 @@
   get 'incomes/search' => 'incomes#search'
   get 'incomes/report_search' => 'incomes#report_search'
   get 'incomes/search_between_dates' => 'incomes#search_between_dates'
-  get 'incomes/today_report' => 'incomes#today_report'  
 
   get 'outflows/search' => 'outflows#search'
   get 'outflows/report_search' => 'outflows#report_search'
   get 'outflows/search_between_dates' => 'outflows#search_between_dates'
-  get 'outflows/report_today' => 'outflows#report_today'
-  get 'outflows/report_search_today' => 'outflows#report_search_today'
-  get 'outflows/today_report' => 'outflows#today_report'  
 
   get 'add_product_sale' => 'productsales#registrar'
 

@@ -1,17 +1,10 @@
 <% if current_user %>
 <% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
-<% title "Reporte de Egresos" %>
-<h1><center>Reporte de Egresos</center></h1>
-<center>
-  <strong> Fecha de Reporte:&nbsp;&nbsp;&nbsp;    
-  <% fecha = Time.now %>
-  <%=fecha.day%>/
-  <%=fecha.month%>/
-  <%=fecha.year%>
-  </strong>
-</center>
+<% title "Reporte de Ingresos" %>
+<h1><center>Reporte de ingresos</center></h1>
+
 <table class="table table-striped">
-<% todo = 0%>
+
   <thead>
   <tr>
     <th><CENTER>Numero de pedido</CENTER></th>
@@ -35,23 +28,9 @@
     <td><CENTER><%= number_with_precision(income.price, :precision => 2, :delimiter => ',') %></CENTER></td>
     <td><CENTER><%= number_with_precision(income.total_price, :precision => 2, :delimiter => ',') %></CENTER></td>
     <td><CENTER><%= income.created_at.strftime("%d/%m/%Y") %></CENTER></td>
-    <% todo = todo + income.total_price %>
-    <% end %>
-  </tr>
-
-  <tr>
-    <th><CENTER>TOTAL</CENTER></th>
-    <th><CENTER></CENTER></th>
-    <th><CENTER></CENTER></th>
-    <th><CENTER></CENTER></th>
-    <th><CENTER></CENTER></th>
-    <th><CENTER></CENTER></th>
-
-    <th><CENTER><%= number_with_precision(todo, :precision =>2, :delimiter => ',') %></CENTER></th> 
-
   </tr>
   </tbody>
-  
+<% end %>
 
 </table>
 

@@ -1,4 +1,4 @@
-<% if current_user %>
+
 <% if current_user.rol == "enc_almacen" || current_user.rol == "gerente" %>
 
 <h1>Lista de Productos</h1>
@@ -22,7 +22,6 @@
   <tr>
     <th><CENTER>Nombre</CENTER></th>
     <th><CENTER>Codigo</CENTER></th>
-    <th><CENTER>Marca</CENTER></th>
     <th></th>
   </tr>
 </thead>
@@ -31,7 +30,6 @@
   <tr>
     <td><CENTER><%= producto.name %></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
-    <td><CENTER><%= Brand.find(producto.brand_id).name %></CENTER></td>
     <td>
     <%= link_to 'Ver detalle de producto', productname_path(producto), :class => 'btn btn-mini  btn-success' %>
     </td>
@@ -53,4 +51,3 @@
     <%flash[:danger] = "ACCESO RESTRINGIDO"%>
     <center><img src="/images/candado.png"></center>
   <%end%>
-<%end%>
