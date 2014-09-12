@@ -1,12 +1,23 @@
 
 <% if current_user %>
 <% if current_user.rol == "secre" || current_user.rol == "gerente" %>
-<% title "Reporte de Egresos" %>
+<% title "Reporte de Ingresos" %>
 
-<h1><center>Reporte de egresos</center></h1>
+<h1><center>Reporte de Ingresos</center></h1>
 
-<table class="table table-striped">
+<center>
+  <strong> Fecha de Reporte:&nbsp;&nbsp;&nbsp;    
+  <% fecha = Time.now %>
+  <%=fecha.day%>/
+  <%=fecha.month%>/
+  <%=fecha.year%>  
+  </strong>
+</center>
+<br>
 
+<div class="table-responsive">
+<table class="table table-condensed">
+<% todo = 0%>
   <thead>
   <tr>
     <th>Nombre</th>
@@ -26,12 +37,18 @@
     <td><%= productsale.price %></td>
     <td><%= productsale.sale_id %></td>
     <td><%= productsale.created_at.strftime("%d/%m/%Y") %></td>
+    <% todo = todo + productsale.price %>
   </tr>
   </tbody>
 <% end %>
 <%end%>
+<tr>
+    <th>TOTAL</th>
+    <th></th>    
+    <th><%= number_with_precision(todo, :precision =>2, :delimiter => ',') %></th>  
+  </tr>
 </table>
-
+</div>
 <form><input type="button" name="imprimir" value="Imprimir" onclick="window.print();"></form>
 
 
