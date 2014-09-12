@@ -1,21 +1,19 @@
-
 <% if current_user %>
-<% if current_user.rol == "secre" || current_user.rol == "gerente" || current_user.rol == "enc_almacen"%>
+<% if current_user.rol == "secre" || current_user.rol == "gerente" %>
 <% title "Ingresar Fechas" %>
 
 <div class="hero-unit">
 
-<h1><center>Reporte de Egresos</center></h1><br><br>
+<h1><center>Reportes Diarios</center></h1><br><br>
 <center>
-<form method="GET" action="/incomes/search_between_dates">
+<form method="GET" action="/outflows/today_report">
 Fecha Inicio: <input type="date" name="initial_date"> &nbsp;&nbsp;&nbsp;
 Fecha Fin: <input type="date" name="ending_date"> &nbsp;&nbsp;&nbsp;
-<input type="submit" value="Buscar Ingresos Entre Fechas", class="btn btn-info">
+<input type="submit" value="Buscar Egresos Entre Fechas", class="btn btn-info">
 </form>
 </center>
 </div>
 </center>
-
 
 <%else%>
     <%flash[:danger] = "ACCESO RESTRINGIDO"%>

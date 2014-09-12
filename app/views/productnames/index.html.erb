@@ -22,6 +22,7 @@
   <tr>
     <th><CENTER>Nombre</CENTER></th>
     <th><CENTER>Codigo</CENTER></th>
+    <th><CENTER>Marca</CENTER></th>
     <th></th>
   </tr>
 </thead>
@@ -30,6 +31,7 @@
   <tr>
     <td><CENTER><%= producto.name %></CENTER></td>
     <td><CENTER><%= producto.code %></CENTER></td>
+    <td><CENTER><%= Brand.find(producto.brand_id).name %></CENTER></td>
     <td>
     <%= link_to 'Ver detalle de producto', productname_path(producto), :class => 'btn btn-mini  btn-success' %>
     </td>
